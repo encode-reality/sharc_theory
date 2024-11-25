@@ -342,4 +342,4 @@ The paper develops the **Bioelectricity-Integrated Gene and Reaction (BIGR)** ne
 
 ---
 
-Let me know if you want further details or specific parts of this formalism elaborated!
+Let me know if you want further details or specific parts of this formalism elaborated! CHECK
