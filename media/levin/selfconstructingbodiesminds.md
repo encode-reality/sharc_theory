@@ -34,9 +34,6 @@ YouTube Video Link: [Self-constructing bodies, collective minds: the intersectio
 
 ---
 
-*Click on the timestamps to jump directly to each section in the video.*  
-Let me know if you'd like further customization or details on any section!
-
 ---
 
 ### **Summary of Transcript Part 1**
@@ -116,10 +113,6 @@ Let me know if you'd like further customization or details on any section!
 
 ---
 
-YouTube Video Link: [https://www.youtube.com/watch?v=L5bQnyq4OtQ](https://www.youtube.com/watch?v=L5bQnyq4OtQ)
-
----
-
 ### **Summary of Transcript Part 2**
 
 3. **[00:32:44 - Cognitive Scaling in Biological Systems](https://www.youtube.com/watch?v=L5bQnyq4OtQ&t=1964)**
@@ -191,10 +184,6 @@ YouTube Video Link: [https://www.youtube.com/watch?v=L5bQnyq4OtQ](https://www.yo
   - Highlights the continuous, self-interpretive nature of biological systems, which adaptively reconstruct themselves.
 - **Transition to Part 3**:
   - Introduces unconventional agents and the philosophical implications of emergent biological and computational systems.
-
----
-
-YouTube Video Link: [https://www.youtube.com/watch?v=L5bQnyq4OtQ](https://www.youtube.com/watch?v=L5bQnyq4OtQ)
 
 ---
 
