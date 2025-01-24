@@ -1,4 +1,3 @@
-Here is an in-depth breakdown of the article "Topological Constraints on Self-Organization in Locally Interacting Systems," with a focus on the key formalisms:
 # Topological constraints on self-organisation in locally interacting systems
 
 [Paper](topological_constraints_on_self_organization.pdf)
