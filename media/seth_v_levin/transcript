@@ -1,0 +1,1142 @@
+I make the additional really weird claim that  I don't think algorithms capture everything  
+0:05
+we need to know about life. We've forgotten  that the idea of the brain as a computer is   a metaphor and not the thing itself. There's  no bright line between what it does and what  
+0:15
+it is. That would not be what I would have  predicted. This is a monumental colloquy.  
+0:23
+For the first time ever, Professor Anil Seth  and Professor Michael Levin are conversing  
+0:28
+and performing research in real time,  and we get to be the flies on the wall. Anil says that the brain as a computer metaphor  has blinded us for decades. You can't extract  
+0:40
+the software from the substrate. This means  that silicon consciousness may be impossible,  
+0:45
+not because machines lack dualistic souls,  though. But wait, Michael disagrees.  
+0:50
+He thinks that machines may be able to access the  same platonic space that biological systems tap  
+0:56
+into. The magic isn't restricted to carbon. Both  professors are now building and studying xenobots  
+1:03
+together. These are living robots made from skin  cells that self-organize, exhibiting behaviors  
+1:08
+evolution never programmed. Do they dream?  Do they have preferences? Are they conscious?   On this episode of Theories of Everything,  we explore their radical collaboration,  
+1:17
+including questions like how split-brain patients  may prove consciousness fragments and multiplies,  
+1:23
+and the terrifying possibility that  large language models are doing something   entirely different from what their output  suggests. Tasks no programmer asked for,  
+1:33
+no steps in the code demand for, but perhaps  where that, quote-unquote, “magic” lies.  
+1:39
+Remember to hit that subscribe button if you  like videos exploring fundamental reality.
+1:45
+All right, we're going to talk about aliens. We're  going to talk about cyborgs, modules in the brain,   split-hemisphere patients, if I'm not mistaken,  and unconscious processing. We're going to get  
+1:54
+to all of that. To set the stage, I'd like to know  what's exciting you both research-wise currently,   something you're pursuing. So Anil,  why don't we start with you, please?
+2:03
+Well, thanks, Curt. Two things, I  guess. One thing, a topic that seems   to be exciting a lot of people these  days, which is the possibility of AI  
+2:13
+being conscious. Whether it's something  that AI systems can have or whether,  
+2:19
+as I tend to think, that it's something more  bound up with our nature as living creatures.
+2:25
+The other thing that's exciting me actually just  came to mind in your little list of topics there  
+2:31
+is the question of islands of consciousness. So  there's a lot of work on things like split-brain  
+2:38
+patients, patients with brain damage, and so on.  But a question that me and a couple of colleagues,   Tim Bayne and Marcello Massimini, have been  wondering is, are there isolated neural systems  
+2:48
+that may have conscious experiences? And one  candidate for this is called hemispherotomy,   which is a kind of neurosurgical operation  where you have bits of the brain detached,  
+2:58
+disconnected from all other parts of the  brain, but you still have neural activity.  
+3:04
+These parts of the brain are still part  of the living organism. Are they islands   of awareness? So we've been exploring that  theoretically and very recently with some  
+3:14
+evidence from brain imaging of people  following this neurosurgical operation.
+3:20
+Michael? Yeah, so a couple of things on the experimental  front. I'm really excited about some novel systems  
+3:30
+that we're setting up as compositional  agents. So putting together different  
+3:36
+living and non-living components using AI and  other interfaces to allow them to not just  
+3:44
+communicate with each other but, we hope, form a  kind of collective intelligence. And then we can  
+3:49
+ask some interesting questions about what kind of  inner perspective this new intelligence might be.  
+3:55
+Just in general, complementing the work  we've done before around distributing and,  
+4:01
+let's say, separating out the different  pieces, like Anil was just saying,   of the brain and so on. The flip side of that,  which is putting together new kinds of beings  
+4:10
+that haven't existed before and asking what  their behavioral complements are, what their  
+4:17
+capacities are, what their goals are, their  preferences, what do they pay attention to,   these kinds of things. And just in  general, really digging into this idea of,  
+4:27
+for lack of a better word, intrinsic motivations  and asking in novel creatures that don't have  
+4:32
+the benefit of a lengthy evolutionary history that  presumably set some of their cognitive properties,  
+4:38
+where do these things come from? And how do  we predict them? How do we recognize them?
+4:43
+I should have said, of course, one of the  things that's really exciting to me is stuff   that Mike and I have been talking about together.  About some of the systems that he's building,  
+4:54
+some of the things he's actually talking about.  Do they sort of self-organize in ways which seem   to obey the laws of psychophysics and other sorts  of situations where we might attribute things like  
+5:06
+intrinsic motivation to evolved systems? There's  a big question about, are laws of perception,  
+5:13
+are they adapted to specific environmental  situations or are they somehow intrinsic to  
+5:21
+how biological neural systems self-organize?  So we've been bouncing ideas back and forth  
+5:27
+to do experiments to explore some of  these questions, which is various.
+5:32
+Tell us about some of these experiments. We haven't done them yet. The logic is to take  some simple observations of phenomena that are  
+5:43
+very widespread in perception across many evolved  species, whether it's a human being, a mouse, or  
+5:54
+probably a bacterium or something like that. So  there are things like Weber's or Fechner's Law,   so the idea that the perceived intensity of the  stimulus scales logarithmically with its actual  
+6:05
+magnitude. Now this is something that seems  very, very general. Is this something that  
+6:15
+we can look for evidence for in some of these  completely out-of-evolutionary-context systems  
+6:23
+of the kind that Mike is generating? So that  would be one example. There are a whole bunch   of other examples we have. Can we find things like  susceptibility to visual illusions or things like  
+6:32
+that in these systems? So what are the simplest  kind of very general perceptual and learning  
+6:38
+phenomena that we might be able to examine  whether they happen in these systems which  
+6:47
+don't have this straightforward evolutionary  trajectory? I think that's the basic project.
+6:53
+Yeah, exactly. And these  comprise xenobots, anthrobots,  
+6:59
+and even weirder constructs that we  can start to put together by building  
+7:05
+technological interfaces between radically  different kinds of beings that allow them to,   sort of like an artificial corpus callosum  that takes two different things and tries to  
+7:14
+bind them into one novel collective thing and  seeing whether some of their properties and  
+7:21
+their behavioral competencies match the things  that people have been studying, as Anil said,   psychophysics, and all the things out  of a behavioral handbook, basically.
+7:30
+Yeah, and this kind of relates to this idea of  AI and consciousness and so on for the following  
+7:36
+reason, which is why I think it's very exciting.  I think Mike and I might have different but   overlapping reasons for our interest in this. For  me, there's this sort of assumption by people who  
+7:45
+talk a lot about consciousness and AI that the  biological stuff we're made of doesn't really   matter. It's just there to implement algorithms.  Silicon could do just as well. And I tend to think  
+7:56
+differently, and I think we both do. And so these  are ways of just looking at what's the dynamic and  
+8:03
+functional potential that's sort of intrinsic to  the stuff we're made of that provides the basis  
+8:09
+for our cognitive, our perceptual, ultimately our  conscious abilities and properties. So these are  
+8:16
+experiments that we're getting at that. What's  just there that evolution can then make use of?
+Substrate Dependence: Why Biology Isn't Just 'Wetware'
+8:24
+Anil, can you make the elevator pitch for people  who are already familiar with the argument that,   look, the processing that's going on  in our brain is just processing. It  
+8:32
+could potentially be translated  to a computer. If consciousness   is similarly information processing, then  we have something that's, quote-unquote,  
+8:39
+“substrate independent.” So you're making  the claim that it's not so clear. Maybe  
+8:45
+there is a dependence to the substrate. Can  you make that case? And then also Michael,  
+8:50
+I know that you have several questions you'd  like to ask Anil, and feel free at any point to.
+8:56
+I try and make it, but that's the case I'm trying  to make. It's quite tricky because it goes against  
+9:04
+such a deeply embedded assumption that the  brain is basically a computer made of meat,  
+9:11
+and the things that it does, the only things  that it does that are relevant for things like   cognition and consciousness are computations, are  forms of information processing. If you start from  
+9:21
+that perspective, it leads you to this idea that  there is this substrate independency. And what  
+9:28
+that means, to unpack that, that just means that  the stuff we're made of doesn't really matter,  
+9:33
+it's the computations that matter. And if  a substrate can implement computations,   then fine. These two sort of ideas  go together because one of the whole  
+9:44
+motivations for a computational view is  substrate independency. Turing's formulation   of computation is formulated in terms of it  being independent of any particular material.
+9:55
+So the other thing really is that we've kind of  forgotten that the idea of the brain as a computer  
+10:00
+is a metaphor and not the thing itself. It's a  sort of marriage of mathematical convenience. And  
+10:09
+the closer you look at real biological systems, as  Mike's work beautifully exemplifies, the less that  
+10:16
+this idea of substrate independency makes any  real sense. There's no bright line in a brain  
+10:24
+or a biological system in general between what  you might call the mind-ware and the wet-ware,   between what it does and what it is. And if  there's no clear way to separate in a system  
+10:34
+what it does from what it is, then it's very,  very much less clear that one should think that  
+10:40
+computation is all that matters. Because  for computation to be all that matters,  
+10:45
+you kind of have to have this sharp separation  between the software and the hardware,   what it does and what it is. If you can't do that,  then there's less reason to think that computation  
+10:54
+is what matters. And if there's less reason to  think that, then there's equally less reason to  
+10:59
+think that you could implement what matters in  a substrate-independent way on something else.  
+11:07
+You can, of course, still use computers  to simulate a brain in whatever level of   detail you want. But that's neither here nor  there. It's a very useful thing to do. We both  
+11:16
+do this. We do this all the time. But you can  simulate anything using a computer. That's one   reason computers are great. But that doesn't  mean you will instantiate the phenomenon. You  
+11:26
+only do that if computation really is all  that matters. And I think that's very much  
+11:32
+up for grabs. I think it's been a very deeply  held assumption, but I think it's likely wrong.
+11:39
+Yeah, I mean, I agree with everything Anil said,  but I take it in a slightly different direction.   So I think it's critical to remember that, yeah,  everything we think about as computation is a  
+11:49
+metaphor. It's a formal model. And so we have to  ask ourselves, what does this model help us do  
+11:55
+and what is it hiding? In other words, what is  it preventing us from seeing? And I agree that  
+12:02
+this metaphor does not capture everything that we  need to know and we need to use to do technology  
+12:11
+and so on about life. I think the computational  paradigm and the notion of algorithms and so on   does not capture everything we need to know about  life. But I make the additional really weird claim  
+12:22
+that I don't think it captures everything we need  to know about machines either. In other words, we  
+12:29
+tend to think, at least the people I meet tend to  think, that we have this set of metaphors that are  
+12:36
+for machines and their algorithms and they don't  really apply to biology. Certainly people say,  
+12:41
+“Well, they don't apply to me. I'm creative and  whatever else they are.” But there is a corner   of the universe that is boring, mechanical. It  only does what the algorithm says it should do.  
+12:51
+And for those kinds of things, these metaphors are  perfect. They capture everything there is to know.
+12:56
+So I agree with Anil on the first part, but I  doubt the second part. I think that a lot of   what we have in our theories of computation is  a pretty reasonable theory of what I call the  
+13:09
+front end. I think most of what we deal with  are actually thin clients in a certain sense.  
+Beyond Algorithms: Do Machines Tap Into a 'Platonic Space'?
+13:14
+They're interfaces to something much deeper, which  we can call the platonic space. I don't love the  
+13:19
+name, but I say it that way because then at least  the mathematicians know what I'm talking about.  
+13:25
+But I think that even, and we have some work  already published and more work coming soon in  
+13:30
+the next few months on this, showing that, yeah,  the standard way of looking at algorithms doesn't  
+13:36
+even tell the story of so-called machines. And so  whatever it is, and I have guesses, but of course  
+13:43
+we don't know, whatever it is that allows a  mind to come through biological interfaces  
+13:50
+and not be captured by these formal models, I  think these other systems that we call machines  
+13:56
+and certainly cyborgs and hybrids also, I think  they get some of the magic too. It's not going   to be like us. It's going to be different, but I  don't think they escape these aggressions either.
+14:07
+This is why I think I find Mike's work so  interesting because it's provocative in this   direction. I think he's, I've always, I think  he summarizes what I said very well is that  
+14:20
+we underestimate the richness of biological  systems if you force them into the, what's often  
+14:25
+called the machine metaphor, by which we really  mean that all that matters is this sort of Turing  
+14:31
+computation algorithm thing. But I think it is  equally true that we limit our imagination about  
+14:37
+what machines might be as well by doing this. And  there's a whole kind of alternative history of AI,  
+14:45
+which was really grounded in 20th-century  cybernetics. There's much more to do about   dynamical systems, attractors, feedback systems,  all things you can still simulate computationally,  
+14:55
+which are fundamentally not arising  from the algorithmic way of thinking  
+15:03
+about things. There are also really interesting  mathematical properties like emergence and so on,  
+15:10
+which I think can both help us understand  but also might be design principles for  
+15:18
+machines of various kinds, which, again, don't  really fit into an algorithmic view of things.
+15:23
+So it might as well be able to show that even  something we think of as anonymously algorithmic,  
+15:29
+like, correct me if I'm wrong, the bubble sort  stuff. So this is an algorithm that anyone  
+15:34
+in computer science 101 learns to code,  to sort things into a particular order,  
+15:39
+has really interesting emergent properties  that other things can be built on top of. So,  
+15:48
+yeah, I think for me it's like there's  this nice iterative back and forth where  
+15:57
+we can learn to think of both biology  and machines differently. And, of course,  
+16:04
+that might give us richer metaphors through which  we can use one lens to understand the other.
+16:10
+Would you say, then, that we  have the idea of machine and   that a Turing machine is a strict  subset of that idea of machine?
+16:22
+I mean, a Turing machine is an abstraction,  right? Turing machines were never sort of   supposed to exist as things. They have  infinite tape and things like that. So  
+16:31
+you've got a Turing machine. The idea is in  one sense you're mapping a bunch of numbers  
+16:37
+onto another bunch of numbers. And then the  universal Turing machine does this through   this moving head and an infinite tape. It was  never really supposed to exist as a physical  
+16:47
+machine. And I think that's where part of  the problem has sort of come from. But an  
+16:54
+algorithm in that sense, yeah, I think that's  a subset. When you realize a Turing machine,  
+17:00
+that's a subset of possible machines.  Yes, when you realize a Turing machine,   it will be a subset of all possible machines just  because it's a particular Turing machine. No, but  
+17:09
+when you realize a universal Turing machine as  well, that's also a subset of possible machines.
+17:15
+So if you don't mind spelling out to the  audience the idea of hypercomputation,   and would you then say that biological creatures  
+17:24
+or cells or what have you are doing  something that is hypercomputational?   And feel free to take this in a different  direction, Michael, as well, if you like.
+17:33
+Would you, yeah, I mean, I'd love  to say that, but would you, Curt,   would you give me what you're  thinking of when you use the  
+17:39
+word hypercomputation? I've heard  it used to imply different things. So if something can solve the halting problem,  it would be an example of a hypercomputer.  
+17:48
+Something that can decide problems that a Turing  machine or a universal Turing machine cannot.
+17:53
+Right, so sort of super-Turing in some sense.  That's one way in which machines can be non-Turing  
+18:02
+or can escape the Turing world. But I think there  are many other systems that are just not captured  
+18:13
+by this way. They don't have to be based on  a halting problem. Strictly anything that is  
+18:20
+stochastic, anything that is continuous, is beyond  this world of strict universal Turing machines.  
+18:28
+There are kinds of extensions that try to go  there. But there are also functions that things  
+18:35
+do that necessarily involve particular material  substrates. So take something like metabolism. And  
+18:45
+metabolism is not mapping some range of numbers,  whether they're continuous or random, to another  
+18:51
+number. It involves actual transformation of a  particular kind of substance into another kind  
+18:57
+of substance. That's just non-Turing in what  is a fairly trivial way. But that kind of thing  
+19:05
+might be very important for particular classes of  machines or systems, whether they're biological or  
+19:12
+not. So I think there are different spaces of what  you might call non-Turing processes. Only some of  
+19:19
+these are these kinds of hyper-computation,  halting problem solving things where you  
+19:25
+might say you've got some sort of fancy quantum  stuff going on. But I think it's different about  
+19:30
+that. It's different, right? I mean, there are  some people that would say that actually, unless  
+19:39
+you're talking about this hypercomputation, in the  sense you've mentioned, that everything else is  
+19:45
+sort of a relatively feasible extension of Turing  as is. So there's definitely debate in that area.
+19:54
+You know how in physics we like to reduce  something that's complex into something more   elegant and more efficient, something simpler,  for instance. It turns out you can do that with  
+20:04
+your dinner. HelloFresh sends you exactly the  ingredients you need. They're pre-measured,  
+20:09
+they're pre-portioned, so you don't have to deal  with this superposition of, “Do I have too much  
+20:14
+cilantro versus not enough cilantro?” or whatever  you have collapsing in your kitchen every night.  
+20:21
+They've just done their largest menu refresh  yet with literally 100 different recipes each  
+20:27
+week. There's vegetarian options, calorie-smart  ones, protein-heavy, my personal favorite. Then  
+20:33
+there's a new steak and seafood options at no  extra cost. All the meals take approximately  
+20:38
+15 minutes to a half hour. They've actually  tripled their seafood offerings recently and   added more veggie-packed recipes. Each one has two  or more vegetables now. I've been using it myself.  
+20:49
+It's the one experiment in my life that's always  yielded reproducible results. It's delicious,  
+20:55
+it's easy, it saves me from having to live on  just black coffee while editing episodes at  
+21:00
+1am. Personally, my favorite part is that it's  an activity that I can do with my wife. Thus,   it not only serves as dinner, but as a bonding  exercise. The best way to cook just got better.  
+21:10
+Go to HelloFresh.com/TheoriesOfEverything10FM  to get 10 free meals plus a free item for life.  
+21:19
+That's one per box with active subscription.  Free meals applied as discounts on the first box,  
+21:24
+new subscribers only, varies by plan. That's   HelloFresh.com/TheoriesOfEverything10FM to  get 10 free meals plus a free item for life.
+21:37
+I would go in a slightly different direction.  Emphasize something that does not lean on quantum  
+21:44
+mechanics, does not lean on stochasticity, and  does not lean on hyper-Turing or anything like  
+The Ghost in the Algorithm: Emergent Agency in Bubble Sort
+21:52
+that. And also, let's even step back from the  living because living things, conventional living  
+21:59
+things, are so complex that you can always find  more mechanisms and so on. I want to look at an  
+22:05
+extremely minimal model. And the reason that  we chose this was precisely because it's such  
+22:11
+a minimal model. I wanted to sort of maximize the  shock value of this thing for our intuitions. And  
+22:16
+this is the work that my student, Tainan Zhang and  Adam Goldstein and I did on sorting algorithms,  
+22:22
+which is what Anil mentioned. And there's a couple  more things like it coming in the next few months.
+22:28
+The sorting algorithm is, it's like bubble  sort, selection sort, these kinds of things.  
+22:34
+CS students in CS101 have been studying these  for, I don't know, 60 years probably. And no one,  
+22:43
+as far as I can tell, no one noticed what we  noticed because the assumption has always been   this thing does what we asked it to do. And a lot  of what I'm trying to emphasize is specifically  
+22:56
+running against that assumption that, yeah, it  sorts the numbers all right. But if you back   off from this assumption that all it does is  what the steps of the algorithm ask it to do,  
+23:05
+then you find some new things. And computer  scientists are well aware of emergent complexity,  
+23:11
+emergent unpredictability. Cellular automata do  all kinds of funky things, and some of the rules  
+23:17
+are chaotic and all this kind of stuff. That's  not what I'm talking about. I'm not talking   about emerging complexity, unpredictability,  or even perverse instantiation, which people  
+23:26
+find all the time. I'm talking about things  that any behavioral scientist would recognize  
+23:32
+as within their domain if you didn't tell them  that this came from a deterministic algorithm.
+23:38
+And so I can go into details if you want,  but a couple of things are salient here.  
+23:46
+What these algorithms are also doing while  they're sorting your numbers are also  
+23:52
+a couple of interesting, I call them side  quests, because there are no steps in the  
+23:57
+algorithm asking them to do this. In fact, if you  try to write an algorithm to force them to do it,   it would be a whole bunch of extra work, which  is actually quite interesting because I think  
+24:05
+we're getting free compute here. That's a whole  other thing that I think is a very testable,   it's a nice testable prediction because  it's so weird and unexpected. They are  
+24:16
+doing some other things that are not directly  related to what you asked them to do. That's  
+24:22
+really important because it means that these  language models, for example, when we say AI,   nowadays a lot of people think language models,  people tend to assume that the thing that the  
+24:32
+language model talks about is some kind of clue  as to its inner nature, right? And people say,  
+24:37
+“Well, you know, my GPT said to me that it was  conscious or wasn't conscious or whatever.”   My point is the thing you force it to do may  have zero to do with what's actually going on.
+24:47
+Now in biologicals, that's not true  because evolution, I think, works   really hard to make sure that the signs that we  and the communications that we do are related  
+24:56
+to our inner state and things like that. So in  biology, those things are tied closely together,   but I think we've disconnected them. And what we  are now making are things that look like they're  
+25:09
+talking and whatever. And they are. But I'm not  sure any of those things are at all a guide to  
+25:14
+what's going on inside. And if a dumb bubble sort,  which is six lines of code, fully deterministic,  
+25:20
+nowhere to hide, six lines of code, if that thing  is doing things that we did not expect and we did  
+25:25
+not ask it to do, and by ask, I mean, there are  no steps in the algorithm to do what it's doing,  
+25:30
+then who knows what these language models are  doing. But I'm pretty sure that just watching  
+25:36
+the language output is not a really good guide  to what's happening. I think we have to go back  
+25:42
+to the very beginning and we have to apply the  kinds of things that Anil was talking about,   which is basic behavioral testing in various  spaces. I think our imagination is really poor  
+25:52
+at this. I think we have to just be really  creative as far as asking what is this thing  
+25:59
+actually doing, specifically in the spaces  between the algorithm because the thing is,  
+26:05
+it has to, it's a little bit like this is a crazy  analogy that I came up with the other day. This  
+26:13
+notion of steganography. So in steganography, you  take, let's say, a piece of data, let's say it's  
+26:18
+an image, it's a JPEG, and it looks like whatever  it looks like. There are bits within that image   that if you were to change those bits, it wouldn't  look any different, right? There's some degrees of  
+26:27
+freedom in there that you can move things around  and the image would still look the same. And so   what people do is they hide information in  there and maybe it's your signature that you  
+26:34
+are the one who took the picture or maybe it's  a code because you're a spy to whatever it is,   you hide information in there. But the iron rule  is you can't mess up the primary picture. You  
+26:45
+can sneak stuff into the degrees of freedom,  but you can't mess with the primary picture   or the primary data pattern because then  it will be obvious that something's there.
+26:53
+I kind of have a feeling that this is what's  going on, not just with computer algorithms,   but with everything. There is the primary thing  it's supposed to do, and anything else that it  
+27:04
+gets to do has to be compatible with that  primary thing. It isn't magic. You can't   break the laws of physics. You can't go against  the algorithm, right? You're not doing things  
+27:10
+that the algorithm forbids, but there's, but it  turns out I think that there are these weird,  
+27:18
+empty spaces between the algorithm where you can  do, and I mean, doesn't that describe to some   extent our existential, you have a certain bit of  time in this world, you have to be consistent with  
+27:29
+those laws of physics, eventually your physical  body gets ground down to entropy and whatever,   but until then you can do some cool stuff  that isn't forbidden by the laws of physics,  
+27:38
+nor is it prescribed by those laws,  I don't think. And so you get this,   this is what I think is really interesting  about these things. And the algorithm itself,  
+27:47
+to the extent that it has to do the algorithm,  that limits what else it can do. In a sense,  
+27:52
+what it's doing is in spite of the algorithm, not  because of it. And so I agree with Anil here. I'm   not a computationist. I don't think anything is  conscious because of the algorithm. If anything,  
+28:00
+I think the mental properties it has is  in spite of the thing we force it to do. And so one thing, and then I'll stop here, one  thing which I'm sort of most proud of in that  
+28:11
+paper that I think was kind of cool is that  we figured out a way to let off the pressure   on the algorithm a little bit to see what would  happen. And the way you do that now, how would  
+28:19
+you do that? It has to follow the algorithm.  How could you possibly let off the pressure?   What we did was we allow duplicate numbers in the  sort. And what that allows you to do is you still  
+28:27
+have all the fives still have to end up before the  sixes and that has to go before the sevens and so   on. But how you arrange those is now not really  constrained by the algorithm. You don't touch,  
+28:38
+you don't change the algorithm. You just allow  multiple repeats within the, and what did we see?   We saw that the crazy thing it was doing, which  I call clustering, I could tell you what that is,  
+28:46
+but it doesn't matter, it went up higher than when  we didn't let it do that. And so I really think,  
+28:55
+and this comes back to the AI thing, I really  think that it's a lot like raising kids in the   following sense. To the extent that you force them  to do specific things, you squelch down on the  
+29:06
+intrinsic motivation. Some kid that's forced to be  in a class all day, you're not going to get to see   what else he would be doing otherwise. Maybe he'd  be out playing soccer, who knows what it would be.  
+29:14
+And so to the extent that we force these things  to do specific things, we are actually reducing  
+29:21
+what else they might do. And that's what we  need to develop is the tools to detect and  
+Degeneracy: The Biological Principle AI is Missing
+29:27
+to facilitate this intrinsic motivation. And  then you get into alignment and all of that.
+29:34
+That reminds me a lot of when I was  doing my postdoc 20-odd years ago,  
+29:39
+coming across, well, being told by my mentor at  the time, Gerald Edelman, about the distinction  
+29:44
+between redundancy and degeneracy. I think this is  very apposite here. So, engineering people often  
+29:51
+talk about having redundancy within a system.  So if a system is designed to do something,  
+29:57
+to follow some steps in an algorithm, well,  then you might want multiple copies in case   something goes wrong, you have a backup. But the  backup is doing the same thing. It's redundant in  
+30:07
+that sense. Biological systems don't seem to be  like that. They exhibit degeneracy rather than  
+30:13
+redundancy. That is, they may have multiple  ways of doing the same thing in context A,  
+30:19
+but in context B, these multiple ways of doing  the same thing now do different things. So this  
+30:26
+is hinting at the same thing, that although  it looks like they're doing the same thing,  
+30:31
+there's actually some spaces in between somewhere  that you won't see unless you look in different  
+30:39
+contexts. Otherwise, you'll only see the same  process that might look like an algorithm. And  
+30:45
+it's that degeneracy that gives biological systems  their kind of open-endedness, their ability to  
+30:53
+adapt to novel situations and so on. And it might  be related to what Mike is calling an intrinsic  
+30:58
+motivation that you have to have some kind of  degeneracy rather than redundancy to systems.
+31:04
+I mean, what's interesting to me is that  people are often, with the exception of   a few like diehard, reductionist, materialist,  whatever, people are generally pretty willing  
+31:14
+to grant living things that, right? And  they're okay with saying that living things,  
+31:20
+especially brainy living things, get to do some  of those things. But what I'm now finding is that   people get very upset when I suggest that the same  thing might be true all the way down. It seems to  
+31:32
+be very important that we have this distinction.  No, that's the dead matter and the mere machines.  
+31:38
+We are special. We can do this thing. And my point  is not, I'm not trying to mechanize living things.  
+31:46
+I'm going in the opposite direction. I'm saying  there's not less mind than you think there is.   I think there's more. But actually, especially  people, organicist thinkers who really resist  
+31:57
+the mechanization of life and all this stuff, they  really get really upset. They really get upset at  
+32:04
+this last part because if, I suppose we're not as  special if it goes all, I'm like, I'm not sure.  
+32:10
+I think there's some kind of a scarcity mindset  that there's just not enough mind for all of us.
+32:18
+Maybe. I think it might be that there's  still this worry that even if you're,  
+32:25
+like say BubbleSort again, I mean, BubbleSort  is still implemented on standard computers,  
+32:30
+right? So one way of potentially misunderstanding  what you're saying is you're then basically  
+32:39
+allowing computational functionalism by the  back door again in some ways by saying, look,   an algorithm like bubble sort has actually all  the things that you need, or it has so much more  
+32:49
+going on than what one might think. So let's not  be too quick to rule out substrate-independent  
+32:58
+algorithms as sufficient for other things  that might seem otherwise hard to explain.
+33:07
+Well, I think you're right and I think people  could, but that would be a misinterpretation  
+33:12
+of what I'm saying. I am not saying that  it's doing that because of the algorithm,   right? So the standard computationalist theory  is you are conscious because your algorithm is  
+33:22
+doing workspace theory, whatever, whatever  it's doing, right? That's why you are. I'm   saying the exact opposite. I'm saying that  even something as stripped down and forced,  
+33:32
+a stupid algorithm, there are still spaces  there through which whatever this is that,  
+33:38
+that I, that this, whatever, whatever this magic  is that we're talking about is, is able to squeeze  
+33:43
+in. Even there, there are minimal versions  of it that will shine through even there.   And if you provide a different interface,  and I don't want to just say more complex  
+33:52
+because I don't think it's just complexity.  Maybe it's materials, maybe it's some other   stuff. But if you provide better interfaces  such as living materials, well, then sure,  
+34:01
+you'll get way more. But this stuff seeps into  even the most constrained systems, I think.
+34:08
+So let's get to aliens, Michael.
+34:14
+I don't know what to say. People email  me sometimes asking to talk to my alien   handlers. There's that. But I don't  know anything about aliens other than  
+34:23
+to say that it seems implausible to me, not  being an expert on exobiology or whatever,  
+34:30
+it seems implausible to me that the only kind  of life is the life that we're familiar with  
+34:35
+here or cognition. I expect that elsewhere in the  universe, there will be extremely alien forms of  
+34:42
+mind that are not carbon, and I mean, I can get  even weirder, but not the kinds of things that  
+34:48
+we're used to here. I think our imagination  is terrible for that kind of thing. I mean,   sci-fi does okay sometimes. But yeah, anything  that's tied to the specifics of life on Earth  
+35:00
+I think is almost certainly too narrow  as a criterion for these kinds of things.
+35:05
+I mean, I'm just always, I go back to  the Fermi paradox and like, you know,   where is everybody? But, and which always worries  me because it just sort of suggests to me that  
+35:17
+I think it's also very implausible  that we're the only example of life,  
+35:23
+but then the evidence for intelligent life that  has been able to broadcast structured energy out  
+35:30
+into the universe seems lacking. Where the hell  is everybody? So, of course, the conclusion from  
+35:36
+this is that life might be very prevalent in  many places, at least certainly not only here,  
+35:44
+but that it's quite difficult to get life to the  stage where it lasts long enough to persist and  
+35:53
+become cognitively sophisticated. I have no  idea and I find that existentially concerning  
+35:59
+and just a great sort of shaker of the snow globe  for reminding us that we really need to take care  
+36:07
+of our own planet and civilization first because  it might not be very common to get to the kinds of  
+36:14
+things we are, even if it's exotic in a different  way somewhere else. I think the universe is much  
+36:21
+more likely to be filled with gray goo than  Mike Levin with eight legs in octopod form.
+36:30
+So Anil, if I was to take your cells and put  them into a dish, some would form xenobots,  
+The Multiplicity of Agency: Are Your Cells Conscious?
+36:36
+some would die, most probably would die, and some  may just wander about or what have you. Have you  
+36:42
+become multiple agents at that point? Or were  you always multiple agents pretending to be one?
+36:50
+I don't think pretending to be one. I think  it's an excellent question. I don't really,  
+36:59
+whether you can have multiple kind of  coarse-grainings of agency simultaneously,   I think is quite interesting. I don't see why not,  in a sense. I think there can be sub-organismic  
+37:10
+levels of agency in my constituents, but there's  something sort of enslaving of these finer grains  
+37:22
+of description in things like organisms. Things  pull together, the parts pull together as a whole  
+37:30
+in a way that doesn't happen if you dissociate  me into my constituent cells. So I don't,  
+37:37
+yeah, I don't see a contradiction between cells  having agency and an organism having agency and a  
+37:42
+society having agency and perhaps a global society  having some kind of agency. These things can all  
+37:49
+coexist and have a reality simultaneously,  but they will affect each other. So agency  
+37:55
+at a macro level will probably constrain the  agency that's available at the micro levels.
+38:01
+And you have a book on consciousness  which I'll place on screen and a link   in the description right now. So you've  probably heard of the identity theory of  
+38:10
+consciousness. My understanding is that  it just says mental states are simply the   same as physical states. They're not  caused by, they're not emergent from,  
+38:18
+they're just identical to them. What do you  make of that? I'm curious for both of you.
+38:24
+Well, I don't think it's a theory. I think  things like identity, in quotes, “theory” are  
+38:30
+more metaphysical positions than actual theories.  And for me, I like to wear metaphysics lightly,  
+38:39
+if at all. I don't think you get very far. To  say that a mental state or a conscious state is  
+38:48
+identical to a physical state, I  mean, who knows? In some sense,  
+38:54
+it might be trivially true. In another sense, it  might be absolutely completely wrong. But what I  
+39:00
+do think is it doesn't give you anything  in particular to do or anywhere to go.  
+39:05
+So instead of sort of arguing about whether  theories like that are correct or incorrect,  
+39:12
+I prefer to ask whether they're useful or not  useful. And I don't think identity theory is that   useful. I'm broadly a pragmatic materialist,  which is to say that I'm pretty convinced  
+39:24
+that conscious states have something to do with  physical stuff. And we certainly know empirically  
+39:33
+there are correlations and causal relations  between, if you do something to the brain,  
+39:39
+something will happen in conscious experience,  at least in human beings. Who knows, maybe  
+39:45
+consciousness is more general than biological  systems, but I think pragmatic materialism is  
+39:50
+a productively useful thing to do and we can go  about the business of trying to explain properties   of consciousness in terms of properties of  biological systems and we'll see how far we get.
+40:03
+And this depends on them. We have to face the  question of what are the properties of biological  
+40:10
+systems that give us explanatory predictive  grip on properties of consciousness. For a  
+40:17
+bunch of people, the assumption is it's just the  computations that bring us back to the early part  
+40:22
+of the conversation. But there could be many  other things that actually give us explanatory   and predictive grip about consciousness  that aren't the computations. And that's  
+40:30
+the view that I'm interested in exploring,  and we'll see whether it's useful or not.
+40:39
+I've been using Claude to prep for  Theories of Everything episodes   and it's fundamentally changed how I  approach topics. When I'm exploring,  
+40:46
+say, gauge theory or consciousness prior to  interviewing someone like Roger Penrose, I  
+40:51
+demand of an LLM that it can actually engage with  the mathematics and philosophy and physics, etc.,  
+40:58
+at the technical level that these conversations  require. I also like how extremely fast it is to  
+41:04
+answer. I like Claude's personality. I like its  intelligence. I also use Claude code on a daily  
+41:10
+basis and have been for the past few months. It's  a game changer for developers. It works directly  
+41:15
+in your terminal and understands your entire code  base and handles complex engineering tasks. I  
+41:21
+also used Claude, the web version, live during  this podcast with Eva Miranda here. Oh my God,  
+41:26
+this is fantastic. That's actually a feature  named Artifacts and none of the other LLM  
+41:32
+providers have something that even comes close  to it. And no coding is required. I just describe  
+41:37
+what I want and it spits out what I'm looking  for. It's the interactive version of, “Hey,   you put words to what I was thinking.” Instead,  this one's more like, “You put implementation into  
+41:47
+what I was thinking.” That's extremely powerful.  Use promo code TheoriesOfEverything, all one word,  
+41:54
+capitalized, ready to tackle bigger problems. Sign  up for Claude today and get 50% off Claude Pro,  
+42:01
+which includes access to Claude code when you  use my link, Claude.ai/TheoriesOfEverything.
+42:11
+That's the view that I'm interested in exploring  and we'll see whether it's useful or not.
+42:18
+Yeah, I agree with that. I mean, it sounds, it's  I think it's less than a theory than it is a  
+42:25
+linguistic claim. It's, you know, you're just  saying something about the definitions. I find it  
+42:31
+kind of unhelpful. It's a little bit like saying  that airline ticket prices, what are those? Well,  
+42:38
+let's associate them with some physical  states. And well, what explains them? Well,  
+42:43
+the constants at the beginning of the Big Bang  plus some randomness. Like, in a certain sense,  
+42:49
+kind of. In another sense, like how much insight  are you going to get as far as why these prices   are going up or down if you have this view?  I think probably zero. And so like Anil,  
+42:59
+I'm interested in metaphors and I think  that all these things are metaphors,   but I'm interested in metaphors that help us  discover new things. And I don't see how equating  
+43:10
+them linguistically with physical states is doing  the trick. I don't think that works in biology for  
+43:17
+the sort of cognitive non-consciousness specific  things, and I don't see it helping here either.
+Unconscious Processing or Inaccessible Consciousness? The Split-Brain Problem
+43:24
+Mike, you said you had some questions  about split-hemisphere patients for Anil.
+43:29
+Well, I don't know what's, okay. It's not so much  specifically about split-hemisphere patients, but  
+43:35
+I guess it's the thing I brought up in email. I  was just wondering, I was listening to a talk,   I forget whose talk it is, and somebody was  saying, look, there are all these unconscious  
+43:44
+processes during reading, during the driving,  whatever. There's all these unconscious processes.  
+43:49
+And I was just curious what you think about that,  because it seems to me critical to say, conscious  
+43:55
+to whom? In other words, they might well be  unconscious to the main left hemisphere, whatever,  
+44:02
+that's verbally reporting this and saying, “Wow,  I drove all the way from home to my office and I  
+44:07
+wasn't conscious of any of that.” And so you say,  okay, great, there's this unconscious part. Well,   it's not conscious to you, but neither are my  conscious states conscious to you. So how do we  
+44:15
+know, right? So that all of these things aren't  the subsystems of the brain and mind that execute  
+44:24
+them, how do we know they don't have an experience  they can't verbalize? So I was just curious about   that because it seems like it's just a foregone  assumption and it seems like really begging the  
+44:32
+question if we don't, if we just assume that  because you don't feel them that they don't,  
+44:38
+and it's the same, and the reason it's of interest  to me is that that's what people say about our   body organs too, right? So I make a claim that  for the exact same reason we give each other the  
+44:45
+benefit, reasons, four or five reasons that we  give each other the benefit of the doubt about   consciousness, you should take that seriously  about your various body organs. And people say,  
+44:52
+“Well, I don't feel my liver being  conscious.” Of course not. You don't   feel me being conscious either. So I was  just curious what you think about that.
+44:59
+Yeah, we had, we had just, for the people  listening, we started this nice dialogue  
+45:04
+by email just a couple of days ago. So I think  it raises some really important questions about  
+45:11
+how we use the words. Unfortunately, I do think  it's a little bit linguistic here. We talk about   the conscious and the unconscious. And of course,  they mean different things in different contexts.  
+45:20
+So when it comes to, let's say, split-hemisphere  patients, the intuition is there are two separate  
+45:28
+conscious agents, just only one of them has the  ability to behaviorally report through language  
+45:35
+what it's experiencing. But it's partly because  each hemisphere has kind of the full complement  
+45:44
+of resources that one might think of as necessary  that this becomes a sort of plausible position.
+45:52
+Then there's other uses of conscious versus  unconscious. There's a whole history of,  
+45:58
+a lot of the history of consciousness  science is trying to contrast conscious   from unconscious perception. So, you know,  you'll show an image and somebody will say,  
+46:05
+“Yeah, I see it.” And then you mask it in some  way, manipulate it in some way. And people say,   “Oh no, I didn't see it.” But you can still see  parts of the brain responding. And the logic is,  
+46:14
+well, the contrast that you get there between when  something was consciously seen and the same image  
+46:21
+or the same sound was not consciously experienced.  If you look at the difference in the brain,  
+46:26
+that difference has to do with consciousness.  That's the whole strategy of looking for the   neural correlates of consciousness. But then  you might ask, well, how do you know that the  
+46:36
+unconscious perception was in fact unconscious?  It may have just been unconscious to the subject  
+46:41
+as a whole. There may have been an inaccessible  conscious experience happening. So I think this  
+46:48
+is logically perfectly possible. But then you  have this whole, well, how do you then link that  
+46:55
+not only to a brute correlation, but you have  to then come up with some theoretical reason,   and that will depend on your theory. A theory  like global workspace might say, okay, look,  
+47:03
+the reason that the conscious perception was  reportedly conscious was because it engaged  
+47:10
+the global workspace. And the theory is that  things are conscious in virtue of accessing  
+47:15
+this global workspace. So you have some sort  of theoretical reason for saying that the   unconscious is in fact unconscious. But of course  then you risk a little bit of circularity, right?  
+47:27
+That your evidence for global workspace is  based on the theoretical explanation that  
+47:32
+makes one conscious and the other not conscious.  So you have to have multiple sources of evidence.
+47:38
+All this to say is it's a very good question, and  it came up in the thing I mentioned right at the  
+47:44
+beginning. We have these hemispherotomy  patients whose parts of their brain are   completely disconnected. So they by definition  can't respond to things. They can't generate any  
+47:55
+response. They're sort of the opposite of  language models in this sense, right? They   can't give us any persuasive behavioral evidence  because they're not connected to anything. Yet,  
+48:06
+they are part of a brain that was at one point  conscious. And all that's happened really,  
+48:12
+in the limit, they're damaged as well.  I mean, there's other things going on,   is they've been disconnected. So plausibly, at  least for me, they're more likely to be conscious  
+48:20
+but inaccessible, much more likely a priori than  a language model is to be. And so we have to find  
+48:26
+indirect ways of trying to assess the likelihood  of consciousness in these very disconnected  
+48:34
+hemispheres. And to cut a long story short, very  short, because I know you've got to go in a sec,   Mike. When we look at EEG, and this is work  done with colleagues at the University of Milan,  
+48:44
+it looks like these isolated hemispheres are in  states of very, very deep sleep. So we see slow  
+48:50
+waves, very prominent slow waves, sharp spectral  exponents. But how do we know that that is in  
+48:57
+fact unconscious? Because there are a few examples  of human beings where we actually see slow waves  
+49:03
+at the same time as consciousness, in DMT for  instance and things like that. So it's iterative,  
+49:09
+it's very hard to be definitive and it's an  excellent question. I think we don't know,   until we start looking at systems radically  different from a psychology undergraduate looking  
+49:18
+at a monitor, which we still do and that's very  useful, but we have to look at these other things   as well. We don't really know what assumptions  we're making when we interpret the data from,  
+49:28
+just look for the car keys where the light  is, you might miss the bigger picture.
+The Ultimate Experiment to Decode Consciousness
+49:33
+Now Mike, before you get going, I suppose I gave   you both unlimited resources to design  some experiment. What would you create?
+49:46
+Boy, I fundamentally I think we need an  environment, a closed-loop environment in  
+49:56
+which to exercise all kinds of, the xenobots  and anthrobots are just the beginning,   there's so much weirder things that we're  looking into, such that we might be able to  
+50:07
+recognize new kinds of cognitive preferences,  goals, competencies, whatever, to which we're  
+50:14
+otherwise blind. And I mean, you could imagine  making this thing enormously rich and complex.
+50:19
+Anil? Well, I mean, obviously, fun with Mike would be  the thing to do. But other than that, I think if  
+50:27
+you think about where the adjacent possible  progress might be most rapid, what we lack,  
+50:36
+what we've lacked in neuroscience is the ability  to look at high resolution in time and space and  
+50:45
+across much of the brain at the same  time, measuring from many neurons in  
+50:51
+time and space at the same time, in  systems that we know are conscious,   or very high primates and other things. And  there are just massive advances now, I think,  
+51:00
+in invasive neurophysiology, in different kinds  of neuroimaging methods that we can sort of,  
+51:06
+optogenetics being one of them. But I think really  doubling down on manipulation and recording and  
+51:14
+high space, time, and coverage simultaneously,  coupled with the development of new mathematical  
+51:21
+tools to understand these kinds of complex data  sets. That's where I'd go. Lots to do there.
+51:32
+Many of the people who watch this podcast  are specialists in computer science, math,  
+51:38
+physics, philosophy, adjacent fields,  consciousness studies, neuroscience,   of course, cognitive. But also, many  are not. Many are artists. For instance,  
+51:48
+when I was at this MIT event, I'll place a link  on screen and in the description, there were many   people who were painters and poets and so on who  came up to me. So I was going to ask just about  
+52:00
+advice for researchers, but you can frame it  as advice to everyone. What advice do you have?
+52:11
+I think for students it's super important  to kind of curate your curiosity. I think,  
+52:19
+I mean, I started with this very  general curiosity in consciousness,   but then I think it was important to allow that  curiosity to find other branches that then end  
+52:31
+up coming together in different ways. I got very  interested in other things too, in cybernetics,  
+52:38
+in things that at the time didn't seem to have  much to do with this big question. But a lot of,  
+52:46
+I think one way to carve out a successful career  is to put different pieces together, to gain  
+52:59
+skills that are both techniques, methodologies,  but also conceptual toolboxes too that you then  
+53:06
+can reassemble in different ways that other people  might not have had the opportunity to do so.  
+53:13
+So really, they're two interconnected things,  which is don't lose sight of the big picture of  
+53:19
+what you want to do, but also be flexible and  try and develop curiosity in adjacent things  
+53:27
+that might come in handy. And also learn to  do stuff. I think many advances in science  
+53:36
+have come about through advances in methods  first. And if we learn methods, we will learn  
+53:46
+the right questions to ask. And I think that's  maybe the thing that I'm still trying to learn  
+53:51
+to do as a researcher, which is the thing I find  really hard. It's finding the right questions,  
+53:58
+not finding the answers to the questions that  you have. That for me is still the real struggle.
+54:06
+Can you give an example, one of a method that  you wish you had, for instance? It could be   that you wish you had learned earlier in your  career or just a general example of something  
+54:17
+that would be beneficial to a student. So  a method. And then also you mentioned that  
+54:23
+asking questions. So then also something, an  example would be, well, what's something where  
+54:28
+you were pursuing the answer but you realized  that it should have been a better question? So I'll try and give examples that connect both  of these things. So an example of something that  
+54:40
+I wish I had gained some expertise in  earlier is psychophysics. This is the  
+54:46
+standard experimental thing. I caricatured it  a bit early, undergraduates sitting in front   of a monitor pressing buttons and so on. But  the methods of psychophysics are probably the  
+54:56
+longest established experimental methods of  studying consciousness. How do we interpret  
+55:03
+data for people pushing buttons when you  show them things? I mean, it's very simple,   but there's a huge amount of literature  that goes back to the 19th century there.  
+55:12
+And I made, I think, a ton of mistakes and  certainly a ton of inefficiencies kind of  
+55:18
+improvising my way through this literature  or through my own work because I hadn't  
+55:26
+gained the skills early enough. So that's  one example of something I wish I'd done  
+55:32
+differently. I think it would have allowed  me to ask better questions experimentally.
+55:39
+The thing that I think went well was I picked up,  I learned to train myself and then asked other  
+55:49
+people to help me learn information theory and  Granger causality modeling. This is a mathematical  
+55:58
+sort of framework for understanding information  flow, causal interactions between nodes of a  
+56:05
+network in complex systems generally. These  methods were mainly used certainly at the time in  
+56:10
+the early 2000s when I encountered them. They were  primarily still used in economics, econometrics,  
+56:18
+not in neuroscience. There were a couple of  papers basically saying, “Hold on a minute,   we might be able to look at, apply these methods  in neuroscience.” And I just got curious about  
+56:27
+that. Not because I thought there was a big clue  to consciousness there, but I thought, “Hold on,   that's really interesting.” People assume that  they look at coherence or mutual information or  
+56:37
+correlation between brain regions, but might not  be interested in causal information flow, lines  
+56:46
+with arrows that are not going both directions.  So I was lucky to know people who could help me  
+56:54
+learn this stuff, and it's become quite a strong  part of what I've done over the years. Now working  
+57:01
+with mathematicians who know this stuff much  better than me, but we've done a lot in applying  
+57:07
+these methods in neuroscience now and giving  people the tools to apply them for themselves. And it's also fed back into other things to ask.  This is the other example, so different questions,  
+57:17
+right? So one question that I've been asking for  years, and I think it's getting some wider grip  
+57:27
+now, and again, this is largely thanks  to collaborations with mathematicians,   is emergence. So this came up a little bit in  the conversation with Mike. People talk about  
+A Counter-Intuitive Discovery: Consciousness is *Less* Emergent
+57:36
+emergent properties and so on, and often it's  a sort of placeholder magic for things that   we don't really understand. But actually, I  think there's ways to make quantitative sense,  
+57:46
+to measure emergence, to characterize it, to  identify it in a data-driven way from systems.  
+57:53
+And the mathematical toolbox of information  theory and Granger causality has actually  
+57:59
+turned out to be very useful in figuring out how  to do this, to come up with measures of emergence  
+58:06
+that allow us to ask questions about emergence  in a more quantitative and operational way.
+58:13
+I remember you and a few other people had a paper  on this within the past two years or so, correct? That's right. I've been working actually with  two different groups of people on two different  
+58:22
+approaches. The main one is with my colleague  Lionel Barnett, who I've worked with for many   years now, who's a mathematician. And we have a,  so the story there was I actually wrote a paper  
+58:34
+on this 15 years ago using Granger causality  to measure emergence and I was very pleased   with myself at the time. I thought this is great,  here's this concept and here's a way to implement  
+58:44
+it mathematically. And it kind of got a bit of  attention but not much. And then Lionel pointed  
+58:49
+out to me that it was basically flawed in all  sorts of ways and came up with a related idea that  
+58:56
+does something much more rigorously. And it's a  slightly different thing, and we're still working  
+59:03
+on it to figure out how to extend it. But it's  mathematically a much more serious enterprise now.
+59:11
+But what it does basically it says, okay, you've  got a complex system. An example that's often  
+59:20
+used is you have a flock of birds. There may be  birds flying around in the sky and sometimes it   looks like they're flocking and other times  it doesn't. Can you quantify that? And of  
+59:29
+course you could say, well, it's in the eye of the  observer. Fine, it's in the eye of the observer,   but so is everything, really. There's still  a difference between a flock and a non-flock,  
+59:39
+and if we can quantify that and generalize  it, so maybe there's something about neurons  
+59:48
+that have an essence of this flockiness, but  maybe not now in space in three dimensions,   but in some other dynamical space, in some other  dimensional space. And the approach to this that  
+59:59
+Lionel and I took was to come up with a measure  we call dynamical independence, which is when a  
+1:00:08
+sort of zoomed-out level of description, a  coarse-graining, as physicists like to say,  
+1:00:14
+a higher level of description of a system,  if that is, if its evolution over time is  
+1:00:22
+statistically independent of what its constituent  parts are doing, then it in some sense has a life  
+1:00:28
+of its own. Then it is in some sense emergent,  dynamically independent. And it turns out that  
+1:00:35
+the utility of this approach is that we can  apply it in a purely data-driven way without   making any presuppositions of saying, “Oh yeah,  there's a flock, is it emergent?” We can just  
+1:00:47
+identify potential emergent properties in a  system and see how they look in different states.
+1:00:57
+And just to, where we're at right now for me is  a hugely exciting thing actually, which is that  
+1:01:03
+often people say, well, conscious states are  emergent from their neural underpinnings. The  
+1:01:09
+brain is in some sense, a conscious brain is  in some sense more than the sum of its parts.   That all sounds very nice and I'm sure I've  said stuff like this many times before. But  
+1:01:17
+now with the tools that Lionel developed and  applied with a PhD student of ours who's also  
+1:01:24
+working with others in Paris, Thomas Andrillon,  we find something quite different actually,  
+1:01:29
+which is that when the brain is in a conscious  wakeful state, there's less prominence of these  
+1:01:40
+so-called dynamical independent coarse-grainings  than when the brain is unconscious in anesthesia,  
+1:01:47
+which is sort of not the, the slogan would  be a little bit not what we were expecting.  
+1:01:53
+Emergence is lower in consciousness than in  unconsciousness. That would not be what I would  
+1:02:00
+have predicted a few years ago or even two years  ago, one year ago, I'm not sure. But it's looked,  
+1:02:08
+when we operationalize emergence this specific way  and with this specific data, that's what we find.
+1:02:16
+But then that raises other interesting  questions. And I think this is the beauty   of actually operationalizing these things, making  them quantitative, because now we have another  
+1:02:25
+set of questions which is like, ah, maybe this is  because in the conscious state actually when you  
+1:02:31
+don't have emergence in the way we're quantifying  it, what you actually have is something called  
+1:02:37
+scale integration, where there's actually what's  happening at the macro and what's happening at  
+1:02:42
+the micro are much more interdependent. There's  much less separation of scales. And this takes  
+1:02:48
+us right back to what we were talking about with  Mike and indeed the whole idea of conscious AI   that I said right at the top, that in brains,  there seems to be, it's harder to separate what  
+1:02:58
+they do from what they are. In a sense, this is  a way of quantifying that hardness. And it seems  
+1:03:04
+when the brain is conscious, it's even harder  to separate what it does from what it is. You   have this deeper integration of scales vertically,  not across time or across space, but across levels  
+1:03:15
+of description of a system. And so for me, this  is opening like a whole range of questions that  
+1:03:20
+haven't really been asked. Certainly, I haven't  asked them before. It's a different way of looking   at a system like this. And it all turns on having  this mathematical method available. And for me,  
+1:03:33
+that goes right back to the serendipity of being  curious about Granger causality 20 years ago.
+Psychedelics, LLMs, and the Frontiers of Surprise
+1:03:41
+Now there's some research that says  that when one takes psychedelics,   it probably depends on the psychedelic,  that the brain is less active even though  
+1:03:50
+your conscious experience, quote-unquote, is  greater somehow. Is this related to that or  
+1:03:56
+have you not studied emergence when it  comes to the brain under psychedelics?
+1:04:01
+It's a little related. So we have a little bit  in collaboration. We don't have the license to  
+1:04:07
+collect our own data under psychedelics,  but we've collaborated with people like   Robin Carhart-Harris and others who have. And we  have not yet, but this is very much on the cards,  
+1:04:22
+we have not yet applied this same measure that I  was just talking about to the psychedelics data,  
+1:04:29
+but there's no reason we can't. What we have done  is we've applied other measures that have often  
+1:04:36
+been used in things like sleep and anesthesia as  well that measure what we call signal diversity.  
+1:04:46
+And the story here is that when you lose  consciousness, your brain activity seems to become  
+1:04:52
+more predictable, so the repertoire of states that  it inhabits is lower. And this is measured using  
+1:04:58
+this quantity we call Lempel-Ziv complexity. It's  sort of the compressibility of a signal. And the  
+1:05:06
+complexity is lower when you lose consciousness.  Your brain dynamics are more compressible, they're  
+1:05:13
+more predictable. When we applied this, this was  now nearly eight or nine years ago, to data from  
+1:05:22
+psilocybin, LSD, we found the opposite, that the  brain activity became even less predictable. So  
+1:05:31
+more diverse, more different patterns, less  compressible, higher levels of complexity. So  
+1:05:37
+that's one clue, but to me, it's still very  preliminary. This method of measuring signal  
+1:05:44
+diversity is quite precarious. It depends. If you  do it a different way, you tend to get different  
+1:05:51
+results. But I think there are other things we  looked for we didn't find in the psychedelics  
+1:05:59
+data set. I was expecting to see, for instance,  just much greater information flow from the front  
+1:06:04
+of the brain to the back. I thought that might  explain the prominence of hallucinatory contents.  
+1:06:12
+We didn't see that, at least not in the analysis  that we did at first. We didn't see any change in  
+1:06:19
+information flow in that way. So I don't know.  I mean, there's a lot to be done, but I think   that certainly just looking at overall levels of  brain activity, to say it's less active or more  
+1:06:29
+active is not going to give us the answers.  We need to look in more sophisticated ways.
+1:06:35
+Now, lastly, speaking of surprise minimization,   what else has surprised you  lately in consciousness research?
+1:06:45
+What has surprised me? I mean, yeah, we can  put it aside, but I think the thing that   surprised everybody, this is only tangentially  related, is how simultaneously impressive and  
+1:06:58
+unimpressive language models are. They're really  very different from how I thought they would be.  
+1:07:05
+They can do a lot more, but they also have sort  of still bizarre failure modes and so on. So I  
+1:07:11
+just would not have expected the trajectory of  language models to be as salient as it has been.  
+1:07:18
+That's certainly been a big surprise. What else  has been surprising? I don't know. It's a really  
+1:07:35
+good question. I'm not sure anything massively  stands out to me. I'm sure something will come  
+1:07:41
+to mind as soon as we finish this conversation.  As it does. There have been other things which  
+1:07:47
+have turned out kind of in ways that one  might have expected. There was this huge  
+1:07:53
+adversarial collaboration between integrated  information theory and global workspace theory,  
+1:07:59
+this big effort to compare these two big  theories of consciousness. And of course,   that's turning out that there's evidence for  and against both and there's no decisive blow  
+1:08:09
+against either. And that's probably  exactly what one would have expected,  
+1:08:15
+though there's still a lot of interesting and  surprising things there in the details. But yeah,  
+1:08:23
+I don't know. There's lots of things that are,  I would say, small-scale surprising. It's like,  
+1:08:31
+“Oh, I didn't expect that experiment to go this  way or that way,” but I can't think of anything   massive. The AI thing is sort of dominating my  surprise minimization landscape at the moment.
+1:08:44
+Thank you both for spending so  much time with me and the audience. Thank you so much. Yeah, much appreciated. Thank  you, Curt. Thank you, Mike.
+1:08:51
+See you both. Yeah, see you. Hi there, Curt here. If you'd like more content  from Theories of Everything and the very best  
+1:09:00
+listening experience, then be sure to check  out my Substack at CURTJAIMUNGAL.org. Some  
+1:09:07
+of the top perks are that every week you get  brand new episodes ahead of time. You also  
+1:09:13
+get bonus written content exclusively for our  members. You can also just search my name and  
+1:09:26
+the word Substack on Google. Since I started that  Substack, it somehow already became number two in  
+1:09:32
+the science category. Now, Substack, for those  who are unfamiliar, is like a newsletter. One  
+1:09:38
+that's beautifully formatted. There's zero spam.  This is the best place to follow the content of  
+1:09:44
+this channel that isn't anywhere else. It's not  on YouTube. It's not on Patreon. It's exclusive  
+1:09:50
+to the Substack. It's free. There are ways  for you to support me on Substack if you want,  
+1:09:56
+and you'll get special bonuses if you do. Several  people ask me, “Hey, Curt, you've spoken to so  
+1:10:02
+many people in the field of theoretical  physics, of philosophy, of consciousness.  
+1:10:07
+What are your thoughts, man?” Well, while I  remain impartial in interviews, this Substack  
+1:10:13
+is a way to peer into my present deliberations  on these topics. And it's the perfect way to  
+1:10:21
+support me directly. CurtJaimungal.org or  search Curt Jaimungal Substack on Google.
+1:10:28
+Oh, and I've received several messages,  emails, and comments from professors and  
+1:10:34
+researchers saying that they recommend Theories of  Everything to their students. That's fantastic. If  
+1:10:40
+you're a professor or a lecturer or what have  you and there's a particular standout episode  
+1:10:45
+that students can benefit from or your friends,  please do share. And of course, a huge thank you  
+1:10:51
+to our advertising sponsor, The Economist. Visit  economist.com/TOE to get a massive discount on  
+1:11:01
+their annual subscription. I subscribe to  The Economist and you'll love it as well.   TOE is actually the only podcast that they  currently partner with. So it's a huge honor  
+1:11:10
+for me and for you, you're getting an exclusive  discount. That's economist.com/TOE. And finally,  
+1:11:20
+you should know this podcast is on iTunes.  It's on Spotify. It's on all the audio   platforms. All you have to do is type in  Theories of Everything and you'll find it.  
+1:11:29
+I know my last name is complicated, so  maybe you don't want to type in Jaimungal,   but you can type in Theories of Everything  and you'll find it. Personally, I gain from  
+1:11:38
+re-watching lectures and podcasts. I also read  in the comments that TOE listeners also gain from  
+1:11:44
+replaying. So how about instead you re-listen  on one of those platforms like iTunes, Spotify,  
+1:11:49
+Google Podcasts, whatever podcast catcher you  use, I'm there with you. Thank you for listening.

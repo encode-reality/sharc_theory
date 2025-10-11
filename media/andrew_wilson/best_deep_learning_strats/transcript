@@ -1,0 +1,2365 @@
+Prof. Andrew Wilson [00:00:00]:
+  So when I say deep learning is not so mysterious or different, I'm not saying that deep learning is not mysterious or not different. I think it's actually both. It's rather that the ways in which people often think it's mysterious
+
+  [00:00:15]
+
+  can be relatively well understood, both intuitively through a notion of soft inductive biases, but also formally in terms of rigorous generalization frameworks that have actually existed for many decades. And a lot of these phenomena can also be reproduced using other model
+
+  [00:00:30]
+
+  classes. I think deep learning really is distinguished in its relative universality, how broadly applicable it is relative to other model classes. That doesn't mean that it's anywhere close to being completely universal, but it's sort of a movement in the direction of
+
+  [00:00:45]
+
+  universality, a significant movement. It also does representation learning incredibly effectively. It has properties of its optimization objective, its loss landscape, which are relatively different and surprising, like
+
+  [00:01:00]
+
+  mode connectivity. And so I think deep learning is certainly different and mysterious, but often not in the ways that that people might might believe. So I'm very excited to be talking to you both, even though it can be challenging knowing that there are so many people watching.
+
+  [00:01:15]
+
+  But I think there are so many fundamental misconceptions in the way that people understand generalization and model construction and artificial intelligence, it's really important to hear a different perspective around, for
+
+  [00:01:30]
+
+  example, how it's completely fine to build a huge model that will also have a stronger bias for simple solutions, have more of an Occam's razor like behavior than even smaller models. And these sorts of perspectives actually help us understand phenomena that
+
+  [00:01:45]
+
+  are often seen as very mysterious, like double descent and benign overfitting and over parameterization and give us a principled approach for thinking about how we're gonna build our own models for whatever properties
+
+  [00:02:00]
+
+  we're interested in.
+
+Tim Scarfe [00:02:01]:
+  There's this fundamental trade off between bias and variance. And it feels like you're saying you can have your cake and eat it. And you can keep them in the mixture and you still win. And that just goes against most people's intuition.
+
+Prof. Andrew Wilson [00:02:14]:
+  So I
+
+  [00:02:15]
+
+  think the bias variance trade off is an incredible misnomer. There doesn't actually have to be a trade off.
+
+Tim Scarfe [00:02:22]:
+  Folks, that interview with Andrew was absolutely amazing. Keith came over to The UK and we did it in my home studio together
+
+  [00:02:30]
+
+  a few weeks ago. It's been on Patreon for a little while and I updated so much based on that interview. Andrew was absolutely brilliant. So I know you're gonna love it. But before we kick off, you've probably heard that human data is kind of the
+
+  [00:02:45]
+
+  dirty secret of Silicon Valley. You know, human data is the reason why these AI models work so well. Because the open AIs and the Anthropics, what they do is they hire humans to do things like data securation and evaluation and post
+
+  [00:03:00]
+
+  training. And there is a ridiculous kind of uplift from using this human data. Our sponsor, Prolific, what they wanna do is produce the first survey on how human data is being used in AI. And if you volunteer and fill out
+
+  [00:03:15]
+
+  this form for them, they will give you first access to see how you compare. So, I'd really appreciate it if you did that. There's no personally identifiable information. Link is in the description. And we are also sponsored by Twofer AI Labs. They are an incredible
+
+  [00:03:30]
+
+  research lab based in Zurich. They've just upgraded their office. They've got an amazing new office. They've hired 13 research engineers in the last year, doing things like reasoning and the ARC challenge. You've probably seen some of the papers that they've published on
+
+  [00:03:45]
+
+  that. But they have ambitions to build their own foundation models from scratch. They've got an amazing culture. And Benjamin Crusier, the the director, is also very interested in AI safety. So he's going through the Yudkowsky book at the moment. So if that seems like a fit for you, please get
+
+  [00:04:00]
+
+  in touch with Benjamin Crusier. Go to 2forlabs.ai or look in the description. And also, MLST is sponsored by Cyber Fund. Enjoy the show, folks. Well, Andrew, much of your work challenges conventional wisdom. Is that
+
+  [00:04:15]
+
+  hard to do? Is there resistance in challenging strongly held beliefs?
+
+Prof. Andrew Wilson [00:04:19]:
+  So, yes. I mean, this is what happens when you challenge conventional wisdom. But in some sense, I think that we should always be trying to do that because otherwise, we're just preaching to the choir and then what's the point? But
+
+  [00:04:30]
+
+  if no 1 if you're not changing anyone's beliefs about anything, then maybe it doesn't make a difference. And so I think it's important to really try to understand what do a lot of people believe that might be wrong and then just unpack that. And it's also very exciting and fun, but
+
+  [00:04:45]
+
+  it's challenging because of course, the initial instinct will be to resist whatever you're saying. But then over time, and if you try hard enough and if you talk to amazing communicators like you 2, then you can start to have an influence.
+
+  [00:05:00]
+
+  And I think that's really important because so much progress has been stalled, think, by just getting stuck on misconceptions. Like, once a certain number of people believe something, it's very, very hard to change their minds no
+
+  [00:05:15]
+
+  matter what you say. And I think as a consequence, we've been in all sorts of local minima in machine learning and AI research because we haven't been able to get unstuck from these erroneous beliefs. And there's a whole roster of things like this, like the
+
+  [00:05:30]
+
+  role of implicit biases of stochastic optimization and generalization, I think is significant, but also significantly overstated. How we can have really large models that also generalize well even
+
+  [00:05:45]
+
+  when there's a small number of data points is something that is not very well recognized. And in fact, I think is 1 of the primary drivers of scale being important for achieving good generalization. So not just flexibility,
+
+  [00:06:00]
+
+  the simplicity of bias that comes about through scale. I think another misconception is this idea that we should change our model depending on how many data points we happen to have available. And this might
+
+  [00:06:15]
+
+  even be the most controversial 1. The reason I don't think we should is because we should always honestly represent our beliefs. And our beliefs about the process that generated our data typically shouldn't change depending on how many data points we happen to have access
+
+  [00:06:30]
+
+  to. And you can actually demonstrate that these principles work in practice. So you can have models that will be very good when you have a small number of data points, and also very good when you have a very large number of data points. And so this relates to not necessarily
+
+  [00:06:45]
+
+  needing to have hard constraints, but instead combining expressiveness with Occam Tracer.
+
+Keith Duggar (Co-Host) [00:06:50]:
+  Yeah. And you know, you're you're only slowly starting to convince me to give up this 10,000, you know, degree polynomial is bad. And and and I'm only starting to change
+
+  [00:07:00]
+
+  because you value simplicity, bias towards simplicity as much as I do. And the real key for me was understanding that somehow scale has a bias towards simplicity. And I don't know why or
+
+  [00:07:15]
+
+  where it comes from,
+
+Tim Scarfe [00:07:15]:
+  but I believe it, and it's weird. And can we just set this up? So in your talk last year, your first slide, so you had a bunch of students in the room and you showed like a fairly sort of simple linear correlated, you know, date.
+
+Keith Duggar (Co-Host) [00:07:28]:
+  Airline passenger data.
+
+  [00:07:30]
+
+  Airline passenger data. Okay.
+
+Tim Scarfe [00:07:31]:
+  It was it was pretty linearly Some seasonality. And and you said here's 3 models. 1 is basically y equals MX plus c or something like that. Just a just a straight line. And I think was the second 1 something like 10 parameters and 10,000 parameters was the third 1.
+
+  [00:07:45]
+
+  And almost everyone in the room said they preferred 1 or 2. And you said at the end of this conversation, I'm gonna convince you to prefer 3, which was 10,000 parameters.
+
+Prof. Andrew Wilson [00:07:55]:
+  And I took a poll at the end and it did shift. And so that was promising. Yeah.
+
+  [00:08:00]
+
+  I I sort of joke sometimes that if I hadn't met the airline passenger dataset, I don't know really what my life would be like now because it's it's driven so much of my research. And it's just amazing how people are biased towards choosing the linear function or the qubit polynomial
+
+  [00:08:15]
+
+  even if in practice they're not making that choice. Like on CIFAR for example, it's not uncommon to use a neural net with tens of millions of parameters to fit a training set with tens of thousands of data points. And even before deep learning was popular, we were doing
+
+  [00:08:30]
+
+  non parametric statistics where we were working with models like Gaussian processes that were inspired by taking infinite limits of neural nets that are more flexible than any neural net you can fit in memory. And other popular covariance functions as well like the RBF kernel really
+
+  [00:08:45]
+
+  are like saying I wanna use an infinite order polynomial. And so even in these kind of classical statistical models, we're implicitly saying well if we're unhappy about the third choice, it's actually because it doesn't have enough parameters. We want infinitely many parameters, not just 10,000 parameters. And I think another
+
+  [00:09:00]
+
+  way to say this is that parameter counting is a very bad proxy for model complexity.
+
+Keith Duggar (Co-Host) [00:09:06]:
+  Right.
+
+Prof. Andrew Wilson [00:09:06]:
+  Really, what we care about is the properties of this sort of induced distribution over functions rather than just how many parameters the model happens to have. And
+
+  [00:09:15]
+
+  so you can have a distribution over functions which is very flexible. It can represent many different solutions to a given problem, but it can also have very strong preferences for certain types of solutions over others. And strong preferences doesn't mean saying that
+
+  [00:09:30]
+
+  certain things are impossible necessarily. They can just have Epsilon probability. And I think that that is really meaningfully different than saying, okay, we're we're gonna have a hard constraint and we're not gonna represent those solutions. A, because it's not an honest representative
+
+  [00:09:45]
+
+  of our representation of our beliefs to to have those hard constraints, and b, because we see in practice that when we do have these expressive models with simplicity biases, they're much more adaptive. They're much more automatic. So when you have a small data set, it
+
+  [00:10:00]
+
+  sort of does the right thing. When you have a large data set, it also does the right thing. And so you don't need as much human intervention. And arguably, that's the definition of what really machine learning is trying to achieve. It's trying to build an intelligent system that doesn't require manual
+
+  [00:10:15]
+
+  intervention. And so I think this is an important principle towards that goal.
+
+Keith Duggar (Co-Host) [00:10:18]:
+  You know, you you had a paper kind of removing some of the mysteries of deep learning. But I think it's it's still fair to say it's a bit mysterious where the simplicity bias comes from at scale, isn't it?
+
+  [00:10:30]
+
+
+Prof. Andrew Wilson [00:10:31]:
+  It is. So there is some hand wavy intuition around lost landscapes, and I think this is born out empirically, so we can sort of understand, for example, that the solutions that we're finding when we're building larger models are more compressible
+
+  [00:10:45]
+
+  and are flatter, etcetera. But this is really ongoing research. And I think this is 1 of the most important questions to understand right now is like, why does scale rigorously speaking produce a simplicity
+
+  [00:11:00]
+
+  bias and can we get that bias in a more elegant way than just building bigger models?
+
+Tim Scarfe [00:11:05]:
+  I was gonna ask you why you were theory because I know you're a theory guy. Are you a theory guy or or an engineer? Presumably, you're both. But, you know, deep in your bones, are are you an engineer
+
+  [00:11:15]
+
+  or are you a scientist?
+
+Prof. Andrew Wilson [00:11:17]:
+  It's really hard to choose. In some sense, both. I'm mostly driven by trying to understand things. And so this can be done in a variety of ways. A lot of our papers empirically
+
+  [00:11:30]
+
+  try to understand model behavior. And so I feel like this is a scientific approach to to machine learning. And 1 thing that really motivates me about this type of approach is whatever you learn will never go obsolete. So quite often, newcomers
+
+  [00:11:45]
+
+  to the field and even, you know, very experienced researchers feel distressed at the rapid pace in the discipline where you see methods getting published at a conference and then becoming obsolete within a month. Or when you go to the conference,
+
+  [00:12:00]
+
+  everything you're seeing is sort of, you know, been replaced by some other algorithm. And wonder, okay, well, is there any point to me sort of investing myself significantly in building a model if I know that it's not gonna be used by anyone for any long period of time?
+
+  [00:12:15]
+
+  And I think 1 way to address that is really to try to combine what you're doing with an understanding of why things are working. So if you're building a model that gets better performance on some problem, there's a reason for that. And if you can understand the reason for that, that understanding will
+
+  [00:12:30]
+
+  outlive that specific model and how widely it might be used. And I'm really hoping to do research that will be relevant in hundreds of years from now. And so I think these questions around model selection for example and Occam's razor,
+
+  [00:12:45]
+
+  people will never stop asking. Hopefully, they'll be able to go back and read not just my work, but like work that's been done in this space and think, okay, this is useful to me in thinking about how to approach some of these questions. And so, in this respect, I would say I'm a scientist and I try to combine classical
+
+  [00:13:00]
+
+  theory with empiricism towards understanding model behavior. And I think if you really understand something, hopefully it's something that you can demonstrate in practice. And so I also try to combine some sort of practical
+
+  [00:13:15]
+
+  demonstration with a lot of the work that I do. And this process also involves engineering. And sometimes understanding those low level engineering details becomes really fascinating and leads to unexpected intuitions
+
+  [00:13:30]
+
+  about the principles behind model construction. I think this is something that's perhaps underappreciated. Like, quite often, you can have a great idea and whether it works or not depends very significantly
+
+  [00:13:45]
+
+  on all the low level details like numerical stability and other things like that. And when you get really deep into those details, sometimes you can discover things at a higher level that are also very significant and how we should think about model construction and algorithm design.
+
+Keith Duggar (Co-Host) [00:13:59]:
+  Very cool. Maybe
+
+  [00:14:00]
+
+  well, I was just gonna share with you. There's a a duality that Shannon pointed out that that you they may like and, you know, it's a duality between past, future, knowledge, control. He said he said, we
+
+  [00:14:15]
+
+  have no knowledge of the future, but we can control it. We have knowledge of the past, but we cannot control it. And and I took that and related it to science and engineering. So the way I look at the 2 sides of that coin is scientists leverage control to
+
+  [00:14:30]
+
+  gain knowledge. Engineers leverage knowledge to gain control. So you can be both because the the new knowledge that you collect allows you to better control the environment, the future of the world, and collect even more learning. Right?
+
+Tim Scarfe [00:14:44]:
+  Absolutely
+
+  [00:14:45]
+
+  beautiful. Andrew, we haven't even introduced you yet. Can you can you can you tell the audience about yourself?
+
+Prof. Andrew Wilson [00:14:51]:
+  So I'm Andrew Wilson. I'm a professor at the Crown Institute of Mathematical Sciences and Center for Data Science at New York University. My work focuses
+
+  [00:15:00]
+
+  on having a prescription for how to build intelligent systems, what are the key principles involved in model construction. I think although the field has made an extraordinary amount of empirical progress towards building more performant machine learning systems, We're
+
+  [00:15:15]
+
+  still at early stages of understanding, you know, what principles should we broadly embrace when we're approaching our own problems. And so this involves work on understanding inductive biases, so what assumptions we should be making. And so this relates to symmetries like equivariances, maybe we're
+
+  [00:15:30]
+
+  modeling molecules or rotation variant images could be translation variant. How do we represent those invariances? How do we learn them automatically? How do we discover interpretable scientific structure in our data that tells us something maybe surprising that we didn't know before that will go
+
+  [00:15:45]
+
+  beyond a particular application. How do we represent uncertainty towards decision making? Arguably, a prediction that's just a point estimate without any kind of error bars associated with it isn't really actionable in the real world. You know, if you have a
+
+  [00:16:00]
+
+  autonomous car and I it says there's a stop sign 5 feet ahead plus or minus 10,000 feet, you can't really do anything with that information. But if it's plus or minus 1 foot, then you can really act on that information. And, you know, observing that almost makes you paranoid, like, Okay, now I really need to
+
+  [00:16:15]
+
+  represent uncertainty. Because if I don't have that uncertainty, then machine learning can't meaningfully engage with the real world. And Bayesian methods, I think, are a really great way of reasoning about uncertainty. And so that also forms a big part of my research program.
+
+Tim Scarfe [00:16:27]:
+  Well, welcome to MLST. We have doctor
+
+  [00:16:30]
+
+  Duggar in the house. The first time we've met in person for we've been doing this for 8 years. Yeah. 5 years on this channel, but we had the previous channel as well. Yeah. And Keith came to my to my wedding on on Friday. It's good to have you here, man.
+
+Keith Duggar (Co-Host) [00:16:43]:
+  Yeah. It's pretty crazy we haven't met
+
+  [00:16:45]
+
+  until now. It's been gonna be a blast.
+
+Tim Scarfe [00:16:47]:
+  Absolutely. Yeah. We've got some good stuff lined up. Well, I guess just to kick this off, Andrew. I was inspired by deep learning. I interviewed, you know, like Michael Bronstein, Tucker Cohan, Jo Anne Brunner, Petr
+
+  [00:17:00]
+
+  Valichkovich. They had this geometric deep learning blueprints. Our video on that did half a million views. It's it's an amazing video. And the basic hypothesis as as Jo Anne outlined the 3 curses in machine learning, right? So there's the statistical curse,
+
+  [00:17:15]
+
+  which is that you only have so many data points and the distance to those data points, you know, or the density of those data points is kind of cursed by the dimensionality of your data. There's the optimization curse, which is that you get stuck in these local minima. And there's the
+
+  [00:17:30]
+
+  approximation curse. And this is kind of where they were driving to that you have this function class and you can be quite opinionated in how you structure that function class. But if you make it too small, you you incur approximation error where the actual test sample is, you know, some Epsilon distance from from the approximation
+
+  [00:17:45]
+
+  class. And they said that all of these things are cursed. And I guess their prescription was this platonistic idea that if we constrain the models, so if we add bias to the models with these symmetries, because the generating function of the universe is using
+
+  [00:18:00]
+
+  these symmetries anyway, then there's no apparent approximation error in doing so. So why wouldn't we do it anyway? I I think your your ideas are are kind of tangentially related to that. You still think we should have biases, but you you also think we can have our cake
+
+  [00:18:15]
+
+  and eat it so to speak.
+
+Prof. Andrew Wilson [00:18:16]:
+  Mhmm. So this is a wonderful question. And I've also done a fair amount of work on geometric deep learning, particularly in terms of how we should represent equivariant symmetries in scientific domains. And I
+
+  [00:18:30]
+
+  agree that it's very appealing to say, well, if we know that some constraint applies to our problem, then we should encode it in our model. And I don't think that's particularly controversial. There are some perhaps surprising results that in some instances, even when you know what the constraint is, you
+
+  [00:18:45]
+
+  can do as well or better when you don't represent that constraint and this can do This can be due to the dynamics of how you train your model, etcetera. But generally, the way I would respond to this is really just say 2 things. The first is there
+
+  [00:19:00]
+
+  aren't that many instances in practice where we know exactly what constraints we want to have, even when it comes to things like physical conservation laws. So rarely are we modeling for instance closed systems. You can have a dynamical system and maybe you have like a pendulum with like wind
+
+  [00:19:15]
+
+  in the air or whatever, and now you have some sort of violation of of conservation of energy. And so you want to perhaps instead build models that are just biased towards these constraints without being exactly constrained. Secondly, when you do this,
+
+  [00:19:30]
+
+  when you represent so called approximate constraints or you have soft constraints, so you have a model which is very flexible, but it says, well, if we can fit the data in a particular way, then we want to do that. Quite often, it will just collapse down onto those constraints if it provides a consistent explanation
+
+  [00:19:45]
+
+  of what we observe. And so if you're paying any kind of penalty for deviating from those constraints and you can perfectly explain your data with those constraints, you'll just collapse down onto that. And so I think as a prescription for model construction, it's often going to be fruitful
+
+  [00:20:00]
+
+  to try to embrace expressiveness, but at the same time have a simplicity bias which can be formalized in terms of compression. And this is really an honest representation of our beliefs in many cases. Like another way
+
+  [00:20:15]
+
+  to describe my philosophy for model construction is just honestly represent your beliefs. And we believe the real world's a complicated place. And if we combine that belief with the idea that simple solutions that are consistent with our observations are more
+
+  [00:20:30]
+
+  likely to be true, then we can often see desirable behave behavior in quite a variety of different settings. And so, in terms of like having cake and eating it too, I think 1 of the most surprising findings that that we and and others have
+
+  [00:20:45]
+
+  had is that quite often you can increase model expressiveness while simultaneously increasing its biases. So larger models are often more inclined towards simple solutions. And there
+
+  [00:21:00]
+
+  sort of demonstrations of this that have been just hiding in plain sight, like double descent. This idea that as you increase model flexibility, your generalization error first gets lower. So you're it improves. As you capture more structure in the data, it gets worse
+
+  [00:21:15]
+
+  as you start to overfit, and then it gets better again. And in that second descent, typically all of the different models that you're considering are fitting the training data perfectly. So the only possible way that larger models could be generalizing better is because
+
+  [00:21:30]
+
+  they have some other sort of bias, like a simplicity bias rather than being more expressive. And so I think time and again, researchers express surprise at the fact that they can have these massive models, billion parameter plus models trained on
+
+  [00:21:45]
+
+  relatively small data sets that aren't overfitting. But in fact, actually, if they've made the models even bigger, they would be less likely to overfit. And so quite often, expressiveness and soft constraints can be aligned.
+
+Keith Duggar (Co-Host) [00:21:58]:
+  So parameters don't solve your
+
+  [00:22:00]
+
+  problem, you're not using enough of them.
+
+Prof. Andrew Wilson [00:22:02]:
+  We always want more.
+
+Tim Scarfe [00:22:05]:
+  Prediction with expert advice. We know theoretically and and for me empirically that by keeping all of these other experts around in the mixture, you pay a
+
+  [00:22:15]
+
+  cost for that. Mhmm. So in my particular case, having the historical experts in the mixture, every single prediction, they still had some way. You have to give them some Epsilon weight.
+
+Keith Duggar (Co-Host) [00:22:24]:
+  Mhmm.
+
+Tim Scarfe [00:22:24]:
+  Otherwise, they would die. And that actually harms your performance. So the question is, is it better for you when
+
+  [00:22:30]
+
+  the new regime comes to pay the cost of learning the regime versus the switching cost of bringing the old regime back? And that's kind of the same with any ensemble or any set of restrictions on biases really. There's this fundamental trade off between bias and
+
+  [00:22:45]
+
+  variance. And it feels like you're saying you can have your cake and eat it. And you can keep them in the mixture and you still win. And that just goes against most people's intuition.
+
+Prof. Andrew Wilson [00:22:56]:
+  So I think the bias variance trade off is an incredible
+
+  [00:23:00]
+
+  misnomer. There doesn't actually have to be a trade off. So the idea, I guess, behind the classical bias variance trade off is that your generalization error can be compartmentalized in these 2 terms. So bias,
+
+  [00:23:15]
+
+  sort of how well you are fitting the data essentially, and variance, like how your fits vary depending on, like if you sample different points from this distribution that you're trying to model. And
+
+  [00:23:30]
+
+  it's true that sometimes if you naively build like a really large polynomial, for example, you can have low bias and high variance. Whereas if you build a small polynomial, maybe you have low variance and high bias. However, approaches like ensembling
+
+  [00:23:45]
+
+  are actually a good way of getting low bias and low variance. And it turns out, actually building large neural nets are another way of getting both low bias and low variance. You actually have flexibility combined with a simplicity
+
+  [00:24:00]
+
+  bias. And this is what's leading to good generalization, and it's sort of another perspective on double descent.
+
+Keith Duggar (Co-Host) [00:24:06]:
+  I think here's here's the way I'll put the question is and I ran into this as a practitioner, you know, back in the day. So maybe I was just stuck in the hump of having, like,
+
+  [00:24:15]
+
+  too many but not enough parameters, you know, to to get to the double descent phase. I'm not sure. But, I mean, you know, the what I experienced is that, you know, having parameters in a model, even if they're very, very small because some you know, I put in some term in the objective
+
+  [00:24:30]
+
+  function that forced them to be small is not the same thing as actually the simpler model that just didn't have them at all. Right? Like, I mean, like, we kind of, you know, we'll talk about marginalization and kind of Bayesian Bayesian perspective on that. So, like, overfitting can
+
+  [00:24:45]
+
+  be a real problem. So for example, you brought up, you know, conservation. It's like, well, if I'm doing a model and I don't enforce conservation of energy. And then as a result, I end up with some small parameters that cause, like, a little bit of feedback and increasing, you know, energy
+
+  [00:25:00]
+
+  every single time a robot, you know, takes some action that can cause it to, like, spin out of control. Right? Where I actually did need it to conserve energy and not have that that positive feedback. So I guess I guess maybe we're still struggling with, you know overfitting can be a problem.
+
+  [00:25:15]
+
+  It's a real problem. It's a known problem. How do we know if we're overfitting in a bad way? We maybe haven't don't have enough parameters. We're stuck in kind of the the area before we got to double descent. Or, like, how do you, in practice, avoid the
+
+  [00:25:30]
+
+  actual consequences of bad overfitting?
+
+Prof. Andrew Wilson [00:25:33]:
+  Right. So overfitting is real, absolutely. But the conventional wisdom about how we should approach it, I think, is fundamentally misguided. So and this is rooted in things like the bias variance trade off.
+
+  [00:25:45]
+
+  Like, let's constrain our hypothesis space so that we can't have a bad fit to the data that will make bad predictions and so on. Whereas, instead, I think if we just embrace the honest belief that there are many possible solutions even if they're not probable for any given problem,
+
+  [00:26:00]
+
+  combined with this sort of simplicity bias, we won't tend to overfit. And interestingly, the prescription is almost the opposite of what people think it it perhaps should be in principle. Like, build a smaller model is usually the the prince the sort of the
+
+  [00:26:15]
+
+  the prescription for avoiding overfitting.
+
+Keith Duggar (Co-Host) [00:26:18]:
+  Or to enforce of simplicity.
+
+Prof. Andrew Wilson [00:26:20]:
+  Exactly. Yeah. Whereas in fact, as we build bigger models, we often actually start to alleviate overfitting. And double descent is just a great example of this because that
+
+  [00:26:30]
+
+  first ascent is is from overfitting the data. But then it gets alleviated as we start to make our models bigger and bigger.
+
+Keith Duggar (Co-Host) [00:26:38]:
+  By some phenomenon that we still don't really fully understand. Like this this this ability of simplicity to start to come
+
+  [00:26:45]
+
+  back into the picture as you just make it even bigger.
+
+Prof. Andrew Wilson [00:26:48]:
+  Right. So in that second descent, the models are typically fitting the training data perfectly. And so the loss is not really the decisive anymore between which models we're selecting. It's something else. And so those other biases
+
+  [00:27:00]
+
+  start to dominate. And so this is actually really important I think when people talk about phenomena like flatness. So flatness is this idea that if you perturb your parameters, then you can still get a relatively low value of the loss. And there are all sorts of debates about like
+
+  [00:27:15]
+
+  the the role of flatness and how relevant it ought to be and understanding generalization, etcetera. But I think what a lot of these discussions miss is it's just 1 of many properties that control generalization. So if I had to choose between a model
+
+  [00:27:30]
+
+  that has very high loss but is very flat versus like a very flat solution versus a model that that finds a solution that's low loss that's that's relatively sharp, I would almost certainly choose the low loss solution. And so when you're in that kind of second
+
+  [00:27:45]
+
+  descent regime, you now are controlling for the value of the loss. And it's just the flatness of the solutions that's increasing. And so that's sort of 1 way of knowing maybe like what side of the the curve that you're on and thinking about how big should you make your
+
+  [00:28:00]
+
+  model. But I would also just say make your model always as big as possible. Just try to combine what you're doing with some sort of simplicity or a compression bias. And there's a question of like how you do that. But I think there are good good ways that we have of thinking about how to do that.
+
+  [00:28:15]
+
+
+Tim Scarfe [00:28:15]:
+  Trick question. Is predictive power the same as understanding?
+
+Prof. Andrew Wilson [00:28:19]:
+  I agree with the idea that representation matters. Representation meaning sort of how you're solving the problem even if you're getting the same performance in a particular application.
+
+  [00:28:30]
+
+  But the reason it matters is because different representations that are achieving the same performance might give you different performance than on different problems. And so if we're trying to build more general agents, we want to understand
+
+  [00:28:45]
+
+  what sorts of representations are going to provide a better general description of the real world. And so that means we want to avoid things like shortcut learning and so on. If it's just gonna lead to good predictions and some contrived problem and not really in
+
+  [00:29:00]
+
+  the real world. And so there's this question of like, can we understand what sorts of distribution shifts we might typically encounter? And can we build methods that have broadly more robustness to a variety of different types of realistic distributions?
+
+  [00:29:15]
+
+  I think this connects to things like no free lunch sort of thinking. So the no free lunch theorems say that every model is equally good in expectation over all problems sampled uniformly from a distribution over all problems. And there are other no free lunch theorems that say no single learner can be good
+
+  [00:29:30]
+
+  on all problems. The issue I think with these theorems is not their mathematical validity. What they're saying is correct under the assumptions they're making, but rather that the assumptions they're making are not a good description of the real world. So the real world is
+
+  [00:29:45]
+
+  a small corner of all possible data sets. It's not drawn uniformly from a distribution of all possible problems. If we were to do that, we would mostly just get noise. And so the question then is to what extent is the structure across real world problems shared? And at
+
+  [00:30:00]
+
+  what level of abstraction can we represent that shared structure? And so my contention is that the distribution over real world data is biased towards low comographic complexity. And so are some of the models that we started to to develop.
+
+  [00:30:15]
+
+
+Tim Scarfe [00:30:15]:
+  Yeah. But can you give an example of where it was hard to confront a misconception? Why it mattered? And what the process involved?
+
+Prof. Andrew Wilson [00:30:23]:
+  There had been this sort of approach where you would take some approximate Bayesian inference procedure
+
+  [00:30:30]
+
+  and pitted against deep ensembles as the non Bayesian alternative. Yeah. And some normally, I I actually don't care that much about what's being called Bayesian or not. Like, it's same with, like, intelligence. So what is intel like like, whether something is a good representation, all these things. Let's just
+
+  [00:30:45]
+
+  connect this to whatever problem we're trying to solve. But this was actually kind of problematic because the takeaway seemed to be that if deep ensembles were working better than some Laplace approximation or some MCMC procedure, then the answer is to be non
+
+  [00:31:00]
+
+  Bayesian, to be less Bayesian than than we have been historically. And that's turned out to be exactly the wrong sort of directionality for how we should think about model construction because for a given computational budget, those deep ensemble procedures were actually doing a
+
+  [00:31:15]
+
+  much better job of approximating the posterior Bayesian predictive distribution, so doing marginalization. And so in fact, the prescription should have been, well we actually need to be more Bayesian. And so this is sort of a frustrating thing. But it was also very difficult
+
+  [00:31:30]
+
+  to approach because there had been so many papers where people had just written basically that these deep ensembles are the non Bayesian alternative. And so kind of coming out and saying, actually they're doing a better approximation of the Bayesian ideal than all these methods that
+
+  [00:31:45]
+
+  are being called Bayesian is sort of, you know, confronting, you know, just sort of hundreds of papers in some sense at once. But it felt like a very important thing to do. And we had actually done it subtly in a lot of papers where there'd be some subsection
+
+  [00:32:00]
+
+  of some paper that mentioned something like this. But that was never really internalized because it was never front and center. So I thought, okay, a blog post is the right way to do this. Let's make it all about this. And I think in the end, actually it was the blog post that changed
+
+  [00:32:15]
+
+  people's minds. I I never saw a paper after that where people were making this separation. But also I think you know, it did it did sort of strike a nerve a little bit.
+
+Tim Scarfe [00:32:24]:
+  Yeah. But how should we approach model construction? How can we embrace expressiveness without
+
+  [00:32:30]
+
+  overfitting?
+
+Prof. Andrew Wilson [00:32:31]:
+  And so when I say I want to embrace expressiveness, there is some some subtlety associated with that idea. And that basically means that it in some cases maybe we're wanting to represent lots of solutions, but we're assigning them almost 0 probability, but not
+
+  [00:32:45]
+
+  0 probability. So they're possible but not plausible solutions in our view. And then if the data is telling us something that like well actually we really should be paying attention to certain type of structure that maybe would surprise us, the model can actually respond to that.
+
+  [00:33:00]
+
+  And if that structure isn't actually there, then your model isn't going to perform a lot worse than the model that is exactly constrained in those ways. In terms of how we should approach model construction in general,
+
+  [00:33:15]
+
+  if you have a soft bias, a gentle encouragement towards certain types of constraints over others, quite often you can do as well as the perfectly constrained models. The reason is you're paying some sort of penalty, even if it's small, for deviating
+
+  [00:33:30]
+
+  from that constraint. If So you can fit the data perfectly with the constraint, you'll just collapse down onto that model. And we noticed this in a work we had called residual pathway priors for soft equivariance constraints. So this was a Bayesian mechanism to have a distribution over solutions
+
+  [00:33:45]
+
+  which would be concentrated in some way around certain types of equivariance constraints. Just for the sake of the audience, equivariance is a generalization of invariance. It basically means you have some transformation t, f of t x equals t of f of x,
+
+  [00:34:00]
+
+  rather than f of t x equals f of x.
+
+Tim Scarfe [00:34:03]:
+  Like a CNN, for example. So it it commutes in that case with the translation.
+
+Prof. Andrew Wilson [00:34:09]:
+  Exactly right. So if you translate the image in some way, the pattern of activations will translate in the same way across the
+
+  [00:34:15]
+
+  different layers, rather than them just staying exactly the same, which would be invariance. So in this paper on residual pathway priors, we were interested in the strength of this soft bias.
+
+  [00:34:30]
+
+  So we basically had a distribution over neural net parameters that had a covariance matrix that lived in some equivariance subspace of our choice plus some orthogonal complement. And so there would be these waiting terms basically that would represent how strong do
+
+  [00:34:45]
+
+  we want this bias to be for equivariance. And surprisingly to us at the time, it didn't matter very much. Like if as long as you had a very soft bias for the the constraint, it would often be as good as even a perfectly constrained model. Basically for this reason that
+
+  [00:35:00]
+
+  you know you're still paying some penalty for deviating from the constraint and so if it is a good description of the data you fit it perfectly, then you often collapse down onto that constraint. Although I wouldn't want to dismiss the importance of trying to calibrate these biases. It it can matter in certain instances.
+
+  [00:35:15]
+
+  But in a lot of instances, a very gentle bias is sufficient.
+
+Keith Duggar (Co-Host) [00:35:19]:
+  But maybe maybe just to put this into perhaps more familiar territory for other Bayesians out there, you know, like the assignment of priors just for parameters.
+
+  [00:35:30]
+
+  It's always the goal to try and find a prior that's relatively ignorant, but encodes some very soft, you know, type of constraint. Like, maybe it's a a scale invariant parameter or a locate or a scale invariant prior or location invariant,
+
+  [00:35:45]
+
+  you know, kinda prior. And overall, a lot of times these priors are maybe worth, like, 1 data point or 2 data points, but they're small enough that they can be overridden quite easily by enough data. But even that small amount is enough
+
+  [00:36:00]
+
+  to avoid sort of stupid answers. Like, you know, that that like the chance of a head is infinity or something like that. Is it kind of analogous to that? Or
+
+Prof. Andrew Wilson [00:36:08]:
+  I think that's a reasonable analogy. I would also add that we can't get away from making assumptions. So even
+
+  [00:36:15]
+
+  though I'm in favor of embracing expressiveness and having relatively soft biases for certain types of solutions as opposed to hard constraints, Machine learning means learning by example, and we can't do that without making assumptions. The
+
+  [00:36:30]
+
+  question is just what assumptions should we be making and at what level of abstraction. And perhaps it's enough in a surprisingly large array of different problems to embrace expressiveness in combination with some sort of simplicity, some Occam's razor bias
+
+  [00:36:45]
+
+  that can be formalized in terms of compression.
+
+Tim Scarfe [00:36:48]:
+  Empirically, simple models work better.
+
+Prof. Andrew Wilson [00:36:51]:
+  Ironically, given the surprise people often express at this idea of wanting to always embrace flexibility is that like before deep learning, the community had started
+
+  [00:37:00]
+
+  to come on board with this notion that we want arbitrarily flexible models. In fact, the class of models that I was working on in my PhD, Gaussian processes in machine learning, were kind of inspired by this idea that we want really really
+
+  [00:37:15]
+
+  large neural nets. And Radford Neil, a statistician at Toronto at the time working in Geoff Hinton's group was saying, okay, we want to build models the size of a house and I'm a Bayesian and I'm gonna really embrace expressiveness so I'm gonna take an infinite limit of a neural net with an infinite number of hidden units
+
+  [00:37:30]
+
+  and this is going to converge actually to a Gaussian process using a central limit theorem argument with a particular type of covariance function. People thought, that's amazing. Let's just use Gaussian processes because they're so much more principled in a lot of other ways. Like they're less sensitive to a bunch of design decisions, etcetera.
+
+  [00:37:45]
+
+  They can be written in, you know, a very small number of lines of code and everyone anywhere in the world is gonna get basically the same answer etcetera. And so people sort of moved in this direction of just embracing expressiveness. But then once we started working in these kernel formulations, think people perhaps started to
+
+  [00:38:00]
+
+  forget that there was this dual space correspondence and we have actually were working with models that were more flexible than any neural net you can fit in memory and finding we were achieving very good generalization, especially on problems with a relatively small number of data points. So now to to
+
+  [00:38:15]
+
+  get back to your question, Radford Neil also had an interesting quote, believe in his PhD thesis that whenever you have a simple model that performs well, you can always build more complicated model around it that will perform even better. And he gives this example of handwritten
+
+  [00:38:30]
+
+  character recognition where you might have irregular writing styles, weird ink blots on the stage on on the page. Just some sort of structure that you probably haven't already accommodated in your model that you can try to accommodate and you'll achieve better and better performance. So what I would do
+
+  [00:38:45]
+
+  in this situation you described is really try to understand what's the inductive bias there that's leading to good performance and how can I soften it in some way? How can I generalize this in a way that still honestly represents my beliefs?
+
+Keith Duggar (Co-Host) [00:38:58]:
+  So but there there seems to be something
+
+  [00:39:00]
+
+  wrong with with this quote that you can always build a more complex model because maybe you can always build a more complex model that has a higher likelihood on the training data, but overfitting is a real phenomenon. Like, nothing in your work says
+
+  [00:39:15]
+
+  that overfitting doesn't occur and can be harmful. So it's like there have to be situations where if you diverge from the ground truth model I mean, I'm sure I could just build a system that has a ground truth model, simulate data, and provably show that a
+
+  [00:39:30]
+
+  more complex inference doesn't generalize as
+
+Prof. Andrew Wilson [00:39:33]:
+  well. Mhmm.
+
+Keith Duggar (Co-Host) [00:39:34]:
+  So that has to be true. So how do we know in reality when we've stepped too far?
+
+Prof. Andrew Wilson [00:39:39]:
+  It's a great question. I think we have to be careful about what we mean when we say a complex model. So I think most
+
+  [00:39:45]
+
+  people would not consider Gaussian processes with an RBF covariance function, just the standard covariance function kernel that's often used to be a complex model. But it's highly expressive, so it's more expressive than any neural network can fit in memory. It just has very very strong
+
+  [00:40:00]
+
+  preferences for certain types of solutions over others. This enables it to be extraordinarily data efficient. So 1 of the main use cases these days for Gaussian processes is in something called Bayesian optimization, where you're trying to maximize some sort of black box objective.
+
+  [00:40:15]
+
+  So it's not something you have a closed form expression for, like it could be generalization performance of a neural net as a function of some of its hyper parameters for instance, or some really costly physical simulation as a function of some parameters, and you basically want to query this objective as few times as possible in order
+
+  [00:40:30]
+
+  to achieve a good result. Gaussian processes are an amazing surrogate model for this objective, and you use the uncertainty to do the exploration efficiently. So I think that you can have expressive models that aren't necessarily complex. They still have very
+
+  [00:40:45]
+
+  strong simplicity biases, very strong preferences for certain types of solutions over others, but at the same time they're representing a wide array of possible solutions to the problem. And I think that's how you can kind of reconcile what
+
+  [00:41:00]
+
+  Radford Neil was saying with what we see in practice around things like overfitting. So I think there's a common misconception that the expressiveness of a model and its inductive biases
+
+  [00:41:15]
+
+  are at odds with each other. The more expressive the model, the weaker its assumptions in some sense. Like the the fewer inductive biases it has, the less data efficient it will be, etcetera. And what we found, has been quite exciting, is
+
+  [00:41:30]
+
+  that the larger you make say big transformers, actually the stronger its inductive biases. Like the models get both more expressive and they have a stronger simplicity bias. And so I think you can expand these 2 things
+
+  [00:41:45]
+
+  together in some sense, and this is how you can avoid say overfitting and other sorts of issues with not achieving very good generalization. And I think 1 of the clearest demonstrations of this is in a phenomenon called double descent. So double
+
+  [00:42:00]
+
+  descent is this phenomenon where typically on the horizontal axis you have the expressiveness of the model, the number of units for example in each layer of a residual neural network. And on the vertical axis you have generalization error.
+
+  [00:42:15]
+
+  And so initially generalization error decreases as you increase the expressiveness of the model and it's able to just fit the data better and capture more structure. And then it starts to decrease, it starts to go up, and that corresponds to some sort of overfitting. And then it decreases
+
+  [00:42:30]
+
+  again, and that's why it's called second double descent, because of that second descent. And in that second descent, all the models typically have about 0 training loss. So the training loss just keeps going down as you increase the expressiveness of the model until roughly the number
+
+  [00:42:45]
+
+  of parameters equals the number of data points. And what that means is that the larger models in that second descent cannot be generalizing better because they're more flexible. They're all fitting the training data perfectly. It has to be that the larger models have
+
+  [00:43:00]
+
+  some sort of bias which is enabling better generalization. It turns out that this is a simplicity bias, a compression bias that we can measure.
+
+Tim Scarfe [00:43:08]:
+  Yeah. Let's talk through that a little bit. So as I understand, your thesis is that there is some kind of generating
+
+  [00:43:15]
+
+  function of the universe. And in some sense, it's quite simple. Francois Choulet talks about this. He talks about the kaleidoscope effect that, you know, we have the generating function and then it gets composed together in a myriad of different ways. And we see the kaleidoscope and intelligent
+
+  [00:43:30]
+
+  people can decompose the kaleidoscope back into the original generating function. And and you've also said that natural data in particular is is quite low dimensional, quite simple, and that neural networks prefer simple data. And even that, wanna take a slight issue of
+
+  [00:43:45]
+
+  that because what I what I find is that neural networks in the early stages of training prefer simple data. And when you continue to train them, they they seem to complexify and complexify and learn more high frequency data. So how how did how how
+
+  [00:44:00]
+
+  do you think about that?
+
+Prof. Andrew Wilson [00:44:01]:
+  It's a great question. So it's a really important observation that neural nets tend to learn structure before they learn noise and things like this. There's a question around to what extent being
+
+  [00:44:15]
+
+  able to fit noise is hurting their generalization capabilities. So there's this other phenomenon called benign overfitting, where the model fits typically a mixture of signal and noise, but the noise being fitting the noise doesn't significantly degrade
+
+  [00:44:30]
+
+  its generalization performance. And this is often seen as something that's specific to deep learning and in the face of everything that we know about generalization. And that's partly because classical frameworks for trying to understand generalization like VC dimension and Rademacher complexity
+
+  [00:44:45]
+
+  are essentially measuring a model's ability to fit noise. However, are other generalization frameworks like PAC Bayes and countable hypothesis bounds that we explore, which don't penalize an expressive hypothesis space, and instead try
+
+  [00:45:00]
+
+  to understand what sorts of soft preferences the model has for certain solutions over others. And we've been able to achieve fairly tight bounds on the generalization performance of these large models using something called
+
+  [00:45:15]
+
+  a Solomonoff prior. And so a Solomonoff prior says that we actually have a maximally over parameterized model. We can represent every possible program on a computer, that we have exponentially stronger preferences for solutions
+
+  [00:45:30]
+
+  with that have what are called low Kolmogorov complexity, and so they're very compressible. The Kolmogorov complexity is the the shortest possible program that can generate our hypothesis. And the fact that we're able to get these tight generalization
+
+  [00:45:45]
+
+  bounds for these very large models, and in fact that the models get sort of better, sorry that the generalization bounds get better as we make the models larger, suggests that this is not a bad description of how these models are actually behaving. So doing
+
+  [00:46:00]
+
+  induction with a Solomonov prior is called Solomonov induction. And so it seems that when we make these transformers for instance very large, we're combining this expressiveness with this strong preference for low Kolmogorov complexity solutions. Another observation
+
+  [00:46:15]
+
+  that's that's been made is that models are becoming increasingly general purpose. And so 20 or 30 years ago, the typical prescription was to encode as much expert knowledge as possible
+
+  [00:46:30]
+
+  into the model you're constructing and tailor it very specifically to the problem that you're considering. Because of results like the no free lunch theorems that say that every model is equally good in expectation over all problems sampled uniformly from this distribution over all
+
+  [00:46:45]
+
+  problems. There are several no free lunch theorems, another 1 says that a single learner is not gonna be good on all problems. Now these results are mathematically correct, but they don't really correspond to the real world data generating distribution. The real world is a
+
+  [00:47:00]
+
+  small corner of all possible data sets, it's not drawn uniformly from that distribution. If you were to draw data sets from that distribution, you would mostly get noise. And so I guess the question is, well what is the real world data generating distribution really like? And
+
+  [00:47:15]
+
+  it seems like there is a bias towards generating data with low Kolmogorov complexity and our models share that bias. And this is why we've seen increasingly general systems. So we've moved from feature engineering, basically hard coding
+
+  [00:47:30]
+
+  structure into our models, to more modality specific models and architectures. So convolutional neural nets for vision, for current neural nets, for sequences, language, etcetera. MLPs for tabular data and
+
+  [00:47:45]
+
+  regression to transformers for almost everything. And so this isn't to say that transformers have achieved general intelligence, absolutely not. But they're relatively speaking more general than the
+
+  [00:48:00]
+
+  predecessors. And we have seen this kind of movement towards increasingly general models, and our contention is that this has been made possible by aligning with the real world data generating distribution, which seems to have a bias for low Kolmogorov complexity.
+
+  [00:48:15]
+
+  And we had this paper on no free lunch theorems in inductive biases in Comagraal complexity. I think 1 of the most surprising findings in that paper was that convolutional neural nets, which were clearly designed
+
+  [00:48:30]
+
+  for image recognition, so they have locality and translation equivariance and so on, provably have inductive biases for tabular data shaped as And an the only possible reason that could be the case is because they both sort of share this bias for low Kolmogorov complexity.
+
+  [00:48:45]
+
+  And that bias gets stronger as we make the model bigger.
+
+Keith Duggar (Co-Host) [00:48:48]:
+  Okay. So I have I have actually 2 questions about this, and it's about the Kolmogorov complexity. So I think if I heard you correctly, on the 1 hand, you're saying that just stock neural network training of
+
+  [00:49:00]
+
+  today, so just transformers, SGD, batch norm, whatever people are doing, seems to empirically exhibit bias towards lower Kolmogorov complexity models. And this shows up by their generalization kind of falling
+
+  [00:49:15]
+
+  within, you know, this bound, know, that you found. And then you also mentioned Kolmogorov induction, which I I I believe would be explicitly introducing, you know, a kind of penalty term or a risk term and objective, part of the objective function that has to do with Kolmogorov
+
+  [00:49:30]
+
+  complexity and kind of maybe pushing the model a little bit further towards, you know, simple. I think you're talking about both. So maybe if you could elaborate and also, you know, where is this this bias towards simplicity coming from? Like, everybody knows the
+
+  [00:49:45]
+
+  algorithms. Like, which part of the algorithm is is inducing this simplicity bias? Is it because we're using floating point numbers, I triple e, or what? Like, where is it coming from?
+
+Prof. Andrew Wilson [00:49:55]:
+  This is largely an open question, although there are some intuitions, and this is something I'm
+
+  [00:50:00]
+
+  really excited about pursuing further in my research. Where does the simplicity bias, especially from scale originate? There are some intuitions, so geometric intuitions around the loss landscapes for the objectives that we use to train these models. And so when we're sort of
+
+  [00:50:15]
+
+  minimizing training loss, we can try to geometrically understand the properties of this landscape that we're minimizing. So it's been observed for instance that flat solutions, meaning solutions where you can perturb the parameters by some amount but retain low training loss, tend to generalize
+
+  [00:50:30]
+
+  better than sharp solutions that have the same value of the loss, and you could make a compressibility argument for why that's the case. Flat solutions don't need to be represented with as much precision, and so they're more compressible. As you grow the size of these neural nets,
+
+  [00:50:45]
+
+  the relative volume of these flat solutions starts to exponentially dominate the volume of the sharp solutions. And so you can imagine heuristically
+
+Keith Duggar (Co-Host) [00:50:54]:
+  Why is that? I mean, do we know why? Or it just it's just an empirical observation?
+
+Prof. Andrew Wilson [00:50:59]:
+  Yes. So we
+
+  [00:51:00]
+
+  know why to some extent, but it's our understanding is is somewhat heuristic. And so you could imagine for instance having a region of the loss surface with radius r a that's flat. So you perturb your parameters within that radius and you have a low value of the loss.
+
+  [00:51:15]
+
+  And another region with r b that that's that's you know, where r b is much less than r a.
+
+Keith Duggar (Co-Host) [00:51:20]:
+  Mhmm.
+
+Prof. Andrew Wilson [00:51:20]:
+  Now as you grow the number of parameters in your model d, r a to the d starts to really dominate relative to r b to the d. And we
+
+  [00:51:30]
+
+  seem to observe this in practice. So there was a result not from from my group, from Tom Goldstein's group at the University of Maryland where they were trying to understand the role of the implicit biases of
+
+  [00:51:45]
+
+  SGD and stochastic optimization in generalization. And so quite often, as you perhaps have alluded to, SGD is often thought to be a really integral component of achieving generalization in deep
+
+  [00:52:00]
+
+  learning.
+
+Tim Scarfe [00:52:00]:
+  Mhmm.
+
+Prof. Andrew Wilson [00:52:00]:
+  There's this idea that we have these very complicated objectives that we're minimizing that are very non convex, etcetera. And SGD somehow saves us that the implicit biases of SGD navigate our procedure through some region of the loss landscape that represents
+
+  [00:52:15]
+
+  low loss solutions that do generalize rather than low loss solutions that don't generalize well. Well it turns out you can actually do full batch gradient descent and achieve pretty comparable generalization to what you would get if you were using SGD, even if you don't try
+
+  [00:52:30]
+
+  to make that implicit regularization explicit in the loss. And there was another paper that showed that if you even do guess and check, so you just randomly sample your solution vector, and then stop when your loss is below a certain threshold, the generalization will
+
+  [00:52:45]
+
+  also be fairly comparable to what you get if you use SGD or Adam. And so that corresponds to this geometric intuition. If you're just sort of throwing darts at the loss landscape and then you stop as soon as you have loss below a certain threshold, you're much more likely to be in this region of low
+
+  [00:53:00]
+
+  loss and good generalization than low loss and bad generalization as you increase the number of parameters in the model. Now this is not an airtight argument, so there are lots of ways that you can increase parameters and models and not really influence the geometric properties of the
+
+  [00:53:15]
+
+  loss landscape. However, it does seem to correspond to what we observe empirically, and not just in terms of results like guess and check, if we look at something like double descent, in that second descent we can measure something called the effect of dimensionality of these models. So
+
+  [00:53:30]
+
+  that's the number of relatively large eigenvalues of the Hessian, which is sort of the number sharp directions essentially in the loss landscape. And so that that decreases as as we as we make the model bigger.
+
+Keith Duggar (Co-Host) [00:53:40]:
+  So interesting. And to the second question about explicitly introducing,
+
+  [00:53:45]
+
+  you know, a penalty term for Kolmogorov complexity. Have you done much of that? Looked into that? Is that useful or just not necessary?
+
+Prof. Andrew Wilson [00:53:53]:
+  It's something I've been thinking about. It's very hard to operationalize. So you can evaluate these
+
+  [00:54:00]
+
+  bounds by computing an upper bound on complexity measuring the compressed file size of your model after training. Mhmm. But in order to use that prior as some sort of
+
+  [00:54:15]
+
+  regularizer Mhmm. You would need to be considering sort of compression of some whole set of different hypotheses, not just a single hypothesis that's found by the model. And so there's an open question of how you could try to operationalize that. Like Solomonov induction is sort of an represents
+
+  [00:54:30]
+
+  an idealized learning system. It's not something that we can really do exactly in practice. It seems that neural nets are sort of approximating it, and that's evidenced by these bounds and how they're able to tightly characterize generalization behavior of these models. But
+
+  [00:54:45]
+
+  it it's hard to sort of turn into into some kind of regularizer. I'm also interested in how we can go beyond things like Kolmogorov complexity. So Kolmogorov complexity doesn't distinguish between incompressibility due
+
+  [00:55:00]
+
+  to randomness. So like noise for example in our data versus structural complexity. And Scott Aronson actually had a really interesting blog post related to this about 10 or so years ago, where he was imagining a system.
+
+  [00:55:15]
+
+  He had this kind of physics analogy where you have coffee and cream and initially they're separated liquids and you start to stir them together. And as you do this, the entropy of this system is increasing.
+
+Tim Scarfe [00:55:25]:
+  I've seen that 1. That was shared on our Discord recently. Yeah. Yeah.
+
+Prof. Andrew Wilson [00:55:28]:
+  Very nice. Okay.
+
+Keith Duggar (Co-Host) [00:55:30]:
+  Join
+
+  [00:55:30]
+
+  our Discord.
+
+Prof. Andrew Wilson [00:55:31]:
+  I'd love to. Yeah. We actually have a yeah. I don't wanna get ahead of myself. We have an idea of course for how we can do this. So the the blog posts sort of compares this to end. So the entropy of the system is increasing, the Kolmogorov complexity is increasing.
+
+  [00:55:45]
+
+  But the intuitive sophistication of that system is kind of non monotonic. Initially, it has low entropy, low sophistication, then sort of intermediate sophistication and entropy, and then again sort of like oh, sorry. And then high entropy and
+
+  [00:56:00]
+
+  kind of low sophistication. And so you can think of this in machine in a machine learning context in terms of reasoning about the value of data. So if I sample data from like a uniform random uniform distribution, that's gonna be very incompressible. I'm gonna need to memorize it. It's sort of uncorrelated.
+
+  [00:56:15]
+
+  This could be useless for learning a representation, for training my model. I could alternatively imagine some sort of sophisticated cellular automata problem, some sort of game of life problem with very sophisticated generalization rule or generation rules. That data actually
+
+  [00:56:30]
+
+  could have an extraordinary amount of value for learning a representation. There was a paper that looked at something briefly like this called Intelligence at the Edge of Chaos, and I think there are other results like that that are coming out that you actually might want to train your models on this data with a lot of structural complexity, even
+
+  [00:56:45]
+
+  if you really want in the end the model has some kind of outcomes, razor bias, etcetera. And so we've been thinking about kind of measures of information that might compartmentalize structural complexity and random complexity. And this will help us reason better about the value
+
+  [00:57:00]
+
+  of data and developing priors sort of that are like Solomon of priors, might actually be more directly addressing the type of incompressibility that we're interested in.
+
+Tim Scarfe [00:57:09]:
+  Yeah. I mean, so you said you said so many interesting things. I mean, of all, to Keith's point, you were saying that
+
+  [00:57:15]
+
+  this isn't a penalty term yet your hypothesis is that neural networks implicitly do this kind of compression, which might be correlated or related to this Kormigrov complexity. So many folks just kind of they equate intelligence
+
+  [00:57:30]
+
+  with compression. And when I spoke with David Krakauer, he took umbrage of that. He said, you know, compression is a component of of intelligence, but there are so many other things going on as well. And certainly, when we look at things like the ARC challenge, there are so many possible solutions. So a naive heuristic
+
+  [00:57:45]
+
+  of just selecting the simplest program isn't always the best thing to do. There are many possible selections that you could make. And, you know, so so you you you demonstrated this upper bound which used this complex detail. And in a sense, that's saying that
+
+  [00:58:00]
+
+  it could be no worse than this rather than it could be but it could actually be so much better. And our empirical experience of deep learning models is that they they seemed, you know, we call it shortcut learning basically. Know, they they they seem to have found some
+
+  [00:58:15]
+
+  superficial generalizing thing which does all the things you said when you mentioned the no free lunch theorem. So you could take a CNN and you could use it on tabular data. You could take a transformer and you could use it on audio data. So it's almost like what we've seen is that we've we've hit this, for want of a better word, local
+
+  [00:58:30]
+
+  minimum. And it feels like we need something more to get to the real understanding of some of these problems. Does does does that make sense?
+
+Prof. Andrew Wilson [00:58:40]:
+  So is compression intelligence? I think this is a big debate right now. I think
+
+  [00:58:45]
+
+  it is very closely associated with intelligence in a lot of ways. If we can compress our data really effectively, then in order to do that, we're discovering regularities that are typically gonna help enable generalization. And in some sense, physical laws, for example,
+
+  [00:59:00]
+
+  are a great compressed representation of reality. And so I think that compression is really intricately connected with what we mean when we talk about building intelligent systems. There are instances in which this can go very wrong, like in shortcut learning,
+
+  [00:59:15]
+
+  where for instance you might have some spurious correlation, like maybe every time there's a blue pixel in an image, the label is a bird or something like this. And so the model forgets about the foreground and it just looks for some feature in the background. In terms of generalizing
+
+  [00:59:30]
+
+  on that distribution, that's actually not a bad idea. That actually is the right thing to do. So Occam's razor is really a good principle. But if we go out of distribution, so we see like a birds in, you know, with a volcano or something behind it or in
+
+  [00:59:45]
+
+  a room, then, you know, it's not gonna arrive at the right label. So there's this question of like, are there other principles of induction that will lead to greater robustness under distribution shifts? I think in general, Occam's razor still is the right thing to
+
+  [01:00:00]
+
+  do. Like, there are many cases where a compression will actually not give you what you want more broadly if you move beyond that distribution. But in a absence of additional information, it
+
+  [01:00:15]
+
+  seems like you can't really do better as a guess as to what's the right strategy. And so I still think Occam's razor is a very robust principle of induction. And perhaps 1 answer is just more data. I think this will work well in some cases
+
+  [01:00:30]
+
+  and not in others. So we have some work in progress on trying to build transformers for matrix operations. So this is actually kind of analogous to the work that people have done on transformers for multiplication,
+
+  [01:00:45]
+
+  addition, things like this. So I guess, you know, these systems, LLM, seem very impressively effective in some instances in being able to write and code and solve a variety
+
+  [01:01:00]
+
+  of different problems we didn't really expect them to be able to solve. In other instances, they're just shockingly bad. So you know, how many r's are in strawberry, like all the reversing strings, counting, and just basic addition and multiplication, etcetera. And so there's
+
+  [01:01:15]
+
+  this debate, I I think, about whether we should be giving them tools to do those things. Like, why not just give them a calculator? I mean, whatever they learn to do in terms of adding and multiplying numbers is still not gonna be as efficient as giving
+
+  [01:01:30]
+
+  them access to to a calculator. So why don't we just do that? Or like, you know, is there some sort of greater value in having to sort of learn a representation that can do some of these things? Because maybe even though we'll always wanna use a calculator if we're multiplying or adding numbers, being
+
+  [01:01:45]
+
+  able to do something like that reasonably well might transfer into other settings that we don't really anticipate. And I'm probably more in this category, like I just think intellectually we should try to figure out how to do this without tools. And so this work that we're doing on transformers
+
+  [01:02:00]
+
+  for matrix operations, I think is quite analogous. So you could argue that addition and multiplication are just fundamental primitives for trying to build intelligent systems. We're not as good as a calculator is, but it might be important for us to have some ability at being able
+
+  [01:02:15]
+
+  to do these things. The same could be said of matrix operations. This is really the backbone of all sorts of different learning algorithms like Gaussian processes, which we discussed a little, involve solving linear systems with a covariance matrix, computing log determinants, etcetera. Deep generative models
+
+  [01:02:30]
+
+  like normalizing flows involve log determinants, dimensionality reduction like PCA, etcetera involve other matrix operations. And so they're just really ubiquitous as kind of a primitive for trying to build learning algorithms and intelligent systems. And so
+
+  [01:02:45]
+
+  I think if transformers are ultimately going to become some sort of general intelligence, then they ought to be able to to be confident at these types of operations. And so we were kind of representing then matrices as sequences of numbers
+
+  [01:03:00]
+
+  and then having the outputs be things like the maximum eigenvalue solution to a linear system or whatever other operation we were considering, the spectrum of eigenvalues. And we found interestingly that when you train this approach on
+
+  [01:03:15]
+
+  Gaussian random matrices, you just sample every entry of the matrix from a standard normal distribution. It will do fairly well at in distribution matrix operations, so other matrices sample from that distribution that it hasn't seen
+
+  [01:03:30]
+
+  before, but extraordinarily poorly, even if you go slightly outside of that distribution. So given an identity matrix, all ones in the diagonal, 0 everywhere else, that'll have pretty low density, has support under this Gaussian distribution or matrices, but pretty low density under it, hasn't
+
+  [01:03:45]
+
+  seen something very much like that. It will just completely fail. It won't do anything reasonable. And so we considered a number of interventions, like looping, sort of adaptive test time computation, enriching the training distribution very significantly, so having sort of this
+
+  [01:04:00]
+
+  EinSum space of structured matrices that we were sampling from, so all sorts of different matrix structures, Toplitz, Kroniker, etcetera, block diagonal, low rank, and so a variety of other interventions. And interestingly
+
+  [01:04:15]
+
+  we found once we had done that, this approach actually was able to generalize even to matrices that were out of distribution for this fairly rich sort of training set that we've created. And so it seemed to move more towards learning an algorithm
+
+  [01:04:30]
+
+  rather than just doing statistical interpolation on the training data. And so this is I'm an optimist by nature, so I I am very happy about the fact that we can use data to move towards things like algorithm discovery. But now I remember why
+
+  [01:04:45]
+
+  I started talking about this. So I think there are instances where it's going to be hard. So autonomous driving is is an example Right. Where like you have outliers but they're different each time. So just training on the outliers isn't gonna be useful because they're gonna be new outliers that look very different from those outliers. And I just have
+
+  [01:05:00]
+
+  the intuition that more data alone is not really the answer to building robust autonomous driving systems.
+
+Keith Duggar (Co-Host) [01:05:06]:
+  Yeah. I just wanna say as far as why not just give them tools, I mean, my answer folks is because those have to be programmed and built by people. And the whole point
+
+  [01:05:15]
+
+  here is to allow machines to do their own programming. Right? Machine learning. And if they can't if they can't even learn to do multiplication reliably and to generalize from decimal multiplication to binary or hexadecimal and 9 digits to 36
+
+  [01:05:30]
+
+  digits. You know? What hope do we have that they're gonna discover relativity or non Newtonian mechanics or any other kind of frontier frontier things? Right? I mean, isn't that part of the goal here?
+
+Prof. Andrew Wilson [01:05:42]:
+  Absolutely. And I think being able to do certain things while
+
+  [01:05:45]
+
+  we're finding might surprisingly relate to doing other things very well. And so I think we have seen this to a large extent with LLM. So we had a paper where we just took a text pretrained LLM off the shelf and applied it to time series forecasting. So we did everything naively.
+
+  [01:06:00]
+
+  We weren't even really intending for this to be like a proper project or a paper. We were just curious, you know, if you just give GPT like a sequence of numbers naively encoded to strings and have it extrapolate the next sequence of string tokens, how would it compare to purpose built time
+
+  [01:06:15]
+
+  series forecasting procedures? And it just worked way way better than we thought it could possibly work. It didn't even really make sense. And so we did sort of turn this into a proper project. We did a little bit of work on trying to improve the tokenization and think about uncertainty representation,
+
+  [01:06:30]
+
+  etcetera. But most of that paper, it's called Large Language Models or 0 Shot Time Series Forecasters, was focused around trying to understand how this is even possible. And in the end, it it did start to feel a bit more like maybe it's not just that you can do this,
+
+  [01:06:45]
+
+  maybe you should do it in some instances. Like they did quite well on on a variety of benchmarks. And to me, this suggests with like a proper dedicated research effort on LLMs for time series, you know, we could see these systems actually working a lot better than the purpose built models. And so what
+
+  [01:07:00]
+
+  that shows is being able to predict the next words in sentences can actually transfer to being able to do other things like series prediction really well. And we had another paper on LMs for materials generation, which was kind of similar. So we
+
+  [01:07:15]
+
+  took a text pretrained LLM off the shelf, like a LAMA 2 model at the time. And we fine tuned it, in this case, on atomistic data represented as text, so locations of atoms and energies and things like this. And the
+
+  [01:07:30]
+
+  resulting system was able to generate inorganic crystals with favorable properties better than these purpose built approaches, and even foundation model approaches that had been trained on that domain specific data. And so 1 of the takeaways from that project was like the text
+
+  [01:07:45]
+
+  based pre training was an indispensable component in being able to achieve good results on materials generation. And we tried to understand also in that paper why that was the case. We were collaborating with some some chemists at Fair in California, and they were just very curious about LMs and foundation models.
+
+  [01:08:00]
+
+  So they're willing to sort of humor us a bit and help us sort of see what we could do. But they were just like skeptical throughout the project until we we saw the results. And it's like, well, you can't deny the results are great. You know, why is this happening? And part of it was that in being able to predict the next tokens
+
+  [01:08:15]
+
+  in strings, you are learning principles of induction like Occam's razor. And so how do those sort of manifest themselves in in context learning? So what it means is if you are and in fine tuning. So what it means is these models are gonna be predisposed to discovering compressible representations.
+
+  [01:08:30]
+
+  And that means, for example, salient symmetry. So this was a problem where there was a rotation invariance. And these models actually were very quick to learn these kinds of invariances because of the text based pre training. And it sort of instilled this principle. And so I think this is also an example of how compression
+
+  [01:08:45]
+
+  can be a broadly applicable principle for induction. It's after the right level of abstraction that you can start to see more relatively universal behavior. So for instance, there are some theories on the success of foundation models
+
+  [01:09:00]
+
+  that suggest that different problems are just different projections of some underlying reality. So like platonic representation hypothesis is an example of this. Mhmm. And so you can represent an image with pixels or with words and
+
+  [01:09:15]
+
+  you know, train the respective models on those different modalities and they learn similar representations. I think that can be true in some instances, but I also think different problems are often truly quite different from each other in terms of their low level structure. So like if we have molecules, there's rotation and variance, maybe
+
+  [01:09:30]
+
+  some other problems, some image recognition problem, like character recognition, we might have translation invariance. Doesn't matter if the 2 is on the left of the screen or the right of the screen, the label is still a 2. These are very different low level feature representations. So like the architectures that you would
+
+  [01:09:45]
+
+  typically use for each of those modalities and to respect those different types of invariances would look very different. But what they have in common with each other is they're both ways to compress the respective problems that they're being applied to. So if you have a model that has
+
+  [01:10:00]
+
+  this compression bias, then it can discover those salient symmetries. And we had this really surprising finding that vision transformers actually can be more translation equivariant than convolutional neural nets after training, which sounds impossible because conv
+
+  [01:10:15]
+
+  nets by design are are translation equivariant. But they're not exactly translation equivariant because of aliasing artifacts and edge effects and things like this. And so this other model, this transformer with no explicit constraint whatsoever, just a soft bias that manifests
+
+  [01:10:30]
+
+  itself increasingly at scale, is able to discover a solution that has lower equivariance error than the convolutional neural net, which is just absolutely remarkable. So to come kind of full circle to your question, I think that we're discovering more and more that being
+
+  [01:10:45]
+
+  able to solve certain problems really well will translate in perhaps unexpected ways to being able to solve other problems well. And so I think especially when comes to things like addition and multiplication and matrix operations, like these are just even like obviously
+
+  [01:11:00]
+
+  like fundamental primitives for building intelligent systems. Like even if we can use tools for those things, we want our representations to be somewhat competent at them because it's going to be useful for all sorts of other things we probably haven't anticipated.
+
+Keith Duggar (Co-Host) [01:11:12]:
+  So Occam's razor has been mentioned multiple
+
+  [01:11:15]
+
+  times in in our in our in in the last few segments. I wanna dive into that bit because I love Occam's razor. And I first came to really understand it when I became a Bayesian, and it's nice to have a fellow, you know, Arch Bayesian and talk to talk with here.
+
+  [01:11:30]
+
+  Because in Bayesian inference, if you will, Occam's razor has a very explicit form, like mathematical form, and it's marginalization. Right? It's saying, like, if you have all these parameters around and
+
+  [01:11:45]
+
+  you you compute the average, you do this integration over all these parameters, that really that's telling you, like, the probability of the model, like, your, you know, full parameter space having been integrated away. And that's really where you get, you know, let's say a penalty
+
+  [01:12:00]
+
+  for complexity comes into play with with marginalization. It's like if you make if you expand your model's flexibility or you make it more complicated without any gain in inference, well then that kind of, like, counts against you or without any gains of some weird simplicity
+
+  [01:12:15]
+
+  in the form of, you know, less curvature, you know, things like that. And I was looking at some of your talks, which were really great from from 5 years ago, these these Bayesian tutorials, Bayesian deep learning tutorials you had, I think, when you first when you first went to NYU.
+
+  [01:12:30]
+
+  I really enjoyed them. And there was a lot of talk about marginalization and the importance of it and the intuitions that you gained from that. And I think but more recently, that's played less of a role in the conversation or people have just given up
+
+  [01:12:45]
+
+  on trying to do the integrals, and they're just back to doing maximum likelihood and maybe with some hacks and the objective function. So I'm just kinda curious, you know, as a Bayesian, your journey going from understanding, like, the beauty of marginalization and the Occam's razor built
+
+  [01:13:00]
+
+  into Bayesian inference versus what you do as a practitioner, what you see people doing in practice, how it's playing out in the field or not? And maybe is there a future in which marginalization and doing these computational intractable
+
+  [01:13:15]
+
+  integrals or something could play a role in driving, like, even better, you know, machine learning and inference?
+
+Prof. Andrew Wilson [01:13:21]:
+  I'm so glad you asked. So there's almost nothing I like more than talking about Bayesian inference. And I'm so glad you said marginalization because I feel like that's often overlooked.
+
+  [01:13:30]
+
+  Like when someone says Bayesian, probably the word that comes into your most people's mind is prior. And is the prior good? And how do we know what would a good prior be, etcetera. And they get worried about that. But really, the prior is not the defining feature of what it means to
+
+  [01:13:45]
+
+  be Bayesian. It instead, being Bayesian means that you want to represent the honest belief that you have uncertainty over what solution is correct given a finite data sample. And so if I'm trying to estimate, you know, the bias of
+
+  [01:14:00]
+
+  a coin that I'm flipping, if I flip it once or twice, regardless of whether it comes up, you know, heads twice or something like this, I ought to have some uncertainty over the bias still. And that uncertainty is manifested through this procedure called marginalization.
+
+  [01:14:15]
+
+  So I think we can think of regression to get some intuition of this. So we could imagine like a bunch of different points on a sort of y x plot. And maybe the points look roughly like they're on a straight line, but not quite. We could also
+
+  [01:14:30]
+
+  imagine that there are many different curves that will perfectly run through all of those points, that all look different from each other. Some of them will be very wiggly, some of them will be slowly moving, etcetera. Some of them will basically just be like a straight line. And we wouldn't be able to say, well, we know with
+
+  [01:14:45]
+
+  100% certainty it's this curve that's the right description of our problem. But that's exactly what we're doing, you know, 99 a 100 minus epsilon percent of the time when we're training models in deep learning. That is not an honest representation of our beliefs, and it's gonna become a bigger and bigger problem
+
+  [01:15:00]
+
+  the more expressive our model actually is. Because that means there are gonna be many more different settings of parameters that are consistent with what we observe, and we're just betting everything on 1 of them. And probability theory says, no, that's that's just wrong. That's not what you should be doing. The summoned product rules of probability
+
+  [01:15:15]
+
+  say you should be doing marginalization. And so that's all to say that Bayesian marginalization, basically looking at all possible solutions that can be expressed by your model class, weighted by their posterior probabilities, is going to be most important when
+
+  [01:15:30]
+
+  we have a model that's very expressive, has a lot of parameters, so deep learning for example, especially relative to the number of data points that we're considering. And I think often people think of it in in the opposite way that like, oh, maybe Bayesian methods are most relevant in the realm of classical
+
+  [01:15:45]
+
+  statistics. Like if you're doing some logistic regression and and you know, maybe you want to represent some uncertainty etcetera, but it's not really really suited for deep learning. It's really the opposite. The challenge then is how do we do this in a way that's computationally tractable. And I think, like with most
+
+  [01:16:00]
+
+  things in life, the answer of course is nuance. So it's not that like we can either be fully Bayesian or not Bayesian at all. Let's just try to do what makes sense given the resources available to us. And so, like, if we're just
+
+  [01:16:15]
+
+  doing standard training, you can actually view that as a very crude form of marginalization where you're saying, okay, I'm representing the the posterior as a point mass around the most likely setting of parameters. And then we can say, okay, well, maybe the posterior,
+
+  [01:16:30]
+
+  which is really like the loss functions that we're minimizing are basically negative log posteriors. Maybe the posterior looks nothing like a point mass and it looks nothing like a Gaussian. It's very multimodal. It's very messy. But we can still do a better job of representing it with a Gaussian than
+
+  [01:16:45]
+
+  with a point mass. And so let's use a Gaussian approximation. And indeed, when we do that, we often see better generalization because we're representing all these other complementary and compelling explanations to our problem. And then we can keep taking it from there. Okay. Maybe we can develop some MCMC procedure that will explore
+
+  [01:17:00]
+
+  the loss landscape and capture something much richer than just unimodal Gaussian structure, etcetera. And again, we see improvements in performance in doing that. And so I actually think that Bayesian methods have been an extraordinary success story in deep learning and
+
+  [01:17:15]
+
+  beyond. But we don't hear as much about them now as we did maybe 10 years ago. And I think there are a number of reasons for that. So to some extent, they're a victim of their own success. So I think there there
+
+  [01:17:30]
+
+  was some low hanging fruit in being able to do better approximate marginalization in neural nets around 2015. And there was really a lot of progress between about 2015 and 2020 in achieving increasingly better results that
+
+  [01:17:45]
+
+  will also be kind of computationally efficient. So there are procedures like 1 we developed called SWAG for instance, which was based on some insights we had into the the structure of these loss landscapes that will allow you to do Bayesian marginalization without really any
+
+  [01:18:00]
+
+  significant additional cost on training. It's a bit more expensive test time and so on. It's also deep kernel learning, which basically just requires a single forward pass through the model, and you get sort of some representation of a specific certainty. And these procedures were adopted in practice. And so if I go like
+
+  [01:18:15]
+
+  to some more domain specific conference, like some workshop or conference on materials engineering and things like that, I'll see lots and lots of talks using Bayesian optimization, Gaussian processes, neural networks with epidemic uncertainty
+
+  [01:18:30]
+
+  representation, etcetera. So this is really useful in practice, but it's very hard to kind of go beyond the useful approximations I think we developed without doing a significantly without making sort of a really significant,
+
+  [01:18:45]
+
+  you know, 10 year kind of style moonshot landing kind of investment in those directions, which I think is worth making. Secondly, there's the advent of LLMs, and that did sort of change things in practice. So like we went from million parameter models to billion
+
+  [01:19:00]
+
+  parameter models. And the role of epistemic uncertainty is also a little bit less clear, I think, in some instances when we're working with LLMs. And so this is just a a real technical challenge and I think we're just sort of barely starting to scratch the surface
+
+  [01:19:15]
+
+  of how to think about it. But the motivation is absolutely there. I think it's really greater with these big models than it is for virtually any other model class. And in this sense, I don't know how anyone could not be a Bayesian. Like, how could anyone say, I don't want to represent epistemic uncertainty?
+
+  [01:19:30]
+
+  I don't like using jargon. So there's like, there's aleatoric uncertainty, which means irreducible uncertainty often associated. Like, we have given a data set, we have some noise on that data set, there's nothing we can do about it. That's aleatoric uncertainty. Epistemic uncertainty is uncertainty that's reducible with more
+
+  [01:19:45]
+
+  information. And we believe that uncertainty is there. And there's even an argument that that might be the only uncertainty in the world. Right? Like things that seem intrinsically random like I could roll a dice Right. And it might seem like, okay, there's a 1 6 probability that it'll land on any 1 of the sides. But if I had enough information, like if I
+
+  [01:20:00]
+
+  could sort of exactly know the strength of the throw, the wind in the air, the friction on the table, and I had the right physical model, I should be able to predict exactly what side it's gonna land on with each throw. So that's just saying, okay, the more information we gather, the less uncertainty we have, even for this
+
+  [01:20:15]
+
+  process that somehow seems intrinsically random. And physicists, modern physicists now, you know, probably do believe that some aspects of the universe are intrinsically random, radioactive decay and things like this. But many others have not historically, like Einstein was a determinist. And
+
+  [01:20:30]
+
+  so he would have believed that the only uncertainty there is is epistemic uncertainty. And I think for practical purposes, that's not an unreasonable belief. And so it's absolutely crucial that we try to model it in some way to not do it is just to do something that's
+
+  [01:20:45]
+
+  mathematically incorrect and could come at a huge cost. There's also a change I think that's happened in this movement to LLMs in the way that people think about data. So it used to be the case that you kind of have a fixed data set and then you throw everything you can at
+
+  [01:21:00]
+
+  it to get the best possible performance. Maybe you have some scientific problem and you just really want to do well, and you're limited by computation and other things to some extent. But it's not the case that you have this sort of trade off to manage for a given computational
+
+  [01:21:15]
+
+  budget between the size of the data and the size of the model. And so that's described by these scaling laws like Chinchilla scaling laws. And that is starting to become the assumption in mainstream machine learning that you have almost like an arbitrary amount of data and you have
+
+  [01:21:30]
+
+  a fixed computational budget and you want the best possible performance under that computational budget. In that case, you know, rather than trying to be more Bayesian or something like this, it could actually make sense just to use more data.
+
+Keith Duggar (Co-Host) [01:21:42]:
+  Well, but the but the other huge benefit though is because you
+
+  [01:21:45]
+
+  mentioned, you know, that for whatever reasons that we're still trying to understand, these large, you know, large neural networks, deep neural networks have this kind of simplicity bias towards simplicity. Right? And marginalization is the ultimate Occam's
+
+  [01:22:00]
+
+  razor. You know, it's like Occam's guillotine or something that really can force models, you know, force you to select, let's say, the simplest model that's consistent with the data in a in a sense. So I think there's possibly more to gain there, like just,
+
+  [01:22:15]
+
+  you know, trying to understand in computationally tractable ways how to pull in more of those effects of marginalization, like, on inference. I mean, is that true?
+
+Prof. Andrew Wilson [01:22:25]:
+  Absolutely. Yes. So Bayesian marginalization has this
+
+  [01:22:30]
+
+  automatic Occam's razor bias, and I actually started working on Bayesian deep learning ironically when I saw a talk on optimization, which might be viewed as almost the opposite of being Bayesian. So Jorge Nosidal gave a talk at Cornell where I was initially faculty
+
+  [01:22:45]
+
+  and he was presenting on small batch biases basically of stochastic optimizers. And he had this figure where he was contrasting flat optima with sharp optima and he had this horizontal translation of the the loss landscape. And under that
+
+  [01:23:00]
+
+  translation, the flat minimum still had reasonably good test loss, but the sharp minimum had very bad test loss. Right. And so he was saying, this is why we want to do stochastic optimization with small batches because it's gonna be more likely to find
+
+  [01:23:15]
+
+  these flat solutions. And in some sense, like the other optimizers, like his LBFGS and so on, were like too good. They were like converging to these sharp minima. If like you just care about minimizing loss, then maybe not bad behavior, but generalization depends more than on just getting a low value of loss, at least with the loss
+
+  [01:23:30]
+
+  functions that we're using. And so I saw that figure and I thought, well, this is actually really great motivation to be Bayesian because if you're being Bayesian, you're not just betting everything on 1 solution, you're integrating under sort of a flipped version of that curve. And so automatically, most of the volume will
+
+  [01:23:45]
+
+  be in these flat regions. And that's so much more elegant than approaching this from the optimization perspective where you have to say then, okay, I need to rigorously define what it means to be flat. Like, maybe it's gonna be like the largest eigenvalue of the Hessian. Maybe it's gonna be
+
+Keith Duggar (Co-Host) [01:23:59]:
+  or
+
+  [01:24:00]
+
+  something like that.
+
+Prof. Andrew Wilson [01:24:01]:
+  Exactly. Yeah. Maybe flatness in random directions versus sharpest directions. Maybe it needs to be parameterization invariance. Like that's that's been often a criticism of of discussions around flatness etcetera that it's most ways of measuring
+
+  [01:24:15]
+
+  flatness aren't parameterization invariant. I have thoughts about that separately, but anyway, you you might then look at Fisher matrices or something. Okay. So then once you've decided on what it means to be flat and no 1 will completely agree with you or most people will will strongly disagree whatever you choose, then you have to decide like how
+
+  [01:24:30]
+
+  much am I gonna penalize sharpness. No 1 will really know what to do about that either. Right. And like the idea is you wanna build a loss function that is a better proxy for generalization by accounting for things like flatness, but it's just this really messy rabbit hole. Whereas if you're just doing marginalization, this is all happening under the hood. You don't
+
+  [01:24:45]
+
+  need to worry about it. And so that's really elegant. And then there's Occam's razor in terms of model selection. And I I'd recommend that everyone check out chapter 28 of David Mackay's information theory and and inference learning algorithms book. It's titled Occam's razor. And I
+
+  [01:25:00]
+
+  don't agree with some of the stuff in that chapter and in fact we wrote a paper about this on Bayesian model selection and marginal likelihoods. But it's it's a very beautiful description of automatic Occam's Razor and he has these just extraordinary visualizations to try to demonstrate how that's possible. So he has like these
+
+  [01:25:15]
+
+  also, you know, everyday examples as well like this idea that maybe you have like a block behind a tree. But if you had x-ray vision, it would appear to be like 2 blocks of equal height and color or 10 blocks or something like this. But given that you don't have x-ray vision and you don't think this is a trick question,
+
+  [01:25:30]
+
+  you'd be pretty confident it's gotta be 1 block. And this seems like some manifestation of Occam's razor and you might try to rationalize this by saying, well, it would be just a remarkable coincidence to have 2 blocks standing next to each other of equal height and color. But he argues that this is actually a
+
+  [01:25:45]
+
+  quantifiable consequence of doing Bayesian marginalization. And so he basically has this conceptualization where you have all possible data sets on a horizontal axis, and the probability of generating a particular data set under your model
+
+  [01:26:00]
+
+  on the vertical axis. And that's the marginal likelihood, the the probability that you would generate your training data under your model prior. And so if you have the 1 block model, you're not gonna be able to generate very many different data sets. So most of the datasets on the horizontal axis have no support,
+
+  [01:26:15]
+
+  no p d given m. But the ones that it can generate, it's gonna have to give a lot of probability for it because this is a proper, normalizable probability density. Similarly, if you have the 10 block model, you can generate all sorts of different types of observations, you're but gonna have to sort of spread that mass more thinly
+
+  [01:26:30]
+
+  because this is like a proper normalizable probability density. And so for a particular dataset that's consistent with both of these models, like the block behind the tree example, the 1 block model is actually gonna have significantly more probability. And this is even not factoring
+
+  [01:26:45]
+
+  into account the idea that maybe we have some prior preference for simplicity and that there's like, we think that 1 block is more likely than 10 block or something like that. He's just let's just forget about this ratio of prior odds and only consider this ratio of marginal likelihoods. And so it's just a beautiful
+
+  [01:27:00]
+
+  demonstration of how Bayesian inference automatically encapsulates a notion of Occam's razor. This is just a fundamental question in science. Like, if you have arbitrarily many hypotheses that are consistent with any number of observations you can ever record, how do you choose between
+
+  [01:27:15]
+
+  them? What what what's the principal way of approaching that problem? And the answer to some extent, I think, is given by Bayesian marginal likelihoods. There are very subtle issues, think, with some of the ways that this can be done, and so we wrote a paper all about that. But
+
+  [01:27:30]
+
+  largely speaking, it's, you know, something that I think people should acquaint themselves with because it it really is sort of getting at something very fundamental and it's has extraordinary practical value.
+
+Keith Duggar (Co-Host) [01:27:40]:
+  What was that paper? Was that
+
+Prof. Andrew Wilson [01:27:41]:
+  The the 1 that we were sort of looking at. So exam so we have a paper called Bayesian Model Selection,
+
+  [01:27:45]
+
+  the Marginal Likelihood, and Generalization. And so that paper is really trying to sell 2 sides of a story. On the 1 hand, it's trying to convince the readers that the marginal likelihood is something quite extraordinary and that there's a reason we should be interested in
+
+  [01:28:00]
+
+  it. Because if it isn't, then, you know, if you haven't heard of it, why even read criticisms of it if it's something that doesn't matter. The other part of the paper is questioning whether it's answering exactly the question we want to
+
+  [01:28:15]
+
+  be asking when we're doing model selection towards trying to achieve the best possible generalization. And so the question that the marginal likelihood answers is what is the probability that my prior generated the training data? That's different
+
+  [01:28:30]
+
+  than what is the probability that my posterior, after I've observed the data, is going to lead to reasonable predictions? Mhmm. And so we can construct examples that really illustrate this difference. Like you could have a uniform prior over solutions that you
+
+  [01:28:45]
+
+  expect to be easily identifiable from the data. And so the posterior will contract very significantly around something that will actually be quite reasonable and make reasonable predictions, but the marginal likelihood will be really bad. And so we construct all sorts of examples where there's actually a misalignment
+
+  [01:29:00]
+
+  between the marginalize marginal likelihood and generalization for these reasons. You could also overfit even though you have sort of some robustness to overfitting. Like if you're considering arbitrarily many models, you could just get super unlucky and have a model which is like a
+
+  [01:29:15]
+
+  point mass prior around something that can only generate that training data set, but isn't going to do anything reasonable. So the marginal likelihood might prefer that, but it's not going to lead you to a model that's going to make good predictions. It is very useful as sort of a heuristic for model selection in many instances. It's
+
+  [01:29:30]
+
+  got incredible practical value in learning things like hyperparameters that control complexity in Gaussian processes. And I think it often is the right tool for scientific hypothesis testing, which is subtly different. And so you could This is actually a real historical example. So there was a dispute
+
+  [01:29:45]
+
+  between statisticians. Think Columbia University thought that general relativity was not the explanation for Mercury's irregular orbit. It's called Mercury's perihelion. There must be some hidden planet or some orbital debris or something like that. And so Bayesian statisticians actually went
+
+  [01:30:00]
+
+  ahead and computed the marginal likelihood associated with general relativity explaining Mercury's orbit versus these alternative hypotheses like some modifications in Newtonian gravity, etcetera. And because general relativity was so falsifiable, like its predictions
+
+  [01:30:15]
+
+  were so sharp and consistent with what we observed, it had orders of magnitude greater marginal likelihood than something like a modification to Newtonian physics, where you have to have some distribution over the modification might sort of enable you to explain what we see, but it also is gonna generate other data sets.
+
+  [01:30:30]
+
+  And so its mass is gonna be spread more thinly. And so I think that's actually a beautiful demonstration of how the marginal likelihood can be used for for scientific hypothesis testing.
+
+Tim Scarfe [01:30:38]:
+  Yeah. Are there any other heuristics? I mean, we've spoken about marginal likelihood and model complexity and so on. And I'm just thinking
+
+  [01:30:45]
+
+  of take the game of life. You know, you have all of these simple rules. And what we do there is we do this, you know, the sequence of computations and it's irreducible as as Wolfran would say. And we just look at the dynamics. Right? I mean, is is there something to that? Is it intuition
+
+  [01:31:00]
+
+  is that just by looking at the thing in isolation doesn't tell you something. Actually running it, you know, in in the real world over several steps of computation, that that's where the information is about whether the model is good or not. Is is that is
+
+  [01:31:15]
+
+  that a fair intuition?
+
+Prof. Andrew Wilson [01:31:16]:
+  That's a great intuition. And it's connected with the marginal likelihoods and some prequential coding and ideas and information information theory. So this is something we've been thinking about a lot actually in trying to go beyond Kolmogorov complexity and very much related to your earlier question connected
+
+  [01:31:30]
+
+  to benign overfitting. This observation that models first tend to fit structure and then they start to fit noise. And so if we can think of some sort of like compute limited Kolmogorov complexity, maybe we can start to get some idea of how to do model selection. And the
+
+  [01:31:45]
+
+  marginal likelihood actually can be written as the So the marginal likelihood is the probability of the data under your model condition on your model. And so you can use the chain rule probability to write that as a product of p of d I given d less than I essentially. And
+
+  [01:32:00]
+
+  so you take a log of that and it looks sort of like the log under your sort of training curve as you're observing more and more data. And so these these things are all connected together. And I think this is a very reasonable way of trying to understand how to do model selection properly. Sort of thinking
+
+  [01:32:15]
+
+  about compressibility but also thinking about the dynamics of training. How like a model's representation evolves with increases in computation.
+
+Tim Scarfe [01:32:25]:
+  Yes. And then David Cracow, I mean, when he talks about intelligence, he said it's was it inference, adaptivity,
+
+  [01:32:30]
+
+  and representation? But when he was talking about emergence, he said it's about a fundamental reorganization in in the micro substrate. So, you know, take Navier Stokes, for example, it's a reorganization where this new high level description now does, you know, is is a better
+
+  [01:32:45]
+
+  description than at the molecular level. And surely, there must be a thing in training dynamics as well that, you know, when if if there is some kind of emergent behavior, there would be a fundamental reorganization. And then with some emergent test optimization where you are looking at the macroscopic behavior, you would actually
+
+  [01:33:00]
+
+  select that underlying model which generated it.
+
+Keith Duggar (Co-Host) [01:33:02]:
+  Mhmm. Yeah. I mean, I think that's that's the type of reorganization is is what's happening in in double descent and probably grokking too. Right? Where like
+
+Tim Scarfe [01:33:11]:
+  Was it? That's an interesting Yeah.
+
+Keith Duggar (Co-Host) [01:33:12]:
+  Yeah. Like, you know, it starts to reorganize. Like, it's it
+
+  [01:33:15]
+
+  hasn't it's not that it's found lower lower loss or anything. It's just because of the simplicity bias. All the hyperplanes have started to adjust into, like, a simpler phase, you know, almost of of parameter space.
+
+Tim Scarfe [01:33:28]:
+  Yeah. We didn't we speak to Dan Daniel Roberts
+
+  [01:33:30]
+
+  about that? He had that criticality thing in doing training.
+
+Keith Duggar (Co-Host) [01:33:32]:
+  Right. Right.
+
+Tim Scarfe [01:33:33]:
+  That was a similar idea.
+
+Keith Duggar (Co-Host) [01:33:34]:
+  The deep learning. There's a we talked to these physics guys who who, you know, were trying to start, if you will, a physics based perspective on theory of deep learning. And they they had
+
+  [01:33:45]
+
+  some really interesting points about criticality and sort of the
+
+Prof. Andrew Wilson [01:33:49]:
+  yeah.
+
+Keith Duggar (Co-Host) [01:33:49]:
+  I agree. I think grokking is similar. Right? It's like you you start forcing more and more data and essentially because it can't memorize anymore, it's forced to reorganize into these simpler,
+
+  [01:34:00]
+
+  you know, more generalizable representations.
+
+Tim Scarfe [01:34:03]:
+  Yeah. More training.
+
+Keith Duggar (Co-Host) [01:34:04]:
+  Is that Well, more more training. And and also, it's related to the size of the model too. Right? Like, is it is it becomes if if it's too small to really memorize anymore, it has to reorganize.
+
+Tim Scarfe [01:34:14]:
+  Well, that's a good question,
+
+  [01:34:15]
+
+  dude, because you had this amazing paper out. And we we were skimming it earlier. What was it? It's not deep learning is not so mysterious after all. Different. Not so different after all.
+
+Prof. Andrew Wilson [01:34:23]:
+  No. Not so mysterious or different.
+
+Tim Scarfe [01:34:24]:
+  Yes. And then so so you're talking about this benign overfitting and, you know,
+
+  [01:34:30]
+
+  double descent and over parameterization. But would you would you lump potentially grokking in with that as well?
+
+Prof. Andrew Wilson [01:34:35]:
+  That's a great question. So in the intro at the end of the intro to that paper, I say that I'm not talking about grokking or scaling laws much in this paper because
+
+  [01:34:45]
+
+  these phenomena are often not treated as particularly mysterious or distinct to to neural nets. But I would say that they fit into this sort of suite of generalization phenomena that we can try to understand using some of the same tools. And
+
+  [01:35:00]
+
+  so the generalization bounds that I present in in that paper now are being used by us and others to try to understand the root of scaling laws. I mean, they they seem like remarkable laws of nature almost. Like if you increase computation by a certain amount, you can predictably
+
+  [01:35:15]
+
+  improve generalization on a set of tasks. But it's sort of this empirical law, and so we want to understand why. And this relates to why larger models might have stronger simplicity biases and things like that. And so definitely the generalization frameworks that we present in that paper
+
+  [01:35:30]
+
+  that I present in that paper can be used to shed light on scaling law behavior. Grocking is not something I've thought about too specifically, but it does seem to be the case that by training for
+
+  [01:35:45]
+
+  longer, the model is doing some reorganization that enables a more compressible solution. And so it would be very interesting. I'm sure people have done this, measure, like, on the flatness of the solution and things like that as you proceed through Grokking. And I think this is actually an older,
+
+  [01:36:00]
+
+  like many things, older than people might realize. So like double descent is thought of as like a modern deep learning phenomenon. But it was actually first presented in the 19 eighties. And so this has been sort of around for a while. And I remember like
+
+  [01:36:15]
+
+  Ilya Satskever and others talking about behavior that was very similar to grokking, where like the training loss isn't really changing, but training for longer actually leads to better generalization. And this relates a little bit to a procedure we had called stochastic weight averaging. And so
+
+  [01:36:30]
+
+  the idea there is you want to ramp up the learning rate to a relatively high constant learning rate, and then maintain a running average of the parameters as you're sort of traversing this loss landscape with SGD or ATOM or whatever else. And what happens when you do that is you're
+
+  [01:36:45]
+
+  sort of spinning around the periphery of flat solutions. And by taking an equal average, you get to move inside that region and get a much sort of like flatter solution. And that reliably led to better generalization. And it's quite convenient because you
+
+  [01:37:00]
+
+  can just load up a pre trained model and then increase the learning rate, do this for you know a certain number of epochs and get sort of better generalization as a consequence. And so I think you know grokking might be related to to that sort of behavior as well.
+
+Keith Duggar (Co-Host) [01:37:12]:
+  I think I think this ability to to move
+
+  [01:37:15]
+
+  in the parameter space during optimization, I personally think that's also part of the explanation for double descent. Right? Because it's like as you provide more and more flexibility and it can shift around a bit. So I'll give you give you why I think that
+
+  [01:37:30]
+
+  because, you know, you're familiar with integer programming. So like where you're trying to solve some system of equations where you're looking for a solution only among integers, you know? So you have whatever thousands of integers, extremely difficult combinatorial
+
+  [01:37:45]
+
+  optimization problem, you know, because what what am I supposed to do? Try out, like, all the different integers. There's no smoothness, etcetera. So people figured out, like, really early on. You know what? Let's just expand the parameter space to go from integers to just floating
+
+  [01:38:00]
+
+  point numbers, and then just do a floating point optimization. And when we get to the end, crystallize it to sort of the nearest, you know, integer solution that's like, you know, pretty turns out being pretty good. Mhmm. Right? And it's this ability to move, like, within
+
+  [01:38:15]
+
+  this numerical space smoothly, you know, that allows it to find, like, reasonable integer integer solutions. And I think that's sort of what happens with double descent too. Right?
+
+Tim Scarfe [01:38:24]:
+  You're preaching to the choir. So add flexibility.
+
+Prof. Andrew Wilson [01:38:27]:
+  Yes. Yeah. So we can have, yeah, flexibility in viruses.
+
+  [01:38:30]
+
+
+Keith Duggar (Co-Host) [01:38:30]:
+  Yeah. Right? So you can move around a bit more and then almost stumble into or maybe it's, you know, by virtue of whatever the structure or the landscape or SGD, you know, whatever it is. But just the ability to kind of and I think there's a paper about these wormholes, like
+
+  [01:38:45]
+
+  sort of being able to wormhole to a better a better solution, you know, because you have a more complex space. And the higher and higher the dimensionality is, the more likely there's sort of a wormhole to a near a nearby good solution. And maybe it's related to this connected modes.
+
+Prof. Andrew Wilson [01:38:59]:
+  Exactly.
+
+  [01:39:00]
+
+  It sounds a bit like mode connectivity. So Yeah. Actually, after I heard that talk from Jorge Nosidal about flatness and its role in generalization and its connection to small batch optimization and thought, well, I wanna do Bayesian deep learning. I had done a lot of Bayesian ML and I had done some
+
+  [01:39:15]
+
+  deep learning, but I hadn't thought about Bayesian deep learning until I saw that figure in his talk. I thought, before we get into Bayesian marginalization, let's try to understand the geometric properties of these objectives that we're minimizing first so that we can come up with like good posterior approximations. And
+
+  [01:39:30]
+
+  so in some sense, this is a bit Bayesian agnostic. It should be useful even if you're just doing classical optimization. And then we had this, you know, the first thing that we encountered was this discovery we called mode connectivity, which shows that if you retrain your neural net, for example, with different initializations
+
+  [01:39:45]
+
+  and find seemingly different modes, in fact, you can actually walk from 1 mode to the other in sub subspace without increasing the training loss at all along the way. And so before that, it had been believed that the different solutions that we
+
+  [01:40:00]
+
+  would find, for example, by retraining our model, were isolated from 1 another. So you walk in any direction and you increase the loss a lot along the way. And there there were some results from Goodfellow and and others to suggest that intuition. We showed that you
+
+  [01:40:15]
+
+  can introduce very simple sort of parametric curves, like a polygonal chain with just a single turn or a quadratic bezier curve. You can anchor the endpoints with whatever solutions you find in this procedure that finds your 2 parameter vectors, w 1 hat, w 2 hat. And then as you vary
+
+  [01:40:30]
+
+  the the parameter of this curve t from 0 to 1, you walk from 1 to the other, and then the idea is, well, how do you sort of learn this curve? And you can discover these by minimizing your loss uniformly in expectation over the curve. So if you're doing classification, this looks sort of like a line integral of
+
+  [01:40:45]
+
+  cross entropy loss normalized by arc length. And it's actually a pretty simple objective to try to minimize because you could just sort of sample uniformly along the curve t and then take gradient steps with respect to the parameters of the curve theta that you're trying to learn. And you can always do this. And the
+
+  [01:41:00]
+
+  larger you make the model, the less of an arc length they're kind of I'm sorry, less of a sort of bent turning that you need to do. The more it looks almost like a straight line path between the 2 solutions. And so what this showed is that there were these regions within the loss landscape that
+
+  [01:41:15]
+
+  were extraordinarily flat. So they all had sort of 0 loss. And what was especially interesting about them was that the different parameters in these mode connecting curves actually led to models which made very different predictions on the test set. So of course, they're making the same predictions on the training set to
+
+  [01:41:30]
+
+  have the same loss, but on the test set, they were different representations. And so this meant that you could ensemble them and get much better performance, for example, just uniformly slant sampling on the curves. And then this led to this stochastic weight averaging procedure where we were sort of thinking, well, how can we sort of spin around these like
+
+  [01:41:45]
+
+  contiguous regions of flat solutions and find something that's centered within them? That ended up being fairly practical. Yeah.
+
+Tim Scarfe [01:41:50]:
+  But even then, I suppose also related to to the grokking question is, where does the gradient come from? Because you just said, well, you know, it's the same on the training data. But on the test data,
+
+  [01:42:00]
+
+  it's actually behaving differently.
+
+Prof. Andrew Wilson [01:42:02]:
+  Mhmm.
+
+Tim Scarfe [01:42:02]:
+  Right. Where does the signal come from? Like, what what happens when you continue to train a model which is ostensibly converged? It's it's behaving different on Val.
+
+Keith Duggar (Co-Host) [01:42:12]:
+  Well, I mean, have a I have a thought on
+
+  [01:42:15]
+
+  that. Like, I don't maybe maybe this helpful. But so I'm I'm big fans of Balustriero, you know, Randall Balustriero's kind of he helped me personally at least through through the work on the spline theory of deep to understand them better. And I think what's happening there is because if you if you
+
+  [01:42:30]
+
+  agree with that and you kind of think of these splines as as essentially just this unbelievably hyperdimensional honeycomb. Right? And all these shared kind of hyperplanes that are activating. I think what's happening there is they're really slowly just moving. You know, these slopes
+
+  [01:42:45]
+
+  are just slightly changing, and then they happen to hit a phase change where it's like, wow. Now we can combine all these hyperplanes into a much, like, less lower complexity or, you know, simpler, more parsimonious kind of combination, and
+
+  [01:43:00]
+
+  that's that's what it is. Like, I think that's what's happening. It's just slowly slowly shifting and then snaps into place. Right?
+
+Tim Scarfe [01:43:06]:
+  Well, yeah. And I I don't know whether you saw his ICML paper from last year, but he he he had a a spline interpretation of grokking. And he said exactly that, basically, you know, during grokking, the
+
+  [01:43:15]
+
+  spline is just suddenly Mhmm.
+
+Prof. Andrew Wilson [01:43:16]:
+  And and
+
+Keith Duggar (Co-Host) [01:43:17]:
+  Slowly moving. And then Because because there are
+
+Tim Scarfe [01:43:19]:
+  so many of them overlapping. But what happens is it it forms this honeycomb where they just kind of compress together. Mhmm. And I I should have said this to David Krakauer because he said there's a reorganization in the micro
+
+  [01:43:30]
+
+  substrate. And what's this if it's not a reorganization where the the, you know, that those little hyperplanes, if you like, the honeycomb, it just does that during drocking during grocking.
+
+Prof. Andrew Wilson [01:43:40]:
+  Yeah. It's fascinating. Grocking is not something I have thought about too specifically, but it
+
+  [01:43:45]
+
+  seems to me that you probably are entering some region of the loss landscape that doesn't have different loss, but is providing a representation of very different properties. And so this does relate to procedures like stochastic weight averaging, where again, in the end the solution doesn't really have a different
+
+  [01:44:00]
+
+  loss than what you would have gotten training in a standard way. But it has properties that will lead to better generalization, better compressibility, etcetera.
+
+Keith Duggar (Co-Host) [01:44:08]:
+  I still don't quite understand where the drive to more compressible slash simpler representations
+
+  [01:44:15]
+
+  is coming from just mechanistically, like in the optimization process. You know? I mean, don't know. Maybe it's just like you said, maybe it requires less floating point precision and so that that the optimize the jitter in the optimizer or something like that. You know? I
+
+  [01:44:30]
+
+  I just I'm really curious about the actual mechanism, you know, that forces you there. Like, if there is no change in loss Mhmm. Or maybe they're it's so tiny, we just don't really pay attention to it. I don't know. But I'm super curious. Like, what's really driving it downhill,
+
+  [01:44:45]
+
+  if you will, to a simpler solution.
+
+Prof. Andrew Wilson [01:44:47]:
+  You might sort of get to start to I I I mean, is really speculation and I haven't thought a lot specifically about grokking, but it could be that you're just sort of edging your way inside because of gradient noise and so on towards a flatter solution
+
+  [01:45:00]
+
+  as you continue to train.
+
+Keith Duggar (Co-Host) [01:45:01]:
+  Yeah. Yeah. Just some type of yeah. It's really fascinating.
+
+Prof. Andrew Wilson [01:45:04]:
+  This sort of made me wonder actually after the mode connectivity discovery, like, what what do these lost landscapes really look like? Like, the the path that we considered initially were just 1 dimensional. Eventually,
+
+  [01:45:15]
+
+  started thinking about multi dimensional lost volumes kind of. And so we had a paper which was creating a simplex. We were basically adding vertices to the simplex and sampling uniformly within the resulting simplex and trying to sort of add
+
+  [01:45:30]
+
+  vertices such that when we did that, we would sort of have low loss and also maximize the volume of the simplex. And so that sort of enabled us to find these sort of like multi dimensional loss surfaces. And then we had this that all had sort of low loss. And we had this picture, I
+
+  [01:45:45]
+
+  guess, in the front of that that paper where we started with this sort of original understanding that all the local optima are kind of isolated to wormhole like tunnels between the different optima to this idea that maybe everything is just sort of connected together in some manifold
+
+  [01:46:00]
+
+  that's embedded in this really high dimensional space. And what seems like a sharp or a flat Optima might actually just be like how converged are you with inside that manifold. Because if you're on the edge, it'll look it'll look sharp because you move in most directions and you increase the loss quite a bit. But if you move in specific
+
+  [01:46:15]
+
+  directions, it's very flat. And so I think we still don't have a full understanding of what that looks like. And I think it has really fascinating implications for the generalization behavior.
+
+Keith Duggar (Co-Host) [01:46:24]:
+  It's really hard to think in a billion dimensions. You know what mean?
+
+Tim Scarfe [01:46:28]:
+  Yeah. It really is.
+
+  [01:46:30]
+
+  Andrew, so let's sum up a little bit. Your philosophy is we should have maximally flexible models with soft regularization. How is that actionable to practitioners? I mean, what what what
+
+  [01:46:45]
+
+  because you also gave many practical empirical examples, you know, ensembling models together, and and you spoke about this residual pathway prior and and so on. Help help us understand. Mhmm.
+
+Prof. Andrew Wilson [01:46:57]:
+  So my philosophy is that we should honestly
+
+  [01:47:00]
+
+  represent our beliefs in the way that we do model construction. And our honest beliefs are usually that the real world is a nuanced place and we're going to want to have model expressiveness in order to represent that nuance. At the same time, it
+
+  [01:47:15]
+
+  can't just be flexibility. It has to be flexibility combined with some sort of simplicity bias. It should have some kind of Occam's razor bias. It turns out, perhaps surprisingly, that making transformers and other types of neural net models
+
+  [01:47:30]
+
+  larger often actually enhances rather than reduces a simplicity bias. And this is in many instances mostly what's been responsible for the better generalization behavior of larger models. So we had this example
+
+  [01:47:45]
+
+  with double descent, where in the second descent all the models have basically 0 training loss, but the larger models are generalizing better. It can't be because they're more flexible, it has to be because they have some other bias, some sort of simplicity bias. So how do we operationalize this? I think 1
+
+  [01:48:00]
+
+  way is, well, expressiveness. So choose a model class that is gonna be able to represent lots of different solutions. In terms of the simplicity bias, well, we're finding empirically that increasing model size can help with that. And so if
+
+  [01:48:15]
+
+  you're able to build a really big model, you probably should both for the expressiveness and the simplicity bias.
+
+Keith Duggar (Co-Host) [01:48:21]:
+  But what if what if I'm a researcher who like, I just wanna I want this simplicity bias to go to 11, but I can't afford more parameters. Is there something I can tweak
+
+  [01:48:30]
+
+  in my objective function to just push me a little bit more towards simplicity without breaking things?
+
+Prof. Andrew Wilson [01:48:37]:
+  Yes. So there are a lot of things you can do. I think and we'll talk about them. But the
+
+  [01:48:45]
+
+  question of how can you more elegantly encode this compression bias beyond just making the model bigger is really a fascinating open research question. So my contention, and I might be wrong, is that
+
+  [01:49:00]
+
+  in many cases, a 7,000,000,000 parameter model is not doing better than a 1,000,000,000 parameter model primarily because it's more expressive. It's actually because of the simplicity bias. And
+
+  [01:49:15]
+
+  perhaps things like knowledge distillation can help make this argument. If it's possible to really distill a large model into a much smaller model, then it means that the small model has some setting of its parameters that can provide a good approximation
+
+  [01:49:30]
+
+  to the large model. It's just not able to find those parameters when trained directly on the data. It needs the help from the teacher model. And so the question is, can we build the 1,000,000,000 parameter model with some sort of like explicit bias that
+
+  [01:49:45]
+
+  would have otherwise come about through scale in the 7,000,000,000 parameter model and find those solutions itself? I don't think we're anywhere close to being able to do that. I think it's Yeah. It's sort of an open research program. However, there are little things we can do that will help. So like there
+
+  [01:50:00]
+
+  are ways of intervening in the training procedures. So like the stochastic weight averaging we discussed, that will help find a flatter, more compressible solution. There are of course, all sorts of regularizers that can be useful in certain
+
+  [01:50:15]
+
+  instances. Bayesian marginalization can be very helpful in encoding an automatic simplicity bias in what we do. And so there are all sorts of interventions that will help us with this, but I think the dream is that maybe
+
+  [01:50:30]
+
+  we can embrace flexibility in 15, 20 years from now by building these non parametric models that like really do have an infinite number of parameters and are more expressive than any model we're using right now. But then they have this sort of like more explicit compression bias that
+
+  [01:50:45]
+
+  is interpretable and is getting us what building huge models is inelegantly giving us right now.
+
+Keith Duggar (Co-Host) [01:50:50]:
+  Oh, that's interesting.
+
+Tim Scarfe [01:50:51]:
+  I mean, the the other kind of interpretation that some folks at home might have based on what you've said is going back to Rich Sutton's bitter lesson. Right?
+
+  [01:51:00]
+
+  So he said that designing things is bad. Don't put your symmetries in there. Don't don't kind of create these multifaceted systems. Just scale and lots of computation is the way forward. Because it seems like 1 potential interpretation of what you're saying is that we
+
+  [01:51:15]
+
+  should create hybrid systems that make models more flexible by combining different modalities. And what you're kind of saying is we should just have bigger models. So are you a Sutton guy or or not?
+
+Prof. Andrew Wilson [01:51:26]:
+  So I think the bitter lesson is widely misunderstood
+
+  [01:51:30]
+
+  and incomplete. The bitter lesson describes how over short time scales, it's been appealing to try to encode our knowledge into our
+
+  [01:51:45]
+
+  procedures in order to achieve good results. And that this is also a cognitive bias that people have. They like encoding expertise and things like this and being thoughtful and elegant about problem solving. But over longer time scales than a typical research
+
+  [01:52:00]
+
+  project, computation becomes cheaper. And so quite often, more brute force seeming approaches based on search and learning end up working a lot better than elegantly encoding our priors and our constraints etcetera. And
+
+  [01:52:15]
+
+  there are a number of examples in the essay like Deep Blue for playing chess in the late nineties, speech recognition where some researchers were trying to model things like physiology of the voice box, etcetera, to try to get any possible
+
+  [01:52:30]
+
+  advantage. But then they were beat out by statistical procedures like hidden Markov models, and of course, AlphaGo and and other procedures like this too. And so the takeaway seems to have been because of how computation is becoming
+
+  [01:52:45]
+
+  cheaper over longer time scales, quite often it's going to be more practical to try to build procedures that are based on search plus learning as opposed to feature engineering. I think to a large
+
+  [01:53:00]
+
+  extent this is true, but what it doesn't say is that in order to learn, you need to make assumptions. And so machine learning, as we discussed, is learning by example. And we can't do that without making assumptions. So if we go to
+
+  [01:53:15]
+
+  like maybe this coin toss example where we're trying to estimate the bias of the coin, you have to make some assumption. Like do you before I start doing that experiment, are we assuming a uniform buy a uniform bias? Are we thinking it's looking sort of more like,
+
+  [01:53:30]
+
+  you know, centered around 0.5 or something like that, like being unbiased, but it we have support for other things. These assumptions are gonna influence how we do induction. And so, like, we just can't get away from making assumptions. And so the question is just what assumptions should we make and to what extent
+
+  [01:53:45]
+
+  can they be universal? And when it comes to things like scaling laws that describe how we can reliably improve performance with increases in computation, if we're able to make better assumptions, we can actually change the scaling exponents, act which mean that we'll get exponential
+
+  [01:54:00]
+
+  improvements in performance with increases in computation, which is just remarkable motivation for trying to do this. And it's not just a contention that this might be possible. We're actually starting to see some evidence of this. And so in our own work, we've
+
+  [01:54:15]
+
+  been very interested in how we can produce structured representations for linear layers and neural nets. And so this might sound very abstract, but there's a very well known example of doing this. So you can actually start with a fully connected layer,
+
+  [01:54:30]
+
+  having every possible connection between 2 between the nodes and 2 2 layers. Remove a bunch of the connections and enforce parameter sharing and you have a convolutional layer. And so mathematically, what you've done is you've replaced a dense matrix multiply with a matrix that has sparsity
+
+  [01:54:45]
+
+  and locality, and that's a Toplitz matrix. And so there's this question of like, could you actually systematize this process of creating structured layers towards better compute optimal efficiency? And if you were to do that, what sorts of principles should
+
+  [01:55:00]
+
+  we be embracing? Should we embrace things like parameter sharing? Because convolution, for example, has parameter sharing. Should we embrace sparsity? Should we embrace other sort of features? And so we introduced this sort of EINSOM formulation
+
+  [01:55:15]
+
+  over structured matrices that contains all sorts of different structures as special cases, as well as all sorts of different novel structures. And this taxonomy of interpretable hyper parameters that kind of control the properties of these structures. So how fast is it to do a matrix multiply? What's
+
+  [01:55:30]
+
+  the rank of the matrix? What how much parameter sharing there is? And we'd have sort of continuous values for these parameters that would control these things. And what we found is that actually in general, towards compute optimal efficiency, assuming we have as much data as we ever need, parameter sharing was
+
+  [01:55:45]
+
+  actually not a great principle. And that was a bit surprising. You also want to have full rank structures. And that moved from surprising to sort of disappointing. It's like, well, can we go beyond what we're doing with dense matrices then? Because that's what we're using now. And the answer is yes, if you
+
+  [01:56:00]
+
+  can get faster multiplies. So we proposed structure called a block tensor train, which is related to another structure called a tensor train and another structure called a monarch matrix. It's basically a sum of monarch matrices. And this sort of is full rank,
+
+  [01:56:15]
+
+  doesn't have parameter sharing, but you can do multiply faster than you can with a dense matrix. And this allows you to build wider layers for a given computational budget. And this this did have sort of a meaningful effect on the scaling exponents. And so this is sort of at a proof of concept level. And
+
+  [01:56:30]
+
+  a lot of work would need to go into parallelized implementations and so on of these structures. But it showed that it's possible. And we're not the only 1. So there are other groups that have been looking at neural
+
+  [01:56:45]
+
+  tangent kernel inspired ideas to understand different regimes of learning, easy versus hard feature learning and so on. And trying to think about what principles are actually gonna modify these scaling exponents. And other things like I think Albert Gu and others have been looking at like
+
+  [01:57:00]
+
+  chunking and transformers and the inductive biases that are, you know, come with that. And it's like whether we can change these inductive biases towards better scaling exponents. And so I guess in short, learning requires assumptions. And so I don't think we can neatly
+
+  [01:57:15]
+
+  compartmentalize, like, elegant ideas from having successful learning combined with computation. We really do need to these things not only are not at odds with it with 1 another, they really strongly go together.
+
+Tim Scarfe [01:57:29]:
+  Yeah. When
+
+  [01:57:30]
+
+  we spoke I mean, by the way, out of all of those assumptions, sparsity seems like a really good 1. There's always 1 thing where you think that seems like a really good 1. Daniel Roberts was saying, you know, in in in many effective theories in physics, that's that's 1 of the earliest assumptions is is sparsity. But then you kind of get to other
+
+  [01:57:45]
+
+  factors to consider like computational complexity and training tractability and and so on. Because in an ideal world, we we would make these things sparse. What's stopping us?
+
+Prof. Andrew Wilson [01:57:54]:
+  It's a great question. So I'll say that I I think convolutions are a great idea. And if
+
+  [01:58:00]
+
+  you're in this setting that I described earlier where you have a fixed data set and you want to do something reasonable in order to achieve the best performance, this will often work really well, and even if we're moving towards soft inductive biases from hard constraints, I would normally advocate for having
+
+  [01:58:15]
+
+  some sort of convolutional inductive bias, even if it's not a hard constraint anymore. And that's what we were doing with residual pathway priors, and there's been some interesting work on convolutional VITs and things like this to try to have these sorts of soft biases for more efficient learning. The reason that we
+
+  [01:58:30]
+
+  found in this instance that parameter sharing didn't seem to be a good principle towards better compute optimal scaling is because we were in this setting where we could have as much data as we ever needed, and there wasn't much of a generalization gap. And so we basically
+
+  [01:58:45]
+
+  just need to fit the data as efficiently as possible. And so this basically led to the principle of having as many possible parameters per FLOP. And you might sort of wonder then, well, can you go beyond 1 parameter per flop? And I think things like sparse mistress of experts actually allow you
+
+  [01:59:00]
+
+  to do this because you have some sort of gating function which might be acting over different MLPs, and you only have some subset of them that are active. And so you kind of divide your computation by k over
+
+  [01:59:15]
+
+  e, where k is the number of active efforts experts relative to a model with the same number of parameters. And so we also tried to push that principle a bit further in this work where rather than having the mixture of expert gating function operate over whole MLPs,
+
+  [01:59:30]
+
+  it was actually operating over individual linear layers within the MLPs and the attention projection matrices. And so you would represent these layers as like sums of structured matrices, and then you would have this gating function acting over the rank index of this sum. And this would allow like much finer
+
+  [01:59:45]
+
+  grained rooting decisions across the experts and did lead to sort of better efficiency for a given amount of computation. But the short reason I think is we found parameter sharing to not be helpful because you basically just want to reduce your loss as efficiently as possible. And you have sort of as
+
+  [02:00:00]
+
+  much data as you could ever need. And there isn't much of a generalization gap.
+
+Tim Scarfe [02:00:03]:
+  Also reminiscent of of the IT surprised everyone that that it did so well compared CNNs. But final question, we were talking about this in the car on the way over, Andrew. The elephant in the room is that GPT 5,
+
+  [02:00:15]
+
+  you know, we have all these huge overparameterized models. And on the surface, they seem to be doing very well. They're they're bench maxing and they're they're they're brilliant to use. But it feels that there's something missing. I mean, I I think they're not intelligent. I believe you would agree with that statement.
+
+  [02:00:30]
+
+  What's missing and what's next?
+
+Prof. Andrew Wilson [02:00:33]:
+  So 1 of the things I'm most excited about is developing AI systems that can discover new scientific theories at the level of general relativity
+
+  [02:00:45]
+
+  or quantum mechanics. And we haven't even really scratched the surface in being able to do this. It's not even clear how data driven that process would be, how much it would look like symbolic logic if you were to think about what
+
+  [02:01:00]
+
+  Einstein did when he proposed relativity and how we might want to write that down as an algorithm and automate it on a computer. And so I would love to see progress in this direction. I think that some of
+
+  [02:01:15]
+
+  the ideas that we've discussed around compressibility could play an important role in how we think about selecting for scientific hypotheses. Also, ideas around universality, like what sorts of assumptions might be more universal
+
+  [02:01:30]
+
+  than others, and at what level of abstraction. But it's something that we haven't really made progress on at all, despite a number of very exciting research projects in AI for science, where neural
+
+  [02:01:45]
+
+  nets, for example, are being used as black box function approximators in some sort of pipeline targeted at a very specific application. And I think this is extraordinary work and it's really a way in which machine learning is clearly doing a lot of good in
+
+  [02:02:00]
+
+  the world. But I think it's time to to try to go beyond that paradigm towards really giving us new scientific insights into the data that we didn't have before. And in fact, that's something that I'm I'm really more excited about than anything else in terms of how
+
+  [02:02:15]
+
+  technology might develop in the future. Like if I were to go a thousand years in the future, 1 of the first questions I would have is well, do we understand something about physics that we didn't before? Do we understand how the brain works? And this is sort of a
+
+  [02:02:30]
+
+  conventional sort of like approach to science where the theory is really the quantity of primary interest and the applications of course are important, but they're not primarily why like no individual application is primarily why we care about the theory. Like GPS would break within
+
+  [02:02:45]
+
+  minutes if we weren't accounting for gravitational time dilation in general relativity. But Einstein wasn't thinking about GPS when he proposed relativity. And if you have the theory, then you can sort of suggest all sorts of applications that otherwise wouldn't have been
+
+  [02:03:00]
+
+  on the horizon. And like we probably could train a neural network to correct for gravitational time dilation without understanding what's going on. But that wouldn't be nearly as exciting or useful as as having the theory of relativity.
+
+Tim Scarfe [02:03:12]:
+  Mhmm. Yeah. Professor
+
+  [02:03:15]
+
+  Wilson, thank you so much for joining us today. It's been amazing. Thank you.
+
+Prof. Andrew Wilson [02:03:17]:
+  Thanks so much. It's been a real pleasure.
+
+Tim Scarfe [02:03:19]:
+  If you wanna learn more about this work from Andrew, please check out the paper, deep learning is not so mysterious. Also, paper Bayesian deep learning and a Probabilistic Perspective
+
+  [02:03:30]
+
+  of Generalization, which also discusses Bayesian principles in deep learning. And also their recent paper, Compute Optimal LLMs Provably Generalized Better with Scale. That has further analysis on the source of the simplicity bias
+
+  [02:03:45]
+
+  arising from scale. Cheers.
