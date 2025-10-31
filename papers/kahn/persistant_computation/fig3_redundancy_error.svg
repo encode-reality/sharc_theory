@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420">
+  <style>
+    .axis { stroke:#111; stroke-width:2; }
+    .tick { stroke:#555; stroke-width:1; }
+    .lbl { font-family: Arial; font-size: 12px; }
+  </style>
+  <!-- Axes -->
+  <line class="axis" x1="60" y1="360" x2="650" y2="360"/>
+  <line class="axis" x1="60" y1="360" x2="60" y2="40"/>
+  <text class="lbl" x="355" y="390" text-anchor="middle">Redundancy density (ρ_R)</text>
+  <text class="lbl" x="20" y="200" transform="rotate(-90 20,200)">Error probability (log scale)</text>
+
+  <!-- Curves (schematic) for different noise p -->
+  <path d="M60,300 C 180,280 260,250 320,210 C 380,170 420,130 650,80" stroke="#2563eb" fill="none" stroke-width="2"/>
+  <path d="M60,330 C 180,310 260,280 320,240 C 380,200 420,160 650,120" stroke="#16a34a" fill="none" stroke-width="2"/>
+  <path d="M60,350 C 180,330 260,300 320,260 C 380,220 420,180 650,150" stroke="#ef4444" fill="none" stroke-width="2"/>
+
+  <!-- Knee marker -->
+  <circle cx="320" cy="240" r="4" fill="#111"/>
+  <text class="lbl" x="330" y="235">knee</text>
+
+  <text class="lbl" x="350" y="30" text-anchor="middle">Figure 3: Redundancy vs error (schematic)</text>
+</svg>
