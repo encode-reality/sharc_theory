@@ -163,3 +163,4 @@
 - **Treat AI and biohybrids as subjects of psychophysics and dynamical systems analysis—not just as text generators.**
 
 
+
