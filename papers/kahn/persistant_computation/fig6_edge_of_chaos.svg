@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="360" viewBox="0 0 700 360">
+  <style>
+    .axis{stroke:#111;stroke-width:2}
+    .lbl{font-family:Arial;font-size:12px}
+  </style>
+  <rect x="10" y="10" width="680" height="320" fill="#ffffff" stroke="#e5e7eb"/>
+  <!-- Axis -->
+  <line class="axis" x1="60" y1="300" x2="640" y2="300"/>
+  <text class="lbl" x="350" y="330" text-anchor="middle">Langton's λ</text>
+  <!-- Shaded regions -->
+  <rect x="60" y="80" width="140" height="220" fill="#e2e8f0"/>
+  <rect x="200" y="80" width="120" height="220" fill="#c7f9cc"/>
+  <rect x="320" y="80" width="120" height="220" fill="#fde68a"/>
+  <rect x="440" y="80" width="200" height="220" fill="#fee2e2"/>
+  <!-- Edge of chaos band -->
+  <rect x="380" y="70" width="80" height="240" fill="none" stroke="#ef4444" stroke-dasharray="6 4"/>
+  <text class="lbl" x="420" y="60" text-anchor="middle">edge of chaos</text>
+  <!-- Labels -->
+  <text class="lbl" x="130" y="290" text-anchor="middle">Class I</text>
+  <text class="lbl" x="260" y="290" text-anchor="middle">Class II</text>
+  <text class="lbl" x="380" y="290" text-anchor="middle">Class IV</text>
+  <text class="lbl" x="540" y="290" text-anchor="middle">Class III</text>
+  <text class="lbl" x="350" y="30" text-anchor="middle">Figure 6: Wolfram classes and edge-of-chaos band (schematic)</text>
+</svg>

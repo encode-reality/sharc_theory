@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <style>
+    .box{fill:#f9fafb;stroke:#cbd5e1}
+    .lbl{font-family:Arial;font-size:12px}
+    .title{font-family:Arial;font-size:14px;font-weight:bold}
+  </style>
+  <rect x="10" y="10" width="880" height="500" fill="#ffffff" stroke="#e5e7eb"/>
+  <!-- 3x2 grid -->
+  <rect class="box" x="40" y="40" width="250" height="180"/>
+  <rect class="box" x="325" y="40" width="250" height="180"/>
+  <rect class="box" x="610" y="40" width="250" height="180"/>
+  <rect class="box" x="40" y="260" width="250" height="180"/>
+  <rect class="box" x="325" y="260" width="250" height="180"/>
+  <rect class="box" x="610" y="260" width="250" height="180"/>
+
+  <text class="title" x="165" y="70" text-anchor="middle">Life glider</text>
+  <text class="title" x="450" y="70" text-anchor="middle">Rule 110 glider</text>
+  <text class="title" x="735" y="70" text-anchor="middle">Reaction–diffusion spot</text>
+  <text class="title" x="165" y="290" text-anchor="middle">Morphogenesis stripe</text>
+  <text class="title" x="450" y="290" text-anchor="middle">Soliton collision</text>
+  <text class="title" x="735" y="290" text-anchor="middle">Traffic CA pattern</text>
+
+  <text class="lbl" x="450" y="490" text-anchor="middle">Figure 8: Cross-domain dynamic invariants and patterns (montage placeholders)</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420">
+  <style>
+    .axis { stroke:#111; stroke-width:2; }
+    .lbl { font-family: Arial; font-size: 12px; }
+  </style>
+  <!-- Axes -->
+  <line class="axis" x1="60" y1="360" x2="650" y2="360"/>
+  <line class="axis" x1="60" y1="360" x2="60" y2="40"/>
+  <text class="lbl" x="355" y="390" text-anchor="middle">Lag (τ)</text>
+  <text class="lbl" x="20" y="200" transform="rotate(-90 20,200)">Mutual information I(a_t; a_{t+τ})</text>
+
+  <!-- Smooth exponential decay -->
+  <path d="M60,80 C 200,120 360,200 650,340" stroke="#ef4444" fill="none" stroke-width="2"/>
+  <text class="lbl" x="580" y="330" fill="#ef4444">no refresh</text>
+
+  <!-- Sawtooth/knee curve (refresh) -->
+  <polyline points="60,80 140,120 140,90 220,140 220,110 300,170 300,140 380,200 380,170 460,230 460,200 540,260 540,230 620,290 620,260"
+            stroke="#2563eb" fill="none" stroke-width="2"/>
+  <text class="lbl" x="560" y="220" fill="#2563eb">with refresh</text>
+
+  <text class="lbl" x="350" y="30" text-anchor="middle">Figure 4: Mutual information decay with refresh (schematic)</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420">
+  <style>
+    .box { fill:#f9fafb; stroke:#94a3b8; }
+    .lbl { font-family: Arial; font-size: 12px; }
+    .title { font-family: Arial; font-size: 14px; font-weight: bold; }
+  </style>
+  <rect x="20" y="20" width="760" height="380" fill="#ffffff" stroke="#e5e7eb"/>
+
+  <!-- Lower modules -->
+  <rect class="box" x="80" y="220" width="200" height="100"/>
+  <text class="title" x="180" y="250" text-anchor="middle">Module M1</text>
+  <text class="lbl" x="180" y="270" text-anchor="middle">I/O: I1→O1</text>
+  <text class="lbl" x="180" y="290" text-anchor="middle">budget: noise ε1, energy E1</text>
+
+  <rect class="box" x="320" y="220" width="200" height="100"/>
+  <text class="title" x="420" y="250" text-anchor="middle">Module M2</text>
+  <text class="lbl" x="420" y="270" text-anchor="middle">I/O: I2→O2</text>
+  <text class="lbl" x="420" y="290" text-anchor="middle">budget: noise ε2, energy E2</text>
+
+  <!-- Composed module -->
+  <rect class="box" x="200" y="60" width="360" height="110"/>
+  <text class="title" x="380" y="90" text-anchor="middle">Composed G = C(M1, M2)</text>
+  <text class="lbl" x="380" y="110" text-anchor="middle">contract: I_G → O_G</text>
+  <text class="lbl" x="380" y="130" text-anchor="middle">persistence L_p^G; budgets aggregate</text>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrow3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <line x1="180" y1="220" x2="300" y2="170" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+  <line x1="420" y1="220" x2="420" y2="170" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+  <line x1="560" y1="220" x2="500" y2="170" stroke="#64748b" stroke-width="2" marker-end="url(#arrow3)"/>
+
+  <text class="lbl" x="400" y="390" text-anchor="middle">Figure 5: Module contracts and composition (schematic)</text>
+</svg>
