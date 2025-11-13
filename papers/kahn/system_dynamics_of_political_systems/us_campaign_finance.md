@@ -61,10 +61,39 @@ Labor supply (C → E)" --> E
   class E,P,C sys;
 ```
 
+![Holy Trinity diagram](./holytrinity.svg)
+
 Healthy democracy depends on **gain symmetry** across these feedbacks. When E→P (economic influence on politics) becomes dominant, drift toward *regulatory capture* or *plutocracy* occurs; when P→E dominates, *statism* risks emerge. Robust C→P feedback (elections, oversight) provides damping.
 
----
 
+## **3a. Dissipative System Dynamics and Subsystem Dominance**
+
+A **dissipative system** is a concept from thermodynamics and complexity science describing an open system that maintains its structure and order by dissipating energy and matter. These systems are far from equilibrium, constantly exchanging resources with their environment, and their stability depends on the balance of flows and feedbacks. Examples include living organisms, ecosystems, and social systems like democracies. (See: Prigogine, I. "Thermodynamics of Irreversible Processes"; Nicolis & Prigogine, "Self-Organization in Nonequilibrium Systems".)
+
+In the context of campaign finance and democratic governance, the triadic architecture—Economy (E), Politics (P), Constituency (C)—acts as a dissipative structure. The system's stability relies on **bounded antagonism**: each subsystem counterbalances the others, preventing runaway dominance and maintaining dynamic equilibrium. Energy (money, influence, information) flows between subsystems, and negative feedbacks (regulation, elections, public accountability) dissipate excess power, preserving order.
+
+
+**What happens when one subsystem gains dominance?**
+
+- **Economic Dominance (E > P, C):**
+  - If economic actors (firms, capital) overpower political and constituent subsystems, regulatory capture and plutocracy can emerge. Money amplifies political messaging, policy is shaped to favor capital, and constituent feedback is dampened. The system loses its dissipative capacity, leading to positive feedback loops (e.g., more money → more influence → more favorable policy → more money), eroding legitimacy and fairness.
+  - *Historical example:* The Gilded Age in the United States (late 19th century) saw industrialists and financiers exert outsized influence over politics, resulting in widespread corruption, patronage, and policies favoring trusts and monopolies. More recently, post-Citizens United campaign finance trends have raised concerns about plutocratic drift.
+
+- **Political Dominance (P > E, C):**
+  - If the state or political institutions become too powerful, statism or authoritarianism can result. Regulation and enforcement may suppress market dynamics and constituent participation, reducing innovation and responsiveness. The system risks stagnation or coercion, with diminished economic vitality and civic engagement.
+  - *Historical example:* The Soviet Union (20th century) exemplified political dominance, where the state controlled economic activity and suppressed dissent, leading to stagnation and lack of innovation. In the U.S., the New Deal era saw expanded state intervention, though balanced by democratic institutions.
+
+- **Constituent Dominance (C > E, P):**
+  - If constituent power (voters, civil society) overwhelms economic and political subsystems, populism or instability may arise. Excessive direct democracy or mass mobilization can disrupt policy continuity and market stability, leading to unpredictable swings and weakened institutional capacity.
+  - *Historical example:* The late Weimar Republic (Germany, 1920s-1930s) experienced mass mobilization and populist movements that destabilized established institutions, contributing to political and economic chaos. In the U.S., periods of intense populist activism (e.g., the Progressive Era, 1890s-1910s) led to major reforms but also political volatility.
+
+**In all cases, loss of balance undermines the dissipative dynamic:**
+The system either amplifies energy (runaway feedback, instability) or becomes rigid (loss of adaptability), threatening its long-term viability. Restoring equilibrium requires reintroducing negative feedbacks and recalibrating subsystem gains—ensuring no single domain can subsume the others.
+
+**References:**
+- Prigogine, I. "Thermodynamics of Irreversible Processes" (1961)
+- Nicolis, G. & Prigogine, I. "Self-Organization in Nonequilibrium Systems" (1977)
+- Maturana, H. & Varela, F. "Autopoiesis and Cognition" (1980)
 ## **4. Citizens United and the Loss of Damping**
 
 The 2010 *Citizens United* decision increased the E→P coupling gain by protecting corporate/union independent expenditures as speech and narrowing “corruption” to quid-pro-quo. In systems terms, negative feedback was weakened and positive feedback strengthened.
