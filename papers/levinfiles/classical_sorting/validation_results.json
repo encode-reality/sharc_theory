@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-12-08T22:05:32.990825",
+  "results": {
+    "experiment_1_trajectories": {
+      "bubble": {
+        "traditional": {
+          "swaps": {
+            "mean": 98.1,
+            "std": 15.858436240689056
+          },
+          "final_sortedness": {
+            "mean": 100.0,
+            "values": [
+              100.0,
+              100.0,
+              100.0,
+              100.0,
+              100.0,
+              100.0,
+              100.0,
+              100.0,
+              100.0,
+              100.0
+            ]
+          },
+          "monotonicity_error": 0.0,
+          "success": 

@@ -283,3 +283,66 @@ def track_aggregation_over_time(algotype_histories: List[List[Algotype]]) -> Lis
             aggregation_timeline.append(np.mean(timestep_aggregations))
 
     return aggregation_timeline
+
+
+def algo_type_clustering(algotype_assignments: List[str]) -> float:
+    """
+    Calculate algo-type clustering coefficient (adjacent pairs method).
+
+    Simpler than aggregation_value - just checks adjacent pairs.
+    This is the metric described in the YouTube interview.
+
+    Measures probability that adjacent elements have same algorithm type.
+    Random mixing of 3 types would give ~33% baseline.
+    Random mixing of equal proportions gives 50% baseline (binary comparison).
+
+    Args:
+        algotype_assignments: List of algorithm types ['bubble', 'insertion', 'selection']
+
+    Returns:
+        float: Clustering coefficient (0.0 to 1.0)
+               For equal mix of 3 types: ~0.33 = random baseline, > 0.33 = clustering
+               For pairwise comparison: 0.5 = random, > 0.5 = clustering
+
+    Example:
+        >>> types = ['bubble', 'bubble', 'selection', 'selection', 'insertion']
+        >>> algo_type_clustering(types)
+        0.5  # 2 out of 4 adjacent pairs match
+    """
+    if len(algotype_assignments) < 2:
+        return 0.0
+
+    matches = sum(
+        algotype_assignments[i] == algotype_assignments[i+1]
+        for i in range(len(algotype_assignments) - 1)
+    )
+
+    return matches / (len(algotype_assignments) - 1)
+
+
+def identify_sortedness_dips(history: List[float], threshold: float = 0.0) -> List[tuple]:
+    """
+    Identify points where sortedness temporarily decreases.
+
+    Reveals "delayed gratification" behavior where the algorithm
+    temporarily moves against its goal to route around obstacles.
+
+    Args:
+        history: Sortedness percentages over time
+        threshold: Minimum decrease to count as a dip (default: any decrease)
+
+    Returns:
+        List of (swap_index, magnitude) tuples for each dip
+
+    Example:
+        >>> history = [20, 40, 60, 55, 70, 90]  # Dip at index 3
+        >>> identify_sortedness_dips(history)
+        [(3, 5.0)]  # Sortedness decreased by 5% at swap 3
+    """
+    dips = []
+    for i in range(1, len(history)):
+        if history[i] < history[i-1]:
+            magnitude = history[i-1] - history[i]
+            if magnitude >= threshold:
+                dips.append((i, magnitude))
+    return dips

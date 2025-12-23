@@ -195,27 +195,32 @@ class _SelectionGroup:
         self.group_id = group_id
         self.left_boundary = left_boundary
         self.right_boundary = right_boundary
+        self.cells = []  # Track cells in this group
 
-    def is_sorted(self, cells: List[Cell]) -> bool:
+    def is_sorted(self, cells_array: List) -> bool:
         """Check if all cells in this group are in sorted order."""
         for i in range(self.left_boundary, self.right_boundary):
-            if cells[i].value > cells[i + 1].value:
+            if cells_array[i].value > cells_array[i + 1].value:
                 return False
         return True
 
-    def merge_with(self, other_group: '_SelectionGroup', cells: List[Cell],
-                   cell_boundaries: List[Tuple[int, int]],
-                   ideal_positions: List[int]) -> None:
+    def merge_with(self, other_group: '_SelectionGroup', cells_array: List) -> '_SelectionGroup':
         """
         Merge this group with another group.
-        Updates boundaries and resets ideal_positions.
+        Updates boundaries and calls update() on all cells.
         """
+        # Expand boundaries to encompass both groups
         self.right_boundary = other_group.right_boundary
 
         # Update all cells in the merged region
         for i in range(self.left_boundary, self.right_boundary + 1):
-            cell_boundaries[i] = (self.left_boundary, self.right_boundary)
-            ideal_positions[i] = self.left_boundary  # Reset to left boundary
+            cell = cells_array[i]
+            cell.group = self
+            cell.left_boundary = self.left_boundary
+            cell.right_boundary = self.right_boundary
+            cell.update()  # Reset ideal_position!
+
+        return self
 
 
 def selection_sort(
@@ -251,11 +256,35 @@ def selection_sort(
     frozen_indices = frozen_indices or {}
     n = len(initial_values)
 
+    # Cell class for selection sort (defined inside function to support frozen cells)
+    class SelectionCell:
+        def __init__(self, value, cell_id, initial_position, frozen_type="active"):
+            self.value = value
+            self.cell_id = cell_id
+            self.left_boundary = initial_position
+            self.right_boundary = initial_position
+            self.ideal_position = initial_position
+            self.frozen_type = frozen_type
+            self.group = None
+
+        def update(self):
+            """Reset ideal_position to left_boundary when groups merge."""
+            self.ideal_position = self.left_boundary
+
+        def can_initiate_move(self):
+            """Check if this cell can initiate a swap."""
+            return self.frozen_type == "active"
+
+        def can_be_moved(self):
+            """Check if this cell can be moved by another cell."""
+            return self.frozen_type in ("active", "movable")
+
     # Create cells
     cells = [
-        Cell(
+        SelectionCell(
             value=v,
-            algotype=algotype,
+            cell_id=i,
+            initial_position=i,
             frozen_type=frozen_indices.get(i, "active")
         )
         for i, v in enumerate(initial_values)
@@ -264,12 +293,10 @@ def selection_sort(
     # Create initial groups (one per cell)
     groups = [_SelectionGroup(i, i, i) for i in range(n)]
 
-    # Track cell boundaries and ideal positions
-    cell_boundaries = [(i, i) for i in range(n)]  # (left, right) for each cell
-    ideal_positions = list(range(n))  # Each starts at own position
-
-    # Track which cell is which (for identity tracking)
-    cell_ids = list(range(n))
+    # Assign each cell to its group
+    for i in range(n):
+        cells[i].group = groups[i]
+        groups[i].cells.append(cells[i])
 
     steps = StepCounter()
     history = []
@@ -277,7 +304,7 @@ def selection_sort(
     for timestep in range(MAX_STEPS):
         # Phase 1: Cells attempt moves
         idx_order = list(range(n))
-        random.seed(42 + timestep)  # Consistent randomization
+        random.seed(42 + timestep)
         random.shuffle(idx_order)
 
         cells_that_acted = set()
@@ -285,52 +312,56 @@ def selection_sort(
 
         for idx in idx_order:
             cell = cells[idx]
-            cell_id = cell_ids[idx]
 
-            # Skip if this cell already acted
-            if cell_id in cells_that_acted:
+            if cell.cell_id in cells_that_acted:
                 continue
-            cells_that_acted.add(cell_id)
+            cells_that_acted.add(cell.cell_id)
 
             if not cell.can_initiate_move():
                 continue
 
             # Clamp ideal_position to cell's group boundaries
-            left_bound, right_bound = cell_boundaries[idx]
-            target = max(left_bound, min(right_bound, ideal_positions[idx]))
+            target = max(cell.left_boundary,
+                        min(cell.right_boundary, cell.ideal_position))
 
             if target == idx:
-                # At ideal position, try next
-                ideal_positions[idx] = min(right_bound, ideal_positions[idx] + 1)
+                # At ideal position, try next (with reset at boundary)
+                if cell.ideal_position >= cell.right_boundary:
+                    # Reset to left to make another pass
+                    cell.ideal_position = cell.left_boundary
+                else:
+                    cell.ideal_position = min(cell.right_boundary,
+                                             cell.ideal_position + 1)
                 continue
 
             neighbor = cells[target]
             steps.comparisons += 1
 
-            # Swap if value < target
-            if cell.value < neighbor.value and neighbor.can_be_moved():
-                # Swap cells
+            # Swap if value < target AND moving LEFT (toward position 0)
+            # This prevents oscillation where cells swap back and forth
+            if (cell.value < neighbor.value and
+                neighbor.can_be_moved() and
+                target < idx):  # Only swap if moving LEFT
+                # Swap cells in array
                 cells[idx], cells[target] = cells[target], cells[idx]
-                # Swap cell IDs
-                cell_ids[idx], cell_ids[target] = cell_ids[target], cell_ids[idx]
-                # Swap boundaries
-                cell_boundaries[idx], cell_boundaries[target] = (
-                    cell_boundaries[target], cell_boundaries[idx]
-                )
-                # Swap ideal positions
-                ideal_positions[idx], ideal_positions[target] = (
-                    ideal_positions[target], ideal_positions[idx]
-                )
 
-                cells_that_acted.add(cell_ids[target])
+                # Reset ideal_position to new position after swap
+                cells[idx].ideal_position = idx  # Swapped neighbor
+                cells[target].ideal_position = target  # Current cell
+
+                cells_that_acted.add(neighbor.cell_id)
                 steps.swaps += 1
                 swapped_any = True
                 history.append(sortedness([c.value for c in cells]))
                 # Only one swap per timestep to avoid cycles
                 break
             else:
-                # Increment ideal_position
-                ideal_positions[idx] = min(right_bound, ideal_positions[idx] + 1)
+                # Increment ideal_position (with reset at boundary)
+                if cell.ideal_position >= cell.right_boundary:
+                    cell.ideal_position = cell.left_boundary
+                else:
+                    cell.ideal_position = min(cell.right_boundary,
+                                             cell.ideal_position + 1)
 
         # Phase 2: Merge adjacent sorted groups
         merged_any = False
@@ -345,12 +376,10 @@ def selection_sort(
             if current_group.right_boundary + 1 == next_group.left_boundary:
                 # Check if both are sorted
                 if current_group.is_sorted(cells) and next_group.is_sorted(cells):
-                    # Merge them!
-                    current_group.merge_with(next_group, cells,
-                                            cell_boundaries, ideal_positions)
+                    # Merge them - updates cell boundaries and calls update()
+                    current_group.merge_with(next_group, cells)
                     groups.remove(next_group)
-                    active_groups = [g for g in groups
-                                   if g.left_boundary <= g.right_boundary]
+                    active_groups = [g for g in groups if g.left_boundary <= g.right_boundary]
                     merged_any = True
                     continue
 
@@ -372,13 +401,13 @@ def selection_sort(
 
             # Check if all cells are stuck at right boundary
             all_at_boundary = all(
-                ideal_positions[i] >= cell_boundaries[i][1]
-                for i in range(n)
+                cell.ideal_position >= cell.right_boundary
+                for cell in cells
             )
             if all_at_boundary:
                 # Reset ideal_positions to left boundaries
-                for i in range(n):
-                    ideal_positions[i] = cell_boundaries[i][0]
+                for cell in cells:
+                    cell.ideal_position = cell.left_boundary
 
     final_values = [c.value for c in cells]
     return final_values, steps, history
@@ -408,28 +437,70 @@ def mixed_algotype_sort(
     frozen_indices = frozen_indices or {}
     n = len(initial_values)
 
+    # Optimization: If all cells are same algotype, use dedicated function
+    unique_algotypes = set(algotype_assignments)
+    if len(unique_algotypes) == 1:
+        algotype = list(unique_algotypes)[0]
+        if algotype == "bubble":
+            result, steps, history = bubble_sort(initial_values, frozen_indices, algotype)
+            algotype_history = [[algotype] * n]  # All same type
+            return result, steps, history, algotype_history
+        elif algotype == "insertion":
+            result, steps, history = insertion_sort(initial_values, frozen_indices, algotype)
+            algotype_history = [[algotype] * n]
+            return result, steps, history, algotype_history
+        elif algotype == "selection":
+            result, steps, history = selection_sort(initial_values, frozen_indices, algotype)
+            algotype_history = [[algotype] * n]
+            return result, steps, history, algotype_history
+
     # Create cells with assigned algotypes
+    # For mixed mode with selection cells, we need group support
+    class MixedCell:
+        """Cell for mixed algotype mode with group support."""
+        def __init__(self, value, cell_id, algotype, initial_position, frozen_type="active"):
+            self.value = value
+            self.cell_id = cell_id
+            self.algotype = algotype
+            self.frozen_type = frozen_type
+            self.left_boundary = initial_position
+            self.right_boundary = initial_position
+            self.ideal_position = initial_position
+            self.group = None
+
+        def update(self):
+            """Reset ideal_position when groups merge."""
+            self.ideal_position = self.left_boundary
+
+        def can_initiate_move(self):
+            return self.frozen_type == "active"
+
+        def can_be_moved(self):
+            return self.frozen_type in ("active", "movable")
+
     cells = [
-        Cell(
+        MixedCell(
             value=initial_values[i],
+            cell_id=i,
             algotype=algotype_assignments[i],
+            initial_position=i,
             frozen_type=frozen_indices.get(i, "active")
         )
         for i in range(n)
     ]
 
+    # Create initial groups (one per cell) for selection sort support
+    groups = [_SelectionGroup(i, i, i) for i in range(n)]
+    for i in range(n):
+        cells[i].group = groups[i]
+        groups[i].cells.append(cells[i])
+
     steps = StepCounter()
     sortedness_history = []
     algotype_history = []  # Track algotype positions over time
 
-    # Selection sort cells need ideal positions
-    ideal_positions = [0 for _ in range(n)]
-
     # Main sorting loop
     for timestep in range(MAX_STEPS):
-        # Record current algotype configuration
-        algotype_history.append([c.algotype for c in cells])
-
         # Random order of cell activation
         idx_order = list(range(n))
         random.shuffle(idx_order)
@@ -453,7 +524,6 @@ def mixed_algotype_sort(
                     steps.comparisons += 1
                     if cell.value < neighbor_left.value and neighbor_left.can_be_moved():
                         cells[idx], cells[idx - 1] = cells[idx - 1], cells[idx]
-                        ideal_positions[idx], ideal_positions[idx - 1] = ideal_positions[idx - 1], ideal_positions[idx]
                         steps.swaps += 1
                         swapped_any = True
                         moved = True
@@ -464,7 +534,6 @@ def mixed_algotype_sort(
                     steps.comparisons += 1
                     if cell.value > neighbor_right.value and neighbor_right.can_be_moved():
                         cells[idx], cells[idx + 1] = cells[idx + 1], cells[idx]
-                        ideal_positions[idx], ideal_positions[idx + 1] = ideal_positions[idx + 1], ideal_positions[idx]
                         steps.swaps += 1
                         swapped_any = True
 
@@ -482,37 +551,90 @@ def mixed_algotype_sort(
                         steps.comparisons += 1
                         if cell.value < neighbor_left.value and neighbor_left.can_be_moved():
                             cells[idx], cells[idx - 1] = cells[idx - 1], cells[idx]
-                            ideal_positions[idx], ideal_positions[idx - 1] = ideal_positions[idx - 1], ideal_positions[idx]
                             steps.swaps += 1
                             swapped_any = True
 
             elif cell.algotype == "selection":
-                # Selection sort rules
-                target = max(0, min(n - 1, ideal_positions[idx]))
+                # Selection sort rules with group boundaries
+                # Clamp ideal_position to cell's group boundaries
+                target = max(cell.left_boundary,
+                            min(cell.right_boundary, cell.ideal_position))
 
-                # Skip if target is self
                 if target == idx:
-                    ideal_positions[idx] = min(n - 1, ideal_positions[idx] + 1)
+                    # At ideal position, try next (with reset at boundary)
+                    if cell.ideal_position >= cell.right_boundary:
+                        # Reset to left to make another pass
+                        cell.ideal_position = cell.left_boundary
+                    else:
+                        cell.ideal_position = min(cell.right_boundary,
+                                                 cell.ideal_position + 1)
                     continue
 
                 neighbor = cells[target]
                 steps.comparisons += 1
 
-                if cell.value < neighbor.value and neighbor.can_be_moved():
+                # Swap if value < target AND moving LEFT (within group)
+                if (cell.value < neighbor.value and
+                    neighbor.can_be_moved() and
+                    target < idx):  # Only move LEFT to prevent oscillation
+                    # Swap cells in array
                     cells[idx], cells[target] = cells[target], cells[idx]
-                    ideal_positions[idx], ideal_positions[target] = ideal_positions[target], ideal_positions[idx]
+
+                    # Reset ideal_positions to new positions after swap
+                    cells[idx].ideal_position = idx  # Swapped neighbor
+                    cells[target].ideal_position = target  # Current cell
+
                     steps.swaps += 1
                     swapped_any = True
                 else:
-                    ideal_positions[idx] = min(n - 1, ideal_positions[idx] + 1)
+                    # Increment ideal_position (with reset at boundary)
+                    if cell.ideal_position >= cell.right_boundary:
+                        cell.ideal_position = cell.left_boundary
+                    else:
+                        cell.ideal_position = min(cell.right_boundary,
+                                                 cell.ideal_position + 1)
 
-        # Record sortedness after this timestep
-        if swapped_any:
+        # Phase 2: Merge adjacent sorted groups (for selection sort support)
+        merged_any = False
+        i = 0
+        active_groups = [g for g in groups if g.left_boundary <= g.right_boundary]
+
+        while i < len(active_groups) - 1:
+            current_group = active_groups[i]
+            next_group = active_groups[i + 1]
+
+            # Check if groups are adjacent
+            if current_group.right_boundary + 1 == next_group.left_boundary:
+                # Check if both are sorted
+                if current_group.is_sorted(cells) and next_group.is_sorted(cells):
+                    # Merge them - updates cell boundaries and calls update()
+                    current_group.merge_with(next_group, cells)
+                    groups.remove(next_group)
+                    active_groups = [g for g in groups if g.left_boundary <= g.right_boundary]
+                    merged_any = True
+                    continue
+
+            i += 1
+
+        # Record sortedness and algotype configuration after this timestep
+        if swapped_any or merged_any:
             sortedness_history.append(sortedness([c.value for c in cells]))
+            algotype_history.append([c.algotype for c in cells])
 
-        # Stop if no swaps occurred
-        if not swapped_any:
-            break
+        # Stop if no swaps and no merges occurred
+        if not swapped_any and not merged_any:
+            # Check if fully sorted
+            is_sorted = all(cells[i].value <= cells[i + 1].value
+                          for i in range(n - 1))
+            if is_sorted:
+                break
+
+            # Check if all groups merged
+            if (len(active_groups) == 1 and
+                active_groups[0].left_boundary == 0 and
+                active_groups[0].right_boundary == n - 1):
+                if active_groups[0].is_sorted(cells):
+                    break
 
     final_values = [c.value for c in cells]
     return final_values, steps, sortedness_history, algotype_history
