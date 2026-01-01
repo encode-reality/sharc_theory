@@ -1,0 +1,93 @@
+[
+  {
+    "number": "01",
+    "timestamp": "00:00:00",
+    "title": "Intro",
+    "folder": "intro",
+    "line_count": 40
+  },
+  {
+    "number": "02",
+    "timestamp": "00:02:28",
+    "title": "Interview Begins",
+    "folder": "interview_begins",
+    "line_count": 121
+  },
+  {
+    "number": "03",
+    "timestamp": "00:11:21",
+    "title": "HD Model And Constructor Theory",
+    "folder": "hd_model_and_constructor_theory",
+    "line_count": 154
+  },
+  {
+    "number": "04",
+    "timestamp": "00:22:27",
+    "title": "Set Theory and Category Theory",
+    "folder": "set_theory_and_category_theory",
+    "line_count": 154
+  },
+  {
+    "number": "05",
+    "timestamp": "00:33:52",
+    "title": "Algebraic Structure",
+    "folder": "algebraic_structure",
+    "line_count": 305
+  },
+  {
+    "number": "06",
+    "timestamp": "00:55:47",
+    "title": "Causality and Computational Irreducibility",
+    "folder": "causality_and_computational_irreducibility",
+    "line_count": 154
+  },
+  {
+    "number": "07",
+    "timestamp": "01:07:54",
+    "title": "General Change and General Relativity",
+    "folder": "general_change_and_general_relativity",
+    "line_count": 154
+  },
+  {
+    "number": "08",
+    "timestamp": "01:19:05",
+    "title": "Scientific Publishing",
+    "folder": "scientific_publishing",
+    "line_count": 257
+  },
+  {
+    "number": "09",
+    "timestamp": "01:37:42",
+    "title": "The Problem with Entropy",
+    "folder": "the_problem_with_entropy",
+    "line_count": 353
+  },
+  {
+    "number": "10",
+    "timestamp": "02:03:34",
+    "title": "Stone Duality",
+    "folder": "stone_duality",
+    "line_count": 305
+  },
+  {
+    "number": "11",
+    "timestamp": "02:26:16",
+    "title": "Science and Spirituality",
+    "folder": "science_and_spirituality",
+    "line_count": 305
+  },
+  {
+    "number": "12",
+    "timestamp": "02:48:00",
+    "title": "Limitations Of Computational Models",
+    "folder": "limitations_of_computational_models",
+    "line_count": 130
+  },
+  {
+    "number": "13",
+    "timestamp": "02:57:21",
+    "title": "Outro",
+    "folder": "outro",
+    "line_count": 42
+  }
+]
