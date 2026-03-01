@@ -1,0 +1,130 @@
+# ============================================================
+# Site Configuration
+# ============================================================
+baseURL = "https://encode-reality.github.io/sharc_theory/"
+languageCode = "en-us"
+title = "SHARC Theory"
+theme = "PaperMod"
+
+paginate = 10
+enableEmoji = false
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+# ============================================================
+# Markdown Rendering (Goldmark)
+# ============================================================
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$'], ['\[', '\]']]
+          inline = [['$', '$'], ['\(', '\)']]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "monokai"
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
+# ============================================================
+# Minification
+# ============================================================
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+# ============================================================
+# Theme Parameters (PaperMod)
+# ============================================================
+[params]
+  env = "production"
+  title = "SHARC Theory"
+  description = "Exploring computation, complex systems, and the principles that govern hierarchical organization from molecular to societal scales."
+  author = "Miadad Kahn"
+
+  DateFormat = "January 2, 2006"
+  defaultTheme = "auto"
+  disableThemeToggle = false
+
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = false
+  ShowRssButtonInSectionTermList = true
+
+  ShowToc = true
+  TocOpen = false
+
+  [params.homeInfoParams]
+    Title = "SHARC Theory"
+    Content = """
+Exploring the principles underpinning hierarchical and recursive cognitive systems \
+across scales -- from molecular to societal. Research spanning non-equilibrium \
+thermodynamics, cybernetics, complex systems theory, epistemology, and computational modeling.
+
+[View the research repository on GitHub](https://github.com/encode-reality/sharc_theory)
+"""
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/encode-reality/sharc_theory"
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+# ============================================================
+# Outputs (required for search and RSS)
+# ============================================================
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# ============================================================
+# Menu
+# ============================================================
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 1
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 2
+
+[[menu.main]]
+  identifier = "archives"
+  name = "Archives"
+  url = "/archives/"
+  weight = 3
+
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 4
+
+[[menu.main]]
+  identifier = "repo"
+  name = "GitHub"
+  url = "https://github.com/encode-reality/sharc_theory"
+  weight = 5
