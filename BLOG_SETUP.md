@@ -12,7 +12,13 @@ This repository uses [Hugo](https://gohugo.io/) with the [PaperMod](https://gith
 
 Hugo Extended is required (PaperMod uses SCSS).
 
-**Windows (winget — recommended):**
+**macOS (Homebrew — recommended):**
+```bash
+brew install hugo
+# Homebrew's hugo formula includes the extended version by default
+```
+
+**Windows (winget):**
 ```bash
 winget install Hugo.Hugo.Extended
 ```
@@ -31,6 +37,19 @@ Verify installation:
 ```bash
 hugo version
 # Must show "+extended" in the output
+```
+
+### Install other tools
+
+**macOS:**
+```bash
+brew install gh uv
+```
+
+**Windows:**
+```bash
+winget install GitHub.cli
+# For uv: https://docs.astral.sh/uv/getting-started/installation/
 ```
 
 ### Clone with submodules

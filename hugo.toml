@@ -6,7 +6,8 @@ languageCode = "en-us"
 title = "SHARC Theory"
 theme = "PaperMod"
 
-paginate = 10
+[pagination]
+  pagerSize = 10
 enableEmoji = false
 enableRobotsTXT = true
 buildDrafts = false
