@@ -1,10 +1,10 @@
 ---
 title: "Toward a Science of Politics: Dynamic Stability, Agency, and Dissipation in Open Social Systems"
-date: 2024-11-09
+date: 2026-03-01
 draft: false
 description: "A systems-theoretic framework grounding political organization in non-equilibrium thermodynamics, cybernetics, and complex systems theory."
 tags: ["complex-systems", "political-science", "thermodynamics", "systems-theory", "dissipative-systems"]
-author: "Miadad Kahn"
+author: "Miadad Rashid"
 showToc: true
 TocOpen: true
 math: false
