@@ -3,8 +3,8 @@
 # ============================================================
 baseURL = "https://encode-reality.github.io/sharc_theory/"
 languageCode = "en-us"
-title = "SHARC Theory"
-theme = "PaperMod"
+title = "Encode Reality"
+theme = "Coder"
 
 [pagination]
   pagerSize = 10
