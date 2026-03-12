@@ -4,7 +4,7 @@
 baseURL = "https://encode-reality.github.io/sharc_theory/"
 languageCode = "en-us"
 title = "Encode Reality"
-theme = "Coder"
+theme = "hugo-coder"
 
 [pagination]
   pagerSize = 10
