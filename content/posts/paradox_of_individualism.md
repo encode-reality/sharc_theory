@@ -30,15 +30,15 @@ Psychology and neuroscience now suggest that human decision-making is not a simp
 
 Much of the brain's activity occurs **before conscious awareness enters the loop**.
 
-One of the earliest demonstrations came from neuroscientist Benjamin Libet. In experiments during the 1980s, Libet found that measurable neural activity predicting a voluntary movement occurred several hundred milliseconds **before participants reported consciously deciding to move** [1].
+One of the earliest demonstrations came from neuroscientist Benjamin Libet. In experiments during the 1980s, Libet found that measurable neural activity predicting a voluntary movement occurred several hundred milliseconds **before participants reported consciously deciding to move** [[1]](#ref-1).
 
-Later studies extended this finding. Research by Soon, Brass, Heinze, and Haynes using fMRI showed patterns of brain activity predicting simple decisions **up to ten seconds before subjects became aware of their choice** [2].
+Later studies extended this finding. Research by Soon, Brass, Heinze, and Haynes using fMRI showed patterns of brain activity predicting simple decisions **up to ten seconds before subjects became aware of their choice** [[2]](#ref-2).
 
 This does not prove that free will is an illusion, but it strongly suggests that **conscious awareness may be reporting decisions rather than initiating them**.
 
 At the same time, behavioral psychology has shown that human choices are strongly shaped by factors outside conscious reasoning.
 
-Research by Daniel Kahneman and Amos Tversky demonstrated that human judgment relies on automatic heuristics that produce predictable biases [3][4]:
+Research by Daniel Kahneman and Amos Tversky demonstrated that human judgment relies on automatic heuristics that produce predictable biases [[3]](#ref-3)[[4]](#ref-4):
 
 * framing effects
 * loss aversion
@@ -65,11 +65,11 @@ Nowhere is this more visible than in the modern attention economy.
 
 Social media platforms are optimized using large-scale behavioral data and machine learning to maximize engagement. Engagement is not simply the result of providing information; it is achieved by systematically exploiting known psychological mechanisms.
 
-One of the most powerful of these mechanisms is **intermittent reinforcement**, first studied extensively by psychologist B. F. Skinner [5].
+One of the most powerful of these mechanisms is **intermittent reinforcement**, first studied extensively by psychologist B. F. Skinner [[5]](#ref-5).
 
 When rewards are delivered unpredictably—like slot machine payouts—people become far more likely to repeat the behavior. Many digital platforms replicate this dynamic through unpredictable notifications, social feedback, and algorithmically delivered content.
 
-At the same time, algorithms learn which emotional triggers produce the strongest engagement. Research has shown that emotionally charged content, especially anger and outrage, spreads significantly farther and faster online than neutral or truthful content [9].
+At the same time, algorithms learn which emotional triggers produce the strongest engagement. Research has shown that emotionally charged content, especially anger and outrage, spreads significantly farther and faster online than neutral or truthful content [[9]](#ref-9).
 
 In effect, modern digital systems function as **large-scale behavioral laboratories**, constantly optimizing environments to influence human attention and decision-making.
 
@@ -91,9 +91,9 @@ If every action is interpreted as purely the result of personal choice, then the
 
 But sociologists have long argued that environments shape behavior far more than individuals realize.
 
-The sociologist Pierre Bourdieu described this through the concept of **habitus**—the idea that social structures become internalized as personal preferences and dispositions [6].
+The sociologist Pierre Bourdieu described this through the concept of **habitus**—the idea that social structures become internalized as personal preferences and dispositions [[6]](#ref-6).
 
-Economist Herbert A. Simon similarly introduced the concept of **bounded rationality**, arguing that human decision-making is constrained by cognitive limits and environmental structures [7].
+Economist Herbert A. Simon similarly introduced the concept of **bounded rationality**, arguing that human decision-making is constrained by cognitive limits and environmental structures [[7]](#ref-7).
 
 These frameworks suggest that individuals do not simply choose freely among unlimited possibilities. Instead, choices are made **within structured environments that shape what feels natural, desirable, or even imaginable**.
 
@@ -109,9 +109,9 @@ In earlier eras, power often operated through direct authority: laws, coercion, 
 
 In modern societies, power increasingly operates through **choice architecture**.
 
-Behavioral economists Richard Thaler and Cass Sunstein popularized the idea that the way options are structured can systematically influence decisions without removing freedom entirely [8].
+Behavioral economists Richard Thaler and Cass Sunstein popularized the idea that the way options are structured can systematically influence decisions without removing freedom entirely [[8]](#ref-8).
 
-A simple example illustrates this principle. When countries switch organ donation from an **opt-in** system to an **opt-out** system, donation rates often increase dramatically—even though the choice technically remains voluntary [10].
+A simple example illustrates this principle. When countries switch organ donation from an **opt-in** system to an **opt-out** system, donation rates often increase dramatically—even though the choice technically remains voluntary [[10]](#ref-10).
 
 The difference is not in human morality. It is in the **structure of the decision environment**.
 
@@ -149,16 +149,16 @@ It may be whether we understand the systems quietly shaping the choices we belie
 
 ## References
 
-1. Libet, B. (1985). "Unconscious Cerebral Initiative and the Role of Conscious Will in Voluntary Action." *Behavioral and Brain Sciences*, 8(4), 529–566.
-2. Soon, C. S., Brass, M., Heinze, H.-J., & Haynes, J.-D. (2008). "Unconscious Determinants of Free Decisions in the Human Brain." *Nature Neuroscience*, 11(5), 543–545.
-3. Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
-4. Tversky, A., & Kahneman, D. (1974). "Judgment under Uncertainty: Heuristics and Biases." *Science*, 185(4157), 1124–1131.
-5. Skinner, B. F. (1953). *Science and Human Behavior*. Macmillan.
-6. Bourdieu, P. (1977). *Outline of a Theory of Practice*. Cambridge University Press.
-7. Simon, H. A. (1955). "A Behavioral Model of Rational Choice." *Quarterly Journal of Economics*, 69(1), 99–118.
-8. Thaler, R. H., & Sunstein, C. R. (2008). *Nudge: Improving Decisions About Health, Wealth, and Happiness*. Yale University Press.
-9. Vosoughi, S., Roy, D., & Aral, S. (2018). "The Spread of True and False News Online." *Science*, 359(6380), 1146–1151.
-10. Johnson, E. J., & Goldstein, D. (2003). "Do Defaults Save Lives?" *Science*, 302(5649), 1338–1339.
+<a id="ref-1"></a>1. Libet, B. (1985). "Unconscious Cerebral Initiative and the Role of Conscious Will in Voluntary Action." *Behavioral and Brain Sciences*, 8(4), 529–566.
+<a id="ref-2"></a>2. Soon, C. S., Brass, M., Heinze, H.-J., & Haynes, J.-D. (2008). "Unconscious Determinants of Free Decisions in the Human Brain." *Nature Neuroscience*, 11(5), 543–545.
+<a id="ref-3"></a>3. Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
+<a id="ref-4"></a>4. Tversky, A., & Kahneman, D. (1974). "Judgment under Uncertainty: Heuristics and Biases." *Science*, 185(4157), 1124–1131.
+<a id="ref-5"></a>5. Skinner, B. F. (1953). *Science and Human Behavior*. Macmillan.
+<a id="ref-6"></a>6. Bourdieu, P. (1977). *Outline of a Theory of Practice*. Cambridge University Press.
+<a id="ref-7"></a>7. Simon, H. A. (1955). "A Behavioral Model of Rational Choice." *Quarterly Journal of Economics*, 69(1), 99–118.
+<a id="ref-8"></a>8. Thaler, R. H., & Sunstein, C. R. (2008). *Nudge: Improving Decisions About Health, Wealth, and Happiness*. Yale University Press.
+<a id="ref-9"></a>9. Vosoughi, S., Roy, D., & Aral, S. (2018). "The Spread of True and False News Online." *Science*, 359(6380), 1146–1151.
+<a id="ref-10"></a>10. Johnson, E. J., & Goldstein, D. (2003). "Do Defaults Save Lives?" *Science*, 302(5649), 1338–1339.
 
 ---
 
