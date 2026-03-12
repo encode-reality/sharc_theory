@@ -72,7 +72,7 @@ buildExpired = false
 # Outputs (required for search and RSS)
 # ============================================================
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
 
 # ============================================================
 # Menu
