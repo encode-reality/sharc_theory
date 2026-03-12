@@ -209,16 +209,27 @@ A science of politics does not replace normative judgment or historical analysis
 ## References
 
 1. Prigogine, I. (1961). *Thermodynamics of Irreversible Processes*.
+
 2. Nicolis, G., & Prigogine, I. (1977). *Self-Organization in Nonequilibrium Systems*.
+
 3. Schrödinger, E. (1944). *What Is Life?*
+
 4. Ashby, W. R. (1956). *An Introduction to Cybernetics*.
+
 5. Luhmann, N. (1995). *Social Systems*.
+
 6. Simon, H. A. (1962). "The Architecture of Complexity."
+
 7. North, D. C. (1990). *Institutions, Institutional Change and Economic Performance*.
+
 8. Dahl, R. A. (1957). "The Concept of Power."
+
 9. Foucault, M. (1978). *The History of Sexuality, Vol. 1*.
+
 10. Ostrom, E. (2005). *Understanding Institutional Diversity*.
+
 11. Georgescu-Roegen, N. (1971). *The Entropy Law and the Economic Process*.
+
 12. Beinhocker, E. (2006). *The Origin of Wealth*.
 
 ---
