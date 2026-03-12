@@ -49,7 +49,7 @@ buildExpired = false
 # ============================================================
 [params]
   env = "production"
-  title = "SHARC Theory"
+  title = "Encode Reality"
   description = "Exploring computation, complex systems, and the principles that govern hierarchical organization from molecular to societal scales."
   author = "Miadad Kahn"
 
@@ -69,7 +69,7 @@ buildExpired = false
   TocOpen = false
 
   [params.homeInfoParams]
-    Title = "SHARC Theory"
+    Title = "Encode Reality"
     Content = """
 Exploring the principles underpinning hierarchical and recursive cognitive systems \
 across scales -- from molecular to societal. Research spanning non-equilibrium \
