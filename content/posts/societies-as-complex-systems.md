@@ -22,7 +22,7 @@ The ambition is not metaphor, but **formalization**: to articulate a science of 
 
 ---
 
-## 1. Open Systems and Dynamic Stability
+## Open Systems and Dynamic Stability
 
 Human societies are **open systems**. They persist only through continuous exchange of energy, matter, and information with their environment. Such systems do not converge to equilibrium; instead, they maintain **dynamic stability**—bounded internal order maintained far from equilibrium—by continuously processing external inputs [[1]](#ref-1)[[2]](#ref-2).
 
@@ -32,7 +32,7 @@ Political systems are no exception. Governance does not eliminate conflict, scar
 
 ---
 
-## 2. Resource Throughput and the Emergence of Agency
+## Resource Throughput and the Emergence of Agency
 
 Let **resource throughput** denote the rate at which a system ingests usable inputs: energy, materials, labor, capital, technology, and information.
 
@@ -50,7 +50,7 @@ Increases in throughput tend to increase agency, but rarely symmetrically. Organ
 
 ---
 
-## 3. Power as an Agency Gradient
+## Power as an Agency Gradient
 
 Agency alone is not destabilizing. Destabilization occurs when differences in agency allow one domain to **asymmetrically constrain or reshape** another.
 
@@ -64,7 +64,7 @@ In political systems, agency gradients perform **institutional work**: shaping l
 
 ---
 
-## 4. Destabilizing Work and Dissipation
+## Destabilizing Work and Dissipation
 
 Unchecked power gradients generate **positive feedback**. Economic advantage converts into political influence, which produces favorable rules, which further amplify economic advantage. Complexity theory predicts that such regimes reduce adaptability and drive systems toward brittle attractors unless counteracted [[2]](#ref-2)[[4]](#ref-4).
 
@@ -82,7 +82,7 @@ These mechanisms do not remove power from the system; they **reduce its coherenc
 
 ---
 
-## 5. Internal Regulation and Externalization
+## Internal Regulation and Externalization
 
 Open systems regulate what threatens their persistence first. Internal disorder undermines survival; external disorder may be tolerable.
 
@@ -97,7 +97,7 @@ Disorder is not eliminated; it is relocated. Dynamic equilibrium is maintained o
 
 ---
 
-## 6. Dynamic Stability Across Scales
+## Dynamic Stability Across Scales
 
 The dynamics described above are **scale-recursive but not scale-monotonic**. Instability does not propagate exclusively upward (micro → macro) or downward (macro → micro). Rather, destabilizing effects propagate **along available coupling pathways** wherever organizational, economic, or political linkages permit transmission.
 
@@ -159,7 +159,7 @@ In such cases, exported disorder returns as amplified feedback, producing system
 
 ---
 
-## 7. Democratic Stability as Bounded Antagonism
+## Democratic Stability as Bounded Antagonism
 
 In democratic-capitalist systems, stability depends on **bounded antagonism** among economic, political, and constituent domains. Each domain possesses agency; each constrains the others; none is permitted unchecked dominance [[7]](#ref-7)[[10]](#ref-10)[[12]](#ref-12).
 
@@ -169,7 +169,7 @@ When dissipative capacity is weakened—through institutional erosion, jurisprud
 
 ---
 
-## 8. Axiomatic Core
+## Axiomatic Core
 
 The framework can be summarized as a minimal axiomatic system:
 

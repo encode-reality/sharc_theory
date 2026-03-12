@@ -10,7 +10,7 @@ TocOpen: true
 math: false
 ---
 
-## 1. The Story We Tell Ourselves About Freedom
+## The Story We Tell Ourselves About Freedom
 
 Modern Western culture places enormous emphasis on individual autonomy.
 
@@ -24,7 +24,7 @@ Over the last several decades, scientific research has increasingly challenged t
 
 ---
 
-## 2. The Scientific Picture of How Decisions Actually Happen
+## The Scientific Picture of How Decisions Actually Happen
 
 Psychology and neuroscience now suggest that human decision-making is not a simple top-down process where conscious intention produces action. Instead, the process appears to be far more distributed.
 
@@ -55,7 +55,7 @@ If human behavior is so strongly shaped by unconscious processes, **what happens
 
 ---
 
-## 3. The Rise of Engineered Environments
+## The Rise of Engineered Environments
 
 For most of human history, the environments influencing our behavior evolved slowly: social norms, cultural institutions, and physical surroundings changed over generations.
 
@@ -81,7 +81,7 @@ And yet, culturally, we still frame human behavior almost entirely in terms of i
 
 ---
 
-## 4. The Ideological Function of Radical Individualism
+## The Ideological Function of Radical Individualism
 
 This is where the paradox appears.
 
@@ -103,7 +103,7 @@ It focuses attention on **the chooser**, while diverting attention away from **t
 
 ---
 
-## 5. Power in the Age of Choice Architecture
+## Power in the Age of Choice Architecture
 
 In earlier eras, power often operated through direct authority: laws, coercion, or overt commands.
 
@@ -123,7 +123,7 @@ The real issue is **who designs the environments within which that will operates
 
 ---
 
-## 6. Rethinking Freedom
+## Rethinking Freedom
 
 Acknowledging these influences does not eliminate personal responsibility. Humans are still agents capable of reflection and moral reasoning.
 

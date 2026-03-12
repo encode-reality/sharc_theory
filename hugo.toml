@@ -54,8 +54,8 @@ buildExpired = false
   author = "Miadad Kahn"
 
   DateFormat = "January 2, 2006"
-  defaultTheme = "auto"
-  disableThemeToggle = false
+  defaultTheme = "dark"
+  disableThemeToggle = true
 
   ShowReadingTime = true
   ShowWordCount = true
