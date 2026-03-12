@@ -24,9 +24,9 @@ The ambition is not metaphor, but **formalization**: to articulate a science of 
 
 ## 1. Open Systems and Dynamic Stability
 
-Human societies are **open systems**. They persist only through continuous exchange of energy, matter, and information with their environment. Such systems do not converge to equilibrium; instead, they maintain **dynamic stability**—bounded internal order maintained far from equilibrium—by continuously processing external inputs [1][2].
+Human societies are **open systems**. They persist only through continuous exchange of energy, matter, and information with their environment. Such systems do not converge to equilibrium; instead, they maintain **dynamic stability**—bounded internal order maintained far from equilibrium—by continuously processing external inputs [[1]](#ref-1)[[2]](#ref-2).
 
-A foundational result of non-equilibrium thermodynamics is that internal order is sustained only by exporting disorder. Systems ingest low-entropy resources and necessarily expel higher-entropy byproducts into their surroundings [1][3]. This is not optional, normative, or ideological; it is a physical constraint.
+A foundational result of non-equilibrium thermodynamics is that internal order is sustained only by exporting disorder. Systems ingest low-entropy resources and necessarily expel higher-entropy byproducts into their surroundings [[1]](#ref-1)[[3]](#ref-3). This is not optional, normative, or ideological; it is a physical constraint.
 
 Political systems are no exception. Governance does not eliminate conflict, scarcity, or instability; it **channels, displaces, and regulates** them.
 
@@ -46,7 +46,7 @@ Agency is not evenly distributed. In modern societies it is concentrated across 
 * the **political domain** (state authority, law, enforcement),
 * the **constituent domain** (citizens, labor, civil society).
 
-Increases in throughput tend to increase agency, but rarely symmetrically. Organizational scale, capital intensity, and technological leverage produce **uneven agency expansion**, which is the primary source of systemic tension [6][7].
+Increases in throughput tend to increase agency, but rarely symmetrically. Organizational scale, capital intensity, and technological leverage produce **uneven agency expansion**, which is the primary source of systemic tension [[6]](#ref-6)[[7]](#ref-7).
 
 ---
 
@@ -58,7 +58,7 @@ Agency alone is not destabilizing. Destabilization occurs when differences in ag
 
 > *Power is the realized gradient of agency across domains that enables asymmetric constraint, extraction, or rule-setting.*
 
-This formulation aligns with classical political theory, where power is understood as relational capacity [8][9], and with physical systems, where gradients (temperature, voltage, chemical potential) drive flows and perform work [1][2].
+This formulation aligns with classical political theory, where power is understood as relational capacity [[8]](#ref-8)[[9]](#ref-9), and with physical systems, where gradients (temperature, voltage, chemical potential) drive flows and perform work [[1]](#ref-1)[[2]](#ref-2).
 
 In political systems, agency gradients perform **institutional work**: shaping law, policy, incentives, and enforcement in ways that feed back into the originating differential.
 
@@ -66,7 +66,7 @@ In political systems, agency gradients perform **institutional work**: shaping l
 
 ## 4. Destabilizing Work and Dissipation
 
-Unchecked power gradients generate **positive feedback**. Economic advantage converts into political influence, which produces favorable rules, which further amplify economic advantage. Complexity theory predicts that such regimes reduce adaptability and drive systems toward brittle attractors unless counteracted [2][4].
+Unchecked power gradients generate **positive feedback**. Economic advantage converts into political influence, which produces favorable rules, which further amplify economic advantage. Complexity theory predicts that such regimes reduce adaptability and drive systems toward brittle attractors unless counteracted [[2]](#ref-2)[[4]](#ref-4).
 
 All stable open systems therefore require **dissipation**: processes that degrade concentrated gradients into diffuse, non-dominating forms.
 
@@ -78,7 +78,7 @@ In political systems, dissipation appears as:
 * stochastic outcomes (elections, judicial review),
 * veto points and jurisdictional overlap.
 
-These mechanisms do not remove power from the system; they **reduce its coherence, speed, and unilateral effectiveness**, preventing runaway amplification. Their role is structurally identical to entropy production in physical dissipative systems [1][2][3].
+These mechanisms do not remove power from the system; they **reduce its coherence, speed, and unilateral effectiveness**, preventing runaway amplification. Their role is structurally identical to entropy production in physical dissipative systems [[1]](#ref-1)[[2]](#ref-2)[[3]](#ref-3).
 
 ---
 
@@ -86,7 +86,7 @@ These mechanisms do not remove power from the system; they **reduce its coherenc
 
 Open systems regulate what threatens their persistence first. Internal disorder undermines survival; external disorder may be tolerable.
 
-Accordingly, systems preserve internal stability by **externalizing destabilizing effects** [1][3][11]:
+Accordingly, systems preserve internal stability by **externalizing destabilizing effects** [[1]](#ref-1)[[3]](#ref-3)[[11]](#ref-11):
 
 * firms externalize pollution, risk, and volatility,
 * markets externalize inequality and instability to society,
@@ -161,7 +161,7 @@ In such cases, exported disorder returns as amplified feedback, producing system
 
 ## 7. Democratic Stability as Bounded Antagonism
 
-In democratic-capitalist systems, stability depends on **bounded antagonism** among economic, political, and constituent domains. Each domain possesses agency; each constrains the others; none is permitted unchecked dominance [7][10][12].
+In democratic-capitalist systems, stability depends on **bounded antagonism** among economic, political, and constituent domains. Each domain possesses agency; each constrains the others; none is permitted unchecked dominance [[7]](#ref-7)[[10]](#ref-10)[[12]](#ref-12).
 
 Institutions such as campaign finance law, separation of powers, federalism, disclosure regimes, and electoral competition function as **dissipative controls** regulating cross-domain agency flows.
 
@@ -208,29 +208,29 @@ A science of politics does not replace normative judgment or historical analysis
 
 ## References
 
-1. Prigogine, I. (1961). *Thermodynamics of Irreversible Processes*.
+<a id="ref-1"></a>1. Prigogine, I. (1961). *Thermodynamics of Irreversible Processes*.
 
-2. Nicolis, G., & Prigogine, I. (1977). *Self-Organization in Nonequilibrium Systems*.
+<a id="ref-2"></a>2. Nicolis, G., & Prigogine, I. (1977). *Self-Organization in Nonequilibrium Systems*.
 
-3. Schrödinger, E. (1944). *What Is Life?*
+<a id="ref-3"></a>3. Schrödinger, E. (1944). *What Is Life?*
 
-4. Ashby, W. R. (1956). *An Introduction to Cybernetics*.
+<a id="ref-4"></a>4. Ashby, W. R. (1956). *An Introduction to Cybernetics*.
 
-5. Luhmann, N. (1995). *Social Systems*.
+<a id="ref-5"></a>5. Luhmann, N. (1995). *Social Systems*.
 
-6. Simon, H. A. (1962). "The Architecture of Complexity."
+<a id="ref-6"></a>6. Simon, H. A. (1962). "The Architecture of Complexity."
 
-7. North, D. C. (1990). *Institutions, Institutional Change and Economic Performance*.
+<a id="ref-7"></a>7. North, D. C. (1990). *Institutions, Institutional Change and Economic Performance*.
 
-8. Dahl, R. A. (1957). "The Concept of Power."
+<a id="ref-8"></a>8. Dahl, R. A. (1957). "The Concept of Power."
 
-9. Foucault, M. (1978). *The History of Sexuality, Vol. 1*.
+<a id="ref-9"></a>9. Foucault, M. (1978). *The History of Sexuality, Vol. 1*.
 
-10. Ostrom, E. (2005). *Understanding Institutional Diversity*.
+<a id="ref-10"></a>10. Ostrom, E. (2005). *Understanding Institutional Diversity*.
 
-11. Georgescu-Roegen, N. (1971). *The Entropy Law and the Economic Process*.
+<a id="ref-11"></a>11. Georgescu-Roegen, N. (1971). *The Entropy Law and the Economic Process*.
 
-12. Beinhocker, E. (2006). *The Origin of Wealth*.
+<a id="ref-12"></a>12. Beinhocker, E. (2006). *The Origin of Wealth*.
 
 ---
 
