@@ -208,29 +208,18 @@ A science of politics does not replace normative judgment or historical analysis
 
 ## References
 
-<a id="ref-1"></a>1. Prigogine, I. (1961). *Thermodynamics of Irreversible Processes*.
-
-<a id="ref-2"></a>2. Nicolis, G., & Prigogine, I. (1977). *Self-Organization in Nonequilibrium Systems*.
-
-<a id="ref-3"></a>3. Schrödinger, E. (1944). *What Is Life?*
-
-<a id="ref-4"></a>4. Ashby, W. R. (1956). *An Introduction to Cybernetics*.
-
-<a id="ref-5"></a>5. Luhmann, N. (1995). *Social Systems*.
-
-<a id="ref-6"></a>6. Simon, H. A. (1962). "The Architecture of Complexity."
-
-<a id="ref-7"></a>7. North, D. C. (1990). *Institutions, Institutional Change and Economic Performance*.
-
-<a id="ref-8"></a>8. Dahl, R. A. (1957). "The Concept of Power."
-
-<a id="ref-9"></a>9. Foucault, M. (1978). *The History of Sexuality, Vol. 1*.
-
-<a id="ref-10"></a>10. Ostrom, E. (2005). *Understanding Institutional Diversity*.
-
-<a id="ref-11"></a>11. Georgescu-Roegen, N. (1971). *The Entropy Law and the Economic Process*.
-
-<a id="ref-12"></a>12. Beinhocker, E. (2006). *The Origin of Wealth*.
+1. <a id="ref-1"></a>Prigogine, I. (1961). *Thermodynamics of Irreversible Processes*.
+2. <a id="ref-2"></a>Nicolis, G., & Prigogine, I. (1977). *Self-Organization in Nonequilibrium Systems*.
+3. <a id="ref-3"></a>Schrödinger, E. (1944). *What Is Life?*
+4. <a id="ref-4"></a>Ashby, W. R. (1956). *An Introduction to Cybernetics*.
+5. <a id="ref-5"></a>Luhmann, N. (1995). *Social Systems*.
+6. <a id="ref-6"></a>Simon, H. A. (1962). "The Architecture of Complexity."
+7. <a id="ref-7"></a>North, D. C. (1990). *Institutions, Institutional Change and Economic Performance*.
+8. <a id="ref-8"></a>Dahl, R. A. (1957). "The Concept of Power."
+9. <a id="ref-9"></a>Foucault, M. (1978). *The History of Sexuality, Vol. 1*.
+10. <a id="ref-10"></a>Ostrom, E. (2005). *Understanding Institutional Diversity*.
+11. <a id="ref-11"></a>Georgescu-Roegen, N. (1971). *The Entropy Law and the Economic Process*.
+12. <a id="ref-12"></a>Beinhocker, E. (2006). *The Origin of Wealth*.
 
 ---
 

@@ -149,25 +149,16 @@ It may be whether we understand the systems quietly shaping the choices we belie
 
 ## References
 
-<a id="ref-1"></a>1. Libet, B. (1985). "Unconscious Cerebral Initiative and the Role of Conscious Will in Voluntary Action." *Behavioral and Brain Sciences*, 8(4), 529–566.
-
-<a id="ref-2"></a>2. Soon, C. S., Brass, M., Heinze, H.-J., & Haynes, J.-D. (2008). "Unconscious Determinants of Free Decisions in the Human Brain." *Nature Neuroscience*, 11(5), 543–545.
-
-<a id="ref-3"></a>3. Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
-
-<a id="ref-4"></a>4. Tversky, A., & Kahneman, D. (1974). "Judgment under Uncertainty: Heuristics and Biases." *Science*, 185(4157), 1124–1131.
-
-<a id="ref-5"></a>5. Skinner, B. F. (1953). *Science and Human Behavior*. Macmillan.
-
-<a id="ref-6"></a>6. Bourdieu, P. (1977). *Outline of a Theory of Practice*. Cambridge University Press.
-
-<a id="ref-7"></a>7. Simon, H. A. (1955). "A Behavioral Model of Rational Choice." *Quarterly Journal of Economics*, 69(1), 99–118.
-
-<a id="ref-8"></a>8. Thaler, R. H., & Sunstein, C. R. (2008). *Nudge: Improving Decisions About Health, Wealth, and Happiness*. Yale University Press.
-
-<a id="ref-9"></a>9. Vosoughi, S., Roy, D., & Aral, S. (2018). "The Spread of True and False News Online." *Science*, 359(6380), 1146–1151.
-
-<a id="ref-10"></a>10. Johnson, E. J., & Goldstein, D. (2003). "Do Defaults Save Lives?" *Science*, 302(5649), 1338–1339.
+1. <a id="ref-1"></a>Libet, B. (1985). "Unconscious Cerebral Initiative and the Role of Conscious Will in Voluntary Action." *Behavioral and Brain Sciences*, 8(4), 529–566.
+2. <a id="ref-2"></a>Soon, C. S., Brass, M., Heinze, H.-J., & Haynes, J.-D. (2008). "Unconscious Determinants of Free Decisions in the Human Brain." *Nature Neuroscience*, 11(5), 543–545.
+3. <a id="ref-3"></a>Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
+4. <a id="ref-4"></a>Tversky, A., & Kahneman, D. (1974). "Judgment under Uncertainty: Heuristics and Biases." *Science*, 185(4157), 1124–1131.
+5. <a id="ref-5"></a>Skinner, B. F. (1953). *Science and Human Behavior*. Macmillan.
+6. <a id="ref-6"></a>Bourdieu, P. (1977). *Outline of a Theory of Practice*. Cambridge University Press.
+7. <a id="ref-7"></a>Simon, H. A. (1955). "A Behavioral Model of Rational Choice." *Quarterly Journal of Economics*, 69(1), 99–118.
+8. <a id="ref-8"></a>Thaler, R. H., & Sunstein, C. R. (2008). *Nudge: Improving Decisions About Health, Wealth, and Happiness*. Yale University Press.
+9. <a id="ref-9"></a>Vosoughi, S., Roy, D., & Aral, S. (2018). "The Spread of True and False News Online." *Science*, 359(6380), 1146–1151.
+10. <a id="ref-10"></a>Johnson, E. J., & Goldstein, D. (2003). "Do Defaults Save Lives?" *Science*, 302(5649), 1338–1339.
 
 ---
 
