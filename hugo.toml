@@ -4,7 +4,7 @@
 baseURL = "https://encode-reality.github.io/sharc_theory/"
 languageCode = "en-us"
 title = "Encode Reality"
-theme = "hugo-blog-awesome"
+theme = "PaperMod"
 
 [pagination]
   pagerSize = 10
@@ -28,7 +28,6 @@ buildExpired = false
           block = [['$$', '$$'], ['\[', '\]']]
           inline = [['$', '$'], ['\(', '\)']]
   [markup.highlight]
-    noClasses = false
     codeFences = true
     guessSyntax = true
     lineNos = false
@@ -46,57 +45,87 @@ buildExpired = false
   minifyOutput = true
 
 # ============================================================
-# Theme Parameters (hugo-blog-awesome)
+# Theme Parameters (PaperMod)
 # ============================================================
 [params]
-  sitename = "Encode Reality"
-  defaultColor = "dark"
+  env = "production"
+  title = "Encode Reality"
   description = "Exploring computation, complex systems, and the principles that govern hierarchical organization from molecular to societal scales."
-  mainSections = ['posts']
-  toc = true
-  tocOpen = false
-  goToTop = true
-  dateFormat = "January 2, 2006"
+  author = "Miadad Kahn"
 
-[params.author]
-  name = "Miadad Kahn"
-  intro = "Encode Reality"
-  description = "Exploring computation, complex systems, and the principles that govern hierarchical organization from molecular to societal scales."
-  # avatar = "avatar.jpg" # uncomment and place image in assets/ folder to enable
+  DateFormat = "January 2, 2006"
+  defaultTheme = "dark"
+  disableThemeToggle = false
 
-[[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/encode-reality/sharc_theory"
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = false
+  ShowRssButtonInSectionTermList = true
+
+  ShowToc = true
+  TocOpen = false
+
+  [params.homeInfoParams]
+    Title = "Encode Reality"
+    Content = """
+Exploring the principles underpinning hierarchical and recursive cognitive systems \
+across scales -- from molecular to societal. Research spanning non-equilibrium \
+thermodynamics, cybernetics, complex systems theory, epistemology, and computational modeling.
+
+[View the research repository on GitHub](https://github.com/encode-reality/sharc_theory)
+"""
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/encode-reality/sharc_theory"
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
 
 # ============================================================
 # Outputs (required for search and RSS)
 # ============================================================
 [outputs]
-  home = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "JSON"]
 
 # ============================================================
 # Menu
 # ============================================================
 [[menu.main]]
-  pageRef = "/"
-  name = "Home"
-  url = "/"
-  weight = 1
-
-[[menu.main]]
-  pageRef = "posts"
+  identifier = "posts"
   name = "Posts"
   url = "/posts/"
-  weight = 2
+  weight = 1
 
 [[menu.main]]
   identifier = "tags"
   name = "Tags"
   url = "/tags/"
+  weight = 2
+
+[[menu.main]]
+  identifier = "archives"
+  name = "Archives"
+  url = "/archives/"
   weight = 3
+
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 4
 
 [[menu.main]]
   identifier = "repo"
   name = "GitHub"
   url = "https://github.com/encode-reality/sharc_theory"
-  weight = 4
+  weight = 5
