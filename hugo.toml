@@ -75,9 +75,33 @@ buildExpired = false
   <img src="images/avatar.jpg" alt="Miadad Kahn" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #555;" />
 </div>
 
-Exploring the principles underpinning hierarchical and recursive cognitive systems \
-across scales -- from molecular to societal. Research spanning non-equilibrium \
-thermodynamics, cybernetics, complex systems theory, epistemology, and computational modeling.
+### Exploring the Principles Underpinning Hierarchical Systems of Knowledge and Computation
+
+
+Most of the ways I have learned to understand the world—physics, mathematics, logic, and complex systems—have come through the lens of computation. Computation has a unique property among intellectual frameworks: it allows ideas to be executed. A philosophical claim can become a model, a model can become code, and code can become an experiment. When this happens, philosophy stops being purely speculative and becomes something we can interact with.
+
+This blog explores that space.
+
+The project sits at the intersection of **epistemology**, **ontology**, and the **post-Gödel constructivist tradition**. Gödel showed that formal systems cannot fully contain the truths about themselves. Instead of treating that as a limitation, constructivist thinking reframes the problem: knowledge should be grounded in what can be **constructed, verified, and operationalized**.
+
+In other words, ideas should be **buildable**.
+
+The goal here is to explore frameworks that are **actionable, testable, and implementable**. If a concept cannot be translated into some form of executable model—whether mathematical, computational, or experimental—then its usefulness is limited. Understanding deepens when ideas can be instantiated and observed in operation.
+
+To pursue that goal, this blog takes two forms:
+
+* **Essays** exploring concepts in philosophy, mathematics, computation, and systems theory.
+* **Experiments** that readers can run themselves, often on their own computers, to develop intuition about the ideas being discussed.
+
+The experiments are not secondary to the writing. They are the mechanism through which abstract ideas become tangible.
+
+The broader motivation behind this project is simple: **awareness expands agency**. The more clearly we understand the systems we inhabit—biological, computational, social, or physical—the more expressive we become within them. Knowledge is not just about description; it is about expanding the space of possible actions.
+
+Ultimately, this work is an attempt to leave something useful behind: not a finished doctrine, but a collection of ideas, experiments, and tools that others can build upon. If the project succeeds, readers will leave with something more valuable than answers.
+
+They will leave with **new ways to think and construct**.
+
+
 
 [View the research repository on GitHub](https://github.com/encode-reality/sharc_theory)
 """
