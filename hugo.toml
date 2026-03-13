@@ -1,7 +1,7 @@
 # ============================================================
 # Site Configuration
 # ============================================================
-baseURL = "https://encode-reality.github.io/sharc_theory/"
+baseURL = "https://encodereality.com/"
 languageCode = "en-us"
 title = "Encode Reality"
 theme = "PaperMod"
