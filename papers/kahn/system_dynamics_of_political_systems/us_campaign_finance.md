@@ -30,37 +30,6 @@ Each reform cycle followed a major systemic perturbation—often a scandal (e.g.
 
 The system comprises three interdependent subsystems: Economy (E), Politics (P), and Constituents (C). Stability arises from **bounded antagonism** among these domains.
 
-```mermaid
-flowchart LR
-  subgraph E["Economic Subsystem (Firms, Capital)"]
-  end
-  subgraph P["Political Subsystem (State, Law, Regulators)"]
-  end
-  subgraph C["Constituent Subsystem (Voters, Workers, Consumers)"]
-  end
-
-  %% E <-> P
-  E -- "Lobbying, $ donations,
-Independent expenditures (E → P)" --> P
-  P -- "Regulation, Taxation,
-Antitrust, Procurement (P → E)" --> E
-
-  %% C <-> P
-  C -- "Elections, Participation,
-Accountability (C → P)" --> P
-  P -- "Policy Outputs,
-Public Goods, Services (P → C)" --> C
-
-  %% E <-> C
-  E -- "Wages, Prices,
-Employment, Products (E → C)" --> C
-  C -- "Consumer demand,
-Labor supply (C → E)" --> E
-
-  classDef sys fill:#f7f7f7,stroke:#999,stroke-width:1px;
-  class E,P,C sys;
-```
-
 ![Holy Trinity diagram](./holytrinity.svg)
 
 Healthy democracy depends on **gain symmetry** across these feedbacks. When E→P (economic influence on politics) becomes dominant, drift toward *regulatory capture* or *plutocracy* occurs; when P→E dominates, *statism* risks emerge. Robust C→P feedback (elections, oversight) provides damping.

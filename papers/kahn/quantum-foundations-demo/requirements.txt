@@ -1,0 +1,9 @@
+numpy>=1.25
+matplotlib>=3.7
+jupyter
+ipywidgets
+pytest>=7.0
+# Optional:
+# manim>=0.18
+# plotly
+# scipy
