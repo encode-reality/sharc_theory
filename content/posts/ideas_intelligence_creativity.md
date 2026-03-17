@@ -319,6 +319,20 @@ Something we can play with.
 
 ---
 
+## Inspiration
+
+This essay owes a deep debt to **Jacob Foster's** talk *"Ideal Objects"*, delivered as part of a symposium on the platonic space. Foster — a professor of cognitive science and informatics at Indiana University Bloomington and an external professor at the Santa Fe Institute — articulates with remarkable clarity the distinction between exploratory, combinatorial, and transformational creativity, drawing on Boden's framework and extending it into a theory of how intellectual systems unfold as *ideal objects* whose internal possibilities are explored historically.
+
+His discussion of how AI excels at tinkering and combinatorial search but struggles with transformational creativity — and his framing of what it means to see a structure *as* something new rather than merely rearrange it — directly shaped the hierarchy presented here. The idea that generators have histories, that creativity operates over the structure of possibility rather than within it, and that the most important innovations look like errors from within the current paradigm: these insights crystallized while engaging with this talk.
+
+I am grateful to Professor Foster for making these ideas publicly available, and I encourage anyone interested in the deeper structure of creativity, intelligence, and scientific discovery to watch the full lecture:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 1.5em 0;">
+  <iframe src="https://www.youtube.com/embed/9cps3Wdv_hE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+---
+
 ## Experiments
 
 The computational experiments supporting this essay are available in the project repository:
