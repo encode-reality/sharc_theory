@@ -1,7 +1,7 @@
 ---
 title: "Beyond What Works: Ideas, Intelligence, and the Courage to Be Creative"
 date: 2026-03-16T21:31:16-05:00
-draft: true
+draft: false
 description: "A structural hierarchy of ideas, intelligence, and creativity — where creativity is not novelty but a mechanism for modifying the space of possibility itself."
 tags: ["creativity", "intelligence", "epistemology", "complex-systems", "AI", "philosophy-of-science"]
 author: "Miadad Rashid"

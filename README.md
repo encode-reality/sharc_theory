@@ -1,97 +1,112 @@
-# Scaled Societal Hierarchical Competencies
+# SHARC Theory
 
-Welcome to the **Scaled Societal Hierarchical Competencies (SSHC)** project. This repository is dedicated to exploring the concept of **scaled hierarchical and recursive cognitive systems**, spanning scales from the molecular to the societal and cosmic levels. By leveraging mathematical, computational, and theoretical tools, this project aims to unravel the principles underpinning such systems and their competencies.
+**Scaled Hierarchical and Recursive Competencies** — a research project exploring how hierarchical systems evolve, adapt, and interact across scales, from molecular dynamics to societal organization.
 
----
+The project combines computational models, formal essays, and curated research to investigate the principles governing complex systems: evolutionary dynamics, non-equilibrium thermodynamics, information theory, and the structure of intelligence and creativity.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Project Goals](#project-goals)
-- [Key Focus Areas](#key-focus-areas)
-- [Repository Structure](#repository-structure)
-- [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
-## Introduction
-
-The SSHC project seeks to understand how hierarchical systems evolve, adapt, and interact across scales. By integrating insights from **evolutionary dynamics**, **information theory**, **physics**, **biology**, **artificial intelligence**, and more, we aim to model and simulate the principles governing the competencies of such systems.
-
-The project is computationally focused, utilizing **Python** as the primary programming language and combining it with mathematical and theoretical research. We aim to produce tools, papers, and insights to contribute to interdisciplinary understanding in this domain.
-
----
-
-## Project Goals
-
-1. **Develop Computational Models**:
-   - Simulate hierarchical systems at multiple scales.
-   - Explore recursive and emergent behaviors in these systems.
-
-2. **Integrate Theoretical Insights**:
-   - Combine principles from physics, biology, and information theory.
-   - Examine the interplay of evolutionary dynamics and computational theory.
-
-3. **Generate New Research**:
-   - Publish papers and share findings.
-   - Contribute to understanding scaled competencies in societal and cosmic contexts.
-
-4. **Build Tools for Exploration**:
-   - Create Python-based libraries and scripts for modeling and analysis.
-   - Develop optimization tools for studying hierarchical systems.
-
----
-
-## Key Focus Areas
-
-### 1. **Evolutionary Dynamics**
-   - Simulations of adaptive and evolutionary processes.
-   - Exploration of fitness landscapes in hierarchical systems.
-
-### 2. **Mathematical Optimization**
-   - Studying principles of efficiency and trade-offs in system behavior.
-   - Implementing algorithms to find optimal strategies for scaled systems.
-
-### 3. **Information Theory**
-   - Analyzing how information is processed and transmitted across scales.
-   - Studying entropy, redundancy, and mutual information in complex systems.
-
-### 4. **Physics, Chemistry, and Biology**
-   - Modeling molecular and macroscopic interactions.
-   - Studying the emergence of order and organization in natural systems.
-
-### 5. **Artificial Intelligence and Computation**
-   - Applying AI techniques to simulate and predict hierarchical behaviors.
-   - Investigating parallels between biological and artificial intelligence systems.
+Blog: [encodereality.com](https://encodereality.com/)
 
 ---
 
 ## Repository Structure
 
 ```
-scaled-societal-hierarchical-competencies/
-│
-├── papers/                # Research papers and related documentation
-│   ├── drafts/            # In-progress papers and notes
-│   └── published/         # Published or finalized works
-│
-├── models/                # Computational models and simulations
-│   ├── evolutionary/      # Evolutionary dynamics simulations
-│   ├── information/       # Information theory models
-│   └── optimization/      # Mathematical optimization tools
-│
-├── notebooks/             # Jupyter notebooks for exploration and analysis
-│
-├── scripts/               # Python scripts for specific tasks
-│
-├── docs/                  # Documentation and related references
-│
-├── tests/                 # Unit tests for the codebase
-│
-└── README.md              # Overview of the project
+sharc_theory/
+    content/          Blog posts (Hugo)
+    experiments/      Runnable code supporting blog essays
+    models/           Standalone computational models
+    papers/           Research manuscripts, citations, and demos
+    media/            Curated transcripts and analysis of talks/interviews
+    static/           Images and assets served by the blog
+    layouts/          Hugo template overrides
+    themes/           Hugo themes (PaperMod)
 ```
+
+---
+
+## Blog (`content/posts/`)
+
+The blog at [encodereality.com](https://encodereality.com/) publishes essays grounded in formal reasoning and supported by computational experiments. Current posts:
+
+| Post | Topics | Status |
+|------|--------|--------|
+| [Toward a Science of Politics](https://encodereality.com/posts/societies-as-complex-systems/) | Non-equilibrium thermodynamics, cybernetics, dissipative systems | Published |
+| [The Paradox of Individualism](https://encodereality.com/posts/paradox_of_individualism/) | Behavioral psychology, neuroscience, choice architecture, agency | Published |
+| [Beyond What Works: Ideas, Intelligence, and the Courage to Be Creative](https://encodereality.com/posts/ideas_intelligence_creativity/) | Creativity, intelligence, epistemology, AI, philosophy of science | Draft |
+
+---
+
+## Experiments (`experiments/`)
+
+Runnable code that supports specific blog posts. Each experiment directory is self-contained with its own tests, CLI runner, and README.
+
+### ideas_intelligence_creativity/
+
+Supporting code for *"Beyond What Works."* Demonstrates the structural hierarchy of ideas, intelligence, and creativity through two experiments:
+
+- **Experiment 1 — Fitness Landscape Optimization**: A fixed-strategy optimizer (intelligence) vs. a meta-strategy optimizer (creativity) on a rugged 2D landscape. The fixed system plateaus; the creative system makes discontinuous jumps by mutating its own search strategy.
+
+- **Experiment 2 — The Generator Hierarchy**: Agent-based simulation with three levels in a grid world — a hardcoded agent (Level 0), weight evolution within a fixed neural architecture (Level 1), and architecture evolution via neuroevolution (Level 2). Environment shifts demonstrate that only Level 2 can handle qualitatively new challenges.
+
+```bash
+# Run Experiment 1
+python experiments/ideas_intelligence_creativity/run_experiment_1.py --n-steps 1000 --n-peaks 20
+
+# Run Experiment 2
+python experiments/ideas_intelligence_creativity/run_experiment_2.py --meta-steps 20 --weight-generations 15
+```
+
+60 unit tests: `pytest experiments/ideas_intelligence_creativity/tests/ --no-cov`
+
+---
+
+## Models (`models/`)
+
+Standalone computational models for long-running research questions.
+
+### evolutionary/abiogenesis_blaise/
+
+A primordial soup simulation exploring the spontaneous emergence of self-replicating programs. A population of random byte-tapes interact pairwise via a modified Brainfuck interpreter. Over millions of interactions, replicators emerge without external selection pressure.
+
+- Core: `tape.py`, `brainfuck.py`, `soup.py`
+- 81 unit tests with full coverage
+- Jupyter notebooks for exploration (`01_basic_bff.ipynb`, `02_long_run_2M.ipynb`, `03_paper_parameters.ipynb`)
+
+```bash
+python models/evolutionary/abiogenesis_blaise/run_experiment.py --interactions 2000000
+```
+
+---
+
+## Papers (`papers/`)
+
+Research manuscripts, reference materials, and interactive demos.
+
+| Directory | Description |
+|-----------|-------------|
+| `kahn/persistent_computation/` | Manuscript on persistent computation with citations, figures, and glossary |
+| `kahn/quantum-foundations-demo/` | Interactive quantum mechanics tutorial — 8 Jupyter notebooks with Python modules and tests |
+| `kahn/representational_geometry/` | Representational geometry research |
+| `kahn/system_dynamics_of_political_systems/` | System dynamics of political systems |
+| `levinfiles/classical_sorting/` | Classical sorting algorithm research with visualizations |
+| `marletto/` | Constructor theory references |
+
+---
+
+## Media (`media/`)
+
+Curated transcripts, summaries, and analysis of talks and interviews that inform the project's theoretical foundations.
+
+| Directory | Source | Topic |
+|-----------|--------|-------|
+| `jacob_foster/ideal_objects/` | Jacob Foster | Ideal objects, transformational creativity, AI and science |
+| `jonathan_goddard/toe/` | Jonathan Goddard | Theory of Everything — constructor theory, set theory, causality, computational irreducibility |
+| `blaise/` | Blaise | Computational symbiogenesis, abiogenesis |
+| `joscha_bach/` | Joscha Bach | Cognitive architectures, consciousness |
+| `andrew_wilson/` | Andrew Wilson | Deep learning strategies |
+| `steve_keen/` | Steve Keen | Economics and complex systems |
+| `levin/`, `seth_v_levin/` | Michael Levin | Bioelectricity, morphogenesis, collective intelligence |
+| `jefflichtman/` | Jeff Lichtman | Connectomics |
 
 ---
 
@@ -99,47 +114,52 @@ scaled-societal-hierarchical-competencies/
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- Common libraries (see `requirements.txt` for details)
+- Python 3.12+
+- [uv](https://docs.astral.sh/uv/) (package manager) or pip
+- Hugo (extended version, for blog development)
 
-### Installation
+### Setup
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/scaled-societal-hierarchical-competencies.git
-   cd scaled-societal-hierarchical-competencies
-   ```
+```bash
+git clone https://github.com/encode-reality/sharc_theory.git
+cd sharc_theory
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Install dependencies (using uv)
+uv sync
 
-3. Run initial tests to verify installation:
-   ```bash
-   pytest
-   ```
+# Or with pip
+pip install -e ".[dev]"
 
-### Usage
+# Run tests
+pytest --no-cov
 
-Start by exploring the Jupyter notebooks in the `notebooks/` directory for tutorials and examples. For advanced users, the `models/` directory contains the core simulations and tools.
+# Start the blog locally
+hugo server -D
+```
+
+### Running Tests
+
+```bash
+# All tests (models + experiments)
+pytest --no-cov
+
+# Just experiments
+pytest experiments/ideas_intelligence_creativity/tests/ --no-cov
+
+# Just models
+pytest models/evolutionary/abiogenesis_blaise/tests/ --no-cov
+```
 
 ---
 
-## Contributing
+## Tech Stack
 
-We welcome contributions from researchers, developers, and enthusiasts interested in scaled systems, hierarchical cognition, and related fields. Please read the `CONTRIBUTING.md` file for guidelines on contributing to this project.
-
----
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+- **Python 3.12+** with numpy, scipy, matplotlib, seaborn, networkx, numba
+- **Hugo** with PaperMod theme, KaTeX math rendering
+- **Jupyter** for interactive exploration
 
 ---
 
 ## Contact
 
-For questions, discussions, or collaborations, please open an issue or contact us directly at [miadad@encodereality.com].
-
-Let’s build a deeper understanding of hierarchical systems, together! 🌌
+For questions or collaborations: [miadad@encodereality.com](mailto:miadad@encodereality.com)
