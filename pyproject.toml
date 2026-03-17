@@ -29,7 +29,10 @@ dev = [
 ]
 
 [tool.pytest.ini_options]
-testpaths = ["models/evolutionary/abiogenesis_blaise/tests"]
+testpaths = [
+    "models/evolutionary/abiogenesis_blaise/tests",
+    "experiments/ideas_intelligence_creativity/tests",
+]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
