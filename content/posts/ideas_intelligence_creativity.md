@@ -50,9 +50,9 @@ So rather than treating ideas as primitive, we treat them as **outputs of a gene
 
 Biology provides a clear example.
 
-Evolution is often described as a search over all possible organisms, guided by natural selection. But this is incomplete. Organisms do not vary arbitrarily; they vary according to the structure of the developmental systems that produce them [1].
+Evolution is often described as a search over all possible organisms, guided by natural selection. But this is incomplete. Organisms do not vary arbitrarily; they vary according to the structure of the developmental systems that produce them [[1]](#ref-1).
 
-The extinct **Tasmanian wolf (thylacine)** and modern wolves diverged over 100 million years ago, yet evolved strikingly similar forms. This is not just because the environment favored those forms. It is because both lineages inherited similar generative resources—developmental systems that bias what can be produced [2].
+The extinct **Tasmanian wolf (thylacine)** and modern wolves diverged over 100 million years ago, yet evolved strikingly similar forms. This is not just because the environment favored those forms. It is because both lineages inherited similar generative resources—developmental systems that bias what can be produced [[2]](#ref-2).
 
 Selection chooses among possibilities.
 
@@ -68,11 +68,11 @@ Scientific reasoning follows the same structure.
 
 Scientists do not explore all possible explanations. They operate within frameworks—mathematical, conceptual, and representational—that determine what kinds of explanations can exist.
 
-Kuhn called these **paradigms** [4]. Within a paradigm, intelligence produces solutions. But when the paradigm itself changes, the space of possible solutions changes with it.
+Kuhn called these **paradigms** [[4]](#ref-4). Within a paradigm, intelligence produces solutions. But when the paradigm itself changes, the space of possible solutions changes with it.
 
-For centuries, geometry meant Euclidean geometry. The introduction of non-Euclidean geometry redefined what “space” could be, enabling entirely new lines of reasoning and ultimately new physical theories [5].
+For centuries, geometry meant Euclidean geometry. The introduction of non-Euclidean geometry redefined what “space” could be, enabling entirely new lines of reasoning and ultimately new physical theories [[5]](#ref-5).
 
-In quantum mechanics, the shift from probabilities as primitives to amplitudes as primitives fundamentally altered the structure of reasoning about uncertainty and interaction [6].
+In quantum mechanics, the shift from probabilities as primitives to amplitudes as primitives fundamentally altered the structure of reasoning about uncertainty and interaction [[6]](#ref-6).
 
 These were not just better answers.
 
@@ -116,7 +116,7 @@ These levels are not merely conceptual. In the [supporting experiments](#the-obs
 
 This definition aligns with—but sharpens—existing work.
 
-Margaret Boden distinguishes between exploratory, combinational, and transformational creativity [7]. What we are calling creativity corresponds specifically to her **transformational** category: changing the space itself.
+Margaret Boden distinguishes between exploratory, combinational, and transformational creativity [[7]](#ref-7). What we are calling creativity corresponds specifically to her **transformational** category: changing the space itself.
 
 But here we go further.
 
@@ -203,7 +203,11 @@ Generators do not appear out of nowhere.
 
 Developmental systems evolve. Mathematical frameworks are constructed over time. Scientific paradigms emerge through accumulated constraints and successes.
 
-Ioan P. Culianu described intellectual systems as **ideal objects** whose internal possibilities unfold historically [9].
+Most of us only ever see the solutions. We see relativity, but not how Einstein arrived at it. There is a sociological and historical explanation — the mathematical machinery he drew on, the work of Hilbert, the structure of Minkowski spacetime — and these are well documented [[5]](#ref-5). But what Einstein went through internally to string those elements together, to embody a new concept deeply enough to expose it to the world — that generative process is far harder to record or audit. And it is the most important part of the story. The output was a theory. The creative act was the construction of a new generator: a way of seeing space, time, and gravitation that did not exist within any prior framework.
+
+This is the pattern. We inherit the ideas but rarely the generators that produced them, and almost never the creative acts that built those generators in the first place.
+
+Ioan P. Culianu described intellectual systems as **ideal objects** whose internal possibilities unfold historically [[9]](#ref-9).
 
 This leads to a recursive structure:
 
@@ -253,11 +257,11 @@ They can:
 
 Consider AlphaFold: it is a remarkably powerful generator within a fixed representational space — amino acid sequences mapped to three-dimensional structures. It produces solutions that human scientists could not, but it does not invent new representations of protein structure. It operates entirely within a generator defined by decades of structural biology.
 
-Large language models demonstrate a similar pattern. They excel at what Boden would call **combinational creativity** — recombining learned representations in novel ways, synthesizing across domains, generating fluent text in styles they have absorbed [7]. But they rarely perform **transformational creativity**: inventing a new representational space that makes previously inexpressible ideas expressible.
+Large language models demonstrate a similar pattern. They excel at what Boden would call **combinational creativity** — recombining learned representations in novel ways, synthesizing across domains, generating fluent text in styles they have absorbed [[7]](#ref-7). But they rarely perform **transformational creativity**: inventing a new representational space that makes previously inexpressible ideas expressible.
 
 This distinction maps precisely onto the hierarchy. LLMs are sophisticated Level 1 systems — powerful generators within the representational space defined by their training. They do not typically modify the generator itself.
 
-Gian-Carlo Rota described a "barrier of meaning" in mathematics — the moment when a structure is seen *as* something new, not merely rearranged within its existing interpretation [10]. Seeing something *as* something else is a generator-level operation, not an output-level one. It requires redefining the representational primitives, not just recombining them.
+Gian-Carlo Rota described a "barrier of meaning" in mathematics — the moment when a structure is seen *as* something new, not merely rearranged within its existing interpretation [[10]](#ref-10). Seeing something *as* something else is a generator-level operation, not an output-level one. It requires redefining the representational primitives, not just recombining them.
 
 This is the boundary.
 
@@ -344,15 +348,19 @@ The computational experiments supporting this essay are available in the project
 
 ## References
 
-1. Müller, G. B. (2007). "Evo–devo: extending the evolutionary synthesis." *Nature Reviews Genetics*, 8(12), 943–949.
-2. Feigin, C. Y., et al. (2018). "Genome of the Tasmanian tiger..." *Nature Ecology & Evolution*.
-3. Thompson, D. W. (1917). *On Growth and Form.*
-4. Kuhn, T. S. (1962). *The Structure of Scientific Revolutions.*
-5. Riemann, B. (1868). Foundations of geometry.
-6. Dirac, P. A. M. (1930). *The Principles of Quantum Mechanics.*
-7. Boden, M. A. (2004). *The Creative Mind: Myths and Mechanisms.* 2nd ed. Routledge. See Ch. 3 for the distinction between exploratory, combinational, and transformational creativity.
-8. Turing, A. M. (1936). Computable numbers.
-9. Culianu, I. P. (1992). *The Tree of Gnosis.*
-10. Rota, G.-C. (1997). *Indiscrete Thoughts.* Birkhauser. See the discussion of the "barrier of meaning" in mathematical understanding.
-11. Hofstadter, D. (1979). *Godel, Escher, Bach: An Eternal Golden Braid.* On strange loops and tangled hierarchies as self-referential generators.
-12. Holland, J. H. (1992). *Adaptation in Natural and Artificial Systems.* On the formal structure of evolutionary search operators.
+1. <a id="ref-1"></a>Müller, G. B. (2007). "Evo–devo: extending the evolutionary synthesis." *Nature Reviews Genetics*, 8(12), 943–949.
+2. <a id="ref-2"></a>Feigin, C. Y., et al. (2018). "Genome of the Tasmanian tiger..." *Nature Ecology & Evolution*.
+3. <a id="ref-3"></a>Thompson, D. W. (1917). *On Growth and Form.*
+4. <a id="ref-4"></a>Kuhn, T. S. (1962). *The Structure of Scientific Revolutions.*
+5. <a id="ref-5"></a>Riemann, B. (1868). Foundations of geometry.
+6. <a id="ref-6"></a>Dirac, P. A. M. (1930). *The Principles of Quantum Mechanics.*
+7. <a id="ref-7"></a>Boden, M. A. (2004). *The Creative Mind: Myths and Mechanisms.* 2nd ed. Routledge. See Ch. 3 for the distinction between exploratory, combinational, and transformational creativity.
+8. <a id="ref-8"></a>Turing, A. M. (1936). Computable numbers.
+9. <a id="ref-9"></a>Culianu, I. P. (1992). *The Tree of Gnosis.*
+10. <a id="ref-10"></a>Rota, G.-C. (1997). *Indiscrete Thoughts.* Birkhauser. See the discussion of the "barrier of meaning" in mathematical understanding.
+11. <a id="ref-11"></a>Hofstadter, D. (1979). *Godel, Escher, Bach: An Eternal Golden Braid.* On strange loops and tangled hierarchies as self-referential generators.
+12. <a id="ref-12"></a>Holland, J. H. (1992). *Adaptation in Natural and Artificial Systems.* On the formal structure of evolutionary search operators.
+
+---
+
+*This essay is part of the [SHARC Theory](https://github.com/encode-reality/sharc_theory) research project.*
