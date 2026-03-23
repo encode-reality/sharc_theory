@@ -1,7 +1,7 @@
 ---
 title: "The Models We Choose Define the Worlds We Can See"
 date: 2026-03-17T13:50:30-05:00
-draft: true
+draft: false
 description: "How modeling choices constrain what dynamics we can express — demonstrated through epidemic modeling, agent-based simulation, and computational irreducibility."
 tags: ["modeling", "agent-based-models", "complex-systems", "computational-irreducibility", "epidemiology", "philosophy-of-science"]
 author: "Miadad Rashid"
