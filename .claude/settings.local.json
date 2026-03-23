@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pytest experiments/models_define_world/tests/ -v --no-header --tb=short -p no:cacheprovider --override-ini=\"addopts=\")"
+    ]
+  }
+}
