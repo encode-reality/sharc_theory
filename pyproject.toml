@@ -32,6 +32,7 @@ dev = [
 testpaths = [
     "models/evolutionary/abiogenesis_blaise/tests",
     "experiments/ideas_intelligence_creativity/tests",
+    "experiments/models_define_world/tests",
 ]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
