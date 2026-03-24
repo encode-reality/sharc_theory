@@ -212,6 +212,380 @@ def plot_disagreement_curves(output_path=None):
     return fig
 
 
+# ── Intuition: Three-polarizer surprise ───────────────────────────────
+
+def plot_polarizer_surprise(output_path=None):
+    """Plot photon beam attenuation through 2 vs 3 polarizer configurations."""
+    _apply_style()
+    fig, (ax_top, ax_bot) = plt.subplots(2, 1, figsize=(12, 6))
+
+    beam_color = COLORS["quantum"]
+    filter_color = COLORS["classical"]
+    text_color = "#e0e0e0"
+    formula_bg = "#2a2a2a"
+
+    for ax in (ax_top, ax_bot):
+        ax.set_xlim(0, 10)
+        ax.set_ylim(0, 2)
+        ax.axis("off")
+
+    def draw_beam(ax, x_start, x_end, count, max_count=100):
+        """Draw a horizontal beam segment with height/alpha proportional to count."""
+        if count == 0:
+            return
+        h = 0.6 * (count / max_count)
+        alpha = 0.3 + 0.7 * (count / max_count)
+        y_center = 1.0
+        ax.fill_between(
+            [x_start, x_end],
+            [y_center - h / 2] * 2,
+            [y_center + h / 2] * 2,
+            color=beam_color, alpha=alpha, zorder=1,
+        )
+
+    def draw_filter(ax, x, label, angle_label):
+        """Draw a vertical filter bar with labels."""
+        ax.plot([x, x], [0.2, 1.8], color=filter_color, linewidth=3,
+                linestyle="--", zorder=3, alpha=0.8)
+        ax.fill_between([x - 0.06, x + 0.06], [0.2, 0.2], [1.8, 1.8],
+                        color=filter_color, alpha=0.25, zorder=2)
+        ax.text(x, 1.9, label, ha="center", va="bottom",
+                fontsize=11, fontweight="bold", color=text_color)
+        ax.text(x, 0.08, angle_label, ha="center", va="top",
+                fontsize=9, color="#aaaaaa")
+
+    def draw_count(ax, x, count):
+        """Draw a photon count label above the beam."""
+        ax.text(x, 1.55, f"{count}", ha="center", va="bottom",
+                fontsize=14, fontweight="bold", color=text_color, zorder=5)
+
+    def draw_formula(ax, x, formula):
+        """Draw a cos² formula annotation below the beam."""
+        ax.text(x, 0.3, formula, ha="center", va="top",
+                fontsize=9, color="#aaaaaa", zorder=5,
+                bbox=dict(boxstyle="round,pad=0.3", facecolor=formula_bg,
+                          edgecolor="#555555", alpha=0.9))
+
+    # ── Top row: 2 filters (V → H = 0 photons) ──
+    ax_top.text(0.3, 1.0, "100\nphotons", ha="center", va="center",
+                fontsize=10, color=text_color, fontweight="bold")
+
+    draw_beam(ax_top, 0.8, 3.0, 100)
+    draw_filter(ax_top, 3.0, "V", "0°")
+    draw_count(ax_top, 1.9, 100)
+
+    draw_beam(ax_top, 3.0, 7.0, 50)
+    draw_count(ax_top, 5.0, 50)
+    draw_formula(ax_top, 5.0, r"$100 \times \cos^2(0°) = 50$")
+
+    draw_filter(ax_top, 7.0, "H", "90°")
+    # No beam after — 0 photons
+
+    ax_top.text(8.5, 1.0, "0", ha="center", va="center",
+                fontsize=22, fontweight="bold", color="#ff6666", zorder=5)
+    draw_formula(ax_top, 8.2, r"$50 \times \cos^2(90°) = 0$")
+
+    ax_top.text(0.3, 1.9, "2 filters", fontsize=12, fontweight="bold",
+                color=text_color, ha="center", va="bottom")
+
+    # ── Bottom row: 3 filters (V → 45° → H ≈ 12 photons) ──
+    ax_bot.text(0.3, 1.0, "100\nphotons", ha="center", va="center",
+                fontsize=10, color=text_color, fontweight="bold")
+
+    draw_beam(ax_bot, 0.8, 2.2, 100)
+    draw_filter(ax_bot, 2.2, "V", "0°")
+    draw_count(ax_bot, 1.5, 100)
+
+    draw_beam(ax_bot, 2.2, 4.5, 50)
+    draw_count(ax_bot, 3.35, 50)
+    draw_formula(ax_bot, 3.35, r"$\cos^2(0°)$")
+
+    draw_filter(ax_bot, 4.5, "45°", "45°")
+
+    draw_beam(ax_bot, 4.5, 6.8, 25)
+    draw_count(ax_bot, 5.65, 25)
+    draw_formula(ax_bot, 5.65, r"$50 \times \cos^2(45°) = 25$")
+
+    draw_filter(ax_bot, 6.8, "H", "90°")
+
+    draw_beam(ax_bot, 6.8, 8.5, 12)
+    draw_count(ax_bot, 7.65, 12)
+    draw_formula(ax_bot, 8.0, r"$25 \times \cos^2(45°) \approx 12$")
+
+    ax_bot.text(0.3, 1.9, "3 filters", fontsize=12, fontweight="bold",
+                color=text_color, ha="center", va="bottom")
+
+    # Right-side callout
+    ax_bot.text(9.5, 1.0, "Adding a filter:\n0 → 12 photons!", ha="center",
+                va="center", fontsize=12, fontweight="bold",
+                color=COLORS["violation"],
+                bbox=dict(boxstyle="round,pad=0.5", facecolor=formula_bg,
+                          edgecolor=COLORS["violation"], linewidth=2, alpha=0.9),
+                zorder=5)
+
+    fig.suptitle("The Three-Polarizer Experiment", fontsize=15,
+                 fontweight="bold", color=text_color, y=0.98)
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+
+    if output_path:
+        output_path = Path(output_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(output_path, dpi=PLOT_DEFAULTS["dpi"],
+                    facecolor=fig.get_facecolor(), bbox_inches="tight")
+        print(f"  Plot saved: {output_path}")
+    return fig
+
+
+# ── Intuition: Interactive polarizer sweep (Plotly HTML) ──────────────
+
+def generate_polarizer_sweep_html(output_path):
+    """Generate interactive HTML for middle-polarizer angle sweep with beam diagram."""
+    html = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three-Polarizer Sweep</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1e1e1e; color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 20px; max-width: 900px; margin: 0 auto;
+  }
+  h2 { margin-bottom: 10px; font-size: 1.3em; }
+  .controls {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 16px; padding: 14px 20px;
+    background: #2a2a2a; border-radius: 8px;
+  }
+  .controls label { font-size: 0.95em; color: #aaa; white-space: nowrap; }
+  .controls .value { font-weight: bold; color: #e0e0e0; font-size: 1.1em; min-width: 32px; display: inline-block; }
+  input[type=range] { flex: 1; accent-color: #CC6666; cursor: pointer; }
+  .readout {
+    display: flex; justify-content: space-around; margin-bottom: 16px;
+    padding: 12px; background: #2a2a2a; border-radius: 8px;
+    text-align: center;
+  }
+  .readout .label { color: #aaa; font-size: 0.9em; }
+  .readout .val { font-weight: bold; font-size: 1.3em; margin-top: 4px; }
+  .quantum { color: #CC6666; }
+  canvas { display: block; margin: 0 auto 16px; border-radius: 8px; background: #2a2a2a; }
+  #plot { width: 100%; height: 340px; }
+</style>
+</head>
+<body>
+
+<h2>Middle-Filter Angle Sweep</h2>
+
+<div class="controls">
+  <label>Middle filter angle: <span class="value" id="v-angle">45</span>&deg;</label>
+  <input type="range" id="angle" min="0" max="90" value="45" step="1">
+</div>
+
+<div class="readout">
+  <div>
+    <div class="label">After V (0&deg;)</div>
+    <div class="val" id="r-v">50</div>
+  </div>
+  <div>
+    <div class="label">After middle (<span id="r-angle-label">45</span>&deg;)</div>
+    <div class="val quantum" id="r-mid">25</div>
+  </div>
+  <div>
+    <div class="label">After H (90&deg;)</div>
+    <div class="val quantum" id="r-h">12.5</div>
+  </div>
+</div>
+
+<canvas id="beam" width="660" height="140"></canvas>
+
+<div id="plot"></div>
+
+<script>
+const DEG = Math.PI / 180;
+
+function throughput(thetaDeg) {
+  const t = thetaDeg * DEG;
+  return 50 * Math.pow(Math.cos(t), 2) * Math.pow(Math.cos((90 - thetaDeg) * DEG), 2);
+}
+
+// ── Canvas beam diagram helpers ──
+
+function drawBeam(ctx, x1, x2, count) {
+  if (count <= 0) return;
+  var h = 80 * (count / 100);
+  var alpha = 0.3 + 0.7 * (count / 100);
+  var y = 70;
+  ctx.fillStyle = 'rgba(204,102,102,' + alpha + ')';
+  ctx.fillRect(x1, y - h / 2, x2 - x1, h);
+}
+
+function drawFilter(ctx, x, label, angleDeg) {
+  ctx.save();
+  ctx.setLineDash([6, 4]);
+  ctx.strokeStyle = '#6699CC';
+  ctx.lineWidth = 3;
+  ctx.globalAlpha = 0.8;
+  ctx.beginPath();
+  ctx.moveTo(x, 10);
+  ctx.lineTo(x, 130);
+  ctx.stroke();
+  ctx.restore();
+
+  // label above
+  ctx.fillStyle = '#e0e0e0';
+  ctx.font = 'bold 11px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(label, x, 9);
+
+  // angle below
+  ctx.fillStyle = '#aaaaaa';
+  ctx.font = '9px sans-serif';
+  ctx.fillText(angleDeg + '\u00B0', x, 140);
+}
+
+function drawCount(ctx, x, count) {
+  ctx.fillStyle = '#e0e0e0';
+  ctx.font = 'bold 14px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(Math.round(count).toString(), x, 22);
+}
+
+function renderBeamDiagram(ctx, middleAngleDeg) {
+  ctx.clearRect(0, 0, 660, 140);
+
+  var afterV = 50;
+  var afterMid = 50 * Math.pow(Math.cos(middleAngleDeg * DEG), 2);
+  var afterH = afterMid * Math.pow(Math.cos((90 - middleAngleDeg) * DEG), 2);
+
+  // Positions: source | beam | V(120) | beam | Mid(290) | beam | H(460) | beam | end
+  var xSrc = 10, xV = 120, xMid = 290, xH = 460, xEnd = 640;
+
+  // Source label
+  ctx.fillStyle = '#e0e0e0';
+  ctx.font = 'bold 10px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('100', 55, 62);
+  ctx.fillText('photons', 55, 76);
+
+  // Beam: source → V (always 100)
+  drawBeam(ctx, xSrc + 70, xV, 100);
+
+  // Filter V
+  drawFilter(ctx, xV, 'V', '0');
+
+  // Beam: V → Mid (always 50)
+  drawBeam(ctx, xV, xMid, afterV);
+  drawCount(ctx, (xV + xMid) / 2, afterV);
+
+  // Filter Mid
+  drawFilter(ctx, xMid, '\u03B8', middleAngleDeg.toString());
+
+  // Beam: Mid → H
+  if (afterMid > 0.5) {
+    drawBeam(ctx, xMid, xH, afterMid);
+    drawCount(ctx, (xMid + xH) / 2, afterMid);
+  }
+
+  // Filter H
+  drawFilter(ctx, xH, 'H', '90');
+
+  // Beam: H → end
+  if (afterH > 0.5) {
+    drawBeam(ctx, xH, xEnd, afterH);
+    drawCount(ctx, (xH + xEnd) / 2, afterH);
+  } else {
+    // Show "0" after H when blocked
+    ctx.fillStyle = '#ff6666';
+    ctx.font = 'bold 18px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('0', (xH + xEnd) / 2, 75);
+  }
+}
+
+// ── Plotly chart ──
+
+// Precompute curve
+const angles = [], values = [];
+for (let d = 0; d <= 90; d++) {
+  angles.push(d);
+  values.push(throughput(d));
+}
+
+const layout = {
+  paper_bgcolor: '#1e1e1e', plot_bgcolor: '#2a2a2a',
+  font: { color: '#e0e0e0' },
+  xaxis: { title: 'Middle filter angle (\u00B0)', gridcolor: '#3a3a3a', range: [0, 90], dtick: 15 },
+  yaxis: { title: 'Photons through all 3 filters', gridcolor: '#3a3a3a', range: [0, 15] },
+  margin: { t: 30, b: 50, l: 60, r: 30 },
+  showlegend: false,
+  shapes: [{
+    type: 'line', x0: 45, x1: 45, y0: 0, y1: 14.5,
+    line: { color: '#66CC99', width: 1.5, dash: 'dash' }
+  }],
+  annotations: [{
+    x: 45, y: 14, text: 'Peak at 45\u00B0',
+    showarrow: false, font: { color: '#66CC99', size: 11 },
+    yanchor: 'bottom'
+  }, {
+    x: 3, y: 1.5, text: '0\u00B0 = redundant<br>(same as V)',
+    showarrow: false, font: { color: '#aaaaaa', size: 10 },
+    xanchor: 'left'
+  }, {
+    x: 87, y: 1.5, text: '90\u00B0 = redundant<br>(same as H)',
+    showarrow: false, font: { color: '#aaaaaa', size: 10 },
+    xanchor: 'right'
+  }]
+};
+
+// ── Combined update ──
+
+const canvas = document.getElementById('beam');
+const ctx = canvas.getContext('2d');
+
+function update() {
+  const deg = +document.getElementById('angle').value;
+  document.getElementById('v-angle').textContent = deg;
+  document.getElementById('r-angle-label').textContent = deg;
+
+  const afterMid = 50 * Math.pow(Math.cos(deg * DEG), 2);
+  const afterH = throughput(deg);
+
+  document.getElementById('r-mid').textContent = afterMid.toFixed(1);
+  document.getElementById('r-h').textContent = afterH.toFixed(1);
+
+  // Update beam diagram
+  renderBeamDiagram(ctx, deg);
+
+  // Update Plotly chart
+  const traces = [
+    { x: angles, y: values, mode: 'lines',
+      line: { color: '#CC6666', width: 2.5 },
+      name: 'Throughput' },
+    { x: [deg], y: [afterH], mode: 'markers',
+      marker: { color: '#CC6666', size: 12, symbol: 'diamond',
+                line: { color: '#fff', width: 2 } },
+      name: 'Current', showlegend: false },
+  ];
+
+  Plotly.react('plot', traces, layout, { responsive: true });
+}
+
+document.getElementById('angle').addEventListener('input', update);
+update();
+</script>
+</body>
+</html>"""
+
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(html, encoding="utf-8")
+    print(f"  Interactive plot saved: {output_path}")
+    return output_path
+
+
 # ── Experiment 3: Interactive CHSH sweep (Plotly HTML) ────────────────
 
 def generate_interactive_html(output_path):
@@ -417,6 +791,17 @@ def save_all_plots(exhaustion_data, quantum_data, img_dir, plot_dir):
     plot_disagreement_curves(output_path=p)
     saved.append(str(p))
     plt.close("all")
+
+    # Polarizer surprise beam diagram (no simulation data needed)
+    p = Path(img_dir) / "polarizer_surprise.png"
+    plot_polarizer_surprise(output_path=p)
+    saved.append(str(p))
+    plt.close("all")
+
+    # Polarizer sweep interactive HTML
+    p = Path(plot_dir) / "polarizer_sweep.html"
+    generate_polarizer_sweep_html(p)
+    saved.append(str(p))
 
     # Always generate interactive HTML
     p = Path(plot_dir) / "chsh_sweep.html"

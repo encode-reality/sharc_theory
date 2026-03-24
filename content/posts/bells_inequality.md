@@ -1,8 +1,8 @@
 ---
-title: "Bell's Theorem as a Type-Level Constraint"
+title: "Bell's Theorem and the Limits of Classical Probability"
 date: 2026-03-22T12:00:00-05:00
-draft: true
-description: "Bell's inequality is not a statement about physics equations. It is a structural constraint on the space of programs that obey a particular dependency structure. Quantum mechanics violates it because it does not inhabit the same type."
+draft: false
+description: "Bell's inequality constrains any model built from local hidden variables. The constraint follows from structure alone. Quantum mechanics violates it because probabilities are not primitive."
 tags: ["quantum-mechanics", "bell-theorem", "type-theory", "free-theorems", "CHSH", "computational-physics"]
 author: "Miadad Rashid"
 showToc: true
@@ -10,51 +10,29 @@ TocOpen: true
 math: true
 ---
 
-# Bell's Theorem as a Type-Level Constraint
+# Bell's Theorem and the Limits of Classical Probability
 
-Bell's theorem is usually presented as a result in physics — something about electrons, photons, and the strangeness of quantum mechanics.
+*A type-level constraint on correlations and why quantum mechanics escapes it*
 
-It is not.
+Bell's theorem is often introduced through physical systems — photons, spins, and entanglement. The result itself is structural, independent of the underlying physical realization.
 
-Bell's theorem is a structural result about programs. It states that any program with a certain dependency structure must satisfy a particular output constraint. No implementation can escape it. The result follows from the type signature alone, without inspecting any implementation detail.
+Specifically, it constrains programs with a *local-independent* dependency structure: two outputs that share a hidden state but are each computed without access to the other's input. Any program with this structure must satisfy a particular bound on output correlations. No implementation can escape it — the bound follows from the type signature alone.
 
-Quantum mechanics violates this constraint. Not by being cleverer within the same structure, but by operating in a different computational space entirely. The violation is not a loophole. It is evidence that quantum correlations cannot be embedded into the type that produces classical correlations.
+Quantum mechanics violates this bound. Not by being cleverer within the same structure, but by operating in a different computational space entirely. The violation is not a loophole. It is evidence that quantum correlations cannot be embedded into the type that produces classical correlations.
 
 This essay develops that claim formally, demonstrates it computationally, and explains precisely where the embedding fails.
 
 ---
 
-## The Type Signature of a Local Hidden-Variable Theory
+## Why Hidden Variables Were Considered
 
-A local hidden-variable (LHV) model has the following structure:
+Quantum mechanics predicts correlations between distant systems that are stronger than classical intuition suggests. A natural interpretation is that these correlations arise from shared underlying information.
 
-- A shared hidden state $\lambda$, drawn from some probability distribution $\mu(\lambda)$
-- Alice's response function $A(a, \lambda) \in \{+1, -1\}$, depending on her measurement setting $a$ and the shared state
-- Bob's response function $B(b, \lambda) \in \{+1, -1\}$, depending on his measurement setting $b$ and the shared state
+In this view, each system carries a hidden state $\lambda$ established at a common source. Measurement reveals properties determined by that state. Correlations arise from shared information rather than interaction at a distance.
 
-The critical constraint is **locality**: Alice's output does not depend on Bob's setting, and Bob's output does not depend on Alice's setting.
+This perspective was formalized by Einstein, Podolsky, and Rosen (1935) [[6]](#ref-6), who argued that quantum mechanics is incomplete. If measurement outcomes can be predicted with certainty from a distance, then those outcomes should correspond to pre-existing properties.
 
-In type notation:
-
-$$
-\lambda : \Lambda, \quad A : (\text{Setting} \times \Lambda) \to \{+1, -1\}, \quad B : (\text{Setting} \times \Lambda) \to \{+1, -1\}
-$$
-
-with the dependency constraint:
-
-$$
-A(a, \lambda) \text{ is independent of } b, \qquad B(b, \lambda) \text{ is independent of } a
-$$
-
-This defines a class of programs. The hidden state can be anything — a bit string, a real number, a probability distribution, a lookup table. The response functions can be arbitrary. The only constraint is the dependency structure.
-
-Joint probabilities in this model factorize:
-
-$$
-P(A, B \mid a, b) = \int_\Lambda P(A \mid a, \lambda) \, P(B \mid b, \lambda) \, d\mu(\lambda)
-$$
-
-All correlations between Alice and Bob come from the shared $\lambda$. There is no other channel.
+Bell's theorem evaluates this hypothesis directly.
 
 ---
 
@@ -62,9 +40,11 @@ All correlations between Alice and Bob come from the shared $\lambda$. There is 
 
 Before diving into the formal proof, it helps to see what this type constraint means physically. We will use photon polarization throughout this section — it provides the cleanest intuition. The formal sections that follow use spin-1/2 notation, but the structural argument is the same.
 
-### The three-polarizer surprise
+### The three-polarizer experiment
 
-Start with a simple bench-top experiment that has nothing to do with entanglement — just single photons and polarizing filters.
+Start with a simple bench-top experiment that has nothing to do with entanglement — just single photons and polarizing filters. *(You can try this yourself with three polarizing filters — cheap sunglasses or photography lenses work. The photon counts below correspond to the brightness of light you would see after each filter.)*
+
+{{< figure src="/images/bells_inequality/polarizer_surprise.png" alt="Photon beam through 2 vs 3 polarizers" caption="Two crossed polarizers block all light (top). Inserting a 45° filter between them lets ~12 photons through (bottom). Adding a filter increased throughput because measurement resets the photon's polarization state." >}}
 
 **Two crossed polarizers.** Send 100 unpolarized photons toward a vertical ($0°$) polarizer. On average, half pass through — the polarizer transmits the component of polarization aligned with its axis. That gives us **50 photons**, now vertically polarized. Send those 50 into a horizontal ($90°$) polarizer. Malus's law gives the transmission probability as $\cos^2(\Delta\theta)$, where $\Delta\theta$ is the angle between the photon's polarization and the filter axis:
 
@@ -89,6 +69,8 @@ $$
 **We went from 0 to 12 by adding a filter.** A device that can only block photons *increased* the total throughput. If photons carried a hidden property that predetermined pass/fail at every angle, adding a filter could only *reduce* what gets through — it would be one more gate to fail at. But the 45° filter does not merely check polarization; it *resets* it. Measurement is not a passive readout of a pre-existing property. It is an active transformation that prepares a new state.
 
 This is already a crack in the instruction-card picture. The Bell argument applies the same logic to *pairs* of entangled photons.
+
+<iframe src="/plots/bells_inequality/polarizer_sweep.html" width="100%" height="660" style="border: none; border-radius: 8px; background: #1e1e1e;" loading="lazy"></iframe>
 
 ### The hidden-instruction hypothesis
 
@@ -222,6 +204,10 @@ $$
 P(\text{disagree at } 0°,60°) \leq P(\text{disagree at } 0°,30°) + P(\text{disagree at } 30°,60°)
 $$
 
+$$
+\frac{4}{8} \leq \frac{4}{8} + \frac{4}{8} \quad\Longrightarrow\quad \frac{1}{2} \leq 1 \quad \checkmark
+$$
+
 This is Bell's original inequality (1964). It is not a statistical approximation — it is a theorem of classical probability, true for any mixture of instruction cards whatsoever.
 
 **Now plug in the quantum predictions.** For entangled photon pairs, the probability that Alice and Bob get different outcomes when their polarizers differ by angle $\Delta\theta$ is:
@@ -263,9 +249,43 @@ The instruction card is $\lambda$. The three-angle argument above is Bell's orig
 
 ---
 
+## The Type Signature of a Local Hidden-Variable Theory
+
+A local hidden-variable (LHV) model has the following structure:
+
+- A shared hidden state $\lambda$, drawn from some probability distribution $\mu(\lambda)$
+- Alice's response function $A(a, \lambda) \in \{+1, -1\}$, depending on her measurement setting $a$ and the shared state
+- Bob's response function $B(b, \lambda) \in \{+1, -1\}$, depending on his measurement setting $b$ and the shared state
+
+The critical constraint is **locality**: Alice's output does not depend on Bob's setting, and Bob's output does not depend on Alice's setting.
+
+In type notation:
+
+$$
+\lambda : \Lambda, \quad A : (\text{Setting} \times \Lambda) \to \{+1, -1\}, \quad B : (\text{Setting} \times \Lambda) \to \{+1, -1\}
+$$
+
+with the dependency constraint:
+
+$$
+A(a, \lambda) \text{ is independent of } b, \qquad B(b, \lambda) \text{ is independent of } a
+$$
+
+This defines a class of programs. The hidden state can be anything — a bit string, a real number, a probability distribution, a lookup table. The response functions can be arbitrary. The only constraint is the dependency structure.
+
+Joint probabilities in this model factorize:
+
+$$
+P(A, B \mid a, b) = \int_\Lambda P(A \mid a, \lambda) \, P(B \mid b, \lambda) \, d\mu(\lambda)
+$$
+
+All correlations between Alice and Bob come from the shared $\lambda$. There is no other channel.
+
+---
+
 ## The Bound as a Type Invariant
 
-John Bell did not try to guess what $\lambda$ is. He asked: what must be true of *any* system with this type signature?
+The derivation above does not depend on the form of $\lambda$, the distribution $\mu$, or the implementation of the response functions. The bound follows from the dependency pattern alone. This can be understood as a type-level constraint.
 
 The card-counting argument above used three angles and proved a triangle inequality on disagreement rates. The CHSH inequality [[1]](#ref-1) takes a more symmetric approach: two settings per party, four correlation measurements, and a single number $S$ with a clean bound. The logic is the same — the type signature constrains the behavior — but the algebra is tighter. We will define what $S$ measures, derive the bound $|S| \leq 2$ step by step, and show exactly where the constraint bites.
 
@@ -353,7 +373,7 @@ $$
 
 The last step uses $\int d\mu(\lambda) = 1$ — the weights are a probability distribution, so they sum to 1. $\square$
 
-This is not a probabilistic result. It is a structural consequence of the dependency constraint. The bound holds for any distribution over $\lambda$ and any local response functions. In the language of type-driven development, this has the flavor of a *free theorem* — a behavioral constraint derivable from the type signature alone, without inspecting any particular implementation [[3]](#ref-3).
+This is not a probabilistic result. It is a consequence of the dependency pattern. The bound holds for any distribution over $\lambda$ and any local response functions. In the language of type-driven development, this has the flavor of a *free theorem* — a behavioral constraint derivable from the type signature alone, without inspecting any particular implementation [[3]](#ref-3).
 
 The analogy is productive but not literal. Wadler's free theorems are formal results in System F parametric polymorphism. Bell's result has the same structure — a universal constraint following from allowed dependencies rather than from implementation details — but is not derived within a type-theoretic framework. The parallel is in the reasoning pattern: the *shape* of the type constrains the *space* of possible behaviors.
 
@@ -375,7 +395,7 @@ If the bound follows from the type, then no implementation should escape it. We 
 
 The result is definitive. Random strategies cluster well below the bound. Adversarial optimization reaches the bound but cannot exceed it. The deterministic strategies — which are the extremal points of the convex set of all LHV models — all land at $|S| = 2$ exactly.
 
-This is not a failure of imagination. It is a structural impossibility. The bound is not something implementations approach; it is something the type enforces.
+The bound does not depend on model complexity or construction. It is enforced by the dependency pattern itself. The bound is not something implementations approach; it is something the type enforces.
 
 ---
 
@@ -395,7 +415,7 @@ $$
 P(\text{outcome}) = |\langle \text{outcome} | \psi \rangle|^2
 $$
 
-The squaring — the passage from amplitude to probability — is a nonlinear operation. Amplitudes can interfere (add constructively or destructively) before the probability is extracted. This means the joint distribution $P(A, B \mid a, b)$ for an entangled state does not factorize through any shared classical variable.
+The squaring — the passage from amplitude to probability — is a nonlinear operation. Amplitudes can interfere (add constructively or destructively) before the probability is extracted. This interference occurs before probabilities are computed, which changes the set of achievable correlations. Classical models combine probabilities over hidden states. Quantum models combine amplitudes and only then derive probabilities. These operations produce different correlation structures. This means the joint distribution $P(A, B \mid a, b)$ for an entangled state does not factorize through any shared classical variable.
 
 For the singlet state $|\psi^-\rangle = \frac{1}{\sqrt{2}}(|01\rangle - |10\rangle)$, the correlation between spin measurements at angles $\theta_a$ and $\theta_b$ is:
 
@@ -463,9 +483,9 @@ The CHSH inequality $|S| \leq 2$ is an invariant of this type. Any program in LH
 
 Quantum mechanics produces correlations with $|S| = 2\sqrt{2}$. These correlations are observable, reproducible, and experimentally confirmed [[5]](#ref-5).
 
-The implication is a **non-embeddability result**: the quantum correlations cannot be realized by any program of the LHV type. This is not a claim that we have failed to find the right hidden variable. It is a proof that no hidden variable with the LHV dependency structure can reproduce the data.
+The implication is a **non-embeddability result**: the quantum correlations cannot be realized by any program of the LHV type. This result does not depend on the choice of hidden variable. It is a proof that no hidden variable with the LHV dependency structure can reproduce the data.
 
-The failure is structural. It is not that $\lambda$ is the wrong variable, or that the distribution is wrong, or that the response functions are not clever enough. The entire type is wrong. The space of programs defined by local hidden variables and classical probability composition does not contain any program that produces the observed correlations.
+The failure is in the factorization constraint. It is not that $\lambda$ is the wrong variable, or that the distribution is wrong, or that the response functions are not clever enough. The entire type is wrong. No extension of $\lambda$ within this factorization constraint can close the gap. The space of programs defined by local hidden variables and classical probability composition does not contain any program that produces the observed correlations.
 
 This is the same pattern we encountered in *[The Models We Choose Define the Worlds We Can See](/posts/models_define_world/)*: representational constraints determine what dynamics can be expressed. An ODE cannot express network-dependent contagion. An LHV model cannot express quantum correlations. In both cases, the limitation is not in the parameter values — it is in the model's type signature.
 
@@ -473,15 +493,11 @@ This is the same pattern we encountered in *[The Models We Choose Define the Wor
 
 ## Closing
 
-Bell's theorem is often presented as a paradox about nonlocality, or a philosophical puzzle about the nature of reality.
-
-It is neither.
-
-It is a constraint derivable from a dependency structure. If your model is local and classical, it satisfies $|S| \leq 2$. If the world produces $|S| > 2$, your model does not describe the world. Not because it needs better parameters, but because it inhabits the wrong type.
+Bell's theorem is a constraint derivable from a dependency pattern. If your model is local and classical, it satisfies $|S| \leq 2$. If the world produces $|S| > 2$, your model does not describe the world. Not because it needs better parameters, but because it inhabits the wrong type.
 
 Quantum mechanics works because it computes in amplitude space. Amplitudes interfere before probabilities are extracted. This interference produces correlations that no classical factorization can replicate. The Born rule's nonlinearity — the squaring that converts amplitudes to probabilities — creates a gap between what classical programs can produce and what quantum systems actually produce.
 
-> Bell's theorem does not tell us that reality is mysterious. It tells us that we chose the wrong abstraction.
+> Bell's theorem identifies a mismatch between the structure of classical probabilistic models and observed correlations. Quantum mechanics resolves this by operating in a different representational space.
 
 ---
 
@@ -517,6 +533,8 @@ python run_experiment.py --experiment all
 4. <a id="ref-4"></a>Tsirelson, B. S. (1980). "Quantum generalizations of Bell's inequality." *Letters in Mathematical Physics*, 4(2), 93-100.
 
 5. <a id="ref-5"></a>Aspect, A., Dalibard, J., & Roger, G. (1982). "Experimental test of Bell's inequalities using time-varying analyzers." *Physical Review Letters*, 49(25), 1804-1807.
+
+6. <a id="ref-6"></a>Einstein, A., Podolsky, B., & Rosen, N. (1935). "Can quantum-mechanical description of physical reality be considered complete?" *Physical Review*, 47(10), 777-780.
 
 ---
 
