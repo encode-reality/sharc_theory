@@ -267,47 +267,91 @@ The instruction card is $\lambda$. The three-angle argument above is Bell's orig
 
 John Bell did not try to guess what $\lambda$ is. He asked: what must be true of *any* system with this type signature?
 
-The specific form we use is the CHSH inequality [[1]](#ref-1), a two-setting generalization of Bell's original three-setting result [[2]](#ref-2). Alice chooses between settings $a_1$ and $a_2$; Bob chooses between $b_1$ and $b_2$. Define correlations:
+The card-counting argument above used three angles and proved a triangle inequality on disagreement rates. The CHSH inequality [[1]](#ref-1) takes a more symmetric approach: two settings per party, four correlation measurements, and a single number $S$ with a clean bound. The logic is the same — the type signature constrains the behavior — but the algebra is tighter. We will define what $S$ measures, derive the bound $|S| \leq 2$ step by step, and show exactly where the constraint bites.
+
+### The correlation function $E(a,b)$
+
+Alice and Bob each record an outcome of $+1$ or $-1$. For a given pair of measurement settings $(a, b)$, they multiply their results together: $A \cdot B = +1$ if they agree, $-1$ if they disagree. The *correlation* $E(a, b)$ is the average of this product over many runs.
+
+Three benchmark cases:
+- If they **always agree**: $E = +1$
+- If they **always disagree**: $E = -1$
+- If their outcomes are **uncorrelated** (random relative to each other): $E = 0$
+
+Now connect this to the instruction-card model. In the LHV picture, each experimental run draws a hidden state $\lambda$ — an instruction card — from some distribution $\mu$ over the space $\Lambda$ of all possible cards. The formal definition of the correlation is:
 
 $$
 E(a, b) = \int_\Lambda A(a, \lambda) \, B(b, \lambda) \, d\mu(\lambda)
 $$
 
-and the CHSH quantity:
+In plain language: for each possible instruction card $\lambda$, compute Alice's outcome times Bob's outcome, then average over all cards weighted by how likely each card is. The notation $d\mu(\lambda)$ just means "weighted average over all possible hidden states."
+
+If $\lambda$ is discrete — say, our 8 instruction cards from the previous section, each equally likely — the integral reduces to a sum: $E = \frac{1}{8}\sum_{k=1}^{8} A_k \cdot B_k$. The integral is just the continuous generalization of this.
+
+### The CHSH quantity $S$
+
+Alice has two settings she can choose between: $a_1$ and $a_2$. Bob has two settings: $b_1$ and $b_2$. This gives four possible measurement pairs, and therefore four correlations. The CHSH quantity combines all four into a single number:
 
 $$
 S = E(a_1, b_1) - E(a_1, b_2) + E(a_2, b_1) + E(a_2, b_2)
 $$
 
-**Claim.** For any LHV model — any $\Lambda$, any $\mu$, any response functions $A$ and $B$ — we have $|S| \leq 2$.
+Why *this* particular combination? Rewrite it by grouping differently:
 
-**Proof sketch.** For a fixed $\lambda$, define $A_i = A(a_i, \lambda)$ and $B_j = B(b_j, \lambda)$, each in $\{+1, -1\}$. Expand the CHSH expression for this single $\lambda$:
+$$
+S = \bigl[E(a_1, b_1) + E(a_2, b_1)\bigr] + \bigl[E(a_2, b_2) - E(a_1, b_2)\bigr]
+$$
+
+The first bracket asks: do Alice's settings $a_1$ and $a_2$ both correlate with Bob's $b_1$? The second bracket asks: does $a_2$ correlate with $b_2$ *more* than $a_1$ does? If both answers are "strongly yes," $S$ is large. But there is a tension — the same underlying instruction card must produce *all four* correlations simultaneously. No single card can make Alice agree strongly with every Bob setting at once. The bound captures the limit of this tension.
+
+> **Claim.** For any LHV model — any $\Lambda$, any $\mu$, any response functions $A$ and $B$ — we have $|S| \leq 2$.
+
+### Proof
+
+Work with a single fixed instruction card $\lambda$. On this card, the four outcomes are fixed numbers, each either $+1$ or $-1$:
+
+- $A_1 = A(a_1, \lambda)$, &ensp; $A_2 = A(a_2, \lambda)$
+- $B_1 = B(b_1, \lambda)$, &ensp; $B_2 = B(b_2, \lambda)$
+
+**Step 1 — Write out $X(\lambda)$.** The CHSH value for this single card is:
 
 $$
 X(\lambda) = A_1 B_1 - A_1 B_2 + A_2 B_1 + A_2 B_2
 $$
 
-Collect the terms that share a common factor. The first two terms both contain $A_1$; the last two both contain $A_2$:
-
-$$
-= \underbrace{A_1 B_1 - A_1 B_2}_{\text{factor out } A_1} + \underbrace{A_2 B_1 + A_2 B_2}_{\text{factor out } A_2}
-$$
-
-Factor each group:
+**Step 2 — Factor.** The first two terms share the factor $A_1$; the last two share $A_2$. Group and factor:
 
 $$
 = A_1(B_1 - B_2) + A_2(B_1 + B_2)
 $$
 
-Since $B_1, B_2 \in \{+1, -1\}$:
-- If $B_1 = B_2$: then $(B_1 - B_2) = 0$ and $(B_1 + B_2) = \pm 2$, so $X = \pm 2$
-- If $B_1 \neq B_2$: then $(B_1 - B_2) = \pm 2$ and $(B_1 + B_2) = 0$, so $X = \pm 2$
+**Step 3 — Case analysis.** Since $B_1$ and $B_2$ are each $\pm 1$, exactly two cases exist:
 
-Therefore $X(\lambda) \in \{-2, +2\}$ for every $\lambda$. Averaging over any distribution:
+*Case 1: $B_1 = B_2$.* Suppose both are $+1$ (the case where both are $-1$ is symmetric). Then:
+- $B_1 - B_2 = 0$, so the first term vanishes entirely
+- $B_1 + B_2 = +2$
+- $X = A_2 \cdot (+2) = \pm 2$
+
+*Case 2: $B_1 \neq B_2$.* Suppose $B_1 = +1, B_2 = -1$ (the other subcase is symmetric). Then:
+- $B_1 - B_2 = +2$
+- $B_1 + B_2 = 0$, so the second term vanishes entirely
+- $X = A_1 \cdot (+2) = \pm 2$
+
+**Step 4 — Conclusion for one card.** In every case, exactly one of the two terms survives, and it contributes $\pm 2$. So $X(\lambda) \in \{-2, +2\}$ for every possible instruction card. No matter what's written on the card, the CHSH combination evaluates to exactly $\pm 2$ — never anything larger.
+
+**Step 5 — Average over all cards.** The actual $S$ is the weighted average of $X(\lambda)$ over all instruction cards:
 
 $$
-|S| = \left| \int X(\lambda) \, d\mu(\lambda) \right| \leq \int |X(\lambda)| \, d\mu(\lambda) = 2
+S = \int_\Lambda X(\lambda) \, d\mu(\lambda)
 $$
+
+Every $X(\lambda)$ is either $-2$ or $+2$. The average of values that are all at most 2 in absolute value is itself at most 2 in absolute value. Formally, by the triangle inequality for integrals:
+
+$$
+|S| = \left| \int_\Lambda X(\lambda) \, d\mu(\lambda) \right| \leq \int_\Lambda |X(\lambda)| \, d\mu(\lambda) = \int_\Lambda 2 \, d\mu(\lambda) = 2
+$$
+
+The last step uses $\int d\mu(\lambda) = 1$ — the weights are a probability distribution, so they sum to 1. $\square$
 
 This is not a probabilistic result. It is a structural consequence of the dependency constraint. The bound holds for any distribution over $\lambda$ and any local response functions. In the language of type-driven development, this has the flavor of a *free theorem* — a behavioral constraint derivable from the type signature alone, without inspecting any particular implementation [[3]](#ref-3).
 
