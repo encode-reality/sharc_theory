@@ -119,9 +119,104 @@ Now, here is the crucial point: when Alice and Bob measure the same entangled pa
 | 7 | $-$ | $-$ | $+$ | No | Yes | Yes |
 | 8 | $-$ | $-$ | $-$ | No | No | No |
 
-**The key observation.** Look at the last three columns. In every row where $0°$ and $60°$ differ (cards 2, 4, 5, 7), at least one of the two shorter intervals also differs — either the $0°$ and $30°$ entries are different, or the $30°$ and $60°$ entries are, or both. This is a logical necessity: if the card says $+$ at $0°$ and $-$ at $60°$, then somewhere between those two angles the card must switch from $+$ to $-$. The $30°$ entry is the only place it can happen, so at least one of the two adjacent pairs must show a difference. You can verify this row by row — there is no card where the outer pair disagrees but both inner pairs agree.
+<style>
+.bell-table { display: table !important; width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.95em; }
+.bell-table th, .bell-table td { padding: 6px 12px; text-align: center; border: 1px solid var(--border, #ddd); }
+.bell-table th { font-weight: 600; }
+.hl-pair-a td { background: rgba(59, 130, 246, 0.12); }
+.hl-pair-b td { background: rgba(217, 151, 39, 0.14); }
+.hl-pair-c td { background: rgba(147, 51, 234, 0.12); }
+.hl-dim td { opacity: 0.35; }
+.col-hl-a { color: #2563eb; }
+.col-hl-b { color: #b45309; }
+.col-hl-c { color: #7c3aed; }
+.prob-calc { border-left: 4px solid var(--border, #ddd); padding: 0.6em 1em; margin: 0.8em 0 1.4em; background: var(--code-bg, #f6f6f6); border-radius: 0 6px 6px 0; }
+[data-theme="dark"] .hl-pair-a td { background: rgba(59, 130, 246, 0.18); }
+[data-theme="dark"] .hl-pair-b td { background: rgba(217, 151, 39, 0.20); }
+[data-theme="dark"] .hl-pair-c td { background: rgba(147, 51, 234, 0.18); }
+[data-theme="dark"] .hl-dim td { opacity: 0.3; }
+[data-theme="dark"] .col-hl-a { color: #60a5fa; }
+[data-theme="dark"] .col-hl-b { color: #fbbf24; }
+[data-theme="dark"] .col-hl-c { color: #a78bfa; }
+</style>
 
-This means, for *any* distribution over the eight cards, the probability of a disagreement over the wide $0°$-to-$60°$ span cannot exceed the sum of disagreement probabilities over the two narrower spans:
+Let us walk through each pair of angles individually to see the pattern emerge.
+
+**Pair A — 0° vs 30°:** which cards give different answers at these two angles?
+
+<table class="bell-table">
+<tr><th>Card</th><th class="col-hl-a">0°</th><th class="col-hl-a">30°</th><th>Differ?</th></tr>
+<tr class="hl-dim"><td>1</td><td>$+$</td><td>$+$</td><td>No</td></tr>
+<tr class="hl-dim"><td>2</td><td>$+$</td><td>$+$</td><td>No</td></tr>
+<tr class="hl-pair-a"><td>3</td><td>$+$</td><td>$-$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-pair-a"><td>4</td><td>$+$</td><td>$-$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-pair-a"><td>5</td><td>$-$</td><td>$+$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-pair-a"><td>6</td><td>$-$</td><td>$+$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-dim"><td>7</td><td>$-$</td><td>$-$</td><td>No</td></tr>
+<tr class="hl-dim"><td>8</td><td>$-$</td><td>$-$</td><td>No</td></tr>
+</table>
+
+<div class="prob-calc">
+
+**4 out of 8** cards disagree &rarr; $P(\text{disagree at } 0°,30°) = \frac{4}{8}$
+
+</div>
+
+**Pair B — 30° vs 60°:** which cards give different answers at these two angles?
+
+<table class="bell-table">
+<tr><th>Card</th><th class="col-hl-b">30°</th><th class="col-hl-b">60°</th><th>Differ?</th></tr>
+<tr class="hl-dim"><td>1</td><td>$+$</td><td>$+$</td><td>No</td></tr>
+<tr class="hl-pair-b"><td>2</td><td>$+$</td><td>$-$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-pair-b"><td>3</td><td>$-$</td><td>$+$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-dim"><td>4</td><td>$-$</td><td>$-$</td><td>No</td></tr>
+<tr class="hl-dim"><td>5</td><td>$+$</td><td>$+$</td><td>No</td></tr>
+<tr class="hl-pair-b"><td>6</td><td>$+$</td><td>$-$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-pair-b"><td>7</td><td>$-$</td><td>$+$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-dim"><td>8</td><td>$-$</td><td>$-$</td><td>No</td></tr>
+</table>
+
+<div class="prob-calc">
+
+**4 out of 8** cards disagree &rarr; $P(\text{disagree at } 30°,60°) = \frac{4}{8}$
+
+</div>
+
+**Pair C — 0° vs 60°:** which cards give different answers at these two angles?
+
+<table class="bell-table">
+<tr><th>Card</th><th class="col-hl-c">0°</th><th class="col-hl-c">60°</th><th>Differ?</th></tr>
+<tr class="hl-dim"><td>1</td><td>$+$</td><td>$+$</td><td>No</td></tr>
+<tr class="hl-pair-c"><td>2</td><td>$+$</td><td>$-$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-dim"><td>3</td><td>$+$</td><td>$+$</td><td>No</td></tr>
+<tr class="hl-pair-c"><td>4</td><td>$+$</td><td>$-$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-pair-c"><td>5</td><td>$-$</td><td>$+$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-dim"><td>6</td><td>$-$</td><td>$-$</td><td>No</td></tr>
+<tr class="hl-pair-c"><td>7</td><td>$-$</td><td>$+$</td><td><strong>Yes</strong></td></tr>
+<tr class="hl-dim"><td>8</td><td>$-$</td><td>$-$</td><td>No</td></tr>
+</table>
+
+<div class="prob-calc">
+
+**4 out of 8** cards disagree &rarr; $P(\text{disagree at } 0°,60°) = \frac{4}{8}$
+
+</div>
+
+**The key observation.** Every card in the 0°-vs-60° disagree set (cards 2, 4, 5, 7) is *also* in at least one of the two narrower sets. This is a logical necessity: if the card says $+$ at $0°$ and $-$ at $60°$, then the $30°$ entry must differ from one end or the other — there is no escape.
+
+<table class="bell-table">
+<tr><th>Card</th><th class="col-hl-a">In 0° vs 30°?</th><th class="col-hl-b">In 30° vs 60°?</th><th>Covered by</th></tr>
+<tr><td>2</td><td>—</td><td><strong>Yes</strong></td><td>30° vs 60°</td></tr>
+<tr><td>4</td><td><strong>Yes</strong></td><td>—</td><td>0° vs 30°</td></tr>
+<tr><td>5</td><td><strong>Yes</strong></td><td>—</td><td>0° vs 30°</td></tr>
+<tr><td>7</td><td>—</td><td><strong>Yes</strong></td><td>30° vs 60°</td></tr>
+</table>
+
+In set notation, the 0°–60° disagree set is contained within the union of the other two:
+
+$$\{2,4,5,7\} \subseteq \{3,4,5,6\} \cup \{2,3,6,7\}$$
+
+Since every card that disagrees at $0°$ and $60°$ must also disagree at one of the shorter intervals, the disagreement probability over the wide span cannot exceed the sum over the two narrow spans:
 
 $$
 P(\text{disagree at } 0°,60°) \leq P(\text{disagree at } 0°,30°) + P(\text{disagree at } 30°,60°)
