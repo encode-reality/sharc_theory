@@ -1,6 +1,6 @@
 ---
 title: "Bell's Theorem and the Limits of Classical Probability"
-date: 2026-03-22T12:00:00-05:00
+date: 2026-03-24
 draft: false
 description: "Bell's inequality constrains any model built from local hidden variables. The constraint follows from structure alone. Quantum mechanics violates it because probabilities are not primitive."
 tags: ["quantum-mechanics", "bell-theorem", "type-theory", "free-theorems", "CHSH", "computational-physics"]
@@ -32,51 +32,49 @@ In this view, each system carries a hidden state $\lambda$ established at a comm
 
 This perspective was formalized by Einstein, Podolsky, and Rosen (1935) [[6]](#ref-6), who argued that quantum mechanics is incomplete. If measurement outcomes can be predicted with certainty from a distance, then those outcomes should correspond to pre-existing properties.
 
-Bell's theorem evaluates this hypothesis directly.
+Bell's theorem evaluates this hypothesis directly — by formalizing the type of model it implies and proving what that type can and cannot produce.
 
 ---
 
-## Building Intuition: Photons and Polarizers
+## The Type Signature of a Local Hidden-Variable Theory
 
-Before diving into the formal proof, it helps to see what this type constraint means physically. We will use photon polarization throughout this section — it provides the cleanest intuition. The formal sections that follow use spin-1/2 notation, but the structural argument is the same.
+A local hidden-variable (LHV) model has the following structure:
 
-### The three-polarizer experiment
+- A shared hidden state $\lambda$, drawn from some probability distribution $\mu(\lambda)$
+- Alice's response function $A(a, \lambda) \in \{+1, -1\}$, depending on her measurement setting $a$ and the shared state
+- Bob's response function $B(b, \lambda) \in \{+1, -1\}$, depending on his measurement setting $b$ and the shared state
 
-Start with a simple bench-top experiment that has nothing to do with entanglement — just single photons and polarizing filters. *(You can try this yourself with three polarizing filters — cheap sunglasses or photography lenses work. The photon counts below correspond to the brightness of light you would see after each filter.)*
+The critical constraint is **locality**: Alice's output does not depend on Bob's setting, and Bob's output does not depend on Alice's setting.
 
-{{< figure src="/images/bells_inequality/polarizer_surprise.png" alt="Photon beam through 2 vs 3 polarizers" caption="Two crossed polarizers block all light (top). Inserting a 45° filter between them lets ~12 photons through (bottom). Adding a filter increased throughput because measurement resets the photon's polarization state." >}}
-
-**Two crossed polarizers.** Send 100 unpolarized photons toward a vertical ($0°$) polarizer. On average, half pass through — the polarizer transmits the component of polarization aligned with its axis. That gives us **50 photons**, now vertically polarized. Send those 50 into a horizontal ($90°$) polarizer. Malus's law gives the transmission probability as $\cos^2(\Delta\theta)$, where $\Delta\theta$ is the angle between the photon's polarization and the filter axis:
-
-$$
-50 \times \cos^2(90°) = 50 \times 0 = 0 \text{ photons}
-$$
-
-Nothing gets through. Crossed polarizers block everything. So far, no surprises.
-
-**Now insert a 45° filter between them.** Same 100 unpolarized photons hit the vertical polarizer — **50 pass**, now vertically polarized. These 50 hit the new 45° filter:
+In type notation:
 
 $$
-50 \times \cos^2(45°) = 50 \times \tfrac{1}{2} = 25 \text{ photons}
+\lambda : \Lambda, \quad A : (\text{Setting} \times \Lambda) \to \{+1, -1\}, \quad B : (\text{Setting} \times \Lambda) \to \{+1, -1\}
 $$
 
-Those 25 are now polarized at 45° (the filter resets their polarization to its own axis). They hit the horizontal filter:
+with the dependency constraint:
 
 $$
-25 \times \cos^2(45°) = 25 \times \tfrac{1}{2} \approx 12 \text{ photons}
+A(a, \lambda) \text{ is independent of } b, \qquad B(b, \lambda) \text{ is independent of } a
 $$
 
-**We went from 0 to 12 by adding a filter.** A device that can only block photons *increased* the total throughput. If photons carried a hidden property that predetermined pass/fail at every angle, adding a filter could only *reduce* what gets through — it would be one more gate to fail at. But the 45° filter does not merely check polarization; it *resets* it. Measurement is not a passive readout of a pre-existing property. It is an active transformation that prepares a new state.
+This defines a class of programs. The hidden state can be anything — a bit string, a real number, a probability distribution, a lookup table. The response functions can be arbitrary. The only constraint is the dependency structure.
 
-This is already a crack in the instruction-card picture. The Bell argument applies the same logic to *pairs* of entangled photons.
+Joint probabilities in this model factorize:
 
-<iframe src="/plots/bells_inequality/polarizer_sweep.html" width="100%" height="660" style="border: none; border-radius: 8px; background: #1e1e1e;" loading="lazy"></iframe>
+$$
+P(A, B \mid a, b) = \int_\Lambda P(A \mid a, \lambda) \, P(B \mid b, \lambda) \, d\mu(\lambda)
+$$
 
-### The hidden-instruction hypothesis
+All correlations between Alice and Bob come from the shared $\lambda$. There is no other channel.
+
+### The instruction-card model
+
+To see what the LHV type looks like in practice, consider a concrete scenario.
 
 **The setup.** A source at the center emits pairs of entangled photons — one to Alice, one to Bob. Each experimenter has a polarizer set to some angle and a detector behind it. Each photon either passes through the polarizer ($+1$) or is absorbed ($-1$). Alice and Bob each choose their polarizer angle independently and record the outcome.
 
-Suppose each photon pair leaves the source carrying a hidden "instruction card" $\lambda$ — a lookup table that pre-determines what each photon will do at every possible angle. Alice's photon consults the card and her angle to decide $+1$ or $-1$. Bob's does the same independently. This is exactly the LHV type from above:
+Suppose each photon pair leaves the source carrying a hidden "instruction card" $\lambda$ — a lookup table that pre-determines what each photon will do at every possible angle. Alice's photon consults the card and her angle to decide $+1$ or $-1$. Bob's does the same independently. This is an instance of the LHV type:
 
 - $\lambda$ = the instruction card
 - $A(a, \lambda)$ = what Alice's photon does at angle $a$ given card $\lambda$
@@ -208,86 +206,15 @@ $$
 \frac{4}{8} \leq \frac{4}{8} + \frac{4}{8} \quad\Longrightarrow\quad \frac{1}{2} \leq 1 \quad \checkmark
 $$
 
-This is Bell's original inequality (1964). It is not a statistical approximation — it is a theorem of classical probability, true for any mixture of instruction cards whatsoever.
-
-**Now plug in the quantum predictions.** For entangled photon pairs, the probability that Alice and Bob get different outcomes when their polarizers differ by angle $\Delta\theta$ is:
-
-$$
-P(\text{disagree}) = \sin^2(\Delta\theta)
-$$
-
-Evaluate at our three angle separations:
-
-- $P(\text{disagree at } 30° \text{ apart}) = \sin^2(30°) = \frac{1}{4}$
-- $P(\text{disagree at } 60° \text{ apart}) = \sin^2(60°) = \frac{3}{4}$
-
-The inequality requires:
-
-$$
-\frac{3}{4} \leq \frac{1}{4} + \frac{1}{4} = \frac{1}{2}
-$$
-
-But $\frac{3}{4} > \frac{1}{2}$. **Violated by 25 percentage points.**
-
-**In concrete counts.** Out of 1,000 entangled pairs measured at $0°$ vs $60°$, quantum mechanics predicts **750 disagreements**. Any instruction-card model can produce at most **500**. The gap is 250 pairs — not a statistical fluctuation, but a structural impossibility.
-
-### Why the cards fail
-
-The inequality is a theorem, not an approximation. No amount of cleverness in designing instruction cards can circumvent it, because it follows from the logical structure of pre-assigned values.
-
-The deeper reason is geometric. Quantum mechanics predicts disagreement rates that follow a $\sin^2(\Delta\theta)$ curve — a function that *bows outward* past 45°. Instruction-card models can only produce correlations that are *linear* or *bow inward* as a function of angle. The quantum curve exceeds the classical envelope at intermediate angles, and no classical mixture can close the gap.
-
-{{< figure src="/images/bells_inequality/disagreement_curves.png" alt="Quantum vs classical disagreement probability as a function of polarizer angle" caption="Figure 0. Disagreement probability vs polarizer angle difference. The quantum prediction (red, sin²Δθ) crosses above the classical maximum (blue dashed, linear) beyond 45°. At 30° the quantum disagreement (0.25) is below the classical bound (0.33) — the cards can accommodate it. At 60° the quantum disagreement (0.75) exceeds the classical bound (0.67) — no mixture of instruction cards can reproduce this. The shaded region is structurally inaccessible to any local hidden-variable model." >}}
-
-This is the same lesson as the three-polarizer experiment: measurement is not revealing a pre-existing property. If it were, the correlations would obey the instruction-card bound. They do not.
-
-### Connecting to the formal proof
-
-The instruction card is $\lambda$. The three-angle argument above is Bell's original 1964 inequality [[2]](#ref-2). The next section develops the CHSH inequality [[1]](#ref-1), which generalizes the argument to two settings per party with cleaner algebra, but the logic is identical: any LHV model produces $|S| \leq 2$, and quantum mechanics produces $|S| = 2\sqrt{2}$.
-
-*A note on conventions.* This section used photon polarization, where the disagreement probability is $P = \sin^2(\Delta\theta)$. The formal sections use spin-1/2 particles, where the correlation function is $E = -\cos(\theta_a - \theta_b)$. The two conventions are related by a factor of 2 in the angles: a $30°$ polarizer difference corresponds to a $60°$ spin-axis difference. The structural argument — that no instruction-card model can reproduce quantum correlations — is convention-independent.
-
----
-
-## The Type Signature of a Local Hidden-Variable Theory
-
-A local hidden-variable (LHV) model has the following structure:
-
-- A shared hidden state $\lambda$, drawn from some probability distribution $\mu(\lambda)$
-- Alice's response function $A(a, \lambda) \in \{+1, -1\}$, depending on her measurement setting $a$ and the shared state
-- Bob's response function $B(b, \lambda) \in \{+1, -1\}$, depending on his measurement setting $b$ and the shared state
-
-The critical constraint is **locality**: Alice's output does not depend on Bob's setting, and Bob's output does not depend on Alice's setting.
-
-In type notation:
-
-$$
-\lambda : \Lambda, \quad A : (\text{Setting} \times \Lambda) \to \{+1, -1\}, \quad B : (\text{Setting} \times \Lambda) \to \{+1, -1\}
-$$
-
-with the dependency constraint:
-
-$$
-A(a, \lambda) \text{ is independent of } b, \qquad B(b, \lambda) \text{ is independent of } a
-$$
-
-This defines a class of programs. The hidden state can be anything — a bit string, a real number, a probability distribution, a lookup table. The response functions can be arbitrary. The only constraint is the dependency structure.
-
-Joint probabilities in this model factorize:
-
-$$
-P(A, B \mid a, b) = \int_\Lambda P(A \mid a, \lambda) \, P(B \mid b, \lambda) \, d\mu(\lambda)
-$$
-
-All correlations between Alice and Bob come from the shared $\lambda$. There is no other channel.
+This is Bell's original inequality (1964) [[2]](#ref-2). It is not a statistical approximation — it is a theorem of classical probability, true for any mixture of instruction cards whatsoever.
 
 ---
 
 ## The Bound as a Type Invariant
 
-The derivation above does not depend on the form of $\lambda$, the distribution $\mu$, or the implementation of the response functions. The bound follows from the dependency pattern alone. This can be understood as a type-level constraint.
+The three-angle counting argument proved a triangle inequality on disagreement rates. The CHSH inequality [[1]](#ref-1) generalizes this to two settings per party with cleaner algebra and a single number $S$ that has a sharp bound. The logic is the same — the LHV type signature constrains the behavior — but the result is tighter.
 
-The card-counting argument above used three angles and proved a triangle inequality on disagreement rates. The CHSH inequality [[1]](#ref-1) takes a more symmetric approach: two settings per party, four correlation measurements, and a single number $S$ with a clean bound. The logic is the same — the type signature constrains the behavior — but the algebra is tighter. We will define what $S$ measures, derive the bound $|S| \leq 2$ step by step, and show exactly where the constraint bites.
+*A note on conventions.* The instruction-card argument above is purely combinatorial — it counts which cards agree or disagree without reference to any physical theory. The CHSH treatment below uses spin-1/2 particles, where the correlation function is $E = -\cos(\theta_a - \theta_b)$. When we later test these bounds against experiment, the quantum prediction for entangled photon pairs gives disagreement probability $P = \sin^2(\Delta\theta)$. The two formalisms are related by a factor of 2 in the angles: a $30°$ polarizer difference corresponds to a $60°$ spin-axis difference. The structural argument — that no instruction-card model can reproduce quantum correlations — is convention-independent.
 
 ### The correlation function $E(a,b)$
 
@@ -306,7 +233,7 @@ $$
 
 In plain language: for each possible instruction card $\lambda$, compute Alice's outcome times Bob's outcome, then average over all cards weighted by how likely each card is. The notation $d\mu(\lambda)$ just means "weighted average over all possible hidden states."
 
-If $\lambda$ is discrete — say, our 8 instruction cards from the previous section, each equally likely — the integral reduces to a sum: $E = \frac{1}{8}\sum_{k=1}^{8} A_k \cdot B_k$. The integral is just the continuous generalization of this.
+If $\lambda$ is discrete — say, the 8 instruction cards from the counting argument, each equally likely — the integral reduces to a sum: $E = \frac{1}{8}\sum_{k=1}^{8} A_k \cdot B_k$. The integral is just the continuous generalization of this.
 
 ### The CHSH quantity $S$
 
@@ -373,13 +300,19 @@ $$
 
 The last step uses $\int d\mu(\lambda) = 1$ — the weights are a probability distribution, so they sum to 1. $\square$
 
-This is not a probabilistic result. It is a consequence of the dependency pattern. The bound holds for any distribution over $\lambda$ and any local response functions. In the language of type-driven development, this has the flavor of a *free theorem* — a behavioral constraint derivable from the type signature alone, without inspecting any particular implementation [[3]](#ref-3).
+### Why the bound follows from form alone
 
-The analogy is productive but not literal. Wadler's free theorems are formal results in System F parametric polymorphism. Bell's result has the same structure — a universal constraint following from allowed dependencies rather than from implementation details — but is not derived within a type-theoretic framework. The parallel is in the reasoning pattern: the *shape* of the type constrains the *space* of possible behaviors.
+The derivation did not depend on the internal structure of $\lambda$, the distribution $\mu$, or the specific form of the response functions. The argument used only the dependency pattern — $A = A(a, \lambda)$, $B = B(b, \lambda)$ — with the constraint that $A$ does not depend on $b$ and $B$ does not depend on $a$. This is not a probabilistic result. It defines a class of admissible models, and the proof shows that every model in this class satisfies $|S| \leq 2$.
 
----
+In the language of type-driven development, this has the flavor of a *free theorem* — a behavioral constraint derivable from the type signature alone, without inspecting any particular implementation [[3]](#ref-3). Wadler's free theorems are formal results in System F parametric polymorphism; Bell's result is not derived within that framework. But the reasoning pattern is the same: the *shape* of the type constrains the *space* of possible behaviors. The factorization constraint is enough to derive $|S| \leq 2$ for all inhabitants.
 
-## Experiment 1: Exhausting the Type
+The hidden variable $\lambda$ plays the role of a universally quantified type parameter. The proof never inspects $\lambda$ or constrains its structure — it holds for any choice. This is analogous to how a function of type `forall a. [a] -> [a]` is constrained in what it can do precisely because it cannot inspect `a`. The LHV bound constrains all local models because the proof uses only the dependency structure, not the details of $\lambda$.
+
+A similar pattern appears in dependently typed systems, where a type can encode a proposition and any program that inhabits that type serves as a proof. Bell's argument has a comparable shape: the LHV type defines a space of possible constructions — models built from a shared variable $\lambda$ and local response functions — and the inequality is a property of that space. The proof does not examine particular models; it applies uniformly to all of them. Again, this parallel is in reasoning pattern, not formal derivation within a dependent type theory.
+
+The consequence is that the bound is a constraint derived from form alone. Any model that factorizes through a shared hidden state and local response functions will satisfy it. If an observed correlation violates the bound, the failure is not in any particular model — it is evidence that the correlations do not arise from *any* model of this form. The later sections will show that quantum mechanics produces exactly such a violation.
+
+### Exhausting the type computationally
 
 If the bound follows from the type, then no implementation should escape it. We verify this computationally by generating a large ensemble of LHV models across several classes:
 
@@ -396,6 +329,89 @@ If the bound follows from the type, then no implementation should escape it. We 
 The result is definitive. Random strategies cluster well below the bound. Adversarial optimization reaches the bound but cannot exceed it. The deterministic strategies — which are the extremal points of the convex set of all LHV models — all land at $|S| = 2$ exactly.
 
 The bound does not depend on model complexity or construction. It is enforced by the dependency pattern itself. The bound is not something implementations approach; it is something the type enforces.
+
+---
+
+## Beyond the Classical Bound
+
+The bound $|S| \leq 2$ is a theorem. It holds for any hidden variable, any distribution, any local response functions. No clever implementation can exceed it. The ceiling is structural — a consequence of what the LHV type *is*.
+
+Now let's look at what nature actually produces.
+
+### The three-polarizer experiment
+
+Before examining entangled pairs, consider a simpler experiment that reveals *why* the instruction-card model fails at a physical level. This involves single photons and polarizing filters — no entanglement. *(You can try this yourself with three polarizing filters — cheap sunglasses or photography lenses work. The photon counts below correspond to the brightness of light you would see after each filter.)*
+
+{{< figure src="/images/bells_inequality/polarizer_surprise.png" alt="Photon beam through 2 vs 3 polarizers" caption="Two crossed polarizers block all light (top). Inserting a 45° filter between them lets ~12 photons through (bottom). Adding a filter increased throughput — something impossible if filters merely read pre-existing properties." >}}
+
+**Two crossed polarizers.** Send 100 unpolarized photons toward a vertical ($0°$) polarizer. On average, half pass through — the polarizer transmits the component of polarization aligned with its axis. That gives us **50 photons**, now vertically polarized. Send those 50 into a horizontal ($90°$) polarizer. Malus's law gives the transmission probability as $\cos^2(\Delta\theta)$, where $\Delta\theta$ is the angle between the photon's polarization and the filter axis:
+
+$$
+50 \times \cos^2(90°) = 50 \times 0 = 0 \text{ photons}
+$$
+
+Nothing gets through. Crossed polarizers block everything. So far, no surprises.
+
+**Now insert a 45° filter between them.** Same 100 unpolarized photons hit the vertical polarizer — **50 pass**, now vertically polarized. These 50 hit the new 45° filter:
+
+$$
+50 \times \cos^2(45°) = 50 \times \tfrac{1}{2} = 25 \text{ photons}
+$$
+
+Those 25 are now polarized at 45° (the filter resets their polarization to its own axis). They hit the horizontal filter:
+
+$$
+25 \times \cos^2(45°) = 25 \times \tfrac{1}{2} \approx 12 \text{ photons}
+$$
+
+**We went from 0 to 12 by adding a filter.** Think about what the instruction-card model predicts here. If each photon carried a card with predetermined pass/fail values at every angle, then each filter would simply read the card and either pass or block. Adding a third filter would mean one more gate to fail at. Throughput could only *decrease* or stay the same — never increase.
+
+But the 45° filter does not read the photon's polarization — it **resets** it. After passing the 45° filter, the photon is repolarized at 45°, regardless of what it was before. It now has a fresh $\cos^2(45°)$ probability of passing the horizontal filter. The filter did not check a pre-existing property; it prepared a new state.
+
+This is the core distinction between the LHV type and quantum mechanics. In the LHV type, measurement reveals what $\lambda$ already determined — it is a *lookup*. In quantum mechanics, measurement projects the state onto a new basis — it is a *transformation*. The three-polarizer experiment makes this distinction visible with a beam of light and three pieces of plastic. And it is the same mechanism that makes Bell inequality violation possible: if measurement created new state rather than reading old state, the correlations between entangled pairs are not constrained by what any pre-existing card could have specified.
+
+<iframe src="/plots/bells_inequality/polarizer_sweep.html" width="100%" height="690" style="border: none; border-radius: 8px; background: #1e1e1e; overflow: hidden;" loading="lazy"></iframe>
+
+### Entangled pairs violate the bound
+
+The three-polarizer experiment involves single photons — no entanglement, no Bell inequality. But it exposes the physical mechanism. Now apply the same logic to entangled pairs, where the violation is quantitative.
+
+For entangled photon pairs, quantum mechanics predicts that the probability Alice and Bob get different outcomes when their polarizers differ by angle $\Delta\theta$ is:
+
+$$
+P(\text{disagree}) = \sin^2(\Delta\theta)
+$$
+
+This is not a guess — it follows from the Born rule applied to the entangled state. Now plug these predictions into the Bell inequality we derived from the instruction cards:
+
+$$
+P(\text{disagree at } 0°,60°) \leq P(\text{disagree at } 0°,30°) + P(\text{disagree at } 30°,60°)
+$$
+
+Evaluate at our three angle separations:
+
+- $P(\text{disagree at } 30° \text{ apart}) = \sin^2(30°) = \frac{1}{4}$
+- $P(\text{disagree at } 60° \text{ apart}) = \sin^2(60°) = \frac{3}{4}$
+
+The inequality requires:
+
+$$
+\frac{3}{4} \leq \frac{1}{4} + \frac{1}{4} = \frac{1}{2}
+$$
+
+But $\frac{3}{4} > \frac{1}{2}$. **Violated by 25 percentage points.**
+
+**In concrete counts.** Out of 1,000 entangled pairs measured at $0°$ vs $60°$, quantum mechanics predicts **750 disagreements**. Any instruction-card model can produce at most **500**. The gap is 250 pairs — not a statistical fluctuation, but a structural impossibility.
+
+### Why the cards fail
+
+The inequality is a theorem, not an approximation. No amount of cleverness in designing instruction cards can circumvent it, because it follows from the logical structure of pre-assigned values.
+
+The deeper reason is geometric. Quantum mechanics predicts disagreement rates that follow a $\sin^2(\Delta\theta)$ curve — a function that *bows outward* past 45°. Instruction-card models can only produce correlations that are *linear* or *bow inward* as a function of angle. The quantum curve exceeds the classical envelope at intermediate angles, and no classical mixture can close the gap.
+
+{{< figure src="/images/bells_inequality/disagreement_curves.png" alt="Quantum vs classical disagreement probability as a function of polarizer angle" caption="Disagreement probability vs polarizer angle difference. The quantum prediction (red, sin²Δθ) crosses above the classical maximum (blue dashed, linear) beyond 45°. At 30° the quantum disagreement (0.25) is below the classical bound (0.33) — the cards can accommodate it. At 60° the quantum disagreement (0.75) exceeds the classical bound (0.67) — no mixture of instruction cards can reproduce this. The shaded region is structurally inaccessible to any local hidden-variable model." >}}
+
+This is the same lesson as the three-polarizer experiment: measurement is not revealing a pre-existing property. If it were, the correlations would obey the instruction-card bound. They do not. The $\sin^2$ curve — which arises from quantum projection, the same mechanism that lets a 45° filter reset a photon's polarization — bows outward past the classical envelope because it encodes correlations that no lookup table can produce.
 
 ---
 
@@ -433,9 +449,7 @@ $$
 
 for any hidden variable $\lambda$ and any local response functions. This is Bell's theorem: the factorization demanded by the LHV type signature is incompatible with the observed correlations.
 
----
-
-## Experiment 2: Quantum Violation
+### Quantum violation: $|S| = 2\sqrt{2}$
 
 At the optimal CHSH angles — $a_1 = 0°$, $a_2 = 90°$, $b_1 = 45°$, $b_2 = 135°$ — the singlet state produces:
 
@@ -459,7 +473,7 @@ The magnitude of the CHSH violation depends on all four measurement angles. The 
 
 The main curve sweeps Bob's angle $b_1$ from $0°$ to $360°$ while holding the other three angles fixed (adjustable via sliders). The classical bound $|S| = 2$ and the Tsirelson bound $|S| = 2\sqrt{2}$ are marked for reference.
 
-<iframe src="/plots/bells_inequality/chsh_sweep.html" width="100%" height="720" style="border: none; border-radius: 8px; background: #1e1e1e;" loading="lazy"></iframe>
+<iframe src="/plots/bells_inequality/chsh_sweep.html" width="100%" height="750" style="border: none; border-radius: 8px; background: #1e1e1e; overflow: hidden;" loading="lazy"></iframe>
 
 At the default settings ($a_1 = 0°$, $a_2 = 90°$, $b_1 = 45°$, $b_2 = 135°$), the quantum $|S|$ sits at $2\sqrt{2}$. As you move the sliders, observe that:
 
