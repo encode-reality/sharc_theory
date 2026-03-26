@@ -80,6 +80,23 @@ Suppose each photon pair leaves the source carrying a hidden "instruction card" 
 - $A(a, \lambda)$ = what Alice's photon does at angle $a$ given card $\lambda$
 - **Locality** = Alice's card is consulted independently of Bob's setting, and vice versa
 
+In code, an instruction card is a lookup table, and locality is a constraint on what each function can see:
+
+```python
+# An instruction card: predetermined outcome at each angle
+card = {0: +1, 30: -1, 60: +1}
+
+def alice(setting, card):
+    return card[setting]      # local: sees only her setting and the card
+
+def bob(setting, card):
+    return card[setting]      # local: sees only his setting and the card
+
+# Correlation: run many cards, average the products
+def E(a, b, cards, weights):
+    return sum(w * alice(a, c) * bob(b, c) for c, w in zip(cards, weights))
+```
+
 The question is: can *any* set of instruction cards reproduce what entangled photons actually do?
 
 ### The three-angle counting argument
@@ -286,6 +303,21 @@ $$
 
 **Step 4 — Conclusion for one card.** In every case, exactly one of the two terms survives, and it contributes $\pm 2$. So $X(\lambda) \in \{-2, +2\}$ for every possible instruction card. No matter what's written on the card, the CHSH combination evaluates to exactly $\pm 2$ — never anything larger.
 
+This is directly verifiable. Enumerate all 16 possible instruction cards and compute $X(\lambda)$ for each:
+
+```python
+from itertools import product
+
+def chsh_single_lambda(A0, A1, B0, B1):
+    """X(λ) for one instruction card."""
+    return A0*B0 - A0*B1 + A1*B0 + A1*B1
+
+for A0, A1, B0, B1 in product([-1, +1], repeat=4):
+    X = chsh_single_lambda(A0, A1, B0, B1)
+    assert X in (-2, +2), f"Bound violated: X = {X}"
+# All 16 pass. Every card produces X = ±2.
+```
+
 **Step 5 — Average over all cards.** The actual $S$ is the weighted average of $X(\lambda)$ over all instruction cards:
 
 $$
@@ -314,29 +346,34 @@ The consequence is that the bound is a constraint derived from form alone. Any m
 
 ### Exhausting the type computationally
 
-If the bound follows from the type, then no implementation should escape it. We verify this computationally by generating a large ensemble of LHV models across several classes:
+The preceding section argued that $|S| \leq 2$ follows from the *form* of the LHV type — the dependency pattern alone, not any particular model. In a strongly typed language, if a property follows from a type, then every program that compiles against that type satisfies it. You can verify this by running programs. That is what we do here: construct thousands of concrete LHV models — programs inhabiting the type — and compute their CHSH value. If even one exceeds $|S| = 2$, the proof has a gap. If none do, the computational evidence aligns with the theorem. The four test categories represent progressively stronger challenges to the bound.
 
-1. **All 16 deterministic strategies**: enumerate every assignment of $A_1, A_2, B_1, B_2 \in \{+1, -1\}$. Every one produces $|S| = 2$.
+```python
+def random_discrete_lhv(n_lambda, rng):
+    """One random LHV model: n_lambda instruction cards, uniform weights."""
+    table = rng.choice([-1, +1], size=(n_lambda, 4))  # random cards
+    A0, A1, B0, B1 = table[:, 0], table[:, 1], table[:, 2], table[:, 3]
+    X = A0*B0 - A0*B1 + A1*B0 + A1*B1   # X(λ) = ±2 per card
+    return np.mean(X)                     # |average| ≤ 2
+```
 
-2. **Random discrete models**: for $K$ hidden states with uniform distribution, assign random response tables. Sample 2,000 such models.
+1. **All 16 deterministic strategies**: enumerate every assignment of $A_1, A_2, B_1, B_2 \in \{+1, -1\}$. Every one produces $|S| = 2$. These are the extremal points of the LHV type — pure strategies with no randomness. If any deterministic inhabitant could exceed the bound, mixtures could too. Testing all 16 is exhaustive proof-by-enumeration over the type's vertices.
 
-3. **Random continuous models**: draw $\lambda$ from uniform, Gaussian, and Beta distributions. Use random threshold functions $A(a, \lambda) = \text{sign}(\lambda - t_a)$. Sample 2,000 models.
+2. **Random discrete models**: for $K$ hidden states with uniform distribution, assign random response tables. Sample 2,000 such models. This tests whether mixing strategies — distributing $\lambda$ across multiple hidden states with different response tables — can push $|S|$ beyond what any single strategy achieves. It probes whether convex combinations of inhabitants can escape the bound.
 
-4. **Adversarially optimized models**: use differential evolution to maximize $|S|$ over parameterized threshold-based response functions. Run 100 independent optimization restarts.
+3. **Random continuous models**: draw $\lambda$ from uniform, Gaussian, and Beta distributions. Use random threshold functions $A(a, \lambda) = \text{sign}(\lambda - t_a)$. Sample 2,000 models. This moves from discrete to continuous $\lambda$, testing whether the bound is an artifact of discretization. Continuous distributions and threshold-based response functions are a fundamentally different class of inhabitant — if the bound held only for simple lookup tables, this is where it would break.
+
+4. **Adversarially optimized models**: use differential evolution to maximize $|S|$ over parameterized threshold-based response functions. Run 100 independent optimization restarts. This is the strongest test. Rather than sampling randomly, we actively search for the maximum $|S|$ using optimization. Differential evolution explores the parameter space aggressively. If any inhabitant of the LHV type can exceed 2, an optimizer should find it — or at least approach it.
 
 {{< figure src="/images/bells_inequality/lhv_exhaustion.png" alt="Distribution of |S| across LHV implementations" caption="Figure 1. Distribution of |S| across thousands of LHV implementations. No strategy exceeds the classical bound |S| = 2, regardless of the structure of λ, the distribution, or the response functions. The adversarial optimizer hits the wall at exactly 2." >}}
 
-The result is definitive. Random strategies cluster well below the bound. Adversarial optimization reaches the bound but cannot exceed it. The deterministic strategies — which are the extremal points of the convex set of all LHV models — all land at $|S| = 2$ exactly.
-
-The bound does not depend on model complexity or construction. It is enforced by the dependency pattern itself. The bound is not something implementations approach; it is something the type enforces.
+The factual picture is clear. Random strategies cluster well below the bound. Adversarial optimization reaches the bound but cannot exceed it. The deterministic strategies — the vertices of the convex set — all land at $|S| = 2$ exactly. The four categories searched different regions of the type's inhabitant space: its vertices, its interior via random mixtures, its continuous extension, and its boundary via adversarial optimization. None escaped. The computational evidence is consistent with the theorem: $|S| \leq 2$ is not a tendency of typical implementations but an invariant of the type itself.
 
 ---
 
 ## Beyond the Classical Bound
 
-The bound $|S| \leq 2$ is a theorem. It holds for any hidden variable, any distribution, any local response functions. No clever implementation can exceed it. The ceiling is structural — a consequence of what the LHV type *is*.
-
-Now let's look at what nature actually produces.
+The proof established $|S| \leq 2$ as an invariant of the LHV type, and the computational search confirmed it across thousands of implementations. The bound is settled. Now let's look at what nature actually produces.
 
 ### The three-polarizer experiment
 
@@ -441,6 +478,31 @@ $$
 
 This follows directly from the Born rule applied to projective measurements on the entangled state. The key mechanism is that the singlet state encodes correlations in amplitude space, and these correlations survive the Born rule in a form that no classical factorization can reproduce.
 
+The contrast is visible in code. A classical LHV model computes correlations by averaging over shared lookup tables. The quantum singlet state computes them through the Born rule — amplitudes interfere before probabilities are extracted:
+
+```python
+# Classical: correlations from shared instruction cards
+def classical_correlation(a, b, cards, weights):
+    return sum(w * card[a] * card[b] for card, w in zip(cards, weights))
+    # Each term is ±1. The average is bounded by the extremes: |E| ≤ 1.
+    # Combined into CHSH: |S| ≤ 2.
+
+# Quantum: correlations from amplitude interference (Born rule)
+def singlet_correlation(theta_a, theta_b):
+    return -np.cos(theta_a - theta_b)
+    # Not a lookup or an average over hidden data —
+    # a direct consequence of projecting the entangled state.
+
+def singlet_joint_probabilities(theta_a, theta_b):
+    delta = theta_a - theta_b
+    return {
+        (+1, +1): np.sin(delta/2)**2 / 2,  # both same
+        (+1, -1): np.cos(delta/2)**2 / 2,  # opposite
+        (-1, +1): np.cos(delta/2)**2 / 2,  # opposite
+        (-1, -1): np.sin(delta/2)**2 / 2,  # both same
+    }
+```
+
 Specifically, for the singlet state there is no decomposition:
 
 $$
@@ -460,6 +522,18 @@ $$
 This is the **Tsirelson bound** [[4]](#ref-4): the maximum CHSH violation achievable by any quantum state. It exceeds the classical bound of 2 by a factor of $\sqrt{2}$.
 
 We verify this by simulating projective measurements on the singlet state using the Born rule. For each of the four setting pairs, we sample 100,000 measurement outcomes from the joint distribution and estimate $E(a, b) = \langle A \cdot B \rangle$.
+
+The computation uses the same CHSH formula — the only difference is the correlation source:
+
+```python
+a1, a2 = 0, np.pi/2          # Alice: 0° and 90°
+b1, b2 = np.pi/4, 3*np.pi/4  # Bob:  45° and 135°
+
+S = (singlet_correlation(a1, b1) - singlet_correlation(a1, b2)
+   + singlet_correlation(a2, b1) + singlet_correlation(a2, b2))
+# S = -2√2 ≈ -2.828
+# |S| = 2.828 > 2 — the classical bound is violated.
+```
 
 {{< figure src="/images/bells_inequality/quantum_convergence.png" alt="Convergence of simulated CHSH S toward theoretical value" caption="Figure 2. Convergence of simulated S toward the theoretical value S = −2√2 as the number of measurement trials increases. The estimate enters the violation region (|S| > 2) within a few hundred trials and stabilizes near the Tsirelson bound." >}}
 
