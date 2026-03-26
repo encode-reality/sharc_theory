@@ -444,11 +444,11 @@ But $\frac{3}{4} > \frac{1}{2}$. **Violated by 25 percentage points.**
 
 The inequality is a theorem, not an approximation. No amount of cleverness in designing instruction cards can circumvent it, because it follows from the logical structure of pre-assigned values.
 
-The deeper reason is geometric. Quantum mechanics predicts disagreement rates that follow a $\sin^2(\Delta\theta)$ curve — a function that *bows outward* past 45°. Instruction-card models can only produce correlations that are *linear* or *bow inward* as a function of angle. The quantum curve exceeds the classical envelope at intermediate angles, and no classical mixture can close the gap.
+The deeper reason is geometric. The best any instruction-card model can do is a straight line: disagreement grows proportionally with angle, from 0 at $0°$ to 1 at $90°$. Quantum mechanics predicts disagreement rates that follow a $\sin^2(\Delta\theta)$ curve — which starts *below* the line at small angles (growing slowly), crosses it at $45°$, and then *rises above* it at large angles (steepening rapidly). The violation lives in that steepening: past $45°$, the quantum curve climbs faster than any classical mixture can follow.
 
 {{< figure src="/images/bells_inequality/disagreement_curves.png" alt="Quantum vs classical disagreement probability as a function of polarizer angle" caption="Disagreement probability vs polarizer angle difference. The quantum prediction (red, sin²Δθ) crosses above the classical maximum (blue dashed, linear) beyond 45°. At 30° the quantum disagreement (0.25) is below the classical bound (0.33) — the cards can accommodate it. At 60° the quantum disagreement (0.75) exceeds the classical bound (0.67) — no mixture of instruction cards can reproduce this. The shaded region is structurally inaccessible to any local hidden-variable model." >}}
 
-This is the same lesson as the three-polarizer experiment: measurement is not revealing a pre-existing property. If it were, the correlations would obey the instruction-card bound. They do not. The $\sin^2$ curve — which arises from quantum projection, the same mechanism that lets a 45° filter reset a photon's polarization — bows outward past the classical envelope because it encodes correlations that no lookup table can produce.
+This is the same lesson as the three-polarizer experiment: measurement is not revealing a pre-existing property. If it were, the correlations would obey the instruction-card bound. They do not. The $\sin^2$ curve — which arises from quantum projection, the same mechanism that lets a 45° filter reset a photon's polarization — steepens past $45°$ and rises above the classical envelope because it encodes correlations that no lookup table can produce.
 
 ---
 
