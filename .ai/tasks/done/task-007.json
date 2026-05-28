@@ -1,0 +1,31 @@
+{
+  "acceptance_criteria": [
+    "The title, description, and opening frame the post as a claim about constraint mis-specification rather than a slogan about unlimited spending.",
+    "Sections 1-6 build causally from monetary position to sectoral accounting to control failure to fragility without repeated resets.",
+    "Section 7 limitations remain explicit and visible rather than buried.",
+    "The conclusion compresses the argument instead of re-stating earlier sections at full length."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not add new empirical or simulation claims in this pass.",
+    "Do not reintroduce excluded evidence from money_minsky_policy_mismatch_AUDIT.md."
+  ],
+  "created_at": "2026-04-20T03:25:44.800074Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Refine title, description, opening, section transitions, repetition, and conclusion shape. Emphasize the system-model thesis and keep the rhetoric subordinate to the argument.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Tighten the post's argument architecture so the thesis, sections, and conclusion read as one coherent system-model argument rather than a set of adjacent claims.",
+  "implementation_notes": [
+    "Superseded by task-016, which centers the Keynes quote as the post's diagnostic spine and makes the tone/voice requirements explicit.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-007",
+  "title": "Narrative coherence pass for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-20T03:33:03.114505Z"
+}

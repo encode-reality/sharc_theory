@@ -1,0 +1,34 @@
+{
+  "acceptance_criteria": [
+    "Austerity changes at least one target outcome consistently across multiple seeds and calibrations.",
+    "The ABM exposes a policy channel that is interpretable in economic terms, not just a numerical switch.",
+    "JG experiments distinguish at least one meaningful wage or policy calibration effect beyond simple activation.",
+    "Plots and tests reflect the redesigned policy surface and no longer imply unsupported results."
+  ],
+  "blockers": [],
+  "constraints": [
+    "This is exploratory/model-development work and is not required for publishing the current draft.",
+    "Do not reinsert ABM figures into the blog until the redesigned model is validated."
+  ],
+  "created_at": "2026-04-20T03:25:44.871564Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Redesign the ABM austerity mechanism so fiscal tightening actually binds in measurable ways across seeds, and extend the JG surface so comparisons can say more than activation versus no activation.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/abm_model.py",
+    "experiments/money_minsky_policy_mismatch/experiments.py",
+    "experiments/money_minsky_policy_mismatch/tests/test_abm.py",
+    "experiments/money_minsky_policy_mismatch/tests/test_experiments.py"
+  ],
+  "goal": "Turn the ABM into a useful exploratory surface for fiscal tightening and Job Guarantee dynamics rather than an on/off toy.",
+  "implementation_notes": [
+    "Superseded by task-019, which redefines the ABM work around explicit competing policy controllers rather than generic ABM redesign.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-012",
+  "title": "ABM fiscal-tightening and JG sensitivity redesign",
+  "updated_at": "2026-04-20T03:33:03.164739Z"
+}

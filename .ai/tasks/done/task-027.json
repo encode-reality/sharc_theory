@@ -1,0 +1,40 @@
+{
+  "acceptance_criteria": [
+    "The model has an explicit external-constraint channel.",
+    "It can generate a case where domestic slack remains but external limits begin to bind.",
+    "The results are explainable as a complement to, not a negation of, the current thesis.",
+    "Tests cover both low-dependence and high-dependence cases."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Prefer a simple external bottleneck over a full international macro model.",
+    "Keep the mechanism interpretable to readers of the post.",
+    "Do not let the extension drift into general balance-of-payments modeling unless necessary."
+  ],
+  "created_at": "2026-04-25T16:13:29.674201Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Extend the current capacity or comparative models with an import-essential, FX-pass-through, or foreign-currency-pressure channel. The aim is to show that domestic monetary space does not erase real external limits, especially when a country depends heavily on imported essentials or foreign funding.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/",
+    "experiments/money_minsky_policy_mismatch/tests/",
+    "experiments/money_minsky_policy_mismatch/README.md"
+  ],
+  "goal": "Add a minimal model surface that shows how external dependence can bind before domestic bookkeeping does, even for a sovereign issuer.",
+  "implementation_notes": [
+    "Implemented in repo by Claude. Added external_constraint.py with import leakage and FX-stress channels, generated external_constraint.png, and updated README and experiment entrypoints.",
+    "Planner verification on 2026-04-25: targeted sovereign_securities and external_constraint test modules passed cleanly."
+  ],
+  "owner": "claude",
+  "status": "done",
+  "tags": [
+    "coding",
+    "claude",
+    "simulation",
+    "external-constraint",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-027",
+  "title": "External-constraint and imported-essentials extension",
+  "updated_at": "2026-04-25T22:22:52Z"
+}

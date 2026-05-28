@@ -1,0 +1,21 @@
+{
+  "artifacts": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "experiments/money_minsky_policy_mismatch/sovereign_securities.py",
+    "experiments/money_minsky_policy_mismatch/external_constraint.py",
+    "hugo.toml"
+  ],
+  "command": "uv run python -m pytest experiments/money_minsky_policy_mismatch/tests/test_sovereign_securities.py experiments/money_minsky_policy_mismatch/tests/test_external_constraint.py -q && hugo",
+  "created_at": "2026-04-25T22:25:31.075311Z",
+  "details": [
+    "26 targeted tests passed across sovereign_securities and external_constraint.",
+    "Hugo build succeeded after the task-029 limitation-language refinement.",
+    "Repo/collateral was scoped as a prose limitation rather than a new model surface."
+  ],
+  "recorded_by": "codex",
+  "status": "passed",
+  "summary": "Rollover/external verification and repo-scope editorial check passed for money-minsky-policy-mismatch.",
+  "task_id": "task-029",
+  "validation_id": "validation-006",
+  "validation_type": "build"
+}

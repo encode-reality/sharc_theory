@@ -1,0 +1,35 @@
+{
+  "acceptance_criteria": [
+    "Front matter, links, references, and image paths are correct.",
+    "The final narrative is compelling without sounding overconfident or pompous.",
+    "The post teaches readers how to reason about monetary claims and government function without pretending the models are universal proof.",
+    "No unresolved conflict remains between the prose and the accepted simulation artifacts."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not publish unresolved ambiguity as certainty.",
+    "Keep the closing civic and informative, not partisan or grandiose."
+  ],
+  "created_at": "2026-04-20T03:32:20.282922Z",
+  "created_by": "codex",
+  "dependencies": [
+    "task-016",
+    "task-017"
+  ],
+  "description": "Do the final synthesis pass that turns the post into a coherent, factual, simulation-backed essay about what money functionally does for different entities, why austerity frameworks misassign that role, what really constrains government action, and how readers can reason more clearly about policy claims.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "hugo.toml"
+  ],
+  "goal": "Bring the post to a publishable state once the tone pass, simulation work, and evidence integration are complete.",
+  "implementation_notes": [
+    "Completed the final synthesis and publish-readiness pass for money-minsky-policy-mismatch. The post is now on the normal Hugo publish path (draft: false), the final narrative and evidence chain are aligned, production Hugo build succeeds, simulation tests pass, and referenced images/links resolve.",
+    "Validation: validation-002"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-022",
+  "title": "Final synthesis and publish-readiness for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-25T15:56:22.597710Z"
+}

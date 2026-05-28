@@ -1,0 +1,15 @@
+{
+  "consequences": "The post stays focused on first-order constraint diagnosis rather than funding-market microstructure. The rollover and external-constraint additions cover the omitted factors that most directly alter the main argument. Holder composition remains the highest-value remaining extension, and a future repo/liquidity model is justified only for a later post centered on crisis transmission, dealer balance sheets, haircuts, or safe-collateral shortages.",
+  "context": "The factor-refinement cycle added sovereign_securities.py for maturity/rollover dynamics and external_constraint.py for import dependence and FX stress. With those higher-value qualifiers now modeled, the remaining question is whether this post also needs a dedicated repo/collateral/liquidity model.",
+  "created_at": "2026-04-25T22:25:31.031359Z",
+  "decision": "Do not build a repo/collateral/liquidity model in this cycle. Keep repo/collateral as explicit limitation language and operational context in the prose.",
+  "decision_id": "adr-0009",
+  "recorded_by": "codex",
+  "tags": [
+    "money-minsky-policy-mismatch",
+    "repo",
+    "collateral",
+    "scope"
+  ],
+  "title": "Keep repo/collateral as a scoped limitation in this cycle"
+}

@@ -1,0 +1,21 @@
+{
+  "artifacts": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "static/images/money_minsky_policy_mismatch/",
+    "hugo.toml"
+  ],
+  "command": "uv run python -m pytest experiments/money_minsky_policy_mismatch/tests/ -v && hugo",
+  "created_at": "2026-04-25T15:56:35.108011Z",
+  "details": [
+    "160 simulation tests passed in 43.22s.",
+    "Hugo production build succeeded after setting content/posts/money-minsky-policy-mismatch.md to draft: false.",
+    "Verified all image paths referenced by the post exist under static/images/money_minsky_policy_mismatch/.",
+    "Verified internal link /posts/societies-as-complex-systems/ resolves to content/posts/societies-as-complex-systems.md."
+  ],
+  "recorded_by": "codex",
+  "status": "passed",
+  "summary": "Final publish-readiness validation for money-minsky-policy-mismatch passed.",
+  "task_id": "task-022",
+  "validation_id": "validation-002",
+  "validation_type": "build"
+}

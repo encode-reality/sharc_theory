@@ -1,0 +1,56 @@
+{
+  "decisions": [
+    ".ai/decisions/adr-0001.md",
+    ".ai/decisions/adr-0002.md",
+    ".ai/decisions/adr-0003.md",
+    ".ai/decisions/adr-0004.md",
+    ".ai/decisions/adr-0005.md",
+    ".ai/decisions/adr-0006.md",
+    ".ai/decisions/adr-0007.md",
+    ".ai/decisions/adr-0009.md"
+  ],
+  "handoffs": [
+    ".ai/handoffs/money-minsky-policy-mismatch.md",
+    ".ai/handoffs/money-minsky-policy-mismatch-factor-refinement.md"
+  ],
+  "tasks": [
+    ".ai/tasks/done/task-016.json",
+    ".ai/tasks/done/task-017.json",
+    ".ai/tasks/done/task-018.json",
+    ".ai/tasks/done/task-019.json",
+    ".ai/tasks/done/task-020.json",
+    ".ai/tasks/done/task-021.json",
+    ".ai/tasks/done/task-022.json",
+    ".ai/tasks/done/task-024.json",
+    ".ai/tasks/done/task-025.json",
+    ".ai/tasks/done/task-026.json",
+    ".ai/tasks/done/task-027.json",
+    ".ai/tasks/done/task-028.json",
+    ".ai/tasks/done/task-029.json",
+    ".ai/tasks/done/task-030.json",
+    ".ai/tasks/done/task-001.json",
+    ".ai/tasks/done/task-002.json",
+    ".ai/tasks/done/task-003.json",
+    ".ai/tasks/done/task-004.json",
+    ".ai/tasks/done/task-005.json",
+    ".ai/tasks/done/task-006.json",
+    ".ai/tasks/done/task-007.json",
+    ".ai/tasks/done/task-008.json",
+    ".ai/tasks/done/task-009.json",
+    ".ai/tasks/done/task-010.json",
+    ".ai/tasks/done/task-011.json",
+    ".ai/tasks/done/task-012.json",
+    ".ai/tasks/done/task-013.json",
+    ".ai/tasks/done/task-014.json",
+    ".ai/tasks/done/task-015.json",
+    ".ai/tasks/done/task-023.json"
+  ],
+  "validations": [
+    ".ai/validation/history/validation-001.json",
+    ".ai/validation/history/validation-002.json",
+    ".ai/validation/history/validation-004.json",
+    ".ai/validation/history/validation-006.json",
+    ".ai/validation/history/validation-007.json"
+  ],
+  "version": "0.1.0"
+}

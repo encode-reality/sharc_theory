@@ -1,0 +1,14 @@
+{
+  "consequences": "Future sessions should not conflate publish-readiness with exploratory model development. The current draft can move toward publication through the publish-track tasks, while research-track tasks remain available to deepen or extend the argument without blocking publication.",
+  "context": "The previous board grouped the current work into broad editorial/evidence/repro tasks plus a single low-priority legacy-repair task. Review of the draft and model package shows distinct needs: immediate coherence and validity work for publication, and separate simulation/model-development opportunities for future strengthening.",
+  "created_at": "2026-04-20T03:25:58.747692Z",
+  "decision": "Treat tasks 007-009 plus task-015 as the canonical publish track. Treat task-010 through task-014 as separate research-track work for validity strengthening and future simulations, especially fragility robustness, ABM redesign, SFC redesign, and an inflation/resource-boundary model.",
+  "decision_id": "adr-0005",
+  "recorded_by": "codex",
+  "tags": [
+    "money-minsky-policy-mismatch",
+    "board",
+    "priorities"
+  ],
+  "title": "Money-Minsky board split into publish-track and research-track lanes"
+}

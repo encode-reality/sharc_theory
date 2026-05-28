@@ -1,0 +1,41 @@
+{
+  "acceptance_criteria": [
+    "The model contains an explicit maturity or rollover mechanism.",
+    "It can produce at least one case where similar debt stocks produce different outcomes because refinancing conditions differ.",
+    "Outputs are simple enough to explain in the blog without pretending to model the whole securities market.",
+    "Tests document what the surface illuminates and what it abstracts away."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Prefer the smallest model that makes rollover/refinancing intelligible.",
+    "Do not build a full yield-curve, dealer, or auction microstructure model.",
+    "If the result lands weaker than expected, document that honestly."
+  ],
+  "created_at": "2026-04-25T16:13:29.664886Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Extend or companion one of the existing sovereign/user models with a minimal maturity ladder, rollover share, refinancing rate, and optionally a small holder split. The purpose is to distinguish debt stock from refinancing pressure and to show why the same debt ratio can behave differently depending on maturity and market-access conditions.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/",
+    "experiments/money_minsky_policy_mismatch/tests/",
+    "experiments/money_minsky_policy_mismatch/README.md"
+  ],
+  "goal": "Create a minimal computational surface that shows how maturity structure, refinancing pressure, and securities dynamics can change fiscal adjustment without requiring a full bond-market model.",
+  "implementation_notes": [
+    "Implemented in repo by Claude. Added sovereign_securities.py with short/long debt, rollover pressure, surplus-funded paydowns, issuer/user regime differences, and the rollover_comparison.png figure. README and experiment entrypoints were updated accordingly.",
+    "Planner verification on 2026-04-25: targeted sovereign_securities and external_constraint test modules passed cleanly."
+  ],
+  "owner": "claude",
+  "status": "done",
+  "tags": [
+    "coding",
+    "claude",
+    "simulation",
+    "bonds",
+    "rollover",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-026",
+  "title": "Toy sovereign-securities and rollover extension",
+  "updated_at": "2026-04-25T22:22:52Z"
+}

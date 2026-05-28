@@ -1,0 +1,35 @@
+{
+  "acceptance_criteria": [
+    "Front matter is correct for the intended publication state.",
+    "Links, references, and image paths resolve cleanly.",
+    "Reproducibility notes match the actual package layout.",
+    "The post can move to a final publication decision without unresolved evidence or editorial blockers."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Treat this as the last pass after the editorial/evidence/repro tasks have been completed."
+  ],
+  "created_at": "2026-04-20T01:17:33.225518Z",
+  "created_by": "codex",
+  "dependencies": [
+    "task-editorial",
+    "task-evidence",
+    "task-repro"
+  ],
+  "description": "Run the final front matter, links, references, image-path, and Hugo-facing review needed before flipping the post toward publication.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "hugo.toml"
+  ],
+  "goal": "Prepare the draft for publication once editorial, evidence, and reproducibility checks are complete.",
+  "implementation_notes": [
+    "Superseded immediately after creation by task-006, which carries the same publish-readiness goal with correct dependencies on task-001, task-002, and task-003.",
+    "Validation: adr-0004"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-004",
+  "title": "Publish-readiness review for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-20T01:18:23.764958Z"
+}

@@ -1,0 +1,45 @@
+{
+  "acceptance_criteria": [
+    "The final draft clearly distinguishes modeled factors from named-but-unmodeled factors.",
+    "No new section overstates what the added toy models show.",
+    "References, figures, and limitations are synchronized.",
+    "The post sounds more complete, not more padded."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not promote a weak or incomplete extension into the evidence chain just to sound comprehensive.",
+    "Preserve the post's main structure unless a compelling coherence reason requires reordering."
+  ],
+  "created_at": "2026-04-25T16:13:29.702337Z",
+  "created_by": "codex",
+  "dependencies": [
+    "task-024",
+    "task-025",
+    "task-026",
+    "task-027",
+    "task-028",
+    "task-029"
+  ],
+  "description": "After the scoping, prose, and any new model tasks settle, do one integration pass that rechecks claim-support alignment, figures, references, and limitations language. The result should be a fuller but still disciplined version of the post that names or models the missing layers in proportion to their explanatory value.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "money_minsky_policy_mismatch_AUDIT.md",
+    "experiments/money_minsky_policy_mismatch/README.md"
+  ],
+  "goal": "Integrate the selected omitted-factor refinements into the post and supporting package without reopening old overclaim problems.",
+  "implementation_notes": [
+    "Completed the final factor-refinement integration pass. Integrated rollover_comparison, external_constraint, and holder_composition into the post without overselling them, updated the audit and README to match the accepted evidence chain, and verified the full simulation suite plus Hugo build.",
+    "Validation: validation-007"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [
+    "planner",
+    "editorial",
+    "integration",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-030",
+  "title": "Factor-refinement integration and validation pass",
+  "updated_at": "2026-04-26T01:39:59.719983Z"
+}

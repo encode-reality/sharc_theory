@@ -1,0 +1,18 @@
+{
+  "artifacts": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "hugo.toml"
+  ],
+  "command": "hugo",
+  "created_at": "2026-04-25T20:59:02.877414Z",
+  "details": [
+    "Hugo build succeeded after the task-025 prose pass.",
+    "The post now explicitly covers bonds as functional instruments, rollover and refinancing pressure, collateral/liquidity context, and external constraint without claiming a full bond-market model."
+  ],
+  "recorded_by": "codex",
+  "status": "passed",
+  "summary": "Editorial completeness-layer build check passed for money-minsky-policy-mismatch.",
+  "task_id": "task-025",
+  "validation_id": "validation-004",
+  "validation_type": "build"
+}

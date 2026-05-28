@@ -1,0 +1,32 @@
+{
+  "acceptance_criteria": [
+    "The USER regime no longer explodes through uninterpretable interest-transfer feedback, or the module is explicitly retired from evidentiary use.",
+    "The ABM austerity path either binds in a measurable, directional way or is documented as exploratory only.",
+    "Any repaired model comes with adversarial tests that validate the claimed directional behavior."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Low-priority research task; not required to publish the current draft.",
+    "Do not weaken the current audit boundaries until new validation exists."
+  ],
+  "created_at": "2026-04-20T01:17:33.231112Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Investigate the issuer-vs-user SFC feedback problem and the inert ABM austerity channel; produce interpretable replacements or retire those surfaces explicitly.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/sfc_model.py",
+    "experiments/money_minsky_policy_mismatch/abm_model.py",
+    "experiments/money_minsky_policy_mismatch/tests/"
+  ],
+  "goal": "Repair or replace the legacy SFC and ABM surfaces before they are ever used again as evidence in the post.",
+  "implementation_notes": [
+    "Superseded by the refined research-track split: task-010 fragility robustness, task-011 adversarial test hardening, task-012 ABM redesign, task-013 issuer/user SFC redesign, and task-014 inflation/resource-boundary modeling.",
+    "Validation: adr-0005"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-005",
+  "title": "Future repair of legacy money-minsky-policy-mismatch models",
+  "updated_at": "2026-04-20T03:26:22.808076Z"
+}

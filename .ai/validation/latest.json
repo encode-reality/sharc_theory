@@ -1,0 +1,22 @@
+{
+  "artifacts": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "money_minsky_policy_mismatch_AUDIT.md",
+    "experiments/money_minsky_policy_mismatch/README.md",
+    "hugo.toml"
+  ],
+  "command": "uv run python -m pytest experiments/money_minsky_policy_mismatch/tests/ -q && hugo",
+  "created_at": "2026-04-26T01:36:59.237915Z",
+  "details": [
+    "Integrated rollover_comparison, external_constraint, and holder_composition surfaces into the post without promoting repo/collateral into a new model surface.",
+    "Updated the audit and README so the support map, test count, and refinement-layer claims match the current repo state.",
+    "Full simulation test suite passed: 200 tests in 41.93s.",
+    "Hugo build succeeded after the final integration pass."
+  ],
+  "recorded_by": "codex",
+  "status": "passed",
+  "summary": "Final factor-refinement integration and validation passed for money-minsky-policy-mismatch.",
+  "task_id": "task-030",
+  "validation_id": "validation-007",
+  "validation_type": "build"
+}

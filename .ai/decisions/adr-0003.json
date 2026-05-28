@@ -1,0 +1,14 @@
+{
+  "consequences": "New sessions should claim the most relevant task rather than treating the post as prose-only or code-only. The .ai handoff note and current spec are the shared context for all three workstreams.",
+  "context": "This draft is being finalized through both prose refinement and experiment-backed verification. Future sessions need a default work model.",
+  "created_at": "2026-04-20T01:17:33.243285Z",
+  "decision": "Use a mixed editorial-plus-code coordination pattern for this post: prose work, evidence review, and reproducibility work are all valid continuation paths, and the hub should keep them as separate but related tasks.",
+  "decision_id": "adr-0003",
+  "recorded_by": "codex",
+  "tags": [
+    "money-minsky-policy-mismatch",
+    "coordination",
+    "hub"
+  ],
+  "title": "Default coordination mode is mixed editorial plus code"
+}

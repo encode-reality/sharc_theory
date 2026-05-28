@@ -1,0 +1,35 @@
+{
+  "acceptance_criteria": [
+    "Front matter is correct for the intended publication state.",
+    "Links, references, and image paths resolve cleanly.",
+    "Reproducibility notes match the actual package layout.",
+    "The post can move to a final publication decision without unresolved evidence or editorial blockers."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Treat this as the last pass after task-001, task-002, and task-003 are completed."
+  ],
+  "created_at": "2026-04-20T01:17:53.969629Z",
+  "created_by": "codex",
+  "dependencies": [
+    "task-001",
+    "task-002",
+    "task-003"
+  ],
+  "description": "Canonical publish-readiness task with correct dependencies on the active editorial, evidence, and reproducibility tasks.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "hugo.toml"
+  ],
+  "goal": "Prepare the draft for publication once editorial, evidence, and reproducibility checks are complete.",
+  "implementation_notes": [
+    "Superseded by task-015, which is the canonical publish-readiness task on the refined board and depends on tasks 007-009 rather than the older broad buckets.",
+    "Validation: adr-0005"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-006",
+  "title": "Publish-readiness review for money-minsky-policy-mismatch (canonical)",
+  "updated_at": "2026-04-20T03:26:22.800272Z"
+}

@@ -1,0 +1,32 @@
+{
+  "acceptance_criteria": [
+    "Tests avoid language that treats the blog thesis as already proven by construction.",
+    "Accepted-model tests validate invariants, monotonicity, and reproducibility rather than editorial conclusions.",
+    "Legacy-model tests either enforce their documented limitations or are narrowed so they do not imply unsupported evidence.",
+    "The suite still runs cleanly after the refactor."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not write tests that hard-code conclusions the models are supposed to investigate.",
+    "Keep the distinction between accepted evidence and exploratory surfaces explicit."
+  ],
+  "created_at": "2026-04-20T03:25:44.865146Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Review the money_minsky_policy_mismatch test suite and remove assertions that merely restate the intended story. Add adversarial tests that would fail if claimed directional effects disappear or if unsupported claims creep back into code comments and experiment wrappers.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/tests/",
+    "experiments/money_minsky_policy_mismatch/experiments.py"
+  ],
+  "goal": "Replace narrative-confirming tests with falsifiable invariants and robustness checks across the accepted and legacy model surfaces.",
+  "implementation_notes": [
+    "Superseded by the test requirements embedded directly in tasks 018, 019, and 020, which require falsifiable mechanisms without narrative overreach.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-011",
+  "title": "Adversarial test hardening for money_minsky_policy_mismatch",
+  "updated_at": "2026-04-20T03:33:03.157869Z"
+}

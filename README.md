@@ -50,13 +50,13 @@ Supporting code for *"Beyond What Works."* Demonstrates the structural hierarchy
 
 ```bash
 # Run Experiment 1
-python experiments/ideas_intelligence_creativity/run_experiment_1.py --n-steps 1000 --n-peaks 20
+poetry run python experiments/ideas_intelligence_creativity/run_experiment_1.py --n-steps 1000 --n-peaks 20
 
 # Run Experiment 2
-python experiments/ideas_intelligence_creativity/run_experiment_2.py --meta-steps 20 --weight-generations 15
+poetry run python experiments/ideas_intelligence_creativity/run_experiment_2.py --meta-steps 20 --weight-generations 15
 ```
 
-60 unit tests: `pytest experiments/ideas_intelligence_creativity/tests/ --no-cov`
+60 unit tests: `poetry run pytest experiments/ideas_intelligence_creativity/tests/ --no-cov`
 
 ---
 
@@ -73,7 +73,7 @@ A primordial soup simulation exploring the spontaneous emergence of self-replica
 - Jupyter notebooks for exploration (`01_basic_bff.ipynb`, `02_long_run_2M.ipynb`, `03_paper_parameters.ipynb`)
 
 ```bash
-python models/evolutionary/abiogenesis_blaise/run_experiment.py --interactions 2000000
+poetry run python models/evolutionary/abiogenesis_blaise/run_experiment.py --interactions 2000000
 ```
 
 ---
@@ -115,7 +115,7 @@ Curated transcripts, summaries, and analysis of talks and interviews that inform
 ### Prerequisites
 
 - Python 3.12+
-- [uv](https://docs.astral.sh/uv/) (package manager) or pip
+- [Poetry](https://python-poetry.org/)
 - Hugo (extended version, for blog development)
 
 ### Setup
@@ -124,14 +124,11 @@ Curated transcripts, summaries, and analysis of talks and interviews that inform
 git clone https://github.com/encode-reality/sharc_theory.git
 cd sharc_theory
 
-# Install dependencies (using uv)
-uv sync
-
-# Or with pip
-pip install -e ".[dev]"
+# Install dependencies
+poetry install
 
 # Run tests
-pytest --no-cov
+poetry run pytest --no-cov
 
 # Start the blog locally
 hugo server -D
@@ -141,13 +138,13 @@ hugo server -D
 
 ```bash
 # All tests (models + experiments)
-pytest --no-cov
+poetry run pytest --no-cov
 
 # Just experiments
-pytest experiments/ideas_intelligence_creativity/tests/ --no-cov
+poetry run pytest experiments/ideas_intelligence_creativity/tests/ --no-cov
 
 # Just models
-pytest models/evolutionary/abiogenesis_blaise/tests/ --no-cov
+poetry run pytest models/evolutionary/abiogenesis_blaise/tests/ --no-cov
 ```
 
 ---

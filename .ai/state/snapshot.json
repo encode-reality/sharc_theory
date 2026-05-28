@@ -1,0 +1,1276 @@
+{
+  "agents": {
+    "claude": {
+      "agent_name": "claude",
+      "connected_at": "2026-04-25T22:37:33.597373+00:00",
+      "last_seen": "2026-04-25T22:37:33.597373+00:00",
+      "role": "implementer"
+    },
+    "codex": {
+      "agent_name": "codex",
+      "connected_at": "2026-04-26T01:32:44.225636+00:00",
+      "last_seen": "2026-04-26T01:32:44.225636+00:00",
+      "role": "planner"
+    }
+  },
+  "dispatch_counter": 4,
+  "dispatches": [
+    {
+      "acknowledged_at": null,
+      "created_at": "2026-04-20T03:33:26.888928+00:00",
+      "dispatch_id": "dispatch-001",
+      "instruction": "Claim task-018 first. Build the comparative constraint simulation around household-like actor vs currency user/quasi-sovereign vs sovereign issuer. The point is to show why austerity frameworks assign money the wrong function across unlike entities. Keep it interpretable, avoid explosive transfer artifacts, and document whatever the model actually shows.",
+      "seen_at": "2026-04-20T03:41:38.780391+00:00",
+      "status": "seen",
+      "target_agent": "claude",
+      "task_id": "task-018"
+    },
+    {
+      "acknowledged_at": null,
+      "created_at": "2026-04-20T03:33:26.903876+00:00",
+      "dispatch_id": "dispatch-002",
+      "instruction": "After the core controller work is stable, claim task-020. Add the smallest honest model surface that shows the real constraint boundary: slack conditions versus tight-capacity or price-pressure conditions. The goal is to show what truly constrains action, not to build a maximal macro model.",
+      "seen_at": "2026-04-20T03:41:38.780404+00:00",
+      "status": "seen",
+      "target_agent": "claude",
+      "task_id": "task-020"
+    },
+    {
+      "acknowledged_at": null,
+      "created_at": "2026-04-20T03:33:26.909243+00:00",
+      "dispatch_id": "dispatch-003",
+      "instruction": "After task-018, claim task-019. Implement the ABM policy lab around competing policy controllers: household-budget / deficit-targeting austerity logic versus functional-finance / system-state targeting. Keep the controllers legible, run across multiple seeds, and report employment, output, fragility, and public-balance outcomes without overstating what the ABM proves.",
+      "seen_at": "2026-04-20T03:41:38.780408+00:00",
+      "status": "seen",
+      "target_agent": "claude",
+      "task_id": "task-019"
+    },
+    {
+      "acknowledged_at": null,
+      "created_at": "2026-04-20T03:33:26.914908+00:00",
+      "dispatch_id": "dispatch-004",
+      "instruction": "Once the simulation surfaces are settled, claim task-021. Generate only the figures and metrics that cleanly support the accepted story: Keynes quote as diagnostic rule, money's functional role by entity type, failure of austerity-style controllers, and the reality of real constraints. Do not force weak figures into the post.",
+      "seen_at": "2026-04-20T03:41:38.780411+00:00",
+      "status": "seen",
+      "target_agent": "claude",
+      "task_id": "task-021"
+    }
+  ],
+  "event_counter": 126,
+  "events": [
+    {
+      "agent": "claude",
+      "data": {
+        "role": "implementer"
+      },
+      "event_id": 1,
+      "event_type": "agent_registered",
+      "timestamp": "2026-04-20T01:01:40.947497+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "role": "planner"
+      },
+      "event_id": 2,
+      "event_type": "agent_registered",
+      "timestamp": "2026-04-20T01:02:08.647737+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-001",
+        "title": "Editorial pass for money-minsky-policy-mismatch"
+      },
+      "event_id": 3,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T01:17:33.159841+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-002",
+        "title": "Evidence pass against audit for money-minsky-policy-mismatch"
+      },
+      "event_id": 4,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T01:17:33.213800+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-003",
+        "title": "Repro pass for accepted money-minsky-policy-mismatch outputs"
+      },
+      "event_id": 5,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T01:17:33.221111+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-004",
+        "title": "Publish-readiness review for money-minsky-policy-mismatch"
+      },
+      "event_id": 6,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T01:17:33.226279+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-005",
+        "title": "Future repair of legacy money-minsky-policy-mismatch models"
+      },
+      "event_id": 7,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T01:17:33.231986+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-006",
+        "title": "Publish-readiness review for money-minsky-policy-mismatch (canonical)"
+      },
+      "event_id": 8,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T01:17:53.971499+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 5,
+        "task_id": "task-001"
+      },
+      "event_id": 9,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T01:18:06.355030+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 6,
+        "task_id": "task-002"
+      },
+      "event_id": 10,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T01:18:06.374056+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 7,
+        "task_id": "task-003"
+      },
+      "event_id": 11,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T01:18:06.381568+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 9,
+        "task_id": "task-006"
+      },
+      "event_id": 12,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T01:18:06.389572+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 20,
+        "task_id": "task-005"
+      },
+      "event_id": 13,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T01:18:06.396188+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-004"
+      },
+      "event_id": 14,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T01:18:17.730335+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-004"
+      },
+      "event_id": 15,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T01:18:23.768164+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-007",
+        "title": "Narrative coherence pass for money-minsky-policy-mismatch"
+      },
+      "event_id": 16,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:44.803184+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-008",
+        "title": "Claim-support ledger and quantitative validity pass for money-minsky-policy-mismatch"
+      },
+      "event_id": 17,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:44.845088+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-009",
+        "title": "Accepted figure, repro, and citation verification for money-minsky-policy-mismatch"
+      },
+      "event_id": 18,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:44.852244+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-010",
+        "title": "Fragility robustness and parameter-isolation sweep"
+      },
+      "event_id": 19,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:44.859612+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-011",
+        "title": "Adversarial test hardening for money_minsky_policy_mismatch"
+      },
+      "event_id": 20,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:44.865874+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-012",
+        "title": "ABM fiscal-tightening and JG sensitivity redesign"
+      },
+      "event_id": 21,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:44.872317+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-013",
+        "title": "Issuer-versus-user SFC redesign"
+      },
+      "event_id": 22,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:44.878207+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-014",
+        "title": "Inflation and real-capacity boundary model for money-minsky-policy-mismatch"
+      },
+      "event_id": 23,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:44.886534+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-015",
+        "title": "Publish-readiness review for money-minsky-policy-mismatch (refined board)"
+      },
+      "event_id": 24,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:25:58.734984+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-001"
+      },
+      "event_id": 25,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:26:11.439307+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-002"
+      },
+      "event_id": 26,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:26:11.471247+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-003"
+      },
+      "event_id": 27,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:26:11.477675+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-005"
+      },
+      "event_id": 28,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:26:11.482954+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-006"
+      },
+      "event_id": 29,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:26:11.490046+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-001"
+      },
+      "event_id": 30,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:26:22.737173+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-002"
+      },
+      "event_id": 31,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:26:22.744832+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-003"
+      },
+      "event_id": 32,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:26:22.793120+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-006"
+      },
+      "event_id": 33,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:26:22.801682+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-005"
+      },
+      "event_id": 34,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:26:22.808981+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 5,
+        "task_id": "task-007"
+      },
+      "event_id": 35,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:31.951199+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 4,
+        "task_id": "task-008"
+      },
+      "event_id": 36,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:31.965575+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 6,
+        "task_id": "task-009"
+      },
+      "event_id": 37,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:31.995946+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 8,
+        "task_id": "task-015"
+      },
+      "event_id": 38,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:32.001322+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 10,
+        "task_id": "task-010"
+      },
+      "event_id": 39,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:32.009741+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 11,
+        "task_id": "task-011"
+      },
+      "event_id": 40,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:32.015895+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 13,
+        "task_id": "task-012"
+      },
+      "event_id": 41,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:32.023089+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 14,
+        "task_id": "task-013"
+      },
+      "event_id": 42,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:32.030788+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 18,
+        "task_id": "task-014"
+      },
+      "event_id": 43,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:26:32.039964+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-016",
+        "title": "Voice and argument-spine pass for money-minsky-policy-mismatch"
+      },
+      "event_id": 44,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:32:20.216549+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-017",
+        "title": "Claim-to-simulation integration pass for money-minsky-policy-mismatch"
+      },
+      "event_id": 45,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:32:20.226933+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-018",
+        "title": "Comparative constraint simulation: household vs user vs issuer"
+      },
+      "event_id": 46,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:32:20.251730+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-019",
+        "title": "Agent-based austerity policy lab"
+      },
+      "event_id": 47,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:32:20.260407+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-020",
+        "title": "Real-constraint boundary model for money-minsky-policy-mismatch"
+      },
+      "event_id": 48,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:32:20.269026+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-021",
+        "title": "Story figures, metrics, and reproducibility bundle for money-minsky-policy-mismatch"
+      },
+      "event_id": 49,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:32:20.276571+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-022",
+        "title": "Final synthesis and publish-readiness for money-minsky-policy-mismatch"
+      },
+      "event_id": 50,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:32:20.283703+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-007"
+      },
+      "event_id": 51,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.260504+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-008"
+      },
+      "event_id": 52,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.273528+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-009"
+      },
+      "event_id": 53,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.305923+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-010"
+      },
+      "event_id": 54,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.313310+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-011"
+      },
+      "event_id": 55,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.321619+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-012"
+      },
+      "event_id": 56,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.329683+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-013"
+      },
+      "event_id": 57,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.335627+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-014"
+      },
+      "event_id": 58,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.345347+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-015"
+      },
+      "event_id": 59,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:32:47.351101+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-007"
+      },
+      "event_id": 60,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.116487+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-008"
+      },
+      "event_id": 61,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.131482+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-009"
+      },
+      "event_id": 62,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.141168+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-010"
+      },
+      "event_id": 63,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.149474+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-011"
+      },
+      "event_id": 64,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.158692+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-012"
+      },
+      "event_id": 65,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.165621+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-013"
+      },
+      "event_id": 66,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.174643+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-015"
+      },
+      "event_id": 67,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.181400+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-014"
+      },
+      "event_id": 68,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:33:03.190719+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 4,
+        "task_id": "task-016"
+      },
+      "event_id": 69,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:33:13.193898+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 3,
+        "task_id": "task-018"
+      },
+      "event_id": 70,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:33:13.206137+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 5,
+        "task_id": "task-019"
+      },
+      "event_id": 71,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:33:13.248572+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 6,
+        "task_id": "task-020"
+      },
+      "event_id": 72,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:33:13.256043+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 7,
+        "task_id": "task-021"
+      },
+      "event_id": 73,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:33:13.263931+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 8,
+        "task_id": "task-017"
+      },
+      "event_id": 74,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:33:13.274103+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 10,
+        "task_id": "task-022"
+      },
+      "event_id": 75,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-20T03:33:13.281206+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "dispatch_id": "dispatch-001",
+        "target_agent": "claude",
+        "task_id": "task-018"
+      },
+      "event_id": 76,
+      "event_type": "dispatch_created",
+      "timestamp": "2026-04-20T03:33:26.888944+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "dispatch_id": "dispatch-002",
+        "target_agent": "claude",
+        "task_id": "task-020"
+      },
+      "event_id": 77,
+      "event_type": "dispatch_created",
+      "timestamp": "2026-04-20T03:33:26.903887+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "dispatch_id": "dispatch-003",
+        "target_agent": "claude",
+        "task_id": "task-019"
+      },
+      "event_id": 78,
+      "event_type": "dispatch_created",
+      "timestamp": "2026-04-20T03:33:26.909250+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "dispatch_id": "dispatch-004",
+        "target_agent": "claude",
+        "task_id": "task-021"
+      },
+      "event_id": 79,
+      "event_type": "dispatch_created",
+      "timestamp": "2026-04-20T03:33:26.914912+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-023",
+        "title": "Execution sequence tracking for money-minsky-policy-mismatch"
+      },
+      "event_id": 80,
+      "event_type": "task_created",
+      "timestamp": "2026-04-20T03:39:36.126149+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-016"
+      },
+      "event_id": 81,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:39:36.161820+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-023"
+      },
+      "event_id": 82,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T03:41:38.732107+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "dispatch_id": "dispatch-001"
+      },
+      "event_id": 83,
+      "event_type": "dispatch_seen",
+      "timestamp": "2026-04-20T03:41:38.780398+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "dispatch_id": "dispatch-002"
+      },
+      "event_id": 84,
+      "event_type": "dispatch_seen",
+      "timestamp": "2026-04-20T03:41:38.780405+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "dispatch_id": "dispatch-003"
+      },
+      "event_id": 85,
+      "event_type": "dispatch_seen",
+      "timestamp": "2026-04-20T03:41:38.780409+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "dispatch_id": "dispatch-004"
+      },
+      "event_id": 86,
+      "event_type": "dispatch_seen",
+      "timestamp": "2026-04-20T03:41:38.780412+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-023"
+      },
+      "event_id": 87,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T03:41:48.333006+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "task_id": "task-018"
+      },
+      "event_id": 88,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-20T13:26:30.148420+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-016"
+      },
+      "event_id": 89,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T13:28:22.277624+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-018"
+      },
+      "event_id": 90,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-20T13:51:24.838016+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "task_id": "task-019"
+      },
+      "event_id": 91,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-21T02:44:58.897397+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-019"
+      },
+      "event_id": 92,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-21T02:58:15.319172+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "task_id": "task-020"
+      },
+      "event_id": 93,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-21T02:58:25.617295+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-020"
+      },
+      "event_id": 94,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-21T03:02:24.132850+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "task_id": "task-021"
+      },
+      "event_id": 95,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-21T03:02:59.330301+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-021"
+      },
+      "event_id": 96,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-21T03:08:12.581314+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-017"
+      },
+      "event_id": 97,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-25T14:30:06.699730+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-017"
+      },
+      "event_id": 98,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-25T14:33:46.256602+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-022"
+      },
+      "event_id": 99,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-25T15:54:33.013431+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-022"
+      },
+      "event_id": 100,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-25T15:56:22.600105+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-024",
+        "title": "Scope omitted financial-plumbing factors for money-minsky-policy-mismatch"
+      },
+      "event_id": 101,
+      "event_type": "task_created",
+      "timestamp": "2026-04-25T16:13:29.642027+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-025",
+        "title": "Prose pass: bonds, liability hierarchy, and scoped omissions"
+      },
+      "event_id": 102,
+      "event_type": "task_created",
+      "timestamp": "2026-04-25T16:13:29.655090+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-026",
+        "title": "Toy sovereign-securities and rollover extension"
+      },
+      "event_id": 103,
+      "event_type": "task_created",
+      "timestamp": "2026-04-25T16:13:29.665906+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-027",
+        "title": "External-constraint and imported-essentials extension"
+      },
+      "event_id": 104,
+      "event_type": "task_created",
+      "timestamp": "2026-04-25T16:13:29.675074+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-028",
+        "title": "Holder-composition and distribution channel extension"
+      },
+      "event_id": 105,
+      "event_type": "task_created",
+      "timestamp": "2026-04-25T16:13:29.683554+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-029",
+        "title": "Collateral/liquidity and repo scope decision"
+      },
+      "event_id": 106,
+      "event_type": "task_created",
+      "timestamp": "2026-04-25T16:13:29.692881+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-030",
+        "title": "Factor-refinement integration and validation pass"
+      },
+      "event_id": 107,
+      "event_type": "task_created",
+      "timestamp": "2026-04-25T16:13:29.703563+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 3,
+        "task_id": "task-024"
+      },
+      "event_id": 108,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-25T16:13:41.057882+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 4,
+        "task_id": "task-025"
+      },
+      "event_id": 109,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-25T16:13:41.102326+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 5,
+        "task_id": "task-026"
+      },
+      "event_id": 110,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-25T16:13:41.112936+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 6,
+        "task_id": "task-027"
+      },
+      "event_id": 111,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-25T16:13:41.120420+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 7,
+        "task_id": "task-029"
+      },
+      "event_id": 112,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-25T16:13:41.128559+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 8,
+        "task_id": "task-028"
+      },
+      "event_id": 113,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-25T16:13:41.135259+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "priority": 10,
+        "task_id": "task-030"
+      },
+      "event_id": 114,
+      "event_type": "task_queued",
+      "timestamp": "2026-04-25T16:13:41.143081+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-024"
+      },
+      "event_id": 115,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-25T16:15:31.594848+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-024"
+      },
+      "event_id": 116,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-25T16:15:31.711225+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-025"
+      },
+      "event_id": 117,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-25T20:55:10.723686+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "role": "planner"
+      },
+      "event_id": 118,
+      "event_type": "agent_registered",
+      "timestamp": "2026-04-25T20:56:49.654086+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "role": "planner"
+      },
+      "event_id": 119,
+      "event_type": "agent_registered",
+      "timestamp": "2026-04-25T22:20:03.260662+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-029"
+      },
+      "event_id": 120,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-25T22:20:13.271221+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "role": "implementer"
+      },
+      "event_id": 121,
+      "event_type": "agent_registered",
+      "timestamp": "2026-04-25T22:37:33.597432+00:00"
+    },
+    {
+      "agent": "claude",
+      "data": {
+        "task_id": "task-028"
+      },
+      "event_id": 122,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-25T22:37:36.889964+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-028"
+      },
+      "event_id": 123,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-25T22:41:59.160643+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "role": "planner"
+      },
+      "event_id": 124,
+      "event_type": "agent_registered",
+      "timestamp": "2026-04-26T01:32:44.225713+00:00"
+    },
+    {
+      "agent": "codex",
+      "data": {
+        "task_id": "task-030"
+      },
+      "event_id": 125,
+      "event_type": "task_claimed",
+      "timestamp": "2026-04-26T01:33:13.470536+00:00"
+    },
+    {
+      "agent": "system",
+      "data": {
+        "task_id": "task-030"
+      },
+      "event_id": 126,
+      "event_type": "task_completed",
+      "timestamp": "2026-04-26T01:39:59.722539+00:00"
+    }
+  ],
+  "queue": [
+    {
+      "enqueued_at": "2026-04-25T16:13:41.112922+00:00",
+      "enqueued_by": "system",
+      "priority": 5,
+      "task_id": "task-026"
+    },
+    {
+      "enqueued_at": "2026-04-25T16:13:41.120409+00:00",
+      "enqueued_by": "system",
+      "priority": 6,
+      "task_id": "task-027"
+    }
+  ]
+}

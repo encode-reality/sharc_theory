@@ -1,0 +1,38 @@
+{
+  "acceptance_criteria": [
+    "The comparison no longer relies on explosive interest-transfer artifacts.",
+    "Outputs include interpretable paths for spending, output, debt or financing pressure, and any constraint variable relevant to the entity type.",
+    "The simulation documents what differs because of monetary position and what does not.",
+    "Tests cover the mechanism without assuming the preferred political conclusion in advance."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Document whatever the model actually shows, even if the contrast is weaker than expected.",
+    "Keep the accepted post evidence chain unchanged until this surface is separately validated."
+  ],
+  "created_at": "2026-04-20T03:32:20.250898Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Create an interpretable comparative simulation or repaired model that contrasts at least three monetary positions: household-like budget-constrained actor, currency user/quasi-sovereign, and sovereign issuer. The purpose is to show why austerity frameworks go wrong when they assign the same functional role to money across unlike entities.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/sfc_model.py",
+    "experiments/money_minsky_policy_mismatch/experiments.py",
+    "experiments/money_minsky_policy_mismatch/tests/test_sfc.py",
+    "experiments/money_minsky_policy_mismatch/tests/test_experiments.py"
+  ],
+  "goal": "Build or repair a simulation surface that demonstrates how money's functional role and binding constraints differ across households, currency users/quasi-sovereigns, and issuers under austerity-style reasoning.",
+  "implementation_notes": [
+    "Built comparative constraint simulation and fixed SFC model. Summary of changes:\n\n**New file: `experiments/money_minsky_policy_mismatch/comparative_constraints.py`**\n- Three entity types (HOUSEHOLD, CURRENCY_USER, SOVEREIGN_ISSUER) face the same private-demand shock\n- Household: hard budget constraint, endogenous borrowing rate, no macro feedback\n- Currency user: market-access constraint, endogenous spread with rate cap, fiscal multiplier feedback\n- Sovereign issuer: no financing constraint, policy-set rate, fiscal multiplier feedback\n- Differences emerge from structural rules, not imposed narrative\n- Clean accounting: deficit = spending + interest - revenue for government entities\n\n**Fixed: `experiments/money_minsky_policy_mismatch/sfc_model.py`**\n- Added `mpc_interest` parameter (default 0.10): bondholders consume less of interest income than wage earners, dampening the interest→consumption→output feedback\n- Added `max_sovereign_rate` parameter (default 0.06): caps the USER regime's sovereign rate to prevent superexponential debt/output dynamics from endogenous spread compounding\n- Sectoral balance identity still holds by construction (verified)\n\n**Updated: `config.py`** — new defaults for mpc_interest and max_sovereign_rate\n**Updated: `experiments.py`** — added `run_comparative_constraint_experiment()` runner\n\n**New tests: `tests/test_comparative_constraints.py`** (24 tests)\n- Structural: accounting identity, spending positivity, pre-shock equilibrium\n- Mechanism: household hits ceiling, user faces consolidation, issuer never constrained\n- Boundary: no-shock stability, tiny-shock minimal divergence, unlimited borrowing, zero-spread convergence\n- Adversarial: issuer debt still grows, user stabilizes under mild conditions, no explosive output\n\n**All 122 tests pass** (24 new + 98 existing, zero regressions)."
+  ],
+  "owner": "claude",
+  "status": "done",
+  "tags": [
+    "coding",
+    "simulation",
+    "claude",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-018",
+  "title": "Comparative constraint simulation: household vs user vs issuer",
+  "updated_at": "2026-04-20T13:51:24.836543Z"
+}

@@ -1,0 +1,31 @@
+{
+  "acceptance_criteria": [
+    "The sequence and ownership split are recorded in hub state and .ai artifacts.",
+    "A future session can see the intended order without rediscovering it from chat history.",
+    "Any planner/editorial work avoids concurrent edits to the code lane, and vice versa."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Coordination-only task; do not use it to replace the actual work tasks.",
+    "Keep the sequence lightweight and easy to update if the board changes."
+  ],
+  "created_at": "2026-04-20T03:39:36.123258Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Record the agreed sequence and ownership split for the endgame: Codex handles tone, argument spine, claim integration, and final synthesis; Claude handles the coding lane for comparative constraint simulation, ABM policy lab, real-constraint model, and final figure bundle.",
+  "files_expected": [
+    ".ai/specs/current_spec.md",
+    ".ai/handoffs/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Keep the current planner/implementer work order explicit in hub and local .ai artifacts while the post is being finalized.",
+  "implementation_notes": [
+    "Recorded the current execution sequence and ownership split in .ai/specs/current_spec.md and .ai/handoffs/money-minsky-policy-mismatch.md so future sessions can resume without rediscovering task order from chat history.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-023",
+  "title": "Execution sequence tracking for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-20T03:41:48.330129Z"
+}
