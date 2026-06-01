@@ -1,0 +1,38 @@
+{
+  "acceptance_criteria": [
+    "The ABM policy rules are interpretable as competing policy assumptions, not just parameter toggles.",
+    "At least one austerity-style controller and one state-targeting controller produce meaningfully different outcomes across multiple seeds.",
+    "The model reports output, unemployment, private fragility, and public-balance metrics that can be used in the blog.",
+    "Tests and documentation state clearly what the ABM illuminates and what remains stylized."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not smuggle the conclusion in through a degenerate controller; the competing policy rules should be legible and defensible.",
+    "Do not wire ABM figures into the post until the results are validated."
+  ],
+  "created_at": "2026-04-20T03:32:20.258767Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Extend the ABM so it can simulate at least two policy frameworks: one that behaves as if government were household-budget constrained and targets deficit reduction directly, and one that treats government as a functional stabilizer and targets employment, output, or fragility state. Compare resulting unemployment, output, private fragility, public balances, and any job-guarantee dynamics across seeds.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/abm_model.py",
+    "experiments/money_minsky_policy_mismatch/experiments.py",
+    "experiments/money_minsky_policy_mismatch/tests/test_abm.py",
+    "experiments/money_minsky_policy_mismatch/tests/test_experiments.py"
+  ],
+  "goal": "Implement an agent-based policy lab that compares austerity-style policy controllers against functional-finance / system-state-aware controllers under realistic stress conditions.",
+  "implementation_notes": [
+    "Built ABM policy lab with competing fiscal controllers. Summary:\n\n**New file: `policy_controllers.py`**\n- Three controllers: PassiveController, AusterityController, FunctionalFinanceController\n- Austerity targets deficit/GDP: cuts fiscal_transfer, raises tau, cuts w_jg when deficit > target\n- Functional finance targets underutilization (unemployment + JG share): raises fiscal_transfer, lowers tau, raises w_jg when private employment is weak\n- Controllers adjust ABM parameters externally each period via `run_policy_lab()`\n- Both controllers are interpretable as competing policy assumptions, not parameter toggles\n\n**Modified: `abm_model.py`**\n- Added `fiscal_transfer` channel: per-household fiscal transfers flow into disposable income and government spending\n- Added `demand_sensitivity` parameter: lagged household consumption modulates firm revenue, creating the fiscal→demand→firm channel that was structurally missing\n- Both parameters default to 0 for backward compatibility\n\n**Updated: `config.py`** — new defaults for fiscal_transfer and demand_sensitivity\n**Updated: `experiments.py`** — added `run_policy_lab_experiment()` comparing all three controllers\n\n**New tests: `tests/test_policy_controllers.py`** (23 tests, written test-first)\n- Controller mechanism: austerity cuts when deficit high, FF boosts when underutilization high\n- Proportionality and bounds: adjustments scale with excess, stay within sane limits\n- Outcome divergence: FF maintains higher output, austerity achieves lower deficit, passive sits between\n- Multi-seed robustness: FF outperforms austerity on output in majority of 5 seeds\n- Adversarial: austerity reduces deficit more (it's designed to), FF may increase fragility (it's not costless), low-stress → minimal divergence\n\n**All 145 tests pass** (23 new + 122 existing, zero regressions)."
+  ],
+  "owner": "claude",
+  "status": "done",
+  "tags": [
+    "coding",
+    "abm",
+    "claude",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-019",
+  "title": "Agent-based austerity policy lab",
+  "updated_at": "2026-04-21T02:58:15.316234Z"
+}

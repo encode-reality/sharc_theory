@@ -1,0 +1,31 @@
+{
+  "acceptance_criteria": [
+    "poetry run pytest experiments/money_minsky_policy_mismatch/tests/ --no-cov completes successfully or failures are documented precisely.",
+    "The accepted run_experiment.py entrypoint is exercised for the current evidence chain and any figure/output mismatches are noted.",
+    "Validation results are recorded in the hub with enough detail for a later session to trust or challenge them."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not promote legacy figures back into use merely because they exist on disk.",
+    "Record exact commands used and date of validation."
+  ],
+  "created_at": "2026-04-20T01:17:33.219862Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Run the money_minsky_policy_mismatch test suite and the accepted figure package, then record any discrepancies between expected and actual outputs.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/README.md",
+    "static/images/money_minsky_policy_mismatch/"
+  ],
+  "goal": "Confirm that the accepted tests and figure-generation entrypoints still reproduce cleanly for the current evidence chain.",
+  "implementation_notes": [
+    "Superseded by task-009, which narrows the repro bucket to accepted figures, commands, citations, and image-path verification for the current publish track.",
+    "Validation: adr-0005"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-003",
+  "title": "Repro pass for accepted money-minsky-policy-mismatch outputs",
+  "updated_at": "2026-04-20T03:26:22.792012Z"
+}

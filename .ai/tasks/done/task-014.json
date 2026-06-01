@@ -1,0 +1,32 @@
+{
+  "acceptance_criteria": [
+    "The new model includes an explicit capacity, bottleneck, or price-pressure mechanism.",
+    "Outputs make it possible to show a case where spending is genuinely constrained by real limits rather than financial bookkeeping.",
+    "The model is documented as a future extension unless and until the blog is revised to use it.",
+    "Tests cover the boundary behavior at low slack versus high slack."
+  ],
+  "blockers": [],
+  "constraints": [
+    "This is future expansion work, not a prerequisite for publishing the current draft.",
+    "Prefer the smallest model that honestly captures the real-limit boundary."
+  ],
+  "created_at": "2026-04-20T03:25:44.885642Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Design and implement a compact model extension or companion model that can illustrate when spending pushes against capacity and produces inflationary or bottleneck effects, so the post's constraint story is not only about slack and fragility.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/",
+    "content/posts/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Add a minimal simulation surface for the real-resource / inflation boundary that section 7 currently identifies as missing.",
+  "implementation_notes": [
+    "Superseded by task-020, which reframes the missing model surface explicitly around real constraints, bottlenecks, and price pressure as the true limits on government action.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-014",
+  "title": "Inflation and real-capacity boundary model for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-20T03:33:03.189922Z"
+}

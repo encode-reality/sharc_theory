@@ -1,0 +1,32 @@
+{
+  "acceptance_criteria": [
+    "All numeric claims in the draft are traceable to current outputs or to the audit's accepted framing.",
+    "Every figure reference points to a figure that remains in the accepted evidence chain.",
+    "Legacy figures and deprecated model claims are not used as evidence.",
+    "Mechanism language for fragility and austerity remains conditional and calibration-aware."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Use the rebuilt package README and audit as the primary evidence boundary documents.",
+    "If a claim cannot be verified, weaken or remove it rather than infer new support."
+  ],
+  "created_at": "2026-04-20T01:17:33.211895Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Check the draft against money_minsky_policy_mismatch_AUDIT.md and the accepted model surface; flag or fix any sentence that is stronger than the current code or figure support.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "money_minsky_policy_mismatch_AUDIT.md"
+  ],
+  "goal": "Verify that every quantitative claim, figure reference, and mechanism statement in the draft matches the accepted evidence chain and audit.",
+  "implementation_notes": [
+    "Superseded by task-008, which turns the former evidence pass into a stricter claim-support ledger and quantitative-validity review keyed to the actual draft and audit findings.",
+    "Validation: adr-0005"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-002",
+  "title": "Evidence pass against audit for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-20T03:26:22.743919Z"
+}

@@ -1,0 +1,39 @@
+{
+  "acceptance_criteria": [
+    "A factor matrix exists with mention/model/omit decisions and rationale.",
+    "The matrix identifies where each factor belongs in the blog.",
+    "The design states clearly why some factors need only scoped mention rather than full modeling.",
+    "The outcome can be handed off cleanly to both planner/editorial and implementer/code lanes."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not let scope expansion bury the main thesis.",
+    "Prefer explicit limitation language over weak simulation claims.",
+    "Keep the distinction between issuer, currency user, and quasi-sovereign central."
+  ],
+  "created_at": "2026-04-25T16:13:29.638397Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Build a factor matrix for bonds/securities, maturity structure, rollover risk, holder composition, collateral/liquidity plumbing, treasury-central-bank operations, external constraint, and distribution. For each factor, decide whether the blog needs a substantive paragraph, a short limitation note, a toy model, or no new treatment. The objective is to make the post complete enough to avoid sounding biased or overfitted without turning it into a full monetary plumbing textbook.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    ".ai/specs/current_spec.md",
+    ".ai/handoffs/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Decide which omitted factors must be explicitly integrated into the blog, which merit toy-model treatment, and which should remain stated limitations.",
+  "implementation_notes": [
+    "Completed the omitted-factor scoping pass. Created a durable design brief at .ai/handoffs/money-minsky-policy-mismatch-factor-refinement.md with factor triage, blog placements, effort guidance, prioritized tasks 025-030, and Claude-ready pseudocode for the most valuable computational extensions. Recorded ADR-0007 to keep the refinement scoped as a completeness layer rather than a full bond-market rewrite.",
+    "Validation: scoping-brief-2026-04-25"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [
+    "planner",
+    "scope",
+    "editorial",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-024",
+  "title": "Scope omitted financial-plumbing factors for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-25T16:15:31.708523Z"
+}

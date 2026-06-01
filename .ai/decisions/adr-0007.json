@@ -1,0 +1,14 @@
+{
+  "consequences": "The post remains scoped around functional monetary roles rather than expanding into a full market-plumbing treatise. New tasks should distinguish high-priority additions that can change the main diagnosis from lower-priority completeness notes. Future sessions should avoid overselling any new extension as if it fully models sovereign debt markets or international macro.",
+  "context": "The published baseline for money-minsky-policy-mismatch now makes the core issuer/user/austerity argument, but it risks sounding over-clean if it does not explicitly address what bonds, securities, refinancing structure, holder composition, external constraint, and collateral/liquidity do in modern systems.",
+  "created_at": "2026-04-25T16:15:20.497786Z",
+  "decision": "Treat bonds, maturity/rollover, external constraint, and holder composition as the next completeness layer. Prioritize prose clarification first, then minimal toy models only for the omitted factors that materially alter the post's constraint story. Treat collateral/repo and deeper liquidity plumbing as investigation-first and likely prose/limitation material unless a small model proves necessary.",
+  "decision_id": "adr-0007",
+  "recorded_by": "codex",
+  "tags": [
+    "money-minsky-policy-mismatch",
+    "scope",
+    "financial-plumbing"
+  ],
+  "title": "Scope omitted financial-plumbing factors as a completeness layer, not a full bond-market rewrite"
+}

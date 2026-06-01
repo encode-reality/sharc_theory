@@ -1,0 +1,33 @@
+{
+  "acceptance_criteria": [
+    "The accepted figure set reproduces from the documented commands or any mismatch is recorded precisely.",
+    "Only the accepted figures remain wired into the narrative; stale figures on disk are not referenced as evidence.",
+    "Reproducibility notes, image paths, and citation links in the post are accurate.",
+    "A fresh hub validation record exists for the commands actually run."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not promote legacy figures or legacy experiment outputs merely because they are present in static/images/.",
+    "Record exact commands and artifacts used."
+  ],
+  "created_at": "2026-04-20T03:25:44.851468Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Run the accepted experiment entrypoints, confirm the current figure set, validate image-path usage in the draft, and recheck that the post cites the accepted evidence chain rather than stale assets.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "experiments/money_minsky_policy_mismatch/README.md",
+    "static/images/money_minsky_policy_mismatch/"
+  ],
+  "goal": "Verify that the figures, commands, and supporting citations used by the current draft reproduce and resolve cleanly.",
+  "implementation_notes": [
+    "Superseded by task-021, which bundles final figures, metrics, and reproducibility around the clarified endgame story.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-009",
+  "title": "Accepted figure, repro, and citation verification for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-20T03:33:03.140180Z"
+}

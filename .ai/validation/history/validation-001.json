@@ -1,0 +1,20 @@
+{
+  "artifacts": [
+    ".ai/specs/current_spec.md",
+    ".ai/handoffs/money-minsky-policy-mismatch.md",
+    "money_minsky_policy_mismatch_AUDIT.md"
+  ],
+  "command": "poetry run pytest experiments/money_minsky_policy_mismatch/tests/ --no-cov",
+  "created_at": "2026-04-20T01:18:06.403092Z",
+  "details": [
+    "98 tests passed in 11.64s on 2026-04-19 America/Chicago local date.",
+    "This confirms current package self-consistency, not universal validation of every prose claim.",
+    "Future publish-readiness should still verify figure generation and quantitative citations against the accepted evidence chain."
+  ],
+  "recorded_by": "codex",
+  "status": "passed",
+  "summary": "money_minsky_policy_mismatch test suite passed locally after seeding the coordination artifacts.",
+  "task_id": "task-003",
+  "validation_id": "validation-001",
+  "validation_type": "test"
+}

@@ -157,6 +157,13 @@ public/
 resources/_gen/
 .hugo_build.lock
 
+# Obsidian
+.obsidian/
+.trash/
+
+# Experiment data caches pulled from public sources at runtime
+results/money_minsky_policy_mismatch_data/
+
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore

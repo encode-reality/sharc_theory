@@ -1,0 +1,40 @@
+{
+  "acceptance_criteria": [
+    "A clear go/no-go recommendation exists for collateral/repo modeling.",
+    "If no new model is recommended, the required prose limitation is specified.",
+    "If a future toy model is recommended, a concise pseudocode brief exists.",
+    "The recommendation explains why the factor does or does not materially change the main argument."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not add a repo model just because it would be technically interesting.",
+    "Judge this by explanatory necessity for the blog's thesis, not by completeness for its own sake."
+  ],
+  "created_at": "2026-04-25T16:13:29.692004Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Review the current post's goals against collateral chains, safe-asset demand, and funding-liquidity dynamics. Produce a concrete recommendation: mention-only, mention-plus-diagram, or future toy model. If the answer is mention-only, draft the exact limitation language the blog should use so it does not sound naive about financial plumbing.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    ".ai/handoffs/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Determine whether collateral/repo/liquidity plumbing should remain a prose limitation in this blog or justify a future toy-model extension.",
+  "implementation_notes": [
+    "Recommendation: mention-only for this cycle. The post now says collateral and repo matter mainly as amplification channels that affect liquidity, market access, and haircuts once stress begins, but they are not the first-order reason the household analogy fails.",
+    "Reasoning: task-026 and task-027 now cover the higher-value omitted channels directly, while a repo model would require dealer-balance-sheet and haircut assumptions that would expand scope too quickly.",
+    "Decision: adr-0009",
+    "Validation: validation-006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [
+    "planner",
+    "investigation",
+    "liquidity",
+    "repo",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-029",
+  "title": "Collateral/liquidity and repo scope decision",
+  "updated_at": "2026-04-25T22:22:52Z"
+}

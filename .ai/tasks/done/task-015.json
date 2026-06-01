@@ -1,0 +1,35 @@
+{
+  "acceptance_criteria": [
+    "Front matter, references, links, and image paths are correct for the intended publication state.",
+    "No unresolved claim-support mismatch remains in the current accepted evidence chain.",
+    "Reproducibility notes and current hub validation are consistent with the post's figure and command surface.",
+    "The draft is ready for a final publish / hold decision without board ambiguity."
+  ],
+  "blockers": [],
+  "constraints": [
+    "This task is for the current publish track only; it does not wait on future exploratory simulation tasks such as task-010 through task-014."
+  ],
+  "created_at": "2026-04-20T03:25:58.732205Z",
+  "created_by": "codex",
+  "dependencies": [
+    "task-007",
+    "task-008",
+    "task-009"
+  ],
+  "description": "Final editorial and site-facing pass for the current draft after tasks 007, 008, and 009 have finished. This is the canonical publish-track task on the refined board.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "hugo.toml"
+  ],
+  "goal": "Prepare the draft for publication after the coherence, validity, and accepted-figure verification passes are complete.",
+  "implementation_notes": [
+    "Superseded by task-022, which is the final synthesis task on the clarified endgame board and depends on the new tone and claim-integration tasks.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-015",
+  "title": "Publish-readiness review for money-minsky-policy-mismatch (refined board)",
+  "updated_at": "2026-04-20T03:33:03.180517Z"
+}

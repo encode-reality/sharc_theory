@@ -1,0 +1,33 @@
+{
+  "acceptance_criteria": [
+    "The experiment can compare at least: same base rate with different k2, same k2 with different base rate, and the current combined fragile/resilient comparison.",
+    "Outputs report crisis incidence or time-to-crisis in a way that isolates the contribution of each parameter change.",
+    "Any new prose recommendation clearly states whether the current section can be strengthened or should remain as-is.",
+    "Tests cover the new comparison surface without encoding narrative conclusions as tautologies."
+  ],
+  "blockers": [],
+  "constraints": [
+    "This is a validity-improving simulation task, not a license to broaden the blog claim beyond what the results support.",
+    "Avoid overwriting the accepted evidence chain until the new results are reviewed."
+  ],
+  "created_at": "2026-04-20T03:25:44.858853Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Extend the fragility_regimes experiment so future prose can distinguish what comes from debt-drag sensitivity, what comes from base-rate level changes, and what comes from initial leverage. Produce an interpretable comparison or note if the existing framing should stay narrow.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/fragility_regimes.py",
+    "experiments/money_minsky_policy_mismatch/tests/test_fragility_regimes.py",
+    "content/posts/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Strengthen the validity of the fragility section by separating leverage-sensitivity effects from base-rate effects in the Keen-based regime comparison.",
+  "implementation_notes": [
+    "Superseded by task-019 and task-021, which place fragility inside the broader agent-based policy-controller comparison and final artifact bundle rather than as a standalone board lane.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-010",
+  "title": "Fragility robustness and parameter-isolation sweep",
+  "updated_at": "2026-04-20T03:33:03.148357Z"
+}

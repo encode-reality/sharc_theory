@@ -1,0 +1,14 @@
+{
+  "consequences": "Future editorial and evidence passes should cite only the rebuilt package and its matching figures. Legacy figures may remain on disk but must not be used as support by default.",
+  "context": "The draft and repository still contain legacy SFC and ABM assets alongside newer rebuilt models and figures. Future sessions need to know which surface is authoritative.",
+  "created_at": "2026-04-20T01:17:33.235801Z",
+  "decision": "Treat policy_sectoral_model.py, austerity_counterfactual.py, and fragility_regimes.py as the accepted computational evidence chain for the current draft. Legacy SFC issuer/user outputs and ABM austerity-shift results are excluded from the active evidence chain until revalidated.",
+  "decision_id": "adr-0001",
+  "recorded_by": "codex",
+  "tags": [
+    "money-minsky-policy-mismatch",
+    "evidence-chain",
+    "blog"
+  ],
+  "title": "Money-Minsky draft uses rebuilt evidence chain"
+}

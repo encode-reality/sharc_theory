@@ -1,0 +1,39 @@
+{
+  "acceptance_criteria": [
+    "The post explicitly explains why public securities have different functional roles across entity types.",
+    "External constraint and imported-essential dependence are visibly named as real limits.",
+    "The post acknowledges omitted collateral/liquidity and holder-composition layers without sounding evasive.",
+    "The new prose clarifies rather than bloats the argument."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Do not imply a full bond-market or repo model exists if it does not.",
+    "Keep the tone explanatory and humble, not defensive.",
+    "Do not let the new material dominate the post's main arc."
+  ],
+  "created_at": "2026-04-25T16:13:29.654238Z",
+  "created_by": "codex",
+  "dependencies": [
+    "task-024"
+  ],
+  "description": "Add a scoped explanation that bonds are not just 'borrowing' in the household sense; explain why securities can serve different functions for issuers, currency users, and quasi-sovereigns; add concise treatment of external constraint and imported essentials; and add clear limitations language for collateral/repo, holder composition, and maturity structure where they are not yet fully modeled.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Revise the post so bonds, securities, external constraint, and omitted financial-plumbing layers are acknowledged in the right places without diluting the main claim.",
+  "implementation_notes": [
+    "Completed the prose refinement in content/posts/money-minsky-policy-mismatch.md. Added a 'Bonds are not one thing' subsection, clarified that treasuries and central banks care about reserves, settlement, collateral quality, maturity structure, and liquidity conditions, and named rollover pressure, holder composition, collateral/liquidity context, and external dependence as constraint qualifiers rather than ignored factors.",
+    "Validation: validation-004"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [
+    "planner",
+    "editorial",
+    "prose",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-025",
+  "title": "Prose pass: bonds, liability hierarchy, and scoped omissions",
+  "updated_at": "2026-04-25T20:57:51Z"
+}

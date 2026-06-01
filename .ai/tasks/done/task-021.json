@@ -1,0 +1,41 @@
+{
+  "acceptance_criteria": [
+    "The figure set used by the post is generated from documented commands and stored in the canonical output location.",
+    "Each figure has a clear narrative role and does not overclaim what the underlying model shows.",
+    "Summary metrics used in the post are traceable to generated outputs.",
+    "A fresh validation record exists for the commands actually run."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Only promote figures that support the final accepted evidence chain.",
+    "If a simulation does not produce a clean explanatory figure, do not force it into the post."
+  ],
+  "created_at": "2026-04-20T03:32:20.275810Z",
+  "created_by": "codex",
+  "dependencies": [
+    "task-018",
+    "task-019",
+    "task-020"
+  ],
+  "description": "Once the core simulation surfaces are ready, produce the authoritative figures, summary metrics, and reproducibility notes for the blog. The output should support a compelling but factual narrative: the Keynes quote as thesis, the functional role of money by entity type, the failure of austerity-style controllers, and the reality of real-resource limits.",
+  "files_expected": [
+    "static/images/money_minsky_policy_mismatch/",
+    "experiments/money_minsky_policy_mismatch/README.md",
+    "content/posts/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Generate the final simulation artifacts that support the post's core story with reproducible figures, metrics, and documented command paths.",
+  "implementation_notes": [
+    "Generated final simulation figures, metrics, and reproducibility bundle.\n\n**New figures (stored in `static/images/money_minsky_policy_mismatch/`):**\n\n1. `comparative_constraints.png` — Three-panel: spending, output, and debt ratio for household / currency user / sovereign issuer under the same demand shock. Shows the sovereign issuer maintaining spending while the household collapses at its borrowing limit and the currency user's debt spirals.\n\n2. `policy_lab.png` — Three-panel: output, underutilization (unemployment + JG share), and deficit ratio for austerity / functional finance / passive controllers. FF maintains higher output; austerity achieves lower deficit at the cost of higher underutilization.\n\n3. `capacity_constraint.png` — Three-panel: slack vs tight output, inflation comparison, and spending ramp transition. Under slack: full multiplier, zero inflation. At capacity: output capped, inflation rises. The spending ramp shows the smooth transition.\n\n**Updated: `plotting.py`** — Added `plot_comparative_constraints()`, `plot_policy_lab()`, `plot_capacity_constraint()`, wired into `save_all_plots()`.\n\n**Updated: `run_experiment.py`** — Added `--experiment new` option that runs all three new simulation surfaces and generates their figures.\n\n**Updated: `README.md`** — Complete rewrite with: all simulation surfaces documented, new commands (uv-based), full figure inventory, validation record (160 tests, 2026-04-20, seed 42, macOS arm64).\n\n**Validation: 160 tests passed, 3 new figures generated from documented commands.**"
+  ],
+  "owner": "claude",
+  "status": "done",
+  "tags": [
+    "coding",
+    "figures",
+    "claude",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-021",
+  "title": "Story figures, metrics, and reproducibility bundle for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-21T03:08:12.578691Z"
+}

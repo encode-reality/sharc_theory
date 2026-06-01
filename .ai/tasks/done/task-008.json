@@ -1,0 +1,32 @@
+{
+  "acceptance_criteria": [
+    "Every numeric claim in the post is traceable to current outputs, the audit, or a cited external source.",
+    "Every figure statement is no stronger than what the current accepted figure actually shows.",
+    "The fragility section explicitly matches the current calibration comparison and does not imply stronger causal isolation than the code supports.",
+    "The post continues to distinguish institutional claims from model-derived claims."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Use content/posts/money-minsky-policy-mismatch.md, money_minsky_policy_mismatch_AUDIT.md, and the accepted experiment surface as binding sources.",
+    "If support is ambiguous, weaken the prose rather than infer stronger support."
+  ],
+  "created_at": "2026-04-20T03:25:44.844230Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Create a line-by-line claim/evidence pass over the draft. Reconfirm the current evidence chain, weaken or remove unsupported statements, and make the literature-vs-simulation boundary explicit wherever needed.",
+  "files_expected": [
+    "content/posts/money-minsky-policy-mismatch.md",
+    "money_minsky_policy_mismatch_AUDIT.md"
+  ],
+  "goal": "Audit every quantitative statement, figure caption implication, and mechanism claim in the draft against current code, figures, and the audit.",
+  "implementation_notes": [
+    "Superseded by task-017, which reframes the evidence pass as a claim-to-simulation integration task tied to the final simulation surfaces.",
+    "Validation: adr-0006"
+  ],
+  "owner": "codex",
+  "status": "done",
+  "tags": [],
+  "task_id": "task-008",
+  "title": "Claim-support ledger and quantitative validity pass for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-20T03:33:03.130212Z"
+}

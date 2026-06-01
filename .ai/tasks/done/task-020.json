@@ -1,0 +1,37 @@
+{
+  "acceptance_criteria": [
+    "The model contains an explicit capacity, bottleneck, or price-pressure mechanism.",
+    "It can produce at least one case where extra public spending is feasible under slack and one where real limits begin to bind.",
+    "The results are simple enough to explain clearly in the post without overselling them.",
+    "Tests validate the low-slack versus high-slack boundary behavior."
+  ],
+  "blockers": [],
+  "constraints": [
+    "Prefer the smallest model that captures the boundary honestly.",
+    "This task exists to show the real limit, not to create a maximal macro model."
+  ],
+  "created_at": "2026-04-20T03:32:20.268125Z",
+  "created_by": "codex",
+  "dependencies": [],
+  "description": "Design a minimal but honest model extension or companion model that can illustrate the shift from slack conditions, where financial affordability is not the binding limit, to tight-capacity conditions, where real-resource or price-pressure constraints become binding. This model should keep the post from sounding like it claims there are no limits.",
+  "files_expected": [
+    "experiments/money_minsky_policy_mismatch/",
+    "experiments/money_minsky_policy_mismatch/tests/",
+    "content/posts/money-minsky-policy-mismatch.md"
+  ],
+  "goal": "Add a compact simulation surface that shows what truly constrains government action when the issue is not bookkeeping but real capacity, bottlenecks, or inflationary pressure.",
+  "implementation_notes": [
+    "Built minimal real-capacity constraint model. Summary:\n\n**New file: `capacity_constraint.py`**\n- Shows what genuinely constrains government spending: real productive capacity, not bookkeeping\n- Under slack (demand < capacity): extra G creates real output, zero inflation, full multiplier\n- At capacity (demand >= capacity): extra G creates inflation, output capped, multiplier collapses\n- 10% output leakage above capacity (overtime/imports), rest is price pressure\n- Productivity growth shifts the boundary over time\n- Spending ramp shows smooth transition from slack to tight\n\n**Updated: `experiments.py`** — added `run_capacity_constraint_experiment()` with slack, tight, and ramp scenarios\n\n**New tests: `tests/test_capacity_constraint.py`** (15 tests)\n- Structural: valid output, capacity grows\n- Slack: extra G raises output, no inflation, utilization < 1\n- Tight: extra G creates inflation, output capped, utilization > 1\n- Boundary: spending ramp transitions smoothly, multiplier larger under slack\n- Adversarial: productivity growth shifts boundary, absurd spending still inflationary, model doesn't claim unlimited spending\n\n**All 160 tests pass** (15 new + 145 existing, zero regressions)."
+  ],
+  "owner": "claude",
+  "status": "done",
+  "tags": [
+    "coding",
+    "simulation",
+    "claude",
+    "money-minsky-policy-mismatch"
+  ],
+  "task_id": "task-020",
+  "title": "Real-constraint boundary model for money-minsky-policy-mismatch",
+  "updated_at": "2026-04-21T03:02:24.129564Z"
+}
